@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vim on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/vim/</link>
+    <description>Recent content in Vim on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    
+    
+    
+    <lastBuildDate>Sun, 02 Oct 2011 10:31:59 &#43;0000</lastBuildDate>
+    <atom:link href="http://www.zeneffy.fr/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>En avant pour Scala avec Vim</title>
+      <link>http://www.zeneffy.fr/2011/10/en-avant-pour-scala-avec-vim/</link>
+      <pubDate>Sun, 02 Oct 2011 10:31:59 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/10/en-avant-pour-scala-avec-vim/</guid>
+      <description>&lt;p&gt;Après quelques années de développement avec mes deux langages favoris &lt;a href=&#34;http://blog.zeneffy.fr/tag/python/&#34;&gt;Python&lt;/a&gt; et de &lt;a href=&#34;http://blog.zeneffy.fr/tag/ruby/&#34;&gt;Ruby&lt;/a&gt;, j&amp;rsquo;ai décidé de me lancer dans un nouveau langage basé sur la &lt;a href=&#34;http://fr.wikipedia.org/wiki/JVM_(informatique&#34;&gt;JVM&lt;/a&gt;) (donc pas de Java pur, j&amp;rsquo;ai déjà donné!). Après avoir étudié &lt;a href=&#34;http://clojure.org/&#34;&gt;Clojure&lt;/a&gt; et &lt;a href=&#34;http://www.scala-lang.org/&#34;&gt;Scala&lt;/a&gt;, j&amp;rsquo;ai décidé de me concentrer sur Scala qui me semble plus naturel et qui mélange les paradigmes &amp;ldquo;Orienté-Objet&amp;rdquo; et &amp;ldquo;programmation fonctionnelle&amp;rdquo; - Clojure pour sa part est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Lisp&#34;&gt;lisp&lt;/a&gt; qui semble très puissant mais moins accessible pour un développeur moyen et dilettante comme moi.&lt;/p&gt;
+
+&lt;p&gt;Mon premier réflexe a été bien évidemment de m&amp;rsquo;assurer que macVim me permettrait de facilement commencer quelques développement en Scala. En cherchant rapidement sur le web, j&amp;rsquo;ai pu trouvé quelques astuces pour la coloration, la navigation à travers les méthodes&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;En premier lieu, il faut installer le plugin Scala pour vim:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;svn export --force http://lampsvn.epfl.ch/svn-repos/scala/scala-tool-support/trunk/src/vim
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;puis copier les fichiers obtenus dans votre répertoire .vim&lt;/p&gt;
+
+&lt;p&gt;Deuxième étape, l&amp;rsquo;installation du plugin &lt;a href=&#34;http://www.vim.org/scripts/script.php?script_id=3465&#34;&gt;Tagbar&lt;/a&gt; (téléchargement du fichier .vba puis méthode d&amp;rsquo;installation normale vim)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vim tagbar.vba
+  :so %
+  :q
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;TagBar ne prenant pas en compte Scala, il faut légèrement modifier certains fichiers
+Tout d&amp;rsquo;abord, création dans votre $HOME du fichier .ctags suivant&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;--langdef=Scala
+--langmap=Scala:.scala
+--regex-Scala=/^[ \t]*class[ \t]*([a-zA-Z0-9_]+)/\1/c,classes/
+--regex-Scala=/^[ \t]*object[ \t]*([a-zA-Z0-9_]+)/\1/o,objects/
+--regex-Scala=/^[ \t]*trait[ \t]*([a-zA-Z0-9_]+)/\1/t,traits/
+--regex-Scala=/^[ \t]*case[ \t]*class[ \t]*([a-zA-Z0-9_]+)/\1/r,cclasses/
+--regex-Scala=/^[ \t]*abstract[ \t]*class[ \t]*([a-zA-Z0-9_]+)/\1/a,aclasses/
+--regex-Scala=/^[ \t]*def[ \t]*([a-zA-Z0-9_=]+)[ \t]*.*[:=]/\1/m,methods/
+--regex-Scala=/[ \t]*val[ \t]*([a-zA-Z0-9_]+)[ \t]*[:=]/\1/V,values/
+--regex-Scala=/[ \t]*var[ \t]*([a-zA-Z0-9_]+)[ \t]*[:=]/\1/v,variables/
+--regex-Scala=/^[ \t]*type[ \t]*([a-zA-Z0-9_]+)[ \t]*[\[&amp;lt;&amp;gt;=]/\1/T,types/
+--regex-Scala=/^[ \t]*import[ \t]*([a-zA-Z0-9_{}., \t=&amp;gt;]+$)/\1/i,includes/
+--regex-Scala=/^[ \t]*package[ \t]*([a-zA-Z0-9_.]+$)/\1/p,packages/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis on va modifier le code du plugin TagBar (à priori dans &lt;code&gt;~/.vim/plugin/tagbar.vim&lt;/code&gt;), en rajoutant les lignes suivantes&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot; Scala {{{3
+let type_scala = {}
+let type_scala.ctagstype = &#39;Scala&#39;
+let type_scala.kinds     = [
+  \ {&#39;short&#39; : &#39;p&#39;, &#39;long&#39; : &#39;packages&#39;,  &#39;fold&#39; : 1 },
+  \ {&#39;short&#39; : &#39;V&#39;, &#39;long&#39; : &#39;values&#39;,    &#39;fold&#39; : 0 },
+  \ {&#39;short&#39; : &#39;v&#39;, &#39;long&#39; : &#39;variables&#39;, &#39;fold&#39; : 0 },
+  \ {&#39;short&#39; : &#39;T&#39;, &#39;long&#39; : &#39;types&#39;,     &#39;fold&#39; : 0 },
+  \ {&#39;short&#39; : &#39;t&#39;, &#39;long&#39; : &#39;traits&#39;,    &#39;fold&#39; : 0 },
+  \ {&#39;short&#39; : &#39;o&#39;, &#39;long&#39; : &#39;objects&#39;,   &#39;fold&#39; : 0 },
+  \ {&#39;short&#39; : &#39;a&#39;, &#39;long&#39; : &#39;aclasses&#39;,  &#39;fold&#39; : 0 },
+  \ {&#39;short&#39; : &#39;c&#39;, &#39;long&#39; : &#39;classes&#39;,   &#39;fold&#39; : 0 },
+  \ {&#39;short&#39; : &#39;r&#39;, &#39;long&#39; : &#39;cclasses&#39;,  &#39;fold&#39; : 0 },
+  \ {&#39;short&#39; : &#39;m&#39;, &#39;long&#39; : &#39;methods&#39;,   &#39;fold&#39; : 0 }
+\ ]
+let type_scala.sro        = &#39;.&#39;
+let type_scala.kind2scope = {
+  \ &#39;T&#39; : &#39;type&#39;,
+  \ &#39;t&#39; : &#39;trait&#39;,
+  \ &#39;o&#39; : &#39;object&#39;,
+  \ &#39;a&#39; : &#39;abstract class&#39;,
+  \ &#39;c&#39; : &#39;class&#39;,
+  \ &#39;r&#39; : &#39;case class&#39;
+\ }
+let type_scala.scope2kind = {
+  \ &#39;type&#39;           : &#39;T&#39;,
+  \ &#39;trait&#39;          : &#39;t&#39;,
+  \ &#39;object&#39;         : &#39;o&#39;,
+  \ &#39;abstract class&#39; : &#39;a&#39;,
+  \ &#39;class&#39;          : &#39;c&#39;,
+  \ &#39;case class&#39;     : &#39;r&#39;
+\ }
+let s:known_types.scala = type_scala
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Attention, ces lignes doivent être rajoutées dans la fonction &lt;code&gt;_function! s:InitTypes()_&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Et voilà - Vim est prêt pour Scala !&lt;/p&gt;
+
+&lt;p&gt;Tiré/traduit de &lt;a href=&#34;http://latestbuild.net/scala-ctags-and-vim-tagbar&#34;&gt;latestbuild.net/scala-ctags-and-vim-tagbar &lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MacVim, Command-T et RVM</title>
+      <link>http://www.zeneffy.fr/2011/09/macvim-command-t-et-rvm/</link>
+      <pubDate>Sun, 04 Sep 2011 18:55:28 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/09/macvim-command-t-et-rvm/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/macvim/&#34;&gt;MacVim&lt;/a&gt; (une forme de l&amp;rsquo;éditeur VIM adaptée à MacOS) est mon éditeur de prédilection actuellement malgré de nombreux autres essais (entre autres: &lt;a href=&#34;http://macromates.com/&#34;&gt;Textmate&lt;/a&gt;, &lt;a href=&#34;http://kodapp.com/&#34;&gt;Kod&lt;/a&gt;, &lt;a href=&#34;http://www.sublimetext.com/&#34;&gt;Sublime Text&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Il est très configurable et permet de rajouter de nombreuses fonctionnalités utiles: ici je vous parlerai du module &lt;a href=&#34;https://wincent.com/products/command-t&#34;&gt;Command-T&lt;/a&gt; qui permet de faire des recherches très fines et surtout pertinentes à travers les répertoires et fichiers d&amp;rsquo;un projet - un screencast est disponible &lt;a href=&#34;https://s3.amazonaws.com/s3.wincent.com/command-t/screencasts/command-t-demo.mov?width=640&amp;amp;height=480&#34;&gt;sur le site de l&amp;rsquo;auteur&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pour l&amp;rsquo;installer sur un mac avec RVM, il faut être vigilant sur la version de Ruby employée car MacVim ne compilant pas avec ruby 1.9.&lt;/p&gt;
+
+&lt;p&gt;Installation de MacVim via &lt;a href=&#34;http://mxcl.github.com/homebrew/&#34;&gt;homebrew&lt;/a&gt; avec ruby 1.8.7:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rvm use system
+/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.github.com/gist/323731)&amp;quot;
+brew install wget macvim
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Installation de CommandT à partir de vim.org:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://www.vim.org/scripts/download_script.php?src_id=15560
+mvim command-t-1.2.1.vba
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis une fois MacVim ouvert:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:so %
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En sortant de MacVim:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /$HOME/.vim/ruby/command-t
+ruby extconf.rb
+make
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Et voilà normalement tout fonctionne, vous pouvez utiliser la version de ruby que vous souhaitez sans problème.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Environnement de développement Mac</title>
+      <link>http://www.zeneffy.fr/2011/03/dev-mac/</link>
+      <pubDate>Fri, 04 Mar 2011 10:25:03 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/03/dev-mac/</guid>
+      <description>&lt;p&gt;Je suis l&amp;rsquo;heureux possesseur d&amp;rsquo;un MacBook Air 13&amp;rdquo; depuis quelques jours, et j&amp;rsquo;ai commencé à installer mon environnement de développement habituel.&lt;/p&gt;
+
+&lt;p&gt;Gestionnaire de package pour mac: &lt;a href=&#34;https://github.com/mxcl/homebrew&#34;&gt;https://github.com/mxcl/homebrew&lt;/a&gt; (après avoir téléchargé Xcode), installation de Git, MacVim, sqlite via brew&lt;/p&gt;
+
+&lt;p&gt;puis installation de rvm: &lt;a href=&#34;http://www.blog.bridgeutopiaweb.com/post/how-to-install-rvm-and-rails-3-on-snow-leopard/&#34;&gt;http://www.blog.bridgeutopiaweb.com/post/how-to-install-rvm-and-rails-3-on-snow-leopard/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Pour avoir un éditeur de texte (gratuit donc pas textmate pour l&amp;rsquo;instant !): &lt;code&gt;brew macvim&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;puis configuration de MacVim:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.danielfischer.com/2010/11/19/a-starting-guide-to-vim-from-textmate/&#34;&gt;http://blog.danielfischer.com/&lt;sup&gt;2010&lt;/sup&gt;&amp;frasl;&lt;sub&gt;11&lt;/sub&gt;/19/a-starting-guide-to-vim-from-textmate/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/carlhuda/janus&#34;&gt;https://github.com/carlhuda/janus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://net.tutsplus.com/articles/general/top-10-pitfalls-when-switching-to-vim/&#34;&gt;http://net.tutsplus.com/articles/general/top-10-pitfalls-when-switching-to-vim/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ne pas oublier fuzzyFinder et la librairie l9 (disponibles sur le site &lt;a href=&#34;http://www.vim.org/&#34;&gt;www.vim.org&lt;/a&gt; et de changer la touche &lt;code&gt;leader&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Personnaliser l&#39;installation de Ubuntu 10.04</title>
+      <link>http://www.zeneffy.fr/2010/05/personnaliser-linstallation-de-ubuntu-10-04/</link>
+      <pubDate>Sun, 16 May 2010 12:04:00 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/05/personnaliser-linstallation-de-ubuntu-10-04/</guid>
+      <description>&lt;p&gt;Suite à la sortie de Ubuntu 10.04, je me suis décidé à l&amp;rsquo;installer en machine virtuelle (&lt;a href=&#34;http://www.virtualbox.org/&#34;&gt;VirtualBox&lt;/a&gt;) sur mon portable pro, tout s&amp;rsquo;est très bien passé et voici quelques tuning complémentaires:&lt;/p&gt;
+
+&lt;p&gt;En premier lieu, on effectue une petite mise à jour post-installation&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get update
+sudo apt-get upgrade
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis j&amp;rsquo;installe mon logiciel de versionnage favori (à l&amp;rsquo;heure actuelle), i.e. &lt;a href=&#34;http://git-scm.com/&#34;&gt;Git&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install git-core
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ensuite on installe l&amp;rsquo;éditeur Vim avec ma configuration (stockée sur &lt;a href=&#34;http://github.com/jraigneau&#34;&gt;GitHub&lt;/a&gt;)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install vim gvim
+sudo apt-get install ctags
+cd ~
+git clone http://github.com/jraigneau/vim-conf.git
+mv vim-conf .vim
+ln -s .vim/.vimrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ne pas oublier d&amp;rsquo;installer &lt;code&gt;fuzzy_file_finder&lt;/code&gt; via &lt;code&gt;sudo gem install fuzzy_file_finder&lt;/code&gt;, une fois gem installé!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Un peu de multimédia et d&amp;rsquo;utilitaires&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Installation du Navigateur Chromium (version open source de Chrome)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:chromium-daily/dev
+sudo apt-get update
+sudo apt-get install chromium-browser chromium-browser-l10n
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Quelques Indispensables du Dessin, de la Vidéo, et de la Musique + &lt;a href=&#34;http://do.davebsd.com/&#34;&gt;Gnome-Do&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install gimp vlc exaile gnome-do flashplugin-nonfree
+sudo apt-get install sun-java6-jdk
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Installation de Ruby On rails (Framework de développement web)&lt;/strong&gt;
+Tout d&amp;rsquo;abord on installe ruby et de la documentation&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install irb libopenssl-ruby libreadline-ruby rdoc ri ruby ruby-dev
+    sudo apt-get install rubybook
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis on installe RubyGems à partir des sources pour ne pas avoir d&amp;rsquo;incompatibilités de mises à jour entre apt-get et RubyGems (problème fréquent sur Ubuntu)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    cd /usr/local/src
+    sudo wget http://production.cf.rubygems.org/rubygems/rubygems-1.3.6.tgz
+    sudo tar xzvf rubygems-1.3.6.tgz
+    cd rubygems-1.3.6
+    sudo ruby setup.rb
+    sudo update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.8 1
+    sudo gem update --system
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;dans un fichier &lt;code&gt;~/.gemrc&lt;/code&gt;, on rajoute la ligne suivante afin de ne pas avoir de compilation de rdoc à chaque installation (trop lent!)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gem: --no-ri --no-rdoc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enfin on peut installer rails et sqlite (je n&amp;rsquo;utilise pas mysql ni postgresql sur ma machine de dév)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo gem install rails
+sudo apt-get install libsqlite3-dev sqlite3 sqlite3-doc
+sudo gem install sqlite3-ruby
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En bonus, quelques gems intéressants&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Cheatsheet automatiques: &lt;code&gt;sudo gem install cheat&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Changement facile des hosts de la machine: &lt;code&gt;sudo gem install ghost&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Partage de snippets de code: &lt;code&gt;sudo gem install gist&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ma configuration de Vim</title>
+      <link>http://www.zeneffy.fr/2010/03/ma-configuration-de-vim/</link>
+      <pubDate>Sun, 21 Mar 2010 18:11:55 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/03/ma-configuration-de-vim/</guid>
+      <description>&lt;p&gt;Quelques liens utiles&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://dancingpenguinsoflight.com/2009/02/python-and-vim-make-your-own-ide/&#34;&gt;python-and-vim-make-your-own-ide&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://dancingpenguinsoflight.com/2009/02/code-navigation-completion-snippets-in-vim/&#34;&gt;code-navigation-completion-snippets-in-vim&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://dancingpenguinsoflight.com/2009/07/light-at-the-end-of-the-carpal-tunnel-snippets-in-vim-with-snipmate/&#34;&gt;light-at-the-end-of-the-carpal-tunnel-snippets-in-vim-with-snipmate&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://akitaonrails.com/2009/01/04/rails-on-vim-in-english&#34;&gt;rails-on-vim-in-english&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://vim.runpaint.org/toc/&#34;&gt;vim.runpaint.org/toc&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://weblog.jamisbuck.org/2008/10/10/coming-home-to-vim&#34;&gt;FuzzyFinder&lt;/a&gt; (utiliser 2.16!!)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Quelques raccourcis à connaître:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python_fn.vim
+&amp;quot;   ]t      -- Jump to beginning of block
+&amp;quot;   ]e      -- Jump to end of block
+&amp;quot;   ]v      -- Select (Visual Line Mode) block
+&amp;quot;   ]&amp;lt;      -- Shift block to left
+&amp;quot;   ]&amp;gt;      -- Shift block to right
+&amp;quot;   ]#      -- Comment selection
+&amp;quot;   ]u      -- Uncomment selection
+&amp;quot;   ]c      -- Select current/previous class
+&amp;quot;   ]d      -- Select current/previous function
+&amp;quot;   ]&amp;lt;up&amp;gt;   -- Jump to previous line with the same/lower indentation
+&amp;quot;   ]&amp;lt;down&amp;gt; -- Jump to next line with the same/lower indentation
+
+python.vim
+Execute file being edited with &amp;lt;Shift&amp;gt; + e
+: Pyflakes
+: Pylint
+
+pydiction.vim
+C-n      -- Code completion
+C-S-n   -- reverse direction
+
+Mettre/enlever les numéros de ligne
+&amp;lt;F2&amp;gt;
+
+Navigation dans les modules
+&amp;lt;F4&amp;gt;
+
+Arbre
+:NERDTree
+:nmap &amp;lt;F9&amp;gt; NERDTree
+
+Utiliser des Onglets
+:tabnew nomDuFichier
+Ctrl-PageUp/PageDown: cycler dans les fichiers ouverts
+
+Copy/paste sans soucis
+:set paste
+insert
+:set paste!
+
+Visual blocks
+ctrl+v pour passer en visuel
+shift+i pour passer en insertion faire la modif puis ctrl+c
+
+Using viewports
+:sp will split the Vim window horizontally. Can be written out entirely as :split .
+:vsp will split the Vim window vertically. Can be written out as :vsplit .
+Ctrl-w Ctrl-w moves between Vim viewports.
+Ctrl-w j moves one viewport down.
+Ctrl-w k moves one viewport up.
+Ctrl-w h moves one viewport to the left.
+Ctrl-w l moves one viewport to the right.
+Ctrl-w = tells Vim to resize viewports to be of equal size.
+Ctrl-w - reduce active viewport by one line.
+Ctrl-w + increase active viewport by one line.
+Ctrl-w q will close the active window.
+Ctrl-w r will rotate windows to the right.
+Ctrl-w R will rotate windows to the left.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dépôt de ma configuration Vim (avec autocomplétion, navigateur de fichier, snippets&amp;hellip;) sur &lt;a href=&#34;http://github.com/jraigneau/vim-conf&#34;&gt;gitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

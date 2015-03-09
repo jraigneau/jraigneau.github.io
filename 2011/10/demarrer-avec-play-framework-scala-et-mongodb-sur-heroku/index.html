@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+		<title>Démarrer avec Play! Framework, scala et MongoDB sur Heroku</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/normalize.css">
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/skeleton.css">
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/custom.css">
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/github.css">
+	</head>
+<body>
+	<div class="container-header">
+		<div class="container">
+			<div class="row">
+				<div class="six columns">
+					<a href="http://www.zeneffy.fr" class="title-link"><span style="font-size: 60px ;font-family: 'Roboto Slab', serif;">Zen<span style="color: red;font-weight: 900;font-size: 60px;font-family: 'Roboto Slab', serif;" >effy</span></span></a>
+				</div>
+				<div class="six columns" style="padding-top: 10px;">
+					<div class="navbar-spacer"></div>
+							<ul class="navbar-list" style="float:right">
+								<li class="navbar-item"><a class="navbar-link" href="http://www.zeneffy.fr/about/">A propos</a></li>
+								<li class="navbar-item"><a class="navbar-link" href="http://www.zeneffy.fr/post/">Archives</a></li>
+								<li class="navbar-item"><a class="navbar-link" href="http://github.com/jraigneau" target="#">Projets</a></li>
+							</ul>
+	
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container" style="padding-top:110px">
+
+
+
+	<div class="row">
+    	<div class="twelve columns">
+    		<h1>Démarrer avec Play! Framework, scala et MongoDB sur Heroku</h1>
+    	</div>
+    </div>
+	<div class="row">
+		<div class="twelve columns"  align="justify">
+			<p>J&rsquo;ai découvert <a href="http://www.playframework.org/">Play! Framework</a> il y a quelques mois avec beaucoup d&rsquo;intérêt et je me suis rendu compte qu&rsquo;un module <a href="http://scala.playframework.org/">scala</a> existait. Voici donc un premier petit projet qui permet à la fois d&rsquo;installer Play! (1.2.3) mais aussi d&rsquo;utiliser MongoDB sur Heroku en quelques étapes:</p>
+
+<ol>
+<li>Suivant votre système, <a href="http://www.playframework.org/download">installez Play! via le zip</a> ou via brew: <code>brew install play</code></li>
+<li>Installez le support java pour Play! <code>play install scala</code></li>
+<li>Créez l&rsquo;application avec le support java: <code>play new maSuperDemo --with scala</code></li>
+<li>Testez que tout s&rsquo;est bien passé: <code>play run</code> puis ouvrez votre navigateur sur <code>http//localhost:9000</code>. Normalement vous devez avoir une belle fenêtre résumant le fonctionnement de Play!. Passons maintenant au choses sérieuses.</li>
+</ol>
+
+<p>Modifiez les dépendances du projet pour ajouter <a href="http://api.mongodb.org/scala/casbah/2.1.5.0/index.html">Casbah</a>, la librairie Scala permettant de manipuler <a href="mongodb">MongoDB</a>.</p>
+
+<pre><code># Application dependencies
+require:
+    - play
+    - play -&gt; scala 0.9.1
+    - com.mongodb.casbah -&gt; casbah_2.8.1 2.1.5-1
+
+repositories:
+  - scalatools:
+     type: iBiblio
+     root: http://scala-tools.org/repo-releases/
+     contains:
+       - com.mongodb.casbah -&gt; *
+       - org.scalaj -&gt; *
+</code></pre>
+
+<p>Attention de bien utiliser la version 2.8.1 qui est la seule compatible avec Play! 1.2.3 à l&rsquo;heure actuelle.</p>
+
+<p>Forcez Play! à charger toutes les dépendances (qui seront stockées dans le répertoire /lib):
+    play dependencies</p>
+
+<p>Préparez l&rsquo;application pour le déploiement sur heroku: pour des raisons de simplicité nous allons utiliser la base MongoDB de heroku directement (pas de base de développement&hellip;c&rsquo;est mal mais c&rsquo;est une démo !).
+Avant toute chose, créez un fichier <code>.gitignore</code> contenant:</p>
+
+<pre><code>/modules
+/tmp
+/lib
+</code></pre>
+
+<p>Puis la magie git habituelle</p>
+
+<pre><code>git init
+git add .
+</code></pre>
+
+<p>et enfin la déclaration sous heroku (je ne donne pas de nom à l&rsquo;application, Heroku m&rsquo;en choisira un tout seul) et l&rsquo;installation de l&rsquo;addon mongodb (ici via mongolab mais mongoHQ ferait aussi l&rsquo;affaire)</p>
+
+<pre><code>heroku create --stack cedar
+heroku addons:add mongolab:starter
+</code></pre>
+
+<p>Point important: la commande heroku config vous permettra de récupérer l&rsquo;url et le port de la base mongoDB automatiquement créée. Exemple:
+    <code>MONGOLAB_URI =&gt; mongodb://nombase:motdepasse@urlmongolab:portmongolab/nombase</code>
+Ces données sont à intégrer dans la prochaine étape.</p>
+
+<p>Créez un nouveau controleur dans /app/controllers/Messages.scala avec le code suivant:</p>
+
+<pre><code>package controllers;
+
+import play.mvc._;
+import com.mongodb.casbah.Imports._
+import scala.collection.JavaConverters._
+
+object Messages extends Controller {
+
+//Création de la connexion et authentification
+  val _mongoConn = MongoConnection(&quot;urlmongolab&quot;, portmongolab)
+  _mongoConn(&quot;nombase&quot;).authenticate(&quot;nombase&quot;,&quot;motdepasse&quot;)
+
+
+  def index = {
+    val msgs = _mongoConn(&quot;nombase&quot;)(&quot;test_data&quot;).find( &quot;msg&quot; $exists true $ne &quot;&quot; )
+    val msgStrings = msgs.map( (obj: DBObject) =&gt; obj.getOrElse(&quot;msg&quot;,&quot;&quot;) )
+    Template( 'msgStrings -&gt; msgStrings.asJava )
+  }
+
+  def save(msg:String) = {
+    val doc = MongoDBObject(&quot;msg&quot; -&gt; msg)
+    _mongoConn(&quot;nombase&quot;)(&quot;test_data&quot;).save( doc )
+    Redirect(&quot;/&quot;)
+  }
+}
+</code></pre>
+
+<p>Vous noterez les transformations des méthodes &ldquo;.asJava&rdquo; qui permettent à Groovy (le langage de scripting intégré dans Play) de gérer les listes typique de Scala.</p>
+
+<p>Ajoutez une vue pour gérer le controleur avec un fichier dans /app/views/Messages/index.html</p>
+
+<pre><code>&lt;form action=&quot;@{Messages.save()}&quot; method=&quot;POST&quot;/&gt;
+  &lt;input type=&quot;text&quot; name=&quot;msg&quot;/&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Add message&quot; /&gt;
+&lt;/form&gt;
+
+&lt;ul&gt;
+  #{list items:msgStrings, as:'mess' }
+  &lt;li&gt;${ mess }&lt;/li&gt;
+  #{/list}
+&lt;/ul&gt;
+</code></pre>
+
+<p>Modifiez les routes dans /config/routes</p>
+
+<pre><code># Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Messages.index
+POST    /                                       Messages.save
+
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}
+</code></pre>
+
+<p>Testez votre application en lançant la commande play run - normalement vous devriez être capable d&rsquo;enregistrer des petites messages et de les voir apparaître à l&rsquo;écran.</p>
+
+<p>Déployez votre application sur heroku et admirez la !</p>
+
+<pre><code>git add .
+git commit -m &quot;Premier commit&quot;
+git push heroku master
+heroku open
+</code></pre>
+
+<p>Ce petit tutoriel peut (doit) être complété avec le <a href="http://scala.playframework.org/documentation/scala-0.9.1/home">tutoriel officiel disponible sur le site de Play</a>, en attendant vous pourrez jouer avec mon application sur <a href="http://glowing-fog-2793.herokuapp.com/">http://glowing-fog-2793.herokuapp.com/</a>.</p>
+
+<p>Tutoriel basé en partie sur <a href="http://jaredrosoff.com/2011/05/getting-started-with-play-framework-scala-and-casbah/">http://jaredrosoff.com/<sup>2011</sup>&frasl;<sub>05</sub>/getting-started-with-play-framework-scala-and-casbah/</a></p>
+
+		</div>
+	</div>
+	
+	<div class="row" style="border-top: 1px solid #eee; ">
+		<div class="twelve columns" style="background-color:white; color: black;">
+				<span class="post-postedby">Date de publication: 30/10/2011</span>
+		</div>
+		<div class="twelve columns" style="background-color:white; color: black;">
+			<span class="post-postedby">Mots-clefs: </span>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/outils" class="tags-link">#outils</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/scala" class="tags-link">#scala</a>
+				
+		</div>
+	</div>
+	
+	<br/><br/>
+	<div class="row">
+		<div class="six columns" style="text-align: left;">
+	        
+	        <a href="http://www.zeneffy.fr/2011/12/instant-de-bonheur-une-application-complete-node-js/" style="text-decoration: none;"><span aria-hidden="true">&larr;</span> Plus Récent</a>
+	        
+		</div>
+		<div class="six columns" style="text-align: right;">
+        
+        <a href="http://www.zeneffy.fr/2011/10/scala-sur-heroku/" style="text-decoration: none;">Plus Ancien <span aria-hidden="true">&rarr;</span></a>
+        
+		</div>
+	</div>
+	
+    
+	
+	<div class="row">
+        <div class="twelve columns">
+            &nbsp;
+        </div>
+    </div>
+
+      </div>
+	  
+	  <div id="footer" class="container-footer">
+  		<div class="container">
+  			<div class="row">
+		    	<div class="twelve columns"  style="border-top: 5px solid #eee;">
+					<center>
+						<span style="font-family: 'Roboto Slab', serif;" >&#0169; 2008 - 2015, Julien Raigneau &nbsp;&nbsp;  | &nbsp;&nbsp;  Zeneffy >> Zen &amp; Efficace</pan>
+					</center>
+				</div>
+				<div style="line-height: 1;">
+					<center>
+			  	  	  	  
+			  	  	    <a href="/tags/backup" class="tags-link-footer">#backup</a>
+			  	  	  	  
+			  	  	    <a href="/tags/bash" class="tags-link-footer">#bash</a>
+			  	  	  	  
+			  	  	    <a href="/tags/bdd" class="tags-link-footer">#bdd</a>
+			  	  	  	  
+			  	  	    <a href="/tags/clojure" class="tags-link-footer">#clojure</a>
+			  	  	  	  
+			  	  	    <a href="/tags/devops" class="tags-link-footer">#devops</a>
+			  	  	  	  
+			  	  	    <a href="/tags/domotique" class="tags-link-footer">#domotique</a>
+			  	  	  	  
+			  	  	    <a href="/tags/formation" class="tags-link-footer">#formation</a>
+			  	  	  	  
+			  	  	    <a href="/tags/google" class="tags-link-footer">#google</a>
+			  	  	  	  
+			  	  	    <a href="/tags/hardware" class="tags-link-footer">#hardware</a>
+			  	  	  	  
+			  	  	    <a href="/tags/java" class="tags-link-footer">#java</a>
+			  	  	  	  
+			  	  	    <a href="/tags/lecture" class="tags-link-footer">#lecture</a>
+			  	  	  	  
+			  	  	    <a href="/tags/macos" class="tags-link-footer">#macos</a>
+			  	  	  	  
+			  	  	    <a href="/tags/management" class="tags-link-footer">#management</a>
+			  	  	  	  
+			  	  	    <a href="/tags/mono" class="tags-link-footer">#mono</a>
+			  	  	  	  
+			  	  	    <a href="/tags/node.js" class="tags-link-footer">#node.js</a>
+			  	  	  	  
+			  	  	    <a href="/tags/outils" class="tags-link-footer">#outils</a>
+			  	  	  	  
+			  	  	    <a href="/tags/productivit%C3%A9" class="tags-link-footer">#productivité</a>
+			  	  	  	  
+			  	  	    <a href="/tags/projets" class="tags-link-footer">#projets</a>
+			  	  	  	  
+			  	  	    <a href="/tags/python" class="tags-link-footer">#python</a>
+			  	  	  	  
+			  	  	    <a href="/tags/ruby" class="tags-link-footer">#ruby</a>
+			  	  	  	  
+			  	  	    <a href="/tags/rubyonrails" class="tags-link-footer">#rubyonrails</a>
+			  	  	  	  
+			  	  	    <a href="/tags/r%C3%A9seau" class="tags-link-footer">#réseau</a>
+			  	  	  	  
+			  	  	    <a href="/tags/scala" class="tags-link-footer">#scala</a>
+			  	  	  	  
+			  	  	    <a href="/tags/sinatra" class="tags-link-footer">#sinatra</a>
+			  	  	  	  
+			  	  	    <a href="/tags/snippets" class="tags-link-footer">#snippets</a>
+			  	  	  	  
+			  	  	    <a href="/tags/ubuntu" class="tags-link-footer">#ubuntu</a>
+			  	  	  	  
+			  	  	    <a href="/tags/vim" class="tags-link-footer">#vim</a>
+			  	  	  	  
+			  	  	    <a href="/tags/virtualisation" class="tags-link-footer">#virtualisation</a>
+			  	  	  	  
+			  	  	    <a href="/tags/web.py" class="tags-link-footer">#web.py</a>
+			  	  	  	  
+			  	  	    <a href="/tags/windows" class="tags-link-footer">#windows</a>
+			  	  	  	  
+			  		</center>
+				</div>
+			</div>
+		</div>
+    </div>
+
+  <script src="http://www.zeneffy.fr/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+</body>
+</html>
+
+

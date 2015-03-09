@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Domotique on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/domotique/</link>
+    <description>Recent content in Domotique on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    
+    
+    
+    <lastBuildDate>Mon, 27 Sep 2010 21:01:30 &#43;0000</lastBuildDate>
+    <atom:link href="http://www.zeneffy.fr/tags/domotique/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Un pont (pas) trop loin</title>
+      <link>http://www.zeneffy.fr/2010/09/un-pont-pas-trop-loin/</link>
+      <pubDate>Mon, 27 Sep 2010 21:01:30 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/09/un-pont-pas-trop-loin/</guid>
+      <description>&lt;p&gt;Dans le cadre de ses nouvelles activités, ma femme a eu besoin que nous installions un bureau dans notre chambre. La partie ikea-choix-achat-montage s&amp;rsquo;étant passée presque sans accroc, j&amp;rsquo;ai changé le PC portable de place pour évidemment utiliser le bureau. Mauvaise surprise, le WiFi de la 9Box n&amp;rsquo;est pas accessible (trop de murs et trop de ferrite dans les murs).&lt;/p&gt;
+
+&lt;p&gt;Par chance, j&amp;rsquo;avais gardé un vieux routeur wifi &lt;a href=&#34;http://en.wikipedia.org/wiki/Linksys_WRT54G_series&#34;&gt;Linksys WRT54G&lt;/a&gt; - en cherchant un peu, j&amp;rsquo;ai trouvé d&amp;rsquo;une part qu&amp;rsquo;il existait des &lt;a href=&#34;http://www.dd-wrt.com/site/index&#34;&gt;firmwares opensource récents&lt;/a&gt; pour ce routeur et surtout qu&amp;rsquo;ils permettaient de faire un &amp;ldquo;Pont Répéteur WiFi&amp;rdquo; (Repeater Bridge pour les anglophones).&lt;/p&gt;
+
+&lt;p&gt;Un Pont Répéteur WiFi permet de lier un routeur secondaire au premier routeur (ici ma box) via WiFi: des clients peuvent alors se connecter au secondaire et profiter du DHCP, DNS et de la connexion internet du primaire - le WRT54G étant plus sensible au WiFi que mon PC il permet donc en d&amp;rsquo;autres termes de faire &lt;a href=&#34;http://www.dd-wrt.com/wiki/index.php/Image:Repeater_Bridge.jpg&#34;&gt;relais WiFi&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Après quelques manipulations détaillées sur la &lt;a href=&#34;http://www.dd-wrt.com/wiki/index.php/Repeater_Bridge&#34;&gt;page dédiée du wifi&lt;/a&gt;, j&amp;rsquo;ai pu faire fonctionner relativement facilement le linksys qui me permet maintenant d&amp;rsquo;écrire ce billet du bureau - la seule difficulté venant de la 9Box sur laquelle j&amp;rsquo;avais configuré des IP en DHCP et d&amp;rsquo;autres en statique, ces dernières posant problèmes pour accéder à internet (problème de route retour probablement).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Utiliser le mediacenter de la 9Box avec lighttpd</title>
+      <link>http://www.zeneffy.fr/2010/01/utiliser-le-mediacenter-de-la-9box-avec-lighttpd/</link>
+      <pubDate>Tue, 26 Jan 2010 15:21:48 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/01/utiliser-le-mediacenter-de-la-9box-avec-lighttpd/</guid>
+      <description>&lt;p&gt;La neufbox de SFR permet de partager des contenus multimédias du PC vers le mediacenter -&lt;a href=&#34;http://tv.sfr.fr/mediacenter/installation.php&#34;&gt; l&amp;rsquo;application fournie par SFR&lt;/a&gt; pour cela est tout simplement un serveur apache reconfiguré.&lt;/p&gt;
+
+&lt;p&gt;Pour ma part, utilisant lighttpd sur mon serveur, j&amp;rsquo;ai utilisé la configuration suivante (sachant qu&amp;rsquo;il faut évidemment récupérer les fichiers php du &amp;ldquo;package apache SFR&amp;rdquo; par ailleurs):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$SERVER[&amp;quot;socket&amp;quot;] == &amp;quot;192.168.1.21:26180&amp;quot; {
+server.document-root = &amp;quot;/var/www/mediacenter/httpd/&amp;quot;
+server.errorlog      = &amp;quot;/var/log/lighttpd/mp9lhd.log&amp;quot;
+accesslog.filename   = &amp;quot;/var/log/lighttpd/mp9Access.log&amp;quot;
+#server.pid-file      = &amp;quot;/var/run/mp9lhd.pid&amp;quot;
+
+#server.port = 26180
+
+mimetype.assign = (
+&amp;quot;.html&amp;quot; =&amp;gt; &amp;quot;text/html&amp;quot;,
+&amp;quot;.txt&amp;quot; =&amp;gt; &amp;quot;text/plain&amp;quot;,
+&amp;quot;.jpg&amp;quot; =&amp;gt; &amp;quot;image/jpeg&amp;quot;,
+&amp;quot;.png&amp;quot; =&amp;gt; &amp;quot;image/png&amp;quot;,
+)
+
+index-file.names = ( &amp;quot;index.php&amp;quot;, &amp;quot;index.html&amp;quot;)
+
+#server.modules +=(&amp;quot;mod_alias&amp;quot;)
+
+alias.url = ( &amp;quot;/__mp9ctl_share_1/&amp;quot; =&amp;gt; &amp;quot;/var/mediaData/&amp;quot; )
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gestion d&#39;urgence de l&#39;énergie</title>
+      <link>http://www.zeneffy.fr/2009/03/gestion-durgence-de-lenergie/</link>
+      <pubDate>Thu, 26 Mar 2009 10:41:00 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2009/03/gestion-durgence-de-lenergie/</guid>
+      <description>&lt;p&gt;J&amp;rsquo;utilise un portable comme serveur, notamment pour diminuer consommation et bruit, mais cela a un autre avantage: la batterie du portable qui peut servir &amp;ldquo;d&amp;rsquo;onduleur&amp;rdquo; en cas de perte de courant.&lt;/p&gt;
+
+&lt;p&gt;J&amp;rsquo;ai donc conçu un script simple pour gérer les pertes d&amp;rsquo;énergie, et prendre le temps de lancer un arrêt propre du serveur si l&amp;rsquo;alimentation n&amp;rsquo;est toujours pas rétablie.&lt;/p&gt;
+
+&lt;p&gt;Dans /etc/acpi/events on crée un fichier ac_dc contenant:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;event=ac_adapter.*
+action=/home/tifauve/scripts/acpi/battery/ac_dc.py %e
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;et voici le script ac_dc.py appelé par le démon ACPI&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+#
+# Gère l&#39;état de la batterie
+#
+
+__author__ = &#39;Julien Raigneau&#39;
+VERSION = &amp;quot;0.4&amp;quot;
+
+import sys,os,logging
+from time import strftime,sleep
+from subprocess import Popen
+
+lock_file = os.path.join(sys.path[0], &amp;quot;battery.lock&amp;quot;)
+fork_path = os.path.join(sys.path[0], &amp;quot;ac_dc.py&amp;quot;)
+
+def read_capacity():
+    #récupere stats battery
+    infos_batterie= open(&amp;quot;/proc/acpi/battery/BAT0/state&amp;quot;,&amp;quot;r&amp;quot;).readlines()
+    capacite = int(infos_batterie[4].replace(&amp;quot;remaining capacity:&amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot;\n&amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot; &amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot;mAh&amp;quot;,&amp;quot;&amp;quot;))
+    voltage = int(infos_batterie[5].replace(&amp;quot;present voltage:&amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot;\n&amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot; &amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot;mV&amp;quot;,&amp;quot;&amp;quot;))
+    logging.info(&amp;quot;read_capacity: %s,%s&amp;quot; % (capacite,voltage))
+    return capacite,voltage
+
+def send_mail(sujet,corps):
+    #envoi un mail
+    msg = &amp;quot;sendEmail -s smtp.cegetel.net -t julien@raigneau.net -q -u \&amp;quot;%s\&amp;quot; -m \&amp;quot;%s\&amp;quot; -f admin@tifauve.net&amp;quot; % (sujet,corps)
+    p = Popen(msg, shell=True)
+    logging.info(&amp;quot;send_mail: Mail envoyé avec sujet=(%s)&amp;quot; % sujet)
+
+def on_battery(capacite):
+    #actions si sur battery
+    while(os.path.isfile(lock_file)):
+        capacite_encours,voltage = read_capacity()
+        if capacite_encours &amp;lt;= capacite/2:
+            logging.info(&amp;quot;on_battery: Capacité actuelle %s inférieur à la référence %s&amp;quot; % (capacite_encours,capacite))
+            sujet = &amp;quot;[admin@champlain]Alerte critique: Extinction du serveur en cours&amp;quot;
+            corps = &amp;quot;Toujours pas de rétablissement du courant le %s.\n/!\Extinction du serveur.\n\nCapacité restante: %s mAh\nVoltage: %s mV&amp;quot; % (strftime(&amp;quot;%d/%m/%Y à %H:%M:%S&amp;quot;),capacite_encours,voltage)
+            send_mail(sujet,corps)
+            os.remove(lock_file)
+            logging.info(&amp;quot;on_battery: Extinction du serveur lancée&amp;quot;)
+            p = Popen(&amp;quot;shutdown -P now&amp;quot;, shell=True)
+        else:
+            logging.info(&amp;quot;on_battery: Capacité actuelle %s&amp;quot; % capacite_encours)
+            logging.info(&amp;quot;on_battery: En sommeil pendant 2min&amp;quot;)
+            sleep(120)
+    logging.info(&amp;quot;on_battery: plus de fichier de lock: sortie de la procédure&amp;quot;)
+
+def on_dc():
+    #actions si sur secteur
+    logging.info(&amp;quot;on_dc: Remise sur secteur&amp;quot;)
+    if os.path.isfile(lock_file):
+        logging.info(&amp;quot;on_dc: suppression du fichier de lock&amp;quot;)
+        os.remove(lock_file)
+
+
+if __name__ == &#39;__main__&#39;:
+
+    logFile = os.path.join(sys.path[0],&amp;quot;ac_dc.log&amp;quot;)
+    logging.basicConfig(level=logging.DEBUG,
+                    format=&#39;%(asctime)s %(levelname)s %(message)s&#39;,
+                    filename=logFile)
+
+    logging.info(&#39;main: == Démarrage des contrôles ac_dc ==&#39;)
+    logging.info(&amp;quot;main: Valeur des arguments d&#39;entrée %s&amp;quot; % sys.argv)
+    ac_dc_valeur = sys.argv[4]
+    logging.info(&amp;quot;main: Valeur de l&#39;argument d&#39;entrée %s&amp;quot; % ac_dc_valeur)
+    capacite,voltage = read_capacity()
+    logging.info(&amp;quot;main: Etat de la batterie: %s / %s&amp;quot; % (capacite,voltage))
+
+    if ac_dc_valeur == &amp;quot;00000000&amp;quot;:
+        #si le lock existe déjà c&#39;est qu&#39;on est en mode &amp;quot;forké&amp;quot; sinon il faut forker
+        if (os.path.isfile(lock_file)):
+            logging.info(&amp;quot;main: le fichier de lock existe déjà =&amp;gt; nous sommes dans le fork&amp;quot;)
+            corps = &amp;quot;Le courant a été coupé sur Champlain le %s.\nDébut de la procédure de sauvegarde.\n\nCapacité restante: %s mAh\nVoltage: %s mV&amp;quot; % (strftime(&amp;quot;%d/%m/%Y à %H:%M:%S&amp;quot;),capacite,voltage)
+            sujet = &amp;quot;[admin@champlain]Alerte: perte d&#39;énergie sur CHAMPLAIN&amp;quot;
+            send_mail(sujet,corps)
+            on_battery(capacite)
+        else:
+                logging.info(&amp;quot;main: Création du fichier de lock&amp;quot;)
+            file = open(lock_file,&amp;quot;w&amp;quot;)
+            file.write(&amp;quot;%s&amp;quot; % capacite)
+            file.close()
+            logging.info(&amp;quot;main: Fork du process pour rendre la main au démon ACPI&amp;quot;)
+            pid = Popen([fork_path, &amp;quot;00000000&amp;quot;, &amp;quot;00000000&amp;quot; ,&amp;quot;00000000&amp;quot;, &amp;quot;00000000&amp;quot;]).pid
+            logging.info(&amp;quot;main: Fork effectué dans %s - sortie&amp;quot; % pid)
+
+    else:
+        corps = &amp;quot;Le courant a été rétabli sur Champlain le %s.\nFin de la procédure de sauvegarde.\n\nCapacité restante: %s mAh\nVoltage: %s mV&amp;quot; % (strftime(&amp;quot;%d/%m/%Y à %H:%M:%S&amp;quot;),capacite,voltage)
+        sujet = &amp;quot;[admin@champlain]Fin d&#39;alerte: retour de l&#39;énergie sur CHAMPLAIN&amp;quot;
+        send_mail(sujet,corps)
+        on_dc()
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

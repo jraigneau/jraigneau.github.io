@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rubyonrails on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/rubyonrails/</link>
+    <description>Recent content in Rubyonrails on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    
+    
+    
+    <lastBuildDate>Tue, 03 Jul 2012 13:07:41 &#43;0000</lastBuildDate>
+    <atom:link href="http://www.zeneffy.fr/tags/rubyonrails/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Dans combien de jours ?</title>
+      <link>http://www.zeneffy.fr/2012/07/dans-combien-de-jours/</link>
+      <pubDate>Tue, 03 Jul 2012 13:07:41 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2012/07/dans-combien-de-jours/</guid>
+      <description>&lt;p&gt;Mon fils compte très souvent les jours restants avant chaque événement (Mariages, entrée au CP, Vacances…) et chaque jour demande donc &lt;em&gt;&amp;ldquo;Dans combien de jours c&amp;rsquo;est xxx&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Autant compter sur 2 à 3 semaines reste faisable, autant quand il s&amp;rsquo;agit de compter les jours avant un événement dans 6 mois les choses se compliquent.&lt;/p&gt;
+
+&lt;p&gt;Aussi en bon geek que je suis, j&amp;rsquo;ai rapidement prototypé une application sobrement intitulée &lt;a href=&#34;https://github.com/jraigneau/dcdj&#34;&gt;dcdj&lt;/a&gt; qui permet de rentrer un événement et d&amp;rsquo;avoir le nombre de jours restants.&lt;/p&gt;
+
+&lt;p&gt;L&amp;rsquo;objectif étant d&amp;rsquo;avoir toujours sous la main l&amp;rsquo;application, l&amp;rsquo;utilisation des technologies mobiles était une évidence. Une petite revue rapide d&amp;rsquo;objective-C (ainsi que le prix de la licence AppStore!) m&amp;rsquo;ayant convaincue que finalement les technologies web restaient les plus adaptées, j&amp;rsquo;ai développé &lt;a href=&#34;https://github.com/jraigneau/dcdj&#34;&gt;dcdj&lt;/a&gt; avec le classique &lt;a href=&#34;http://rubyonrails.org&#34;&gt;Ruby on Rails&lt;/a&gt; et surtout &lt;a href=&#34;http://jquerymobile.com&#34;&gt;jQuery Mobile&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Retrouver Rails après quelques mois de &lt;a href=&#34;http://nodejs.org&#34;&gt;node.js&lt;/a&gt; a été un vrai plaisir et j&amp;rsquo;ai surtout découvert que jQuery Mobile était une librairie très intéressante à utiliser pour créer rapidement des applications web lisibles sur des mobiles et tablettes.&lt;/p&gt;
+
+&lt;p&gt;Le résultat peut-être testé sur &lt;a href=&#34;http://dcdj-test.herokuapp.com/&#34;&gt;dcdj-test&lt;/a&gt; et le code source est bien évidemment libre et disponible sur &lt;a href=&#34;https://github.com/jraigneau/dcdj&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Haml on Rails</title>
+      <link>http://www.zeneffy.fr/2011/07/haml-on-rails/</link>
+      <pubDate>Tue, 12 Jul 2011 19:30:54 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/07/haml-on-rails/</guid>
+      <description>&lt;p&gt;Pour utiliser &lt;a href=&#34;http://haml-lang.com/&#34;&gt;haml&lt;/a&gt; avec &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails 3.x&lt;/a&gt;, il suffit d&amp;rsquo;ajouter dans le fichier &lt;code&gt;GemFile&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gem &#39;haml-rails&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;puis lancer la commande &lt;code&gt;bundle install&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;et finalement ajouter&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;config.generators do |g|
+  g.template_engine :haml
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;dans le fichier &lt;code&gt;config/application.rb&lt;/code&gt; (dans la classe &lt;code&gt;Application &amp;lt; Rails::Application&lt;/code&gt;) - chaque scaffold sera automatiquement en Haml&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pow &amp; Radiant</title>
+      <link>http://www.zeneffy.fr/2011/06/pow-radiant/</link>
+      <pubDate>Tue, 14 Jun 2011 20:51:30 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/06/pow-radiant/</guid>
+      <description>&lt;p&gt;J&amp;rsquo;ai découvert dernièrement le serveur de développement &lt;a href=&#34;http://pow.cx/&#34;&gt;Pow&lt;/a&gt; qui permet très simplement de mettre en place un serveur Rack (pour les applications Ruby comme &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; ou &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Rails&lt;/a&gt;) sur un Mac sans aucune configuration.&lt;/p&gt;
+
+&lt;p&gt;Par contre il peut réserver quelques surprises de configuration, notamment avec &lt;a href=&#34;http://radiantcms.org/&#34;&gt;Radiant&lt;/a&gt;. Deux points à retenir (en tout cas jusqu&amp;rsquo;à présent:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Il faut désactiver le cache en développement sinon cela provoque des erreurs aléatoires de chargement des pages - dans &lt;code&gt;config/environements/development.rb&lt;/code&gt; mettre &lt;code&gt;config.cache_classes = true&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Il est nécessaire d&amp;rsquo;ajouter un fichier config.ru juste pour le développement et surtout ne pas le copier en production, sinon cela empèche les contenus statiques de s&amp;rsquo;afficher (images, css et javascripts donc!) avec un fichier &lt;code&gt;config.ru&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Rails.root/config.ru
+require &amp;quot;./config/environment&amp;quot;
+run ActionController::Dispatcher.new
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Sinon, basé sur &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt;, Pow est efficace et permet d&amp;rsquo;accéder à l&amp;rsquo;ensemble des applications en même temps via des url du type &lt;a href=&#34;http://monappli.dev:&#34;&gt;http://monappli.dev:&lt;/a&gt; je le recommande donc vivement pour se faciliter la vie de développeur Ruby.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installer Radiant CMS sous heroku</title>
+      <link>http://www.zeneffy.fr/2011/04/installer-radiant-cms-sous-heroku/</link>
+      <pubDate>Wed, 13 Apr 2011 11:09:20 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/04/installer-radiant-cms-sous-heroku/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://radiantcms.org/&#34;&gt;RadiantCMS&lt;/a&gt; est un gestionnaire de contenus simple basé sur le framework &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;RubyOnRails&lt;/a&gt;, permettant de mettre en place facilement des sites relativement complexes, notamment grâce à son langage de tags (Radius).&lt;/p&gt;
+
+&lt;p&gt;RadiantCMS fonctionne très bien avec l&amp;rsquo;hébergement Heroku, avec quelques petits changements à effectuer - décrit ci-dessous.&lt;/p&gt;
+
+&lt;p&gt;Installation des gems nécessaires en local&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gem install radiant sqlite3 heroku taps
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Création de l&amp;rsquo;application &amp;ldquo;myapp&amp;rdquo;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir myapp
+cd myapp
+radiant --database=sqlite3  .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Création de la base de donnée:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rake db:bootstrap
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ajout du fichier Gemfile:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;source :gemcutter
+gem &#39;rails&#39;, &#39;2.3.8&#39;
+gem &#39;RedCloth&#39;
+gem &#39;will_paginate&#39;,&#39;2.3.11&#39;
+gem &#39;radiant&#39; , &#39;0.9.1&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Important: une modification de &lt;code&gt;radiant-0.9.1/vendor/rails/activesupport/lib/active_support.rb&lt;/code&gt; pour ajouter &lt;code&gt;require ‘thread’&lt;/code&gt; avant &lt;code&gt;module ActiveSupport&lt;/code&gt; est nécessaire pour éviter une erreur du type: &lt;code&gt;gems/radiant-0.9.1/vendor/rails/activesupport/lib/active_support/dependencies.rb:55: uninitialized constant ActiveSupport::Dependencies::Mutex (NameError)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Lancer l&amp;rsquo;application en mode préprod puis en mode prod en visitant &lt;a href=&#34;http://localhost:3000/admin&#34;&gt;http://localhost:3000/admin&lt;/a&gt; pour créer les fichiers .js nécessaires (il n&amp;rsquo;est pas possible d&amp;rsquo;écrire dans le filesystem d&amp;rsquo;Heroku)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./script/server
+./script/server -e production
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Création du référentiel git:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+git add .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Création du fichier &lt;code&gt;.gitignore&lt;/code&gt;, contenant:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db/*.sqlite3.db
+log
+tmp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Premier commit:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git commit -m &amp;quot;First commit&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hébergement sur heroku (pour l&amp;rsquo;instant sur ruby 1.8.7):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku create myapp --stack bamboo-ree-1.8.7
+heroku db:push
+git push heroku master
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Application Sinatra pour Heroku</title>
+      <link>http://www.zeneffy.fr/2011/02/application-sinatra-pour-heroku/</link>
+      <pubDate>Sat, 05 Feb 2011 07:50:50 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/02/application-sinatra-pour-heroku/</guid>
+      <description>&lt;p&gt;Dernièrement je m&amp;rsquo;intéresse au framework de développement  &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; qui est basé sur le langage Ruby (comme Ruby on Rails donc). Sinatra est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Domain-specific_programming_language&#34;&gt;DSL&lt;/a&gt; permettant de développer rapidement et simplement des applications web (un peu comme &lt;a href=&#34;http://webpy.org/&#34;&gt;webpy&lt;/a&gt; que j&amp;rsquo;avais utilisé sur &lt;a href=&#34;http://labs.zeneffy.fr/projets/harpagon/&#34;&gt;Harpagon&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Pour déployer des applications sinatra, j&amp;rsquo;ai décidé de continuer à m&amp;rsquo;appuyer sur la plate-forme d&amp;rsquo;hébergement &lt;a href=&#34;http://heroku.com/&#34;&gt;Heroku&lt;/a&gt; - voila les quelques fichiers à mettre en oeuvre pour une application minimale - en activant la supervision &lt;a href=&#34;http://newrelic.com/&#34;&gt;newrelic_rpm&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;heroku-sinatra-app.rb&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;require &#39;rubygems&#39;
+require &#39;sinatra&#39;
+
+configure :production do
+require &#39;newrelic_rpm&#39;
+end
+
+# Quick test
+get &#39;/&#39; do
+&amp;quot;Hello from the ratpack!&amp;quot;
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;config.ru&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;require &#39;heroku-sinatra-app&#39;
+run Sinatra::Application
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;.gems&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sinatra
+newrelic_rpm version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;newrelic.yml&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# here are the settings that are common to all environments
+common: &amp;amp;default_settings
+  license_key: &amp;quot;&amp;lt;%= ENV[&#39;NEW_RELIC_LICENSE_KEY&#39;] %&amp;gt;&amp;quot;
+  app_name: &amp;quot;&amp;lt;%= ENV[&#39;NEW_RELIC_APPNAME&#39;] %&amp;gt;&amp;quot;
+  monitor_mode: false
+  developer_mode: false
+  log_level: info
+  apdex_t: 0.5
+  capture_params: false
+  transaction_tracer:
+    enabled: false
+  error_collector:
+    enabled: false
+
+production:
+  &amp;lt;&amp;lt;: *default_settings
+  monitor_mode: true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Il suffit ensuite de pousser ces fichiers via Git sur Heroku et de visiter l&amp;rsquo;url de votre application!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Google Analytics dans une application Ruby On Rails</title>
+      <link>http://www.zeneffy.fr/2010/10/google-analytics-dans-une-application-ruby-on-rails/</link>
+      <pubDate>Thu, 21 Oct 2010 13:48:55 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/10/google-analytics-dans-une-application-ruby-on-rails/</guid>
+      <description>&lt;p&gt;Dans le cadre de l&amp;rsquo;application &lt;a href=&#34;http://labs.zeneffy.fr/projets/vauban/&#34;&gt;vauban&lt;/a&gt; développée via le framework &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;RubyOnRails&lt;/a&gt;, j&amp;rsquo;ai été amené à intégrer &lt;a href=&#34;http://www.google.com/analytics/&#34;&gt;Google Analytics&lt;/a&gt; en 3 étapes très simples:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Créer le compte dans Google Analytics pour obtenir un code javascript du type&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+
+
+  var _gaq = _gaq || [];
+  _gaq.push([&#39;_setAccount&#39;, &#39;UA-12194039-4&#39;]);
+  _gaq.push([&#39;_trackPageview&#39;]);
+
+
+  (function() {
+    var ga = document.createElement(&#39;script&#39;); ga.type = &#39;text/javascript&#39;; ga.async = true;
+    ga.src = (&#39;https:&#39; == document.location.protocol ? &#39;https://ssl&#39; : &#39;http://www&#39;) + &#39;.google-analytics.com/ga.js&#39;;
+    var s = document.getElementsByTagName(&#39;script&#39;)[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Créer un &amp;ldquo;partial&amp;rdquo; dans &lt;code&gt;app/views/layouts_ appelé __ga.html.rb&lt;/code&gt; et y copier le javascript&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Insérer le code dans la balise &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; du fichier &lt;code&gt;app/view/layouts/application.html.erb&lt;/code&gt; (pour l&amp;rsquo;avoir sur tout le site - à modifier éventuellement)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;%= render :partial =&amp;gt; &amp;quot;layouts/ga&amp;quot; if Rails.env.production? %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A noter que la condition &lt;code&gt;if Rails.env.production&lt;/code&gt; permet de n&amp;rsquo;afficher le code que lorsque l&amp;rsquo;application est en production, ceci afin de ne pas pertuber les statistiques lors du développement.&lt;/p&gt;
+
+&lt;p&gt;et voilà, &lt;a href=&#34;http://rubyonrails.org&#34;&gt;Ruby On Rail&lt;/a&gt;s a encore une fois démontré sa simplicité!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://aihuiong.com/post/452550136/google-analytics-and-rails-in-3-steps-and-less-than-5&#34;&gt;Source&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Migration de Zeneffy Labs</title>
+      <link>http://www.zeneffy.fr/2010/04/migration-de-zeneffy-labs/</link>
+      <pubDate>Sat, 24 Apr 2010 13:36:29 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/04/migration-de-zeneffy-labs/</guid>
+      <description>&lt;p&gt;Hier, j&amp;rsquo;ai migré &lt;a href=&#34;http://labs.zeneffy.fr/&#34;&gt;Zeneffy Labs&lt;/a&gt; de &lt;a href=&#34;http://www.redmine.org/&#34;&gt;Redmine&lt;/a&gt; vers le couple&lt;a href=&#34;http://radiantcms.org/&#34;&gt; Radiant CMS&lt;/a&gt; / &lt;a href=&#34;github.com/jraigneau&#34;&gt;GitHub&lt;/a&gt;. En effet Redmine était un peu trop conséquent pour mes besoins et prenait trop de ressources sur mon serveur.  Mon choix s&amp;rsquo;est alors porté d&amp;rsquo;une part sur Radiant CMS pour servir de mini wiki  et d&amp;rsquo;autre part sur GitHub pour les dépôts de code.&lt;/p&gt;
+
+&lt;p&gt;L&amp;rsquo;inscription et l&amp;rsquo;utilisation de GitHut sont rapides et faciles (car liées aussi intrinsèquement à la simplicité de &lt;a href=&#34;http://git-scm.com/&#34;&gt;Git&lt;/a&gt; - gestion de configuration décentralisée) et il m&amp;rsquo;a suffit de pousser les anciens dépôts de code vers le nouveau système.&lt;/p&gt;
+
+&lt;p&gt;En ce qui concerne Radiant CMS, j&amp;rsquo;ai décidé de l&amp;rsquo;héberger sur &lt;a href=&#34;http://heroku.com/&#34;&gt;Heroku&lt;/a&gt;, hébergeur dédié Ruby (donc parfait pour Ruby on Rails, sinatra&amp;hellip;) qui offre par ailleurs de nombreux avantages (plugins de supervision gratuit, déploiement rapide, et coût zéro pour un hébergement simple).&lt;/p&gt;
+
+&lt;p&gt;En moins de 3h, y compris la création du nouveau thème et le temps de jeter un oeil sur la documentation, tout était terminé - le résultat sur &lt;a href=&#34;http://labs.zeneffy.fr/&#34;&gt;Zeneffy Labs&lt;/a&gt; !&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Redécouverte de Ruby On Rails</title>
+      <link>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</link>
+      <pubDate>Wed, 14 Apr 2010 14:00:33 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</guid>
+      <description>&lt;p&gt;Suite à des recherches sur les frameworks web du moment (python: &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt;, &lt;a href=&#34;http://turbogears.org/&#34;&gt;Turbogears&lt;/a&gt;, &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt;, scala: &lt;a href=&#34;http://liftweb.net/&#34;&gt;lift&lt;/a&gt;, java: &lt;a href=&#34;http://www.playframework.org/&#34;&gt;play!&lt;/a&gt;), je me suis réintéressé à l&amp;rsquo;un des premiers frameworks que j&amp;rsquo;avais utilisé (2003 / 2004 &amp;hellip;): &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;J&amp;rsquo;ai redécouvert l&amp;rsquo;élégance et la simplicité de &lt;a href=&#34;http://www.ruby-lang.org/fr/&#34;&gt;Ruby&lt;/a&gt; et la puissance de Rails.&lt;/p&gt;
+
+&lt;p&gt;Du coup, je me suis lancé un nouveau défi: créer une application de gestion des identités web - afin de ne plus oublier identifiant/mots de passe des sites où je suis inscrit (et il y en a!) - avec Ruby on Rails évidemment: &lt;a href=&#34;http://labs.zeneffy.fr/projets/vauban/&#34;&gt;Vauban&lt;/a&gt; est donc en cours de développement. La suite prochainement&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installer Redmine sur lighttpd</title>
+      <link>http://www.zeneffy.fr/2010/03/installer-redmine-sur-lighttpd/</link>
+      <pubDate>Fri, 26 Mar 2010 15:19:22 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/03/installer-redmine-sur-lighttpd/</guid>
+      <description>&lt;p&gt;J&amp;rsquo;utilise actuellement le serveur web &lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;lighttpd&lt;/a&gt; sur mon serveur personnel, ce qui nécessite un peu de paramétrage différent de Apache. Ainsi pour faire fonctionner &lt;a href=&#34;http://www.redmine.org/&#34;&gt;Redmine&lt;/a&gt; (Application Ruby on Rails de gestion de projet), j&amp;rsquo;ai utilisé cette configuration:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#Virtual host
+server.modules += ( &amp;quot;mod_fastcgi&amp;quot;, &amp;quot;mod_rewrite&amp;quot;)
+
+$HTTP[&amp;quot;host&amp;quot;]  =~ &amp;quot;labs.zeneffy.fr&amp;quot; { # nom du vhos
+    server.errorlog = &amp;quot;/var/log/lighttpd/zeneffy/labs/error.log&amp;quot;
+    accesslog.filename = &amp;quot;/var/log/lighttpd/zeneffy/labs/access.log&amp;quot;
+    server.document-root = &amp;quot;/var/www/zeneffy/labs/public&amp;quot;
+    server.indexfiles = ( &amp;quot;dispatch.fcgi&amp;quot; )
+    server.error-handler-404 = &amp;quot;/dispatch.fcgi&amp;quot;
+    url.rewrite-once = (
+        &amp;quot;^/(.*\..+(?!html))$&amp;quot; =&amp;gt; &amp;quot;$0&amp;quot;,
+        &amp;quot;^/(.*)\.(.*)&amp;quot;        =&amp;gt; &amp;quot;$0&amp;quot;,
+    )
+
+    fastcgi.server =  (
+        &amp;quot;.fcgi&amp;quot; =&amp;gt; (
+        &amp;quot;labs.tifauve.net&amp;quot; =&amp;gt; (
+            &amp;quot;bin-path&amp;quot; =&amp;gt; &amp;quot;/var/www/zeneffy/labs/public/dispatch.fcgi&amp;quot;,
+            &amp;quot;socket&amp;quot; =&amp;gt; &amp;quot;/tmp/redmine.socket&amp;quot;,
+            &amp;quot;min-procs&amp;quot; =&amp;gt; 1,
+            &amp;quot;max-procs&amp;quot; =&amp;gt; 2,
+            &amp;quot;idle-timeout&amp;quot; =&amp;gt; 20,
+            &amp;quot;check-local&amp;quot; =&amp;gt; &amp;quot;disable&amp;quot;,
+            &amp;quot;bin-environment&amp;quot; =&amp;gt; ( &amp;quot;RAILS_ENV&amp;quot; =&amp;gt; &amp;quot;production&amp;quot;, &amp;quot;RAILS_ROOT&amp;quot; =&amp;gt; &amp;quot;/var/www/zeneffy/labs&amp;quot; )
+            )
+        )
+    )
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

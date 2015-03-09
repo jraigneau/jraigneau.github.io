@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+		<title>Google Analytics dans une application Ruby On Rails</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/normalize.css">
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/skeleton.css">
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/custom.css">
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/github.css">
+	</head>
+<body>
+	<div class="container-header">
+		<div class="container">
+			<div class="row">
+				<div class="six columns">
+					<a href="http://www.zeneffy.fr" class="title-link"><span style="font-size: 60px ;font-family: 'Roboto Slab', serif;">Zen<span style="color: red;font-weight: 900;font-size: 60px;font-family: 'Roboto Slab', serif;" >effy</span></span></a>
+				</div>
+				<div class="six columns" style="padding-top: 10px;">
+					<div class="navbar-spacer"></div>
+							<ul class="navbar-list" style="float:right">
+								<li class="navbar-item"><a class="navbar-link" href="http://www.zeneffy.fr/about/">A propos</a></li>
+								<li class="navbar-item"><a class="navbar-link" href="http://www.zeneffy.fr/post/">Archives</a></li>
+								<li class="navbar-item"><a class="navbar-link" href="http://github.com/jraigneau" target="#">Projets</a></li>
+							</ul>
+	
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container" style="padding-top:110px">
+
+
+
+	<div class="row">
+    	<div class="twelve columns">
+    		<h1>Google Analytics dans une application Ruby On Rails</h1>
+    	</div>
+    </div>
+	<div class="row">
+		<div class="twelve columns"  align="justify">
+			<p>Dans le cadre de l&rsquo;application <a href="http://labs.zeneffy.fr/projets/vauban/">vauban</a> développée via le framework <a href="http://rubyonrails.org/">RubyOnRails</a>, j&rsquo;ai été amené à intégrer <a href="http://www.google.com/analytics/">Google Analytics</a> en 3 étapes très simples:</p>
+
+<ol>
+<li><p>Créer le compte dans Google Analytics pour obtenir un code javascript du type</p>
+
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12194039-4']);
+  _gaq.push(['_trackPageview']);
+
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+&lt;/script&gt;
+</code></pre></li>
+
+<li><p>Créer un &ldquo;partial&rdquo; dans <code>app/views/layouts_ appelé __ga.html.rb</code> et y copier le javascript</p></li>
+
+<li><p>Insérer le code dans la balise <code>&lt;head&gt;</code> du fichier <code>app/view/layouts/application.html.erb</code> (pour l&rsquo;avoir sur tout le site - à modifier éventuellement)</p>
+
+<pre><code>&lt;%= render :partial =&gt; &quot;layouts/ga&quot; if Rails.env.production? %&gt;
+</code></pre></li>
+</ol>
+
+<p>A noter que la condition <code>if Rails.env.production</code> permet de n&rsquo;afficher le code que lorsque l&rsquo;application est en production, ceci afin de ne pas pertuber les statistiques lors du développement.</p>
+
+<p>et voilà, <a href="http://rubyonrails.org">Ruby On Rail</a>s a encore une fois démontré sa simplicité!</p>
+
+<p><a href="http://aihuiong.com/post/452550136/google-analytics-and-rails-in-3-steps-and-less-than-5">Source</a></p>
+
+		</div>
+	</div>
+	
+	<div class="row" style="border-top: 1px solid #eee; ">
+		<div class="twelve columns" style="background-color:white; color: black;">
+				<span class="post-postedby">Date de publication: 21/10/2010</span>
+		</div>
+		<div class="twelve columns" style="background-color:white; color: black;">
+			<span class="post-postedby">Mots-clefs: </span>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/google" class="tags-link">#google</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/ruby" class="tags-link">#ruby</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/rubyonrails" class="tags-link">#rubyonrails</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/projets" class="tags-link">#projets</a>
+				
+		</div>
+	</div>
+	
+	<br/><br/>
+	<div class="row">
+		<div class="six columns" style="text-align: left;">
+	        
+	        <a href="http://www.zeneffy.fr/2010/10/homebank-la-compta-facile/" style="text-decoration: none;"><span aria-hidden="true">&larr;</span> Plus Récent</a>
+	        
+		</div>
+		<div class="six columns" style="text-align: right;">
+        
+        <a href="http://www.zeneffy.fr/2010/09/un-pont-pas-trop-loin/" style="text-decoration: none;">Plus Ancien <span aria-hidden="true">&rarr;</span></a>
+        
+		</div>
+	</div>
+	
+    
+	
+	<div class="row">
+        <div class="twelve columns">
+            &nbsp;
+        </div>
+    </div>
+
+      </div>
+	  
+	  <div id="footer" class="container-footer">
+  		<div class="container">
+  			<div class="row">
+		    	<div class="twelve columns"  style="border-top: 5px solid #eee;">
+					<center>
+						<span style="font-family: 'Roboto Slab', serif;" >&#0169; 2008 - 2015, Julien Raigneau &nbsp;&nbsp;  | &nbsp;&nbsp;  Zeneffy >> Zen &amp; Efficace</pan>
+					</center>
+				</div>
+				<div style="line-height: 1;">
+					<center>
+			  	  	  	  
+			  	  	    <a href="/tags/backup" class="tags-link-footer">#backup</a>
+			  	  	  	  
+			  	  	    <a href="/tags/bash" class="tags-link-footer">#bash</a>
+			  	  	  	  
+			  	  	    <a href="/tags/bdd" class="tags-link-footer">#bdd</a>
+			  	  	  	  
+			  	  	    <a href="/tags/clojure" class="tags-link-footer">#clojure</a>
+			  	  	  	  
+			  	  	    <a href="/tags/devops" class="tags-link-footer">#devops</a>
+			  	  	  	  
+			  	  	    <a href="/tags/domotique" class="tags-link-footer">#domotique</a>
+			  	  	  	  
+			  	  	    <a href="/tags/formation" class="tags-link-footer">#formation</a>
+			  	  	  	  
+			  	  	    <a href="/tags/google" class="tags-link-footer">#google</a>
+			  	  	  	  
+			  	  	    <a href="/tags/hardware" class="tags-link-footer">#hardware</a>
+			  	  	  	  
+			  	  	    <a href="/tags/java" class="tags-link-footer">#java</a>
+			  	  	  	  
+			  	  	    <a href="/tags/lecture" class="tags-link-footer">#lecture</a>
+			  	  	  	  
+			  	  	    <a href="/tags/macos" class="tags-link-footer">#macos</a>
+			  	  	  	  
+			  	  	    <a href="/tags/management" class="tags-link-footer">#management</a>
+			  	  	  	  
+			  	  	    <a href="/tags/mono" class="tags-link-footer">#mono</a>
+			  	  	  	  
+			  	  	    <a href="/tags/node.js" class="tags-link-footer">#node.js</a>
+			  	  	  	  
+			  	  	    <a href="/tags/outils" class="tags-link-footer">#outils</a>
+			  	  	  	  
+			  	  	    <a href="/tags/productivit%C3%A9" class="tags-link-footer">#productivité</a>
+			  	  	  	  
+			  	  	    <a href="/tags/projets" class="tags-link-footer">#projets</a>
+			  	  	  	  
+			  	  	    <a href="/tags/python" class="tags-link-footer">#python</a>
+			  	  	  	  
+			  	  	    <a href="/tags/ruby" class="tags-link-footer">#ruby</a>
+			  	  	  	  
+			  	  	    <a href="/tags/rubyonrails" class="tags-link-footer">#rubyonrails</a>
+			  	  	  	  
+			  	  	    <a href="/tags/r%C3%A9seau" class="tags-link-footer">#réseau</a>
+			  	  	  	  
+			  	  	    <a href="/tags/scala" class="tags-link-footer">#scala</a>
+			  	  	  	  
+			  	  	    <a href="/tags/sinatra" class="tags-link-footer">#sinatra</a>
+			  	  	  	  
+			  	  	    <a href="/tags/snippets" class="tags-link-footer">#snippets</a>
+			  	  	  	  
+			  	  	    <a href="/tags/ubuntu" class="tags-link-footer">#ubuntu</a>
+			  	  	  	  
+			  	  	    <a href="/tags/vim" class="tags-link-footer">#vim</a>
+			  	  	  	  
+			  	  	    <a href="/tags/virtualisation" class="tags-link-footer">#virtualisation</a>
+			  	  	  	  
+			  	  	    <a href="/tags/web.py" class="tags-link-footer">#web.py</a>
+			  	  	  	  
+			  	  	    <a href="/tags/windows" class="tags-link-footer">#windows</a>
+			  	  	  	  
+			  		</center>
+				</div>
+			</div>
+		</div>
+    </div>
+
+  <script src="http://www.zeneffy.fr/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+</body>
+</html>
+
+

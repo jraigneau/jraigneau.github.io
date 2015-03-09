@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Macos on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/macos/</link>
+    <description>Recent content in Macos on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    
+    
+    
+    <lastBuildDate>Sun, 04 Sep 2011 18:55:28 &#43;0000</lastBuildDate>
+    <atom:link href="http://www.zeneffy.fr/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>MacVim, Command-T et RVM</title>
+      <link>http://www.zeneffy.fr/2011/09/macvim-command-t-et-rvm/</link>
+      <pubDate>Sun, 04 Sep 2011 18:55:28 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/09/macvim-command-t-et-rvm/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/macvim/&#34;&gt;MacVim&lt;/a&gt; (une forme de l&amp;rsquo;éditeur VIM adaptée à MacOS) est mon éditeur de prédilection actuellement malgré de nombreux autres essais (entre autres: &lt;a href=&#34;http://macromates.com/&#34;&gt;Textmate&lt;/a&gt;, &lt;a href=&#34;http://kodapp.com/&#34;&gt;Kod&lt;/a&gt;, &lt;a href=&#34;http://www.sublimetext.com/&#34;&gt;Sublime Text&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Il est très configurable et permet de rajouter de nombreuses fonctionnalités utiles: ici je vous parlerai du module &lt;a href=&#34;https://wincent.com/products/command-t&#34;&gt;Command-T&lt;/a&gt; qui permet de faire des recherches très fines et surtout pertinentes à travers les répertoires et fichiers d&amp;rsquo;un projet - un screencast est disponible &lt;a href=&#34;https://s3.amazonaws.com/s3.wincent.com/command-t/screencasts/command-t-demo.mov?width=640&amp;amp;height=480&#34;&gt;sur le site de l&amp;rsquo;auteur&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pour l&amp;rsquo;installer sur un mac avec RVM, il faut être vigilant sur la version de Ruby employée car MacVim ne compilant pas avec ruby 1.9.&lt;/p&gt;
+
+&lt;p&gt;Installation de MacVim via &lt;a href=&#34;http://mxcl.github.com/homebrew/&#34;&gt;homebrew&lt;/a&gt; avec ruby 1.8.7:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rvm use system
+/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.github.com/gist/323731)&amp;quot;
+brew install wget macvim
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Installation de CommandT à partir de vim.org:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://www.vim.org/scripts/download_script.php?src_id=15560
+mvim command-t-1.2.1.vba
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis une fois MacVim ouvert:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:so %
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En sortant de MacVim:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /$HOME/.vim/ruby/command-t
+ruby extconf.rb
+make
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Et voilà normalement tout fonctionne, vous pouvez utiliser la version de ruby que vous souhaitez sans problème.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Scripter MacOS</title>
+      <link>http://www.zeneffy.fr/2011/03/scripter-macos/</link>
+      <pubDate>Fri, 11 Mar 2011 17:10:17 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/03/scripter-macos/</guid>
+      <description>&lt;p&gt;Dans ma très récente période Ubuntu/Linux, j&amp;rsquo;avais rédigé un petit script en python qui vérifiait régulièrement la présence de nouveaux fichiers dans un répertoire FTP - ce script étant basé sur GTK, il était nécessaire de le changer pour notamment utiliser &lt;a href=&#34;http://growl.info/&#34;&gt;Growl&lt;/a&gt;, le système de notification disponible dans MacOS.&lt;/p&gt;
+
+&lt;p&gt;Ainsi le code en python donne&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
+# -*- coding: utf8 -*-
+&amp;quot;&amp;quot;&amp;quot;
+Vérifie si du nouveau contenu a été rajouté sur le FTP
+&amp;quot;&amp;quot;&amp;quot;
+import ftplib
+import os,sys
+import Growl
+
+try:
+    session = ftplib.FTP(&#39;xxServeur&#39;,&#39;xxLogin&#39;,&#39;xxMdP&#39;) # On se connecte au serveur
+    fileList = [] # La liste des fichiers sera dedans
+    session.retrlines(&#39;LIST&#39;,fileList.append)
+    session.quit() #On se déconnecte
+    for txt in fileList:
+        if txt.find(&amp;quot;.DS_Store&amp;quot;) &amp;gt; -1: #macOS a parfois de drole de spécificité
+            fileList.remove(txt)
+    if len(fileList) == 0:
+        print &amp;quot;Vide&amp;quot;
+    else: 
+        gn = Growl.GrowlNotifier( &amp;quot;CheckMyFTP&amp;quot;, [&amp;quot;Nouveau contenu&amp;quot;] )
+        gn.register()
+        image = Growl.Image.imageFromPath(os.path.join(os.path.dirname(__file__), &amp;quot;kfind.png&amp;quot;))
+        gn.notify( &amp;quot;Nouveau contenu&amp;quot;, &amp;quot;Nouveau contenu disponible&amp;quot;, &amp;quot;Un nouveau contenu a été ajouté sur le FTP de papa&amp;quot;,icon=image )
+except:
+    print &amp;quot;Impossible de se connecter&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis, il s&amp;rsquo;agit de faire jouer ce script régulièrement (toutes les heures par exemple). Dans le cas de MacOS 10.5+, il faut utiliser launchd à la place de crontab: dans le répertoire ``&lt;code&gt;$HOME/Library/LaunchAgents&lt;/code&gt;, il suffit alors de créer un fichier fr.zeneffy.checkftp.plist qui contiendra:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot; &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt;
+&amp;lt;plist version=&amp;quot;1.0&amp;quot;&amp;gt;
+&amp;lt;dict&amp;gt;
+        &amp;lt;key&amp;gt;label&amp;lt;/key&amp;gt;
+        &amp;lt;string&amp;gt;fr.zeneffy.checkftp.plist&amp;lt;/string&amp;gt;
+
+        &amp;lt;key&amp;gt;ProgramArguments&amp;lt;/key&amp;gt;
+        &amp;lt;array&amp;gt;
+                &amp;lt;string&amp;gt;/Users/julien/Code/scripts/CheckMyFTP/CheckMyFTP.py&amp;lt;/string&amp;gt;
+        &amp;lt;/array&amp;gt;
+
+        &amp;lt;key&amp;gt;Nice&amp;lt;/key&amp;gt;
+        &amp;lt;integer&amp;gt;1&amp;lt;/integer&amp;gt;
+
+        &amp;lt;key&amp;gt;StartInterval&amp;lt;/key&amp;gt;
+        &amp;lt;integer&amp;gt;3600&amp;lt;/integer&amp;gt;
+
+        &amp;lt;key&amp;gt;StandardErrorPath&amp;lt;/key&amp;gt;
+        &amp;lt;string&amp;gt;/tmp/checkftp.err&amp;lt;/string&amp;gt;
+
+        &amp;lt;key&amp;gt;StandardOutPath&amp;lt;/key&amp;gt;
+        &amp;lt;string&amp;gt;/tmp/checkftp.out&amp;lt;/string&amp;gt;
+&amp;lt;/dict&amp;gt;
+&amp;lt;/plist&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;puis de charger ce fichier de configuration&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;launchctl load fr.zeneffy.checkftp.plist
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;et voilà, toutes les heures CheckMyFTP.py sera lancé et il m&amp;rsquo;affichera une notification en cas de nouveaux fichiers disponibles sur le répertoire FTP.&lt;/p&gt;
+
+&lt;p&gt;Ressources: &lt;a href=&#34;http://www.devdaily.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs&#34;&gt;http://www.devdaily.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Environnement de développement Mac</title>
+      <link>http://www.zeneffy.fr/2011/03/dev-mac/</link>
+      <pubDate>Fri, 04 Mar 2011 10:25:03 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/03/dev-mac/</guid>
+      <description>&lt;p&gt;Je suis l&amp;rsquo;heureux possesseur d&amp;rsquo;un MacBook Air 13&amp;rdquo; depuis quelques jours, et j&amp;rsquo;ai commencé à installer mon environnement de développement habituel.&lt;/p&gt;
+
+&lt;p&gt;Gestionnaire de package pour mac: &lt;a href=&#34;https://github.com/mxcl/homebrew&#34;&gt;https://github.com/mxcl/homebrew&lt;/a&gt; (après avoir téléchargé Xcode), installation de Git, MacVim, sqlite via brew&lt;/p&gt;
+
+&lt;p&gt;puis installation de rvm: &lt;a href=&#34;http://www.blog.bridgeutopiaweb.com/post/how-to-install-rvm-and-rails-3-on-snow-leopard/&#34;&gt;http://www.blog.bridgeutopiaweb.com/post/how-to-install-rvm-and-rails-3-on-snow-leopard/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Pour avoir un éditeur de texte (gratuit donc pas textmate pour l&amp;rsquo;instant !): &lt;code&gt;brew macvim&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;puis configuration de MacVim:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.danielfischer.com/2010/11/19/a-starting-guide-to-vim-from-textmate/&#34;&gt;http://blog.danielfischer.com/&lt;sup&gt;2010&lt;/sup&gt;&amp;frasl;&lt;sub&gt;11&lt;/sub&gt;/19/a-starting-guide-to-vim-from-textmate/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/carlhuda/janus&#34;&gt;https://github.com/carlhuda/janus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://net.tutsplus.com/articles/general/top-10-pitfalls-when-switching-to-vim/&#34;&gt;http://net.tutsplus.com/articles/general/top-10-pitfalls-when-switching-to-vim/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ne pas oublier fuzzyFinder et la librairie l9 (disponibles sur le site &lt;a href=&#34;http://www.vim.org/&#34;&gt;www.vim.org&lt;/a&gt; et de changer la touche &lt;code&gt;leader&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

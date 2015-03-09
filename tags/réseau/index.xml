@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Réseau on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/r%C3%A9seau/</link>
+    <description>Recent content in Réseau on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    
+    
+    
+    <lastBuildDate>Mon, 27 Sep 2010 21:01:30 &#43;0000</lastBuildDate>
+    <atom:link href="http://www.zeneffy.fr/tags/r%C3%A9seau/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Un pont (pas) trop loin</title>
+      <link>http://www.zeneffy.fr/2010/09/un-pont-pas-trop-loin/</link>
+      <pubDate>Mon, 27 Sep 2010 21:01:30 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/09/un-pont-pas-trop-loin/</guid>
+      <description>&lt;p&gt;Dans le cadre de ses nouvelles activités, ma femme a eu besoin que nous installions un bureau dans notre chambre. La partie ikea-choix-achat-montage s&amp;rsquo;étant passée presque sans accroc, j&amp;rsquo;ai changé le PC portable de place pour évidemment utiliser le bureau. Mauvaise surprise, le WiFi de la 9Box n&amp;rsquo;est pas accessible (trop de murs et trop de ferrite dans les murs).&lt;/p&gt;
+
+&lt;p&gt;Par chance, j&amp;rsquo;avais gardé un vieux routeur wifi &lt;a href=&#34;http://en.wikipedia.org/wiki/Linksys_WRT54G_series&#34;&gt;Linksys WRT54G&lt;/a&gt; - en cherchant un peu, j&amp;rsquo;ai trouvé d&amp;rsquo;une part qu&amp;rsquo;il existait des &lt;a href=&#34;http://www.dd-wrt.com/site/index&#34;&gt;firmwares opensource récents&lt;/a&gt; pour ce routeur et surtout qu&amp;rsquo;ils permettaient de faire un &amp;ldquo;Pont Répéteur WiFi&amp;rdquo; (Repeater Bridge pour les anglophones).&lt;/p&gt;
+
+&lt;p&gt;Un Pont Répéteur WiFi permet de lier un routeur secondaire au premier routeur (ici ma box) via WiFi: des clients peuvent alors se connecter au secondaire et profiter du DHCP, DNS et de la connexion internet du primaire - le WRT54G étant plus sensible au WiFi que mon PC il permet donc en d&amp;rsquo;autres termes de faire &lt;a href=&#34;http://www.dd-wrt.com/wiki/index.php/Image:Repeater_Bridge.jpg&#34;&gt;relais WiFi&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Après quelques manipulations détaillées sur la &lt;a href=&#34;http://www.dd-wrt.com/wiki/index.php/Repeater_Bridge&#34;&gt;page dédiée du wifi&lt;/a&gt;, j&amp;rsquo;ai pu faire fonctionner relativement facilement le linksys qui me permet maintenant d&amp;rsquo;écrire ce billet du bureau - la seule difficulté venant de la 9Box sur laquelle j&amp;rsquo;avais configuré des IP en DHCP et d&amp;rsquo;autres en statique, ces dernières posant problèmes pour accéder à internet (problème de route retour probablement).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Routage IP sur un équipement cisco</title>
+      <link>http://www.zeneffy.fr/2009/05/routage-ip-sur-un-equipement-cisco/</link>
+      <pubDate>Thu, 07 May 2009 13:31:00 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2009/05/routage-ip-sur-un-equipement-cisco/</guid>
+      <description>
+
+&lt;h3 id=&#34;commandes-diverses-de-configuration:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;Commandes diverses de configuration&lt;/h3&gt;
+
+&lt;p&gt;passage en mode root: &lt;code&gt;enable&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;effacer conf: &lt;code&gt;erase startup&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;rentrer mode configuration: &lt;code&gt;conf t&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;info sur interface en mode configuration: &lt;code&gt;do show ip interface brief&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;rentrer en config d&amp;rsquo;interface FastEthernet0: &lt;code&gt;interface fa0&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;config IP + submask: &lt;code&gt;ip address 10.0.0.1 255.255.255.0&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;no shut du port fa0: &lt;code&gt;no shutdown&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;arp:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;ARP&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;show arp&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;sous windows: &lt;code&gt;arp -a&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;information sur interfaces: &lt;code&gt;show interface&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;table de mac: &lt;code&gt;show mac-address-table&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;configuration-routeur-cisco:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;configuration routeur cisco&lt;/h3&gt;
+
+&lt;p&gt;sauvegarde configuration: &lt;code&gt;copy run start&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;(ne pas changer le nom)&lt;/p&gt;
+
+&lt;p&gt;config password sur routeur:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;enable
+conf t
+line vty 0 4
+password cisco
+exit
+enable password line
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;configuration-routes-statiques:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;Configuration routes statiques&lt;/h3&gt;
+
+&lt;p&gt;sur Serial 0 S0&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;enable
+conf t
+interface s0
+ip address 172.16.2.1 255.255.255.0
+no shutdown
+ip route 10.0.3.0 255.255.255.0 172.16.2.2
+show ip route
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;côté DCE; penser à configurer l&amp;rsquo;horloge (clock rate) si côté opérateur (DCE)&lt;/p&gt;
+
+&lt;h3 id=&#34;routage-dynamique-rip:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;Routage dynamique rip&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;enable
+conf t
+router rip
+network 10.0.0.0
+network 172.16.2.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;#passage en rip v2&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;version 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;#nécessite de passer en mode complet (non resumé, ce qui évite de résumer les routes à /8)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;no auto-summary
+mode debug
+enable
+debug ip rip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;routage-dynamique-ospf:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;Routage dynamique OSPF&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://lh3.ggpht.com/_RTJjPWCgPV8/S6y4X1I77rI/AAAAAAAAGU8/Q6kMpYv_lhU/s800/Diapositive1_cisco.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Routes dynamiques avec une seule zone&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;router ospf 999 (process id)
+
+network 10.1.0.1 0.0.0.0 area 0
+
+network 172.16.2.1 0.0.0.0 area 0
+
+network 192.168.2.1 0.0.0.0 area 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;voir les routes protocolaires&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;show ip protocol
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;avec plusieurs area&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://lh6.ggpht.com/_RTJjPWCgPV8/S6y4X2_-QRI/AAAAAAAAGVA/sgYojH5G4ww/s800/Diapositive2_cisco.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Routes dynamiques avec plusieurs zones&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;network 10.1.0.1 0.0.0.0 area 1
+network 172.16.2.1 0.0.0.0 area 1
+network 192.168.2.1 0.0.0.0 area 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;configuration-internet-via-pat:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;Configuration internet - via PAT&lt;/h3&gt;
+
+&lt;p&gt;sur routeur Area 0: passage en mode DHCP sur interface fa0&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://lh3.ggpht.com/_RTJjPWCgPV8/S6y4YJHSrEI/AAAAAAAAGVE/Zh9pga9hMZE/s800/Diapositive3_cisco.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Accès internet via un autre routeur externe&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;interface fa0
+ip address dhcp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Récupérer les DNS&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;show dhcp server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;construction route par défaut et distribution via ospf&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;router ospf 1
+default-information originate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Configration nat (intérieur du réseau =&amp;gt; serial)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;interface S1
+ip nat inside
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Modification vitesse sérial&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;clock rate 8000000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;configuration nat vers extérieur&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;interface fa0
+ip nat outside
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Création du pool &amp;ldquo;overload&amp;rdquo; =&amp;gt; c&amp;rsquo;est ce qui définit le PAT + access list sur réseau 10.0.0.0&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ip nat inside source list 1 interface fa0 overload
+access-list 1 permit 10.0.0.0 0.0.0.255
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Config DHCP avec relais&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Sur DHCP principal (dans zone 0)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ip dhcp pool toto
+network 10.0.0.0 255.255.255.0
+default-router 10.0.0.1
+dns-server 212.27.40.241 212.27.40.240
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sur relais&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;interface fa0
+ip helper-address 192.168.2.254
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Gestion IPv6&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ipv6 unicast-routing
+ipv6 address 2001:0410:0001:3::/64 eui-64
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;prefix sur 64 + eui-64 créé à partir de la MAC address = ip sur 128 bits&lt;/p&gt;
+
+&lt;p&gt;configuration interface loopback&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;interface loopback 0
+ipv6 address 2001:0410:0001:1::/64 eui-64
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devops on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/devops/</link>
+    <description>Recent content in Devops on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    
+    
+    
+    <lastBuildDate>Sun, 02 Sep 2012 12:56:19 &#43;0000</lastBuildDate>
+    <atom:link href="http://www.zeneffy.fr/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Le motto de l&#39;exploitant</title>
+      <link>http://www.zeneffy.fr/2012/09/le-motto-de-lexploitant/</link>
+      <pubDate>Sun, 02 Sep 2012 12:56:19 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2012/09/le-motto-de-lexploitant/</guid>
+      <description>&lt;p&gt;En lisant le très bon article &lt;a href=&#34;http://agiletesting.blogspot.co.uk/2012/08/10-things-to-know-when-starting-out-as.html&#34;&gt;10 things to know when starting out as a sysadmin&lt;/a&gt;, j&amp;rsquo;ai retrouvé des points importants que tout exploitant doit connaître sur le bout des doigts à mon humble avis et d&amp;rsquo;après mes diverses (et parfois malheureuses) expériences:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Sauvegarder est important, tester la restauration l&amp;rsquo;est tout autant.&lt;/li&gt;
+&lt;li&gt;Tous les systèmes et applications en production doivent être supervisés, en adaptant le niveau de supervision à la criticité du système.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;exploitant doit être techniquement très compétent, notamment sur les protocoles réseau (http, DNS, routages&amp;hellip;) qui sont à la base du troubleshooting.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;exploitant est avant tout un expert de la gestion des problèmes qui sait analyser les anomalies en identifiant et éliminant les variables une à une jusqu&amp;rsquo;à trouver la rootcause.&lt;/li&gt;
+&lt;li&gt;Redondance et résilience sont les amies de l&amp;rsquo;exploitant, qui n&amp;rsquo;oublie pas de les tester régulièrement&amp;hellip;il est toujours dommage de se rendre compte en plein incident que le backup ne fonctionne pas alors que le master est tombé&lt;/li&gt;
+&lt;li&gt;Exploiter des machines, c&amp;rsquo;est maintenir la disponibilité &lt;strong&gt;et&lt;/strong&gt; la sécurité des applications: vos clients ne vous pardonneront jamais d&amp;rsquo;avoir égarer leurs données personnelles.&lt;/li&gt;
+&lt;li&gt;Les logs sont et resteront l&amp;rsquo;outil de diagnostic principal de l&amp;rsquo;exploitant: cela nécessite d&amp;rsquo;une part une infrastructure pour les gérer correctement mais aussi un travail en amont avec les développeurs pour savoir ce qui doit être dans des logs ou pas!&lt;/li&gt;
+&lt;li&gt;Savoir développer des outils est important pour industrialiser des actions de production ou pour trouver un &amp;ldquo;quick hack&amp;rdquo; afin de rétablir le service&amp;hellip;et ces outils sont presque toujours écrit en langage de script (python, ruby, bash, lua - choisissez votre préféré) que devra connaître voire masteriser l&amp;rsquo;exploitant.&lt;/li&gt;
+&lt;li&gt;La documentation sauve la journée de l&amp;rsquo;exploitant (et permet accessoirement de rétablir le service): manuels d&amp;rsquo;exploitation, guides de troubleshooting, schémas de flux&amp;hellip;sont à construire, collecter et surtout stocker dans des bases de connaissance efficientes - les wikis sont souvent de parfaits candidats pour cela en rajoutant une dimension collaborative entre exploitants et développeurs.&lt;/li&gt;
+&lt;li&gt;Bien que la réactivité soit la première qualité de l&amp;rsquo;exploitant, la proactivité est tout aussi importante, d&amp;rsquo;une part en amont des projets pour préparer l&amp;rsquo;exploitabilité des solutions avec architectes et développeurs et d&amp;rsquo;autre part en aval en analysant quotidiennement la performance des applications afin d&amp;rsquo;anticiper les dégradations.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Dernier point et non des moindres: l&amp;rsquo;opensource permet à l&amp;rsquo;exploitant d&amp;rsquo;avoir une boîte à outils efficace et à moindre frais:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Déploiement (Puppet/Chef/Vagrant)&lt;/li&gt;
+&lt;li&gt;Intégration et les tests (Selenium, Cucumber &amp;amp; Co)&lt;/li&gt;
+&lt;li&gt;Sauvegarde (Amanda/Bacula)&lt;/li&gt;
+&lt;li&gt;Supervision (Nagios, Centreon, Zabbix)&lt;/li&gt;
+&lt;li&gt;Analyse de la performance (Cacti, Smokeping)&lt;/li&gt;
+&lt;li&gt;Gestion des problèmes et des incidents (Bugzilla, Mantis, Trac)&lt;/li&gt;
+&lt;li&gt;Documentation (MoinMoinwiki, MediaWiki).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ainsi pour chaque usage plusieurs alternatives libres existent et sont par ailleurs largement utilisées dans le monde de la production pour faciliter la vie de l&amp;rsquo;exploitant.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Règles du bricolage numérique</title>
+      <link>http://www.zeneffy.fr/2011/05/regles-du-bricolage-numerique/</link>
+      <pubDate>Sat, 28 May 2011 18:48:56 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/05/regles-du-bricolage-numerique/</guid>
+      <description>&lt;p&gt;Le développement n&amp;rsquo;étant pas mon métier mais plutôt un hobby, les petits projets de &amp;ldquo;bricolage numérique&amp;rdquo; que je mène partagent certaines règles simples pour s&amp;rsquo;assurer de l&amp;rsquo;efficience du travail:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Toujours se lancer sur des projets qui ont une utilité immédiate pour mes proches ou moi (&lt;a href=&#34;http://labs.zeneffy.fr/projets/inmemoria/&#34;&gt;inmemoria&lt;/a&gt;, &lt;a href=&#34;http://labs.zeneffy.fr/projets/veilleur/&#34;&gt;veilleur&lt;/a&gt; &amp;hellip;)&lt;/li&gt;
+&lt;li&gt;Profiter de chaque projet pour tester des nouvelles technologies (dernière en date: les &lt;a href=&#34;http://labs.zeneffy.fr/projets/zenrunnin/&#34;&gt;API facebook&lt;/a&gt;, prochaine: les technos javascript &lt;a href=&#34;http://documentcloud.github.com/backbone/&#34;&gt;avancées&lt;/a&gt; comme &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; et le développement sous iOS)&lt;/li&gt;
+&lt;li&gt;Utiliser les mêmes outils de base pour développer (Github, MacVim par exemple)&lt;/li&gt;
+&lt;li&gt;Pour les applications web, utiliser un socle de feuilles de style css et de morceaux de code ou librairies javascript réutilisables&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Ces quatre règles me permettent en ce moment de sortir une application tous les deux mois.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Extensions de base sous heroku</title>
+      <link>http://www.zeneffy.fr/2011/04/extensions-de-base-sous-heroku/</link>
+      <pubDate>Mon, 11 Apr 2011 11:03:33 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/04/extensions-de-base-sous-heroku/</guid>
+      <description>&lt;p&gt;Voici quelques extensions que j&amp;rsquo;installe systématiquement sous Heroku:&lt;/p&gt;
+
+&lt;p&gt;Gestion des noms de domaine personalisés&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add custom_domains:basic
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gestion d&amp;rsquo;un cache via memcached&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add memcache:5mb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Visualisation de Meilleures logs&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add logging:expanded
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Supervision applicative&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add newrelic:bronze
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Envoi de mail&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add sendgrid:free
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;D&amp;rsquo;autres extension en béta, à étudier de près:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Release Management (gestion de version comme sur GAE): &lt;code&gt;heroku addons:add releases:basic&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;CloudMailin (Réception de mail): &lt;code&gt;heroku addons:add cloudmailin:test&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Custom Error Pages (Gestion de pages de maintenance): &lt;code&gt;heroku addons:add custom_error_pages&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;PG Backups (Sauvegardes de la base de donnée): &lt;code&gt;heroku addons:add pgbackups:basic&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+		<title>Personnaliser l&#39;installation de Ubuntu 10.04</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/normalize.css">
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/skeleton.css">
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/custom.css">
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/github.css">
+	</head>
+<body>
+	<div class="container-header">
+		<div class="container">
+			<div class="row">
+				<div class="six columns">
+					<a href="http://www.zeneffy.fr" class="title-link"><span style="font-size: 60px ;font-family: 'Roboto Slab', serif;">Zen<span style="color: red;font-weight: 900;font-size: 60px;font-family: 'Roboto Slab', serif;" >effy</span></span></a>
+				</div>
+				<div class="six columns" style="padding-top: 10px;">
+					<div class="navbar-spacer"></div>
+							<ul class="navbar-list" style="float:right">
+								<li class="navbar-item"><a class="navbar-link" href="http://www.zeneffy.fr/about/">A propos</a></li>
+								<li class="navbar-item"><a class="navbar-link" href="http://www.zeneffy.fr/post/">Archives</a></li>
+								<li class="navbar-item"><a class="navbar-link" href="http://github.com/jraigneau" target="#">Projets</a></li>
+							</ul>
+	
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container" style="padding-top:110px">
+
+
+
+	<div class="row">
+    	<div class="twelve columns">
+    		<h1>Personnaliser l&#39;installation de Ubuntu 10.04</h1>
+    	</div>
+    </div>
+	<div class="row">
+		<div class="twelve columns"  align="justify">
+			<p>Suite à la sortie de Ubuntu 10.04, je me suis décidé à l&rsquo;installer en machine virtuelle (<a href="http://www.virtualbox.org/">VirtualBox</a>) sur mon portable pro, tout s&rsquo;est très bien passé et voici quelques tuning complémentaires:</p>
+
+<p>En premier lieu, on effectue une petite mise à jour post-installation</p>
+
+<pre><code>sudo apt-get update
+sudo apt-get upgrade
+</code></pre>
+
+<p>Puis j&rsquo;installe mon logiciel de versionnage favori (à l&rsquo;heure actuelle), i.e. <a href="http://git-scm.com/">Git</a></p>
+
+<pre><code>sudo apt-get install git-core
+</code></pre>
+
+<p>Ensuite on installe l&rsquo;éditeur Vim avec ma configuration (stockée sur <a href="http://github.com/jraigneau">GitHub</a>)</p>
+
+<pre><code>sudo apt-get install vim gvim
+sudo apt-get install ctags
+cd ~
+git clone http://github.com/jraigneau/vim-conf.git
+mv vim-conf .vim
+ln -s .vim/.vimrc
+</code></pre>
+
+<p>ne pas oublier d&rsquo;installer <code>fuzzy_file_finder</code> via <code>sudo gem install fuzzy_file_finder</code>, une fois gem installé!</p>
+
+<p><strong>Un peu de multimédia et d&rsquo;utilitaires</strong></p>
+
+<ol>
+<li><p>Installation du Navigateur Chromium (version open source de Chrome)</p>
+
+<pre><code>sudo add-apt-repository ppa:chromium-daily/dev
+sudo apt-get update
+sudo apt-get install chromium-browser chromium-browser-l10n
+</code></pre></li>
+
+<li><p>Quelques Indispensables du Dessin, de la Vidéo, et de la Musique + <a href="http://do.davebsd.com/">Gnome-Do</a></p>
+
+<pre><code>sudo apt-get install gimp vlc exaile gnome-do flashplugin-nonfree
+sudo apt-get install sun-java6-jdk
+</code></pre></li>
+</ol>
+
+<p><strong>Installation de Ruby On rails (Framework de développement web)</strong>
+Tout d&rsquo;abord on installe ruby et de la documentation</p>
+
+<pre><code>    sudo apt-get install irb libopenssl-ruby libreadline-ruby rdoc ri ruby ruby-dev
+    sudo apt-get install rubybook
+</code></pre>
+
+<p>Puis on installe RubyGems à partir des sources pour ne pas avoir d&rsquo;incompatibilités de mises à jour entre apt-get et RubyGems (problème fréquent sur Ubuntu)</p>
+
+<pre><code>    cd /usr/local/src
+    sudo wget http://production.cf.rubygems.org/rubygems/rubygems-1.3.6.tgz
+    sudo tar xzvf rubygems-1.3.6.tgz
+    cd rubygems-1.3.6
+    sudo ruby setup.rb
+    sudo update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.8 1
+    sudo gem update --system
+</code></pre>
+
+<p>dans un fichier <code>~/.gemrc</code>, on rajoute la ligne suivante afin de ne pas avoir de compilation de rdoc à chaque installation (trop lent!)</p>
+
+<pre><code>gem: --no-ri --no-rdoc
+</code></pre>
+
+<p>Enfin on peut installer rails et sqlite (je n&rsquo;utilise pas mysql ni postgresql sur ma machine de dév)</p>
+
+<pre><code>sudo gem install rails
+sudo apt-get install libsqlite3-dev sqlite3 sqlite3-doc
+sudo gem install sqlite3-ruby
+</code></pre>
+
+<p>En bonus, quelques gems intéressants</p>
+
+<ul>
+<li><p>Cheatsheet automatiques: <code>sudo gem install cheat</code></p></li>
+
+<li><p>Changement facile des hosts de la machine: <code>sudo gem install ghost</code></p></li>
+
+<li><p>Partage de snippets de code: <code>sudo gem install gist</code></p></li>
+</ul>
+
+		</div>
+	</div>
+	
+	<div class="row" style="border-top: 1px solid #eee; ">
+		<div class="twelve columns" style="background-color:white; color: black;">
+				<span class="post-postedby">Date de publication: 16/05/2010</span>
+		</div>
+		<div class="twelve columns" style="background-color:white; color: black;">
+			<span class="post-postedby">Mots-clefs: </span>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/ubuntu" class="tags-link">#ubuntu</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/outils" class="tags-link">#outils</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/vim" class="tags-link">#vim</a>
+				
+		</div>
+	</div>
+	
+	<br/><br/>
+	<div class="row">
+		<div class="six columns" style="text-align: left;">
+	        
+	        <a href="http://www.zeneffy.fr/2010/05/resolutions-et-virtualbox/" style="text-decoration: none;"><span aria-hidden="true">&larr;</span> Plus Récent</a>
+	        
+		</div>
+		<div class="six columns" style="text-align: right;">
+        
+        <a href="http://www.zeneffy.fr/2010/05/notes-de-lecture-ma-vie-de-patron/" style="text-decoration: none;">Plus Ancien <span aria-hidden="true">&rarr;</span></a>
+        
+		</div>
+	</div>
+	
+    
+	
+	<div class="row">
+        <div class="twelve columns">
+            &nbsp;
+        </div>
+    </div>
+
+      </div>
+	  
+	  <div id="footer" class="container-footer">
+  		<div class="container">
+  			<div class="row">
+		    	<div class="twelve columns"  style="border-top: 5px solid #eee;">
+					<center>
+						<span style="font-family: 'Roboto Slab', serif;" >&#0169; 2008 - 2015, Julien Raigneau &nbsp;&nbsp;  | &nbsp;&nbsp;  Zeneffy >> Zen &amp; Efficace</pan>
+					</center>
+				</div>
+				<div style="line-height: 1;">
+					<center>
+			  	  	  	  
+			  	  	    <a href="/tags/backup" class="tags-link-footer">#backup</a>
+			  	  	  	  
+			  	  	    <a href="/tags/bash" class="tags-link-footer">#bash</a>
+			  	  	  	  
+			  	  	    <a href="/tags/bdd" class="tags-link-footer">#bdd</a>
+			  	  	  	  
+			  	  	    <a href="/tags/clojure" class="tags-link-footer">#clojure</a>
+			  	  	  	  
+			  	  	    <a href="/tags/devops" class="tags-link-footer">#devops</a>
+			  	  	  	  
+			  	  	    <a href="/tags/domotique" class="tags-link-footer">#domotique</a>
+			  	  	  	  
+			  	  	    <a href="/tags/formation" class="tags-link-footer">#formation</a>
+			  	  	  	  
+			  	  	    <a href="/tags/google" class="tags-link-footer">#google</a>
+			  	  	  	  
+			  	  	    <a href="/tags/hardware" class="tags-link-footer">#hardware</a>
+			  	  	  	  
+			  	  	    <a href="/tags/java" class="tags-link-footer">#java</a>
+			  	  	  	  
+			  	  	    <a href="/tags/lecture" class="tags-link-footer">#lecture</a>
+			  	  	  	  
+			  	  	    <a href="/tags/macos" class="tags-link-footer">#macos</a>
+			  	  	  	  
+			  	  	    <a href="/tags/management" class="tags-link-footer">#management</a>
+			  	  	  	  
+			  	  	    <a href="/tags/mono" class="tags-link-footer">#mono</a>
+			  	  	  	  
+			  	  	    <a href="/tags/node.js" class="tags-link-footer">#node.js</a>
+			  	  	  	  
+			  	  	    <a href="/tags/outils" class="tags-link-footer">#outils</a>
+			  	  	  	  
+			  	  	    <a href="/tags/productivit%C3%A9" class="tags-link-footer">#productivité</a>
+			  	  	  	  
+			  	  	    <a href="/tags/projets" class="tags-link-footer">#projets</a>
+			  	  	  	  
+			  	  	    <a href="/tags/python" class="tags-link-footer">#python</a>
+			  	  	  	  
+			  	  	    <a href="/tags/ruby" class="tags-link-footer">#ruby</a>
+			  	  	  	  
+			  	  	    <a href="/tags/rubyonrails" class="tags-link-footer">#rubyonrails</a>
+			  	  	  	  
+			  	  	    <a href="/tags/r%C3%A9seau" class="tags-link-footer">#réseau</a>
+			  	  	  	  
+			  	  	    <a href="/tags/scala" class="tags-link-footer">#scala</a>
+			  	  	  	  
+			  	  	    <a href="/tags/sinatra" class="tags-link-footer">#sinatra</a>
+			  	  	  	  
+			  	  	    <a href="/tags/snippets" class="tags-link-footer">#snippets</a>
+			  	  	  	  
+			  	  	    <a href="/tags/ubuntu" class="tags-link-footer">#ubuntu</a>
+			  	  	  	  
+			  	  	    <a href="/tags/vim" class="tags-link-footer">#vim</a>
+			  	  	  	  
+			  	  	    <a href="/tags/virtualisation" class="tags-link-footer">#virtualisation</a>
+			  	  	  	  
+			  	  	    <a href="/tags/web.py" class="tags-link-footer">#web.py</a>
+			  	  	  	  
+			  	  	    <a href="/tags/windows" class="tags-link-footer">#windows</a>
+			  	  	  	  
+			  		</center>
+				</div>
+			</div>
+		</div>
+    </div>
+
+  <script src="http://www.zeneffy.fr/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+</body>
+</html>
+
+
