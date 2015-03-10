@@ -52,11 +52,9 @@
 <p>Ce script en langage Ruby permet d&rsquo;effectuer des sauvegardes incrémentales en utilisant rsync, ssh et cp.</p>
 
 <ul>
-<li><p>Rsync permet de synchroniser deux répertoires.</p></li>
-
-<li><p>ssh donne les accès à distance.</p></li>
-
-<li><p>cp -al est utilisé pour faire des copies de répertoires <em>Hard-Link en anglais</em> sans perdre trop de place.</p></li>
+<li>Rsync permet de synchroniser deux répertoires.</li>
+<li>ssh donne les accès à distance.</li>
+<li>cp -al est utilisé pour faire des copies de répertoires <em>Hard-Link en anglais</em> sans perdre trop de place.</li>
 </ul>
 
 <p><strong>Principe</strong></p>
@@ -66,9 +64,8 @@
 <p>Ce script est très fortement inspiré des idées de synchronisation trouvées sur les pages suivantes:</p>
 
 <ul>
-<li><p><a href="http://www.sanitarium.net/golug/rsync_backups.html">Backups using rsync</a> par Kevin Korb</p></li>
-
-<li><p><a href="http://www.mikerubel.org/computers/rsync_snapshots/">Easy Automated Snapshot-Style Backups with Linux and Rsync</a> par Mike Rubel</p></li>
+<li><a href="http://www.sanitarium.net/golug/rsync_backups.html">Backups using rsync</a> par Kevin Korb</li>
+<li><a href="http://www.mikerubel.org/computers/rsync_snapshots/">Easy Automated Snapshot-Style Backups with Linux and Rsync</a> par Mike Rubel</li>
 </ul>
 
 <p>Le principe est de faire des sauvegardes incrémentales, c&rsquo;est à dire ne sauvegarder que les différences d&rsquo;un backup à l&rsquo;autre. Ainsi la place consommée est bien moindre:</p>

@@ -24,9 +24,9 @@
 
 &lt;p&gt;En utilisant Google App Engine, je m&amp;rsquo;affranchis de la gestion de l&amp;rsquo;authentification (comptes google), de la base de donnée et surtout je peux utiliser un système &lt;a href=&#34;http://fr.wikipedia.org/wiki/Cron&#34;&gt;CRON&lt;/a&gt; intégré dans le service Google. Ce système me permet de lancer automatiquement et périodiquement les tests d&amp;rsquo;URL pour me donner le temps d&amp;rsquo;accès et calculer la disponibilité du site web.&lt;/p&gt;
 
-&lt;p&gt;Après une petite semaine de travail, le premier résultat est très intéressant et peut-être utilisé par tous sur &lt;a href=&#34;http://veilleur.zeneffy.fr&#34;&gt;veilleur.zeneffy.fr&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Après une petite semaine de travail, le premier résultat est très intéressant et peut-être utilisé par tous.&lt;/p&gt;
 
-&lt;p&gt;Le projet en lui même est géré via &lt;a href=&#34;https://github.com/jraigneau/veilleur&#34;&gt;GitHub&lt;/a&gt; + &lt;a href=&#34;http://zeneffy.lighthouseapp.com/projects/69787-veilleur/overview&#34;&gt;Lighthouse&lt;/a&gt; (tous les détails sur &lt;a href=&#34;http://labs.zeneffy.fr/projets/veilleur/&#34;&gt;labs.zeneffy.fr&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Le projet en lui même est géré via &lt;a href=&#34;https://github.com/jraigneau/veilleur&#34;&gt;GitHub&lt;/a&gt; + &lt;a href=&#34;http://zeneffy.lighthouseapp.com/projects/69787-veilleur/overview&#34;&gt;Lighthouse&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

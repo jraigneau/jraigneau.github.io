@@ -42,13 +42,10 @@
 &lt;p&gt;En bref:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Désactiver superfetch &amp;amp; prefetch&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Activer &lt;code&gt;clearPageFilesAtShutdown&lt;/code&gt; et &lt;code&gt;LargeSystemCache&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Amélioration du cache disque NTFS&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Suppression indexation automatique + hibernation (pour gagner de l&amp;rsquo;espace)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Désactiver superfetch &amp;amp; prefetch&lt;/li&gt;
+&lt;li&gt;Activer &lt;code&gt;clearPageFilesAtShutdown&lt;/code&gt; et &lt;code&gt;LargeSystemCache&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Amélioration du cache disque NTFS&lt;/li&gt;
+&lt;li&gt;Suppression indexation automatique + hibernation (pour gagner de l&amp;rsquo;espace)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Optimisations sous Linux:&lt;/strong&gt;
@@ -58,11 +55,9 @@
 &lt;p&gt;En synthèse:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;S&amp;rsquo;assurer d&amp;rsquo;être en noatime&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Utiliser la mémoire vive comme /tmp&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Changer le scheduler disque (prendre noop)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;S&amp;rsquo;assurer d&amp;rsquo;être en noatime&lt;/li&gt;
+&lt;li&gt;Utiliser la mémoire vive comme /tmp&lt;/li&gt;
+&lt;li&gt;Changer le scheduler disque (prendre noop)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Résultat:&lt;/p&gt;

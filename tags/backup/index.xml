@@ -173,18 +173,15 @@ if __name__ == &#39;__main__&#39;:
       <pubDate>Sat, 27 Sep 2008 09:23:21 &#43;0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/</guid>
-      <description>&lt;p&gt;SAISE est le digne successeur d&amp;rsquo;&lt;a href=&#34;http://blog.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;Obiran&lt;/a&gt; dont il reprend toutes les fonctionnalités, soit une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, lui-même disponible sur &lt;a href=&#34;http://code.google.com/p/obiran/&#34;&gt;http://code.google.com/p/obiran/&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;SAISE est le digne successeur d&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;Obiran&lt;/a&gt; dont il reprend toutes les fonctionnalités, soit une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, lui-même disponible sur &lt;a href=&#34;http://code.google.com/p/obiran/&#34;&gt;http://code.google.com/p/obiran/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;SAISE apporte toutefois des différences importantes:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;SAISE apporte toutefois des différences importantes:&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE est écrit en &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; (contrairement à Obiran, en Ruby)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE utilise la librairie &lt;a href=&#34;http://www.galago-project.org/downloads.php&#34;&gt;libnotify&lt;/a&gt; pour faire apparaître des notifications graphiques lors des backups (en option)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE a un système de log plus abouti&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Last but not least - SAISE permet de sécuriser les sauvegardes en cryptant à la volée les fichiers (à la demande de l&amp;rsquo;utilisateur)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;SAISE est écrit en &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; (contrairement à Obiran, en Ruby)&lt;/li&gt;
+&lt;li&gt;SAISE utilise la librairie &lt;a href=&#34;http://www.galago-project.org/downloads.php&#34;&gt;libnotify&lt;/a&gt; pour faire apparaître des notifications graphiques lors des backups (en option)&lt;/li&gt;
+&lt;li&gt;SAISE a un système de log plus abouti&lt;/li&gt;
+&lt;li&gt;Last but not least - SAISE permet de sécuriser les sauvegardes en cryptant à la volée les fichiers (à la demande de l&amp;rsquo;utilisateur)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Le système cryptage de SAISE&lt;/strong&gt;&lt;/p&gt;
@@ -202,11 +199,9 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;L&amp;rsquo;algorithme de cryptage est donc très simple:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Vérification de la présence d&amp;rsquo;une version non cryptée du fichier sur le répertoire distante =&amp;gt; suppression dans ce cas&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Vérification de la date de création du fichier crypté distant et comparaison avec la date du fichier en local =&amp;gt; Pas de traitement si le local n&amp;rsquo;est pas plus récent&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Cryptage du fichier et copie via scp sur le serveur distant.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Vérification de la présence d&amp;rsquo;une version non cryptée du fichier sur le répertoire distante =&amp;gt; suppression dans ce cas&lt;/li&gt;
+&lt;li&gt;Vérification de la date de création du fichier crypté distant et comparaison avec la date du fichier en local =&amp;gt; Pas de traitement si le local n&amp;rsquo;est pas plus récent&lt;/li&gt;
+&lt;li&gt;Cryptage du fichier et copie via scp sur le serveur distant.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;A noter: Ce cryptage alourdit légèrement le traitement mais n&amp;rsquo;augmente pas trop la taille des fichiers.&lt;/p&gt;
@@ -214,23 +209,15 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;&lt;strong&gt;Versionnage&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;SAISE v0.7: Suppression de la dépendance à paramiko&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.6.2: Consolidation de la gestion de configuration pour gérer les valeurs &amp;ldquo;n&amp;rsquo;importe quoi&amp;rdquo; + ajout d&amp;rsquo;un compteur d&amp;rsquo;erreur.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.6.1: améliorations de la gestion des notifications (cas d&amp;rsquo;erreur) et de la gestion des fichiers externes (conf, log)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.6: Ajout de notifications graphiques d&amp;rsquo;événements via libnotify (pynotify)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.5: 1ere version fonctionnelle&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.4: cryptage en bonne voie / les fichiers unitaires fonctionnent, reste à finir la partie &amp;ldquo;gestion des répertoires cryptés&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.3: début du travail sur la synchronisation des fichiers cryptés.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.2: le rsync fonctionne (isofonctionnalités avec obiran)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE Premier commit / connexion en ssh possible&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;SAISE v0.7: Suppression de la dépendance à paramiko&lt;/li&gt;
+&lt;li&gt;SAISE v0.6.2: Consolidation de la gestion de configuration pour gérer les valeurs &amp;ldquo;n&amp;rsquo;importe quoi&amp;rdquo; + ajout d&amp;rsquo;un compteur d&amp;rsquo;erreur.&lt;/li&gt;
+&lt;li&gt;SAISE v0.6.1: améliorations de la gestion des notifications (cas d&amp;rsquo;erreur) et de la gestion des fichiers externes (conf, log)&lt;/li&gt;
+&lt;li&gt;SAISE v0.6: Ajout de notifications graphiques d&amp;rsquo;événements via libnotify (pynotify)&lt;/li&gt;
+&lt;li&gt;SAISE v0.5: 1ere version fonctionnelle&lt;/li&gt;
+&lt;li&gt;SAISE v0.4: cryptage en bonne voie / les fichiers unitaires fonctionnent, reste à finir la partie &amp;ldquo;gestion des répertoires cryptés&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;SAISE v0.3: début du travail sur la synchronisation des fichiers cryptés.&lt;/li&gt;
+&lt;li&gt;SAISE v0.2: le rsync fonctionne (isofonctionnalités avec obiran)&lt;/li&gt;
+&lt;li&gt;SAISE Premier commit / connexion en ssh possible&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;strong&gt;Dépendances&lt;/strong&gt;&lt;/p&gt;
@@ -238,13 +225,10 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;Pour faire fonctionner SAISE, il vous faut:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;SAISE&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;rsync&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;ssh&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;libraires python: &lt;a href=&#34;http://roscidus.com/desktop/node/336&#34;&gt;pynotify&lt;/a&gt; &lt;a href=&#34;http://www.freenet.org.nz/ezPyCrypto/&#34;&gt;ezPyCrypto&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;SAISE&lt;/li&gt;
+&lt;li&gt;rsync&lt;/li&gt;
+&lt;li&gt;ssh&lt;/li&gt;
+&lt;li&gt;libraires python: &lt;a href=&#34;http://roscidus.com/desktop/node/336&#34;&gt;pynotify&lt;/a&gt; &lt;a href=&#34;http://www.freenet.org.nz/ezPyCrypto/&#34;&gt;ezPyCrypto&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;License&lt;/strong&gt;&lt;/p&gt;
@@ -253,7 +237,7 @@ if __name__ == &#39;__main__&#39;:
 
 &lt;p&gt;&lt;strong&gt;Où trouver SAISE ?&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Ce projet est actuellement dans l&amp;rsquo;incubateur sur &lt;a href=&#34;http://labs.tifauve.net/&#34;&gt;http://labs.tifauve.net&lt;/a&gt;, et les sources sont gérés via subversion sur &lt;a href=&#34;http://code.google.com/p/tifauve-labs/source/browse/trunk/SAISE&#34;&gt;http://code.google.com/p/tifauve-labs/source/browse/trunk/SAISE&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ce projet est actuellement dans l&amp;rsquo;incubateur sur &lt;a href=&#34;https://code.google.com/p/tifauve-labs/&#34;&gt;Google Code&lt;/a&gt;, et les sources sont gérés via subversion sur &lt;a href=&#34;http://code.google.com/p/tifauve-labs/source/browse/trunk/SAISE&#34;&gt;http://code.google.com/p/tifauve-labs/source/browse/trunk/SAISE&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -272,11 +256,9 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;Ce script en langage Ruby permet d&amp;rsquo;effectuer des sauvegardes incrémentales en utilisant rsync, ssh et cp.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Rsync permet de synchroniser deux répertoires.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;ssh donne les accès à distance.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;cp -al est utilisé pour faire des copies de répertoires &lt;em&gt;Hard-Link en anglais&lt;/em&gt; sans perdre trop de place.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Rsync permet de synchroniser deux répertoires.&lt;/li&gt;
+&lt;li&gt;ssh donne les accès à distance.&lt;/li&gt;
+&lt;li&gt;cp -al est utilisé pour faire des copies de répertoires &lt;em&gt;Hard-Link en anglais&lt;/em&gt; sans perdre trop de place.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Principe&lt;/strong&gt;&lt;/p&gt;
@@ -286,9 +268,8 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;Ce script est très fortement inspiré des idées de synchronisation trouvées sur les pages suivantes:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.sanitarium.net/golug/rsync_backups.html&#34;&gt;Backups using rsync&lt;/a&gt; par Kevin Korb&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.mikerubel.org/computers/rsync_snapshots/&#34;&gt;Easy Automated Snapshot-Style Backups with Linux and Rsync&lt;/a&gt; par Mike Rubel&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.sanitarium.net/golug/rsync_backups.html&#34;&gt;Backups using rsync&lt;/a&gt; par Kevin Korb&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.mikerubel.org/computers/rsync_snapshots/&#34;&gt;Easy Automated Snapshot-Style Backups with Linux and Rsync&lt;/a&gt; par Mike Rubel&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Le principe est de faire des sauvegardes incrémentales, c&amp;rsquo;est à dire ne sauvegarder que les différences d&amp;rsquo;un backup à l&amp;rsquo;autre. Ainsi la place consommée est bien moindre:&lt;/p&gt;

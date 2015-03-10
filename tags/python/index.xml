@@ -100,7 +100,7 @@ except:
 
 &lt;p&gt;J&amp;rsquo;ai redécouvert l&amp;rsquo;élégance et la simplicité de &lt;a href=&#34;http://www.ruby-lang.org/fr/&#34;&gt;Ruby&lt;/a&gt; et la puissance de Rails.&lt;/p&gt;
 
-&lt;p&gt;Du coup, je me suis lancé un nouveau défi: créer une application de gestion des identités web - afin de ne plus oublier identifiant/mots de passe des sites où je suis inscrit (et il y en a!) - avec Ruby on Rails évidemment: &lt;a href=&#34;http://labs.zeneffy.fr/projets/vauban/&#34;&gt;Vauban&lt;/a&gt; est donc en cours de développement. La suite prochainement&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Du coup, je me suis lancé un nouveau défi: créer une application de gestion des identités web - afin de ne plus oublier identifiant/mots de passe des sites où je suis inscrit (et il y en a!) - avec Ruby on Rails évidemment: &lt;a href=&#34;https://github.com/jraigneau/vauban/&#34;&gt;Vauban&lt;/a&gt; est donc en cours de développement. La suite prochainement&amp;hellip;&lt;/p&gt;
 </description>
     </item>
     
@@ -115,32 +115,22 @@ except:
 &lt;p&gt;&lt;strong&gt;Nouveautés&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Contrôle des fichiers avant validation et traitement&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Mise en avant ce qui a été déjà dépensé par rapport à la moyenne mensuelle&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Simulation de ce qu&amp;rsquo;il reste à payer dans le mois au prorata des jours écoulés&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Meilleure gestion des chèques, notamment en mettant les numéros&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Constance du tri sur la liste de transaction lors des modifications de transaction&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Spinner sur le chargement de nouvelles données&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Listes déroulantes de catégorie trié alphabétiquement&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Couleurs des camenberts pour les catégories&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Tri sur listes&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Spinner lors du rejoue des règles&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Confirmation des suppressions de catégorie et règles&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Contrôle des fichiers avant validation et traitement&lt;/li&gt;
+&lt;li&gt;Mise en avant ce qui a été déjà dépensé par rapport à la moyenne mensuelle&lt;/li&gt;
+&lt;li&gt;Simulation de ce qu&amp;rsquo;il reste à payer dans le mois au prorata des jours écoulés&lt;/li&gt;
+&lt;li&gt;Meilleure gestion des chèques, notamment en mettant les numéros&lt;/li&gt;
+&lt;li&gt;Constance du tri sur la liste de transaction lors des modifications de transaction&lt;/li&gt;
+&lt;li&gt;Spinner sur le chargement de nouvelles données&lt;/li&gt;
+&lt;li&gt;Listes déroulantes de catégorie trié alphabétiquement&lt;/li&gt;
+&lt;li&gt;Couleurs des camenberts pour les catégories&lt;/li&gt;
+&lt;li&gt;Tri sur listes&lt;/li&gt;
+&lt;li&gt;Spinner lors du rejoue des règles&lt;/li&gt;
+&lt;li&gt;Confirmation des suppressions de catégorie et règles&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Où trouver Harpagon ?&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Le code est disponible en open source sous &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;license Apache&lt;/a&gt; sur &lt;a href=&#34;http://labs.zeneffy.fr/projects/show/harpagon&#34;&gt;Zeneffy:Labs&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Le code est disponible en open source sous &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
 </description>
@@ -197,15 +187,11 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;&lt;strong&gt;Fonctionnalités de la 1.0&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Import de données de la BRED&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Tableau de bord fonctionnel avec stats sur 30j/3mois/Toutes dates&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Gestion des catégories et des règles de catégorisation&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Rejoue des règles possibles à tout moment&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Gestion des transactions&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Import de données de la BRED&lt;/li&gt;
+&lt;li&gt;Tableau de bord fonctionnel avec stats sur 30j/3mois/Toutes dates&lt;/li&gt;
+&lt;li&gt;Gestion des catégories et des règles de catégorisation&lt;/li&gt;
+&lt;li&gt;Rejoue des règles possibles à tout moment&lt;/li&gt;
+&lt;li&gt;Gestion des transactions&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Captures d&amp;rsquo;écran&lt;/strong&gt;&lt;/p&gt;
@@ -217,7 +203,7 @@ if __name__ == &#39;__main__&#39;:
 
 &lt;p&gt;&lt;strong&gt;Où trouver Harpagon ?&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Le code est disponible en open source &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;sous license Apache&lt;/a&gt; sur &lt;a href=&#34;http://labs.zeneffy.fr/wiki/savemyprecious&#34;&gt;Zeneffy:Labs&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Le code est disponible en open source &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;sous license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
 </description>
@@ -229,7 +215,7 @@ if __name__ == &#39;__main__&#39;:
       <pubDate>Sat, 04 Jul 2009 14:45:05 &#43;0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2009/07/savemyprecious-sauvegardes-de-fichier/</guid>
-      <description>&lt;p&gt;SaveMyPrecious remplace &lt;a href=&#34;http://blog.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/&#34;&gt;Saise&lt;/a&gt; et permet donc une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;&lt;a href=&#34;http://blog.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;Obiran&lt;/a&gt;, le premier script de sauvegarde que j&amp;rsquo;ai écrit.&lt;/p&gt;
+      <description>&lt;p&gt;SaveMyPrecious remplace &lt;a href=&#34;http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/&#34;&gt;Saise&lt;/a&gt; et permet donc une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;Obiran&lt;/a&gt;, le premier script de sauvegarde que j&amp;rsquo;ai écrit.&lt;/p&gt;
 
 &lt;p&gt;A l&amp;rsquo;inverse de Saise, SaveMyPrecious ne crypte pas les données, mais subit une nette amélioration de l&amp;rsquo;interface graphique.&lt;/p&gt;
 
@@ -238,18 +224,15 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;Pour faire fonctionner SaveMyPrecious, il vous faut:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;SaveMyPrecious&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;rsync&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;ssh&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;libraires python: &lt;a href=&#34;http://roscidus.com/desktop/node/336&#34;&gt;pynotify&lt;/a&gt; et pygtk&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;SaveMyPrecious&lt;/li&gt;
+&lt;li&gt;rsync&lt;/li&gt;
+&lt;li&gt;ssh&lt;/li&gt;
+&lt;li&gt;libraires python: &lt;a href=&#34;http://roscidus.com/desktop/node/336&#34;&gt;pynotify&lt;/a&gt; et pygtk&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Où trouver SaveMyPrecious ?&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Le code est disponible en open source &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;sous license Apache&lt;/a&gt; sur &lt;a href=&#34;http://labs.zeneffy.fr/wiki/savemyprecious&#34;&gt;Zeneffy::Labs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Le code est disponible en open source &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;sous license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/SaveMyPrecious&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
 </description>
@@ -269,7 +252,7 @@ if __name__ == &#39;__main__&#39;:
 
 &lt;p&gt;&lt;strong&gt;Code&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Le code est disponible en open source sous license Apache sur&lt;a href=&#34;http://labs.zeneffy.fr/wiki/ipieuvre&#34;&gt; Zeneffy:labs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Le code est disponible en open source sous license Apache sur&lt;a href=&#34;https://github.com/jraigneau/iPieuvre&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
 
@@ -421,18 +404,15 @@ if __name__ == &#39;__main__&#39;:
       <pubDate>Sat, 27 Sep 2008 09:23:21 &#43;0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/</guid>
-      <description>&lt;p&gt;SAISE est le digne successeur d&amp;rsquo;&lt;a href=&#34;http://blog.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;Obiran&lt;/a&gt; dont il reprend toutes les fonctionnalités, soit une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, lui-même disponible sur &lt;a href=&#34;http://code.google.com/p/obiran/&#34;&gt;http://code.google.com/p/obiran/&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;SAISE est le digne successeur d&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;Obiran&lt;/a&gt; dont il reprend toutes les fonctionnalités, soit une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, lui-même disponible sur &lt;a href=&#34;http://code.google.com/p/obiran/&#34;&gt;http://code.google.com/p/obiran/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;SAISE apporte toutefois des différences importantes:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;SAISE apporte toutefois des différences importantes:&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE est écrit en &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; (contrairement à Obiran, en Ruby)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE utilise la librairie &lt;a href=&#34;http://www.galago-project.org/downloads.php&#34;&gt;libnotify&lt;/a&gt; pour faire apparaître des notifications graphiques lors des backups (en option)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE a un système de log plus abouti&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Last but not least - SAISE permet de sécuriser les sauvegardes en cryptant à la volée les fichiers (à la demande de l&amp;rsquo;utilisateur)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;SAISE est écrit en &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; (contrairement à Obiran, en Ruby)&lt;/li&gt;
+&lt;li&gt;SAISE utilise la librairie &lt;a href=&#34;http://www.galago-project.org/downloads.php&#34;&gt;libnotify&lt;/a&gt; pour faire apparaître des notifications graphiques lors des backups (en option)&lt;/li&gt;
+&lt;li&gt;SAISE a un système de log plus abouti&lt;/li&gt;
+&lt;li&gt;Last but not least - SAISE permet de sécuriser les sauvegardes en cryptant à la volée les fichiers (à la demande de l&amp;rsquo;utilisateur)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Le système cryptage de SAISE&lt;/strong&gt;&lt;/p&gt;
@@ -450,11 +430,9 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;L&amp;rsquo;algorithme de cryptage est donc très simple:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Vérification de la présence d&amp;rsquo;une version non cryptée du fichier sur le répertoire distante =&amp;gt; suppression dans ce cas&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Vérification de la date de création du fichier crypté distant et comparaison avec la date du fichier en local =&amp;gt; Pas de traitement si le local n&amp;rsquo;est pas plus récent&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Cryptage du fichier et copie via scp sur le serveur distant.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Vérification de la présence d&amp;rsquo;une version non cryptée du fichier sur le répertoire distante =&amp;gt; suppression dans ce cas&lt;/li&gt;
+&lt;li&gt;Vérification de la date de création du fichier crypté distant et comparaison avec la date du fichier en local =&amp;gt; Pas de traitement si le local n&amp;rsquo;est pas plus récent&lt;/li&gt;
+&lt;li&gt;Cryptage du fichier et copie via scp sur le serveur distant.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;A noter: Ce cryptage alourdit légèrement le traitement mais n&amp;rsquo;augmente pas trop la taille des fichiers.&lt;/p&gt;
@@ -462,23 +440,15 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;&lt;strong&gt;Versionnage&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;SAISE v0.7: Suppression de la dépendance à paramiko&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.6.2: Consolidation de la gestion de configuration pour gérer les valeurs &amp;ldquo;n&amp;rsquo;importe quoi&amp;rdquo; + ajout d&amp;rsquo;un compteur d&amp;rsquo;erreur.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.6.1: améliorations de la gestion des notifications (cas d&amp;rsquo;erreur) et de la gestion des fichiers externes (conf, log)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.6: Ajout de notifications graphiques d&amp;rsquo;événements via libnotify (pynotify)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.5: 1ere version fonctionnelle&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.4: cryptage en bonne voie / les fichiers unitaires fonctionnent, reste à finir la partie &amp;ldquo;gestion des répertoires cryptés&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.3: début du travail sur la synchronisation des fichiers cryptés.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE v0.2: le rsync fonctionne (isofonctionnalités avec obiran)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;SAISE Premier commit / connexion en ssh possible&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;SAISE v0.7: Suppression de la dépendance à paramiko&lt;/li&gt;
+&lt;li&gt;SAISE v0.6.2: Consolidation de la gestion de configuration pour gérer les valeurs &amp;ldquo;n&amp;rsquo;importe quoi&amp;rdquo; + ajout d&amp;rsquo;un compteur d&amp;rsquo;erreur.&lt;/li&gt;
+&lt;li&gt;SAISE v0.6.1: améliorations de la gestion des notifications (cas d&amp;rsquo;erreur) et de la gestion des fichiers externes (conf, log)&lt;/li&gt;
+&lt;li&gt;SAISE v0.6: Ajout de notifications graphiques d&amp;rsquo;événements via libnotify (pynotify)&lt;/li&gt;
+&lt;li&gt;SAISE v0.5: 1ere version fonctionnelle&lt;/li&gt;
+&lt;li&gt;SAISE v0.4: cryptage en bonne voie / les fichiers unitaires fonctionnent, reste à finir la partie &amp;ldquo;gestion des répertoires cryptés&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;SAISE v0.3: début du travail sur la synchronisation des fichiers cryptés.&lt;/li&gt;
+&lt;li&gt;SAISE v0.2: le rsync fonctionne (isofonctionnalités avec obiran)&lt;/li&gt;
+&lt;li&gt;SAISE Premier commit / connexion en ssh possible&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;strong&gt;Dépendances&lt;/strong&gt;&lt;/p&gt;
@@ -486,13 +456,10 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;Pour faire fonctionner SAISE, il vous faut:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;SAISE&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;rsync&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;ssh&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;libraires python: &lt;a href=&#34;http://roscidus.com/desktop/node/336&#34;&gt;pynotify&lt;/a&gt; &lt;a href=&#34;http://www.freenet.org.nz/ezPyCrypto/&#34;&gt;ezPyCrypto&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;SAISE&lt;/li&gt;
+&lt;li&gt;rsync&lt;/li&gt;
+&lt;li&gt;ssh&lt;/li&gt;
+&lt;li&gt;libraires python: &lt;a href=&#34;http://roscidus.com/desktop/node/336&#34;&gt;pynotify&lt;/a&gt; &lt;a href=&#34;http://www.freenet.org.nz/ezPyCrypto/&#34;&gt;ezPyCrypto&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;License&lt;/strong&gt;&lt;/p&gt;
@@ -501,7 +468,7 @@ if __name__ == &#39;__main__&#39;:
 
 &lt;p&gt;&lt;strong&gt;Où trouver SAISE ?&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Ce projet est actuellement dans l&amp;rsquo;incubateur sur &lt;a href=&#34;http://labs.tifauve.net/&#34;&gt;http://labs.tifauve.net&lt;/a&gt;, et les sources sont gérés via subversion sur &lt;a href=&#34;http://code.google.com/p/tifauve-labs/source/browse/trunk/SAISE&#34;&gt;http://code.google.com/p/tifauve-labs/source/browse/trunk/SAISE&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ce projet est actuellement dans l&amp;rsquo;incubateur sur &lt;a href=&#34;https://code.google.com/p/tifauve-labs/&#34;&gt;Google Code&lt;/a&gt;, et les sources sont gérés via subversion sur &lt;a href=&#34;http://code.google.com/p/tifauve-labs/source/browse/trunk/SAISE&#34;&gt;http://code.google.com/p/tifauve-labs/source/browse/trunk/SAISE&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -516,11 +483,9 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;C&amp;rsquo;est mon premier développement &amp;ldquo;important&amp;rdquo; en Python - il m&amp;rsquo;a permis notamment de voir:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Interface graphique et GTK2 et utilisation de &lt;a href=&#34;http://daniel.coquette.free.fr/dotclear/index.php/post/2006/12/11/Creer-des-interfaces-graphique-avec-PyGTK-et-Glade&#34;&gt;Glade&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Utilisation de la librairie &lt;a href=&#34;http://docs.python.org/lib/module-ftplib.html&#34;&gt;ftplib&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://faq.pygtk.org/index.py?req=show&amp;amp;file=faq20.006.htp&#34;&gt;Mécanique des threads&lt;/a&gt; dans une IHM.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Interface graphique et GTK2 et utilisation de &lt;a href=&#34;http://daniel.coquette.free.fr/dotclear/index.php/post/2006/12/11/Creer-des-interfaces-graphique-avec-PyGTK-et-Glade&#34;&gt;Glade&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Utilisation de la librairie &lt;a href=&#34;http://docs.python.org/lib/module-ftplib.html&#34;&gt;ftplib&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://faq.pygtk.org/index.py?req=show&amp;amp;file=faq20.006.htp&#34;&gt;Mécanique des threads&lt;/a&gt; dans une IHM.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Il reste fortement améliorable, notamment en ce qui concerne la gestion des exceptions (try&amp;hellip;except).&lt;/p&gt;
@@ -797,11 +762,9 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;&lt;strong&gt;Ressources&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://nedbatchelder.com/code/modules/FtpUpload.py&#34;&gt;http://nedbatchelder.com/code/modules/FtpUpload.py&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://effbot.org/librarybook/ftplib.htm&#34;&gt;http://effbot.org/librarybook/ftplib.htm&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://mail.python.org/pipermail/python-list/2003-September/224679.html&#34;&gt;http://mail.python.org/pipermail/python-list/2003-September/224679.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://nedbatchelder.com/code/modules/FtpUpload.py&#34;&gt;http://nedbatchelder.com/code/modules/FtpUpload.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://effbot.org/librarybook/ftplib.htm&#34;&gt;http://effbot.org/librarybook/ftplib.htm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mail.python.org/pipermail/python-list/2003-September/224679.html&#34;&gt;http://mail.python.org/pipermail/python-list/2003-September/224679.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

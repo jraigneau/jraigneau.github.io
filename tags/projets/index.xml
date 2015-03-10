@@ -100,9 +100,9 @@
       <pubDate>Sun, 06 Mar 2011 21:09:06 &#43;0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/03/rtfm/</guid>
-      <description>&lt;p&gt;Dans un &lt;a href=&#34;Google App Engine: une demi-déception&#34;&gt;billet précédent&lt;/a&gt;, je me plaignais de l&amp;rsquo;infrastructure google et en creusant un peu, j&amp;rsquo;ai découvert que mon problème venait de requête d&amp;rsquo;écriture à la base de donnée, qui à la première écriture de chaque session prenait jusqu&amp;rsquo;à 15 secondes.&lt;/p&gt;
+      <description>&lt;p&gt;Dans un &lt;a href=&#34;http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/&#34;&gt;billet précédent&lt;/a&gt;, je me plaignais de l&amp;rsquo;infrastructure google et en creusant un peu, j&amp;rsquo;ai découvert que mon problème venait de requête d&amp;rsquo;écriture à la base de donnée, qui à la première écriture de chaque session prenait jusqu&amp;rsquo;à 15 secondes.&lt;/p&gt;
 
-&lt;p&gt;En regardant de près la documentation de &lt;a href=&#34;http://datamapper.org/&#34;&gt;datamapper&lt;/a&gt;, l&amp;rsquo;ORM utilisé pour &lt;a href=&#34;http://labs.zeneffy.fr/projets/veilleur&#34;&gt;Veilleur&lt;/a&gt;, je me suis rendu que je n&amp;rsquo;utilisais pas correctement les requêtes avec les associations 1-n. En simplifiant, l&amp;rsquo;application récupérait la liste de toutes les valeurs des tests dans la base (1 toute les 10 minutes depuis 15 jours, faites le calcul&amp;hellip;) avant d&amp;rsquo;écrire la nouvelle valeur - ce qui était inutile et surtout gourmant (15secondes !)&lt;/p&gt;
+&lt;p&gt;En regardant de près la documentation de &lt;a href=&#34;http://datamapper.org/&#34;&gt;datamapper&lt;/a&gt;, l&amp;rsquo;ORM utilisé pour &lt;a href=&#34;https://github.com/jraigneau/veilleur&#34;&gt;Veilleur&lt;/a&gt;, je me suis rendu que je n&amp;rsquo;utilisais pas correctement les requêtes avec les associations 1-n. En simplifiant, l&amp;rsquo;application récupérait la liste de toutes les valeurs des tests dans la base (1 toute les 10 minutes depuis 15 jours, faites le calcul&amp;hellip;) avant d&amp;rsquo;écrire la nouvelle valeur - ce qui était inutile et surtout gourmant (15secondes !)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Morale&lt;/strong&gt;: il faut bien lire les manuels et la documentation des frameworks, librairies&amp;hellip;utilisés dans son code.&lt;/p&gt;
 </description>
@@ -114,7 +114,7 @@
       <pubDate>Fri, 25 Feb 2011 22:47:37 &#43;0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</guid>
-      <description>&lt;p&gt;Dans le cadre de ma petite application de surveillance de site web, &lt;a href=&#34;http://veilleur.zeneffy.fr&#34;&gt;veilleur&lt;/a&gt;, j&amp;rsquo;ai &lt;a href=&#34;http://www.zeneffy.fr/post/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;utilisé l&amp;rsquo;infrastructure Google App Engine&lt;/a&gt; pour héberger code &amp;amp; base de donnée. Le résultat au bout de 2 semaines est assez peu concluant- du moins pour la version &amp;ldquo;Free&amp;rdquo;:&lt;/p&gt;
+      <description>&lt;p&gt;Dans le cadre de ma petite application de surveillance de site web, &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;veilleur&lt;/a&gt;, j&amp;rsquo;ai &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;utilisé l&amp;rsquo;infrastructure Google App Engine&lt;/a&gt; pour héberger code &amp;amp; base de donnée. Le résultat au bout de 2 semaines est assez peu concluant- du moins pour la version &amp;ldquo;Free&amp;rdquo;:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Le système de quotas est contraignant, et atteint vite ses limites (pour moi de temps machine à cause des requêtes nécessaires pour vérifier l&amp;rsquo;état de santé des sites)&lt;/li&gt;
@@ -122,7 +122,7 @@
 &lt;li&gt;En deux semaines d&amp;rsquo;utilisation, l&amp;rsquo;infrastructure m&amp;rsquo;a semblé peu fiable, avec des erreurs étranges non reproductible - causées manifestement par Google App Engine lui même.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Mes prochaines applications ne seront donc pas hébergées sur GAE - mais plutôt chez Heroku comme &lt;a href=&#34;http://vauban.heroku.com&#34;&gt;vauban&lt;/a&gt; et le &lt;a href=&#34;http://labs.zeneffy.fr&#34;&gt;lab&lt;/a&gt;, qui reste pour moi une référence de l&amp;rsquo;hébergement Rails / Sinatra.&lt;/p&gt;
+&lt;p&gt;Mes prochaines applications ne seront donc pas hébergées sur GAE - mais plutôt chez Heroku comme &lt;a href=&#34;http://vauban.heroku.com&#34;&gt;vauban&lt;/a&gt; qui reste pour moi une référence de l&amp;rsquo;hébergement Rails / Sinatra.&lt;/p&gt;
 </description>
     </item>
     
@@ -138,9 +138,9 @@
 
 &lt;p&gt;En utilisant Google App Engine, je m&amp;rsquo;affranchis de la gestion de l&amp;rsquo;authentification (comptes google), de la base de donnée et surtout je peux utiliser un système &lt;a href=&#34;http://fr.wikipedia.org/wiki/Cron&#34;&gt;CRON&lt;/a&gt; intégré dans le service Google. Ce système me permet de lancer automatiquement et périodiquement les tests d&amp;rsquo;URL pour me donner le temps d&amp;rsquo;accès et calculer la disponibilité du site web.&lt;/p&gt;
 
-&lt;p&gt;Après une petite semaine de travail, le premier résultat est très intéressant et peut-être utilisé par tous sur &lt;a href=&#34;http://veilleur.zeneffy.fr&#34;&gt;veilleur.zeneffy.fr&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Après une petite semaine de travail, le premier résultat est très intéressant et peut-être utilisé par tous.&lt;/p&gt;
 
-&lt;p&gt;Le projet en lui même est géré via &lt;a href=&#34;https://github.com/jraigneau/veilleur&#34;&gt;GitHub&lt;/a&gt; + &lt;a href=&#34;http://zeneffy.lighthouseapp.com/projects/69787-veilleur/overview&#34;&gt;Lighthouse&lt;/a&gt; (tous les détails sur &lt;a href=&#34;http://labs.zeneffy.fr/projets/veilleur/&#34;&gt;labs.zeneffy.fr&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Le projet en lui même est géré via &lt;a href=&#34;https://github.com/jraigneau/veilleur&#34;&gt;GitHub&lt;/a&gt; + &lt;a href=&#34;http://zeneffy.lighthouseapp.com/projects/69787-veilleur/overview&#34;&gt;Lighthouse&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -150,7 +150,7 @@
       <pubDate>Sat, 05 Feb 2011 07:50:50 &#43;0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/application-sinatra-pour-heroku/</guid>
-      <description>&lt;p&gt;Dernièrement je m&amp;rsquo;intéresse au framework de développement  &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; qui est basé sur le langage Ruby (comme Ruby on Rails donc). Sinatra est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Domain-specific_programming_language&#34;&gt;DSL&lt;/a&gt; permettant de développer rapidement et simplement des applications web (un peu comme &lt;a href=&#34;http://webpy.org/&#34;&gt;webpy&lt;/a&gt; que j&amp;rsquo;avais utilisé sur &lt;a href=&#34;http://labs.zeneffy.fr/projets/harpagon/&#34;&gt;Harpagon&lt;/a&gt;).&lt;/p&gt;
+      <description>&lt;p&gt;Dernièrement je m&amp;rsquo;intéresse au framework de développement  &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; qui est basé sur le langage Ruby (comme Ruby on Rails donc). Sinatra est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Domain-specific_programming_language&#34;&gt;DSL&lt;/a&gt; permettant de développer rapidement et simplement des applications web (un peu comme &lt;a href=&#34;http://webpy.org/&#34;&gt;webpy&lt;/a&gt; que j&amp;rsquo;avais utilisé sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Harpagon&lt;/a&gt;).&lt;/p&gt;
 
 &lt;p&gt;Pour déployer des applications sinatra, j&amp;rsquo;ai décidé de continuer à m&amp;rsquo;appuyer sur la plate-forme d&amp;rsquo;hébergement &lt;a href=&#34;http://heroku.com/&#34;&gt;Heroku&lt;/a&gt; - voila les quelques fichiers à mettre en oeuvre pour une application minimale - en activant la supervision &lt;a href=&#34;http://newrelic.com/&#34;&gt;newrelic_rpm&lt;/a&gt;:&lt;/p&gt;
 
@@ -214,34 +214,29 @@ production:
       <guid>http://www.zeneffy.fr/2010/10/google-analytics-dans-une-application-ruby-on-rails/</guid>
       <description>&lt;p&gt;Dans le cadre de l&amp;rsquo;application &lt;a href=&#34;http://labs.zeneffy.fr/projets/vauban/&#34;&gt;vauban&lt;/a&gt; développée via le framework &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;RubyOnRails&lt;/a&gt;, j&amp;rsquo;ai été amené à intégrer &lt;a href=&#34;http://www.google.com/analytics/&#34;&gt;Google Analytics&lt;/a&gt; en 3 étapes très simples:&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Créer le compte dans Google Analytics pour obtenir un code javascript du type&lt;/p&gt;
+&lt;p&gt;Créer le compte dans Google Analytics pour obtenir un code javascript du type&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code&gt;    &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
 
+      var _gaq = _gaq || [];
+      _gaq.push([&#39;_setAccount&#39;, &#39;UA-12194039-4&#39;]);
+      _gaq.push([&#39;_trackPageview&#39;]);
 
-  var _gaq = _gaq || [];
-  _gaq.push([&#39;_setAccount&#39;, &#39;UA-12194039-4&#39;]);
-  _gaq.push([&#39;_trackPageview&#39;]);
+      (function() {
+        var ga = document.createElement(&#39;script&#39;); ga.type = &#39;text/javascript&#39;; ga.async = true;
+        ga.src = (&#39;https:&#39; == document.location.protocol ? &#39;https://ssl&#39; : &#39;http://www&#39;) + &#39;.google-analytics.com/ga.js&#39;;
+        var s = document.getElementsByTagName(&#39;script&#39;)[0]; s.parentNode.insertBefore(ga, s);
+      })();
 
+    &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-  (function() {
-    var ga = document.createElement(&#39;script&#39;); ga.type = &#39;text/javascript&#39;; ga.async = true;
-    ga.src = (&#39;https:&#39; == document.location.protocol ? &#39;https://ssl&#39; : &#39;http://www&#39;) + &#39;.google-analytics.com/ga.js&#39;;
-    var s = document.getElementsByTagName(&#39;script&#39;)[0]; s.parentNode.insertBefore(ga, s);
-  })();
+&lt;p&gt;Créer un &amp;ldquo;partial&amp;rdquo; dans &lt;code&gt;app/views/layouts_ appelé __ga.html.rb&lt;/code&gt; et y copier le javascript&lt;/p&gt;
 
+&lt;p&gt;Insérer le code dans la balise &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; du fichier &lt;code&gt;app/view/layouts/application.html.erb&lt;/code&gt; (pour l&amp;rsquo;avoir sur tout le site - à modifier éventuellement)&lt;/p&gt;
 
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Créer un &amp;ldquo;partial&amp;rdquo; dans &lt;code&gt;app/views/layouts_ appelé __ga.html.rb&lt;/code&gt; et y copier le javascript&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Insérer le code dans la balise &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; du fichier &lt;code&gt;app/view/layouts/application.html.erb&lt;/code&gt; (pour l&amp;rsquo;avoir sur tout le site - à modifier éventuellement)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;%= render :partial =&amp;gt; &amp;quot;layouts/ga&amp;quot; if Rails.env.production? %&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;    &amp;lt;%= render :partial =&amp;gt; &amp;quot;layouts/ga&amp;quot; if Rails.env.production? %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;A noter que la condition &lt;code&gt;if Rails.env.production&lt;/code&gt; permet de n&amp;rsquo;afficher le code que lorsque l&amp;rsquo;application est en production, ceci afin de ne pas pertuber les statistiques lors du développement.&lt;/p&gt;
 
@@ -277,7 +272,7 @@ production:
 
 &lt;p&gt;J&amp;rsquo;ai redécouvert l&amp;rsquo;élégance et la simplicité de &lt;a href=&#34;http://www.ruby-lang.org/fr/&#34;&gt;Ruby&lt;/a&gt; et la puissance de Rails.&lt;/p&gt;
 
-&lt;p&gt;Du coup, je me suis lancé un nouveau défi: créer une application de gestion des identités web - afin de ne plus oublier identifiant/mots de passe des sites où je suis inscrit (et il y en a!) - avec Ruby on Rails évidemment: &lt;a href=&#34;http://labs.zeneffy.fr/projets/vauban/&#34;&gt;Vauban&lt;/a&gt; est donc en cours de développement. La suite prochainement&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Du coup, je me suis lancé un nouveau défi: créer une application de gestion des identités web - afin de ne plus oublier identifiant/mots de passe des sites où je suis inscrit (et il y en a!) - avec Ruby on Rails évidemment: &lt;a href=&#34;https://github.com/jraigneau/vauban/&#34;&gt;Vauban&lt;/a&gt; est donc en cours de développement. La suite prochainement&amp;hellip;&lt;/p&gt;
 </description>
     </item>
     
@@ -292,32 +287,22 @@ production:
 &lt;p&gt;&lt;strong&gt;Nouveautés&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Contrôle des fichiers avant validation et traitement&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Mise en avant ce qui a été déjà dépensé par rapport à la moyenne mensuelle&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Simulation de ce qu&amp;rsquo;il reste à payer dans le mois au prorata des jours écoulés&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Meilleure gestion des chèques, notamment en mettant les numéros&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Constance du tri sur la liste de transaction lors des modifications de transaction&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Spinner sur le chargement de nouvelles données&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Listes déroulantes de catégorie trié alphabétiquement&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Couleurs des camenberts pour les catégories&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Tri sur listes&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Spinner lors du rejoue des règles&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Confirmation des suppressions de catégorie et règles&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Contrôle des fichiers avant validation et traitement&lt;/li&gt;
+&lt;li&gt;Mise en avant ce qui a été déjà dépensé par rapport à la moyenne mensuelle&lt;/li&gt;
+&lt;li&gt;Simulation de ce qu&amp;rsquo;il reste à payer dans le mois au prorata des jours écoulés&lt;/li&gt;
+&lt;li&gt;Meilleure gestion des chèques, notamment en mettant les numéros&lt;/li&gt;
+&lt;li&gt;Constance du tri sur la liste de transaction lors des modifications de transaction&lt;/li&gt;
+&lt;li&gt;Spinner sur le chargement de nouvelles données&lt;/li&gt;
+&lt;li&gt;Listes déroulantes de catégorie trié alphabétiquement&lt;/li&gt;
+&lt;li&gt;Couleurs des camenberts pour les catégories&lt;/li&gt;
+&lt;li&gt;Tri sur listes&lt;/li&gt;
+&lt;li&gt;Spinner lors du rejoue des règles&lt;/li&gt;
+&lt;li&gt;Confirmation des suppressions de catégorie et règles&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Où trouver Harpagon ?&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Le code est disponible en open source sous &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;license Apache&lt;/a&gt; sur &lt;a href=&#34;http://labs.zeneffy.fr/projects/show/harpagon&#34;&gt;Zeneffy:Labs&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Le code est disponible en open source sous &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
 </description>
@@ -400,15 +385,11 @@ production:
 &lt;p&gt;&lt;strong&gt;Fonctionnalités de la 1.0&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Import de données de la BRED&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Tableau de bord fonctionnel avec stats sur 30j/3mois/Toutes dates&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Gestion des catégories et des règles de catégorisation&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Rejoue des règles possibles à tout moment&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Gestion des transactions&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Import de données de la BRED&lt;/li&gt;
+&lt;li&gt;Tableau de bord fonctionnel avec stats sur 30j/3mois/Toutes dates&lt;/li&gt;
+&lt;li&gt;Gestion des catégories et des règles de catégorisation&lt;/li&gt;
+&lt;li&gt;Rejoue des règles possibles à tout moment&lt;/li&gt;
+&lt;li&gt;Gestion des transactions&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Captures d&amp;rsquo;écran&lt;/strong&gt;&lt;/p&gt;
@@ -420,7 +401,7 @@ production:
 
 &lt;p&gt;&lt;strong&gt;Où trouver Harpagon ?&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Le code est disponible en open source &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;sous license Apache&lt;/a&gt; sur &lt;a href=&#34;http://labs.zeneffy.fr/wiki/savemyprecious&#34;&gt;Zeneffy:Labs&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Le code est disponible en open source &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;sous license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
 </description>

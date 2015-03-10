@@ -375,8 +375,8 @@ app.listen(port, function(){
       <description>&lt;p&gt;Le développement n&amp;rsquo;étant pas mon métier mais plutôt un hobby, les petits projets de &amp;ldquo;bricolage numérique&amp;rdquo; que je mène partagent certaines règles simples pour s&amp;rsquo;assurer de l&amp;rsquo;efficience du travail:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Toujours se lancer sur des projets qui ont une utilité immédiate pour mes proches ou moi (&lt;a href=&#34;http://labs.zeneffy.fr/projets/inmemoria/&#34;&gt;inmemoria&lt;/a&gt;, &lt;a href=&#34;http://labs.zeneffy.fr/projets/veilleur/&#34;&gt;veilleur&lt;/a&gt; &amp;hellip;)&lt;/li&gt;
-&lt;li&gt;Profiter de chaque projet pour tester des nouvelles technologies (dernière en date: les &lt;a href=&#34;http://labs.zeneffy.fr/projets/zenrunnin/&#34;&gt;API facebook&lt;/a&gt;, prochaine: les technos javascript &lt;a href=&#34;http://documentcloud.github.com/backbone/&#34;&gt;avancées&lt;/a&gt; comme &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; et le développement sous iOS)&lt;/li&gt;
+&lt;li&gt;Toujours se lancer sur des projets qui ont une utilité immédiate pour mes proches ou moi (&lt;a href=&#34;https://github.com/jraigneau/INmemoria&#34;&gt;inmemoria&lt;/a&gt;, &lt;a href=&#34;https://github.com/jraigneau/veilleur&#34;&gt;veilleur&lt;/a&gt; &amp;hellip;)&lt;/li&gt;
+&lt;li&gt;Profiter de chaque projet pour tester des nouvelles technologies (dernière en date: les &lt;a href=&#34;https://github.com/jraigneau/zen-running&#34;&gt;API facebook&lt;/a&gt;, prochaine: les technos javascript &lt;a href=&#34;http://documentcloud.github.com/backbone/&#34;&gt;avancées&lt;/a&gt; comme &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; et le développement sous iOS)&lt;/li&gt;
 &lt;li&gt;Utiliser les mêmes outils de base pour développer (Github, MacVim par exemple)&lt;/li&gt;
 &lt;li&gt;Pour les applications web, utiliser un socle de feuilles de style css et de morceaux de code ou librairies javascript réutilisables&lt;/li&gt;
 &lt;/ol&gt;
@@ -639,7 +639,7 @@ except:
       <pubDate>Fri, 25 Feb 2011 22:47:37 &#43;0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</guid>
-      <description>&lt;p&gt;Dans le cadre de ma petite application de surveillance de site web, &lt;a href=&#34;http://veilleur.zeneffy.fr&#34;&gt;veilleur&lt;/a&gt;, j&amp;rsquo;ai &lt;a href=&#34;http://www.zeneffy.fr/post/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;utilisé l&amp;rsquo;infrastructure Google App Engine&lt;/a&gt; pour héberger code &amp;amp; base de donnée. Le résultat au bout de 2 semaines est assez peu concluant- du moins pour la version &amp;ldquo;Free&amp;rdquo;:&lt;/p&gt;
+      <description>&lt;p&gt;Dans le cadre de ma petite application de surveillance de site web, &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;veilleur&lt;/a&gt;, j&amp;rsquo;ai &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;utilisé l&amp;rsquo;infrastructure Google App Engine&lt;/a&gt; pour héberger code &amp;amp; base de donnée. Le résultat au bout de 2 semaines est assez peu concluant- du moins pour la version &amp;ldquo;Free&amp;rdquo;:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Le système de quotas est contraignant, et atteint vite ses limites (pour moi de temps machine à cause des requêtes nécessaires pour vérifier l&amp;rsquo;état de santé des sites)&lt;/li&gt;
@@ -647,7 +647,7 @@ except:
 &lt;li&gt;En deux semaines d&amp;rsquo;utilisation, l&amp;rsquo;infrastructure m&amp;rsquo;a semblé peu fiable, avec des erreurs étranges non reproductible - causées manifestement par Google App Engine lui même.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Mes prochaines applications ne seront donc pas hébergées sur GAE - mais plutôt chez Heroku comme &lt;a href=&#34;http://vauban.heroku.com&#34;&gt;vauban&lt;/a&gt; et le &lt;a href=&#34;http://labs.zeneffy.fr&#34;&gt;lab&lt;/a&gt;, qui reste pour moi une référence de l&amp;rsquo;hébergement Rails / Sinatra.&lt;/p&gt;
+&lt;p&gt;Mes prochaines applications ne seront donc pas hébergées sur GAE - mais plutôt chez Heroku comme &lt;a href=&#34;http://vauban.heroku.com&#34;&gt;vauban&lt;/a&gt; qui reste pour moi une référence de l&amp;rsquo;hébergement Rails / Sinatra.&lt;/p&gt;
 </description>
     </item>
     

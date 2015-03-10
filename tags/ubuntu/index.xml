@@ -20,25 +20,21 @@
       <guid>http://www.zeneffy.fr/2010/12/ubuntu-installation-mineffy/</guid>
       <description>&lt;p&gt;Un petit pense-bête sur le &lt;strong&gt;min&lt;/strong&gt;imum à réinstaller avant d&amp;rsquo;être &lt;strong&gt;eff&lt;/strong&gt;icace avec une nouvelle version d&amp;rsquo;ubuntu&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Installer&lt;a href=&#34;http://doc.ubuntu-fr.org/chromium-browser&#34;&gt; Chromium&lt;/a&gt;, le navigateur web:&lt;/p&gt;
+&lt;p&gt;Installer &lt;a href=&#34;http://doc.ubuntu-fr.org/chromium-browser&#34;&gt;Chromium&lt;/a&gt;, le navigateur web:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg chromium-codecs-ffmpeg-nonfree
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg chromium-codecs-ffmpeg-nonfree
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;et installer extensions: &lt;a href=&#34;https://chrome.google.com/extensions/detail/lnejbeiilmbliffhdepeobjemekgdnok&#34;&gt;Gmail&lt;/a&gt; et &lt;a href=&#34;https://chrome.google.com/extensions/detail/lnejbeiilmbliffhdepeobjemekgdnok&#34;&gt;Delici.ous&lt;/a&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Installer le nécessaire pour &lt;a href=&#34;http://doc.ubuntu-fr.org/rubyonrails#installation_complete_de_ruby_192_et_rails_30_via_rvm_maverick_meerkat&#34;&gt;Ruby et Ruby On Rails via RVM&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Installer le nécessaire pour &lt;a href=&#34;http://doc.ubuntu-fr.org/rubyonrails#installation_complete_de_ruby_192_et_rails_30_via_rvm_maverick_meerkat&#34;&gt;Ruby et Ruby On Rails via RVM&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev
-sudo bash &amp;lt; &amp;lt;( curl -L http://bit.ly/rvm-install-system-wide )
-sudo adduser julien rvm
-sudo rvm install 1.9.2
-sudo rvm --default ruby-1.9.2
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev
+    sudo bash &amp;lt; &amp;lt;( curl -L http://bit.ly/rvm-install-system-wide )
+    sudo adduser julien rvm
+    sudo rvm install 1.9.2
+    sudo rvm --default ruby-1.9.2
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;puis modifier &lt;code&gt;.bashrc&lt;/code&gt;&lt;/p&gt;
 
@@ -55,39 +51,35 @@ sudo rvm --default ruby-1.9.2
 sudo rvm gem install redcar heroku vagrant cheat
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Utilitaires à ajouter ou à enlever&lt;/p&gt;
+&lt;p&gt;Utilitaires à ajouter ou à enlever&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install gnome-do gimp terminator
-sudo apt-get install vim ctags vim-doc vim-scripts
-sudo apt-get install desktopnova
-sudo apt-get purge f-spot gbrainy tomboy evolution evolution-common evolution-couchdb evolution-exchange evolution-indicator evolution-plugins evolution-webcal libegroupwise1.2-13
-sudo add-apt-repository ppa:tiheum/equinox
-sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install faenza-icon-theme
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;l&amp;rsquo;obligatoire &lt;a href=&#34;http://www.dropbox.com/downloading?os=lnx&#34;&gt;DropBox&lt;/a&gt; pour synchroniser mes fichiers entre PC&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Les clés ssh&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Ajout des montages NFS&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;installer autofs: sudo apt-get install autofs
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install gnome-do gimp terminator
+    sudo apt-get install vim ctags vim-doc vim-scripts
+    sudo apt-get install desktopnova
+    sudo apt-get purge f-spot gbrainy tomboy evolution evolution-common evolution-couchdb evolution-exchange evolution-indicator evolution-plugins evolution-webcal libegroupwise1.2-13
+    sudo add-apt-repository ppa:tiheum/equinox
+    sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install faenza-icon-theme
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;dans /etc/auto.master&lt;/p&gt;
+&lt;p&gt;l&amp;rsquo;obligatoire &lt;a href=&#34;http://www.dropbox.com/downloading?os=lnx&#34;&gt;DropBox&lt;/a&gt; pour synchroniser mes fichiers entre PC&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;/media/partages /etc/auto.types --ghost,--timeout=30
+&lt;p&gt;Les clés ssh&lt;/p&gt;
+
+&lt;p&gt;Ajout des montages NFS&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    installer autofs: sudo apt-get install autofs
+
+dans /etc/auto.master
+
+    /media/partages /etc/auto.types --ghost,--timeout=30
+
+dans /etc/auto.types
+
+    Documents -fstype=nfs,rw 192.168.1.21:/volume1/documents
+    Musique -fstype=nfs,rw 192.168.1.21:/volume1/music
+    Photos -fstype=nfs,rw 192.168.1.21:/volume1/photo
+    Videos -fstype=nfs,rw 192.168.1.21:/volume1/video
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;dans /etc/auto.types&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Documents -fstype=nfs,rw 192.168.1.21:/volume1/documents
-Musique -fstype=nfs,rw 192.168.1.21:/volume1/music
-Photos -fstype=nfs,rw 192.168.1.21:/volume1/photo
-Videos -fstype=nfs,rw 192.168.1.21:/volume1/video
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
@@ -158,13 +150,10 @@ SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&a
 &lt;p&gt;En bref:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Désactiver superfetch &amp;amp; prefetch&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Activer &lt;code&gt;clearPageFilesAtShutdown&lt;/code&gt; et &lt;code&gt;LargeSystemCache&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Amélioration du cache disque NTFS&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Suppression indexation automatique + hibernation (pour gagner de l&amp;rsquo;espace)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Désactiver superfetch &amp;amp; prefetch&lt;/li&gt;
+&lt;li&gt;Activer &lt;code&gt;clearPageFilesAtShutdown&lt;/code&gt; et &lt;code&gt;LargeSystemCache&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Amélioration du cache disque NTFS&lt;/li&gt;
+&lt;li&gt;Suppression indexation automatique + hibernation (pour gagner de l&amp;rsquo;espace)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Optimisations sous Linux:&lt;/strong&gt;
@@ -174,11 +163,9 @@ SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&a
 &lt;p&gt;En synthèse:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;S&amp;rsquo;assurer d&amp;rsquo;être en noatime&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Utiliser la mémoire vive comme /tmp&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Changer le scheduler disque (prendre noop)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;S&amp;rsquo;assurer d&amp;rsquo;être en noatime&lt;/li&gt;
+&lt;li&gt;Utiliser la mémoire vive comme /tmp&lt;/li&gt;
+&lt;li&gt;Changer le scheduler disque (prendre noop)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Résultat:&lt;/p&gt;
@@ -196,7 +183,7 @@ Timing buffered disk reads:  454 MB in  3.01 seconds = 150.66 MB/sec
       <pubDate>Wed, 19 May 2010 09:51:21 &#43;0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/05/resolutions-et-virtualbox/</guid>
-      <description>&lt;p&gt;Suite à l&amp;rsquo;&lt;a href=&#34;http://blog.zeneffy.fr/2010/05/16/personnaliser-linstallation-de-ubuntu-10-04/&#34;&gt;installation de Ubuntu 10.04 sous VirtualBox&lt;/a&gt;, je me suis un peu battu pour avoir une résolution correcte en mode plein écran (aka 1280x800 sur mon portable).&lt;/p&gt;
+      <description>&lt;p&gt;Suite à l&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2010/05/16/personnaliser-linstallation-de-ubuntu-10-04/&#34;&gt;installation de Ubuntu 10.04 sous VirtualBox&lt;/a&gt;, je me suis un peu battu pour avoir une résolution correcte en mode plein écran (aka 1280x800 sur mon portable).&lt;/p&gt;
 
 &lt;p&gt;Voici ce que j&amp;rsquo;ai trouvé: tout d&amp;rsquo;abord il faut rajouter la résolution nécessaire:&lt;/p&gt;
 
@@ -245,20 +232,18 @@ ln -s .vim/.vimrc
 
 &lt;p&gt;&lt;strong&gt;Un peu de multimédia et d&amp;rsquo;utilitaires&lt;/strong&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Installation du Navigateur Chromium (version open source de Chrome)&lt;/p&gt;
+&lt;p&gt;Installation du Navigateur Chromium (version open source de Chrome)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:chromium-daily/dev
-sudo apt-get update
-sudo apt-get install chromium-browser chromium-browser-l10n
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;    sudo add-apt-repository ppa:chromium-daily/dev
+    sudo apt-get update
+    sudo apt-get install chromium-browser chromium-browser-l10n
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;li&gt;&lt;p&gt;Quelques Indispensables du Dessin, de la Vidéo, et de la Musique + &lt;a href=&#34;http://do.davebsd.com/&#34;&gt;Gnome-Do&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Quelques Indispensables du Dessin, de la Vidéo, et de la Musique + &lt;a href=&#34;http://do.davebsd.com/&#34;&gt;Gnome-Do&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install gimp vlc exaile gnome-do flashplugin-nonfree
-sudo apt-get install sun-java6-jdk
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install gimp vlc exaile gnome-do flashplugin-nonfree
+    sudo apt-get install sun-java6-jdk
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;Installation de Ruby On rails (Framework de développement web)&lt;/strong&gt;
 Tout d&amp;rsquo;abord on installe ruby et de la documentation&lt;/p&gt;
@@ -293,11 +278,9 @@ sudo gem install sqlite3-ruby
 &lt;p&gt;En bonus, quelques gems intéressants&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Cheatsheet automatiques: &lt;code&gt;sudo gem install cheat&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Changement facile des hosts de la machine: &lt;code&gt;sudo gem install ghost&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Partage de snippets de code: &lt;code&gt;sudo gem install gist&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Cheatsheet automatiques: &lt;code&gt;sudo gem install cheat&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Changement facile des hosts de la machine: &lt;code&gt;sudo gem install ghost&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Partage de snippets de code: &lt;code&gt;sudo gem install gist&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

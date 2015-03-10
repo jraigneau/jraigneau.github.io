@@ -96,7 +96,7 @@ run ActionController::Dispatcher.new
 &lt;p&gt;Grand fan de du framework web &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;Sinatra&lt;/a&gt;, j&amp;rsquo;utilise souvent datamapper&amp;hellip;et je tombe souvent dans ses pièges:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Etre vigilant sur les relations 1-n ou n-n et sur l&amp;rsquo;utilisation des objets pour éviter de charger en mémoire des centaines de données inutiles (cela m&amp;rsquo;est arrivé sur Veilleur, voir le &lt;a href=&#34;http://www.zeneffy.fr/post/rtfm&#34;&gt;post correspondant&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Etre vigilant sur les relations 1-n ou n-n et sur l&amp;rsquo;utilisation des objets pour éviter de charger en mémoire des centaines de données inutiles (cela m&amp;rsquo;est arrivé sur Veilleur, voir le &lt;a href=&#34;http://www.zeneffy.fr/2011/03/rtfm&#34;&gt;post correspondant&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Vérifier systématiquement que les données sont bien sauvegardées: par défaut (c&amp;rsquo;est à dire sans l&amp;rsquo;option &lt;code&gt;#DataMapper::Model.raise_on_save_failure = true&lt;/code&gt;), aucun message ne prévient de l&amp;rsquo;erreur&lt;/li&gt;
 &lt;li&gt;Mettre en place un système de pour récupérer les erreurs envoyées par Datamapper via notamment: &lt;code&gt;xx.errors.inspect&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -111,7 +111,7 @@ run ActionController::Dispatcher.new
       <pubDate>Sat, 05 Feb 2011 07:50:50 &#43;0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/application-sinatra-pour-heroku/</guid>
-      <description>&lt;p&gt;Dernièrement je m&amp;rsquo;intéresse au framework de développement  &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; qui est basé sur le langage Ruby (comme Ruby on Rails donc). Sinatra est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Domain-specific_programming_language&#34;&gt;DSL&lt;/a&gt; permettant de développer rapidement et simplement des applications web (un peu comme &lt;a href=&#34;http://webpy.org/&#34;&gt;webpy&lt;/a&gt; que j&amp;rsquo;avais utilisé sur &lt;a href=&#34;http://labs.zeneffy.fr/projets/harpagon/&#34;&gt;Harpagon&lt;/a&gt;).&lt;/p&gt;
+      <description>&lt;p&gt;Dernièrement je m&amp;rsquo;intéresse au framework de développement  &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; qui est basé sur le langage Ruby (comme Ruby on Rails donc). Sinatra est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Domain-specific_programming_language&#34;&gt;DSL&lt;/a&gt; permettant de développer rapidement et simplement des applications web (un peu comme &lt;a href=&#34;http://webpy.org/&#34;&gt;webpy&lt;/a&gt; que j&amp;rsquo;avais utilisé sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Harpagon&lt;/a&gt;).&lt;/p&gt;
 
 &lt;p&gt;Pour déployer des applications sinatra, j&amp;rsquo;ai décidé de continuer à m&amp;rsquo;appuyer sur la plate-forme d&amp;rsquo;hébergement &lt;a href=&#34;http://heroku.com/&#34;&gt;Heroku&lt;/a&gt; - voila les quelques fichiers à mettre en oeuvre pour une application minimale - en activant la supervision &lt;a href=&#34;http://newrelic.com/&#34;&gt;newrelic_rpm&lt;/a&gt;:&lt;/p&gt;
 

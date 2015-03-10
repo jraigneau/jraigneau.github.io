@@ -199,20 +199,18 @@ ln -s .vim/.vimrc
 
 &lt;p&gt;&lt;strong&gt;Un peu de multimédia et d&amp;rsquo;utilitaires&lt;/strong&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Installation du Navigateur Chromium (version open source de Chrome)&lt;/p&gt;
+&lt;p&gt;Installation du Navigateur Chromium (version open source de Chrome)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo add-apt-repository ppa:chromium-daily/dev
-sudo apt-get update
-sudo apt-get install chromium-browser chromium-browser-l10n
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;    sudo add-apt-repository ppa:chromium-daily/dev
+    sudo apt-get update
+    sudo apt-get install chromium-browser chromium-browser-l10n
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;li&gt;&lt;p&gt;Quelques Indispensables du Dessin, de la Vidéo, et de la Musique + &lt;a href=&#34;http://do.davebsd.com/&#34;&gt;Gnome-Do&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Quelques Indispensables du Dessin, de la Vidéo, et de la Musique + &lt;a href=&#34;http://do.davebsd.com/&#34;&gt;Gnome-Do&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install gimp vlc exaile gnome-do flashplugin-nonfree
-sudo apt-get install sun-java6-jdk
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install gimp vlc exaile gnome-do flashplugin-nonfree
+    sudo apt-get install sun-java6-jdk
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;Installation de Ruby On rails (Framework de développement web)&lt;/strong&gt;
 Tout d&amp;rsquo;abord on installe ruby et de la documentation&lt;/p&gt;
@@ -247,11 +245,9 @@ sudo gem install sqlite3-ruby
 &lt;p&gt;En bonus, quelques gems intéressants&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Cheatsheet automatiques: &lt;code&gt;sudo gem install cheat&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Changement facile des hosts de la machine: &lt;code&gt;sudo gem install ghost&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Partage de snippets de code: &lt;code&gt;sudo gem install gist&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Cheatsheet automatiques: &lt;code&gt;sudo gem install cheat&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Changement facile des hosts de la machine: &lt;code&gt;sudo gem install ghost&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Partage de snippets de code: &lt;code&gt;sudo gem install gist&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -265,17 +261,12 @@ sudo gem install sqlite3-ruby
       <description>&lt;p&gt;Quelques liens utiles&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://dancingpenguinsoflight.com/2009/02/python-and-vim-make-your-own-ide/&#34;&gt;python-and-vim-make-your-own-ide&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://dancingpenguinsoflight.com/2009/02/code-navigation-completion-snippets-in-vim/&#34;&gt;code-navigation-completion-snippets-in-vim&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://dancingpenguinsoflight.com/2009/07/light-at-the-end-of-the-carpal-tunnel-snippets-in-vim-with-snipmate/&#34;&gt;light-at-the-end-of-the-carpal-tunnel-snippets-in-vim-with-snipmate&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://akitaonrails.com/2009/01/04/rails-on-vim-in-english&#34;&gt;rails-on-vim-in-english&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://vim.runpaint.org/toc/&#34;&gt;vim.runpaint.org/toc&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://weblog.jamisbuck.org/2008/10/10/coming-home-to-vim&#34;&gt;FuzzyFinder&lt;/a&gt; (utiliser 2.16!!)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://dancingpenguinsoflight.com/2009/02/python-and-vim-make-your-own-ide/&#34;&gt;python-and-vim-make-your-own-ide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://dancingpenguinsoflight.com/2009/02/code-navigation-completion-snippets-in-vim/&#34;&gt;code-navigation-completion-snippets-in-vim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://dancingpenguinsoflight.com/2009/07/light-at-the-end-of-the-carpal-tunnel-snippets-in-vim-with-snipmate/&#34;&gt;light-at-the-end-of-the-carpal-tunnel-snippets-in-vim-with-snipmate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://akitaonrails.com/2009/01/04/rails-on-vim-in-english&#34;&gt;rails-on-vim-in-english&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://vim.runpaint.org/toc/&#34;&gt;vim.runpaint.org/toc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://weblog.jamisbuck.org/2008/10/10/coming-home-to-vim&#34;&gt;FuzzyFinder&lt;/a&gt; (utiliser 2.16!!)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Quelques raccourcis à connaître:&lt;/p&gt;

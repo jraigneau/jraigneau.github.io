@@ -79,7 +79,7 @@ b002 | 2011/09/19 10:24.04 | 40.2KB | SHARED_DATABASE
 &lt;p&gt;Grand fan de du framework web &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;Sinatra&lt;/a&gt;, j&amp;rsquo;utilise souvent datamapper&amp;hellip;et je tombe souvent dans ses pièges:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Etre vigilant sur les relations 1-n ou n-n et sur l&amp;rsquo;utilisation des objets pour éviter de charger en mémoire des centaines de données inutiles (cela m&amp;rsquo;est arrivé sur Veilleur, voir le &lt;a href=&#34;http://www.zeneffy.fr/post/rtfm&#34;&gt;post correspondant&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Etre vigilant sur les relations 1-n ou n-n et sur l&amp;rsquo;utilisation des objets pour éviter de charger en mémoire des centaines de données inutiles (cela m&amp;rsquo;est arrivé sur Veilleur, voir le &lt;a href=&#34;http://www.zeneffy.fr/2011/03/rtfm&#34;&gt;post correspondant&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Vérifier systématiquement que les données sont bien sauvegardées: par défaut (c&amp;rsquo;est à dire sans l&amp;rsquo;option &lt;code&gt;#DataMapper::Model.raise_on_save_failure = true&lt;/code&gt;), aucun message ne prévient de l&amp;rsquo;erreur&lt;/li&gt;
 &lt;li&gt;Mettre en place un système de pour récupérer les erreurs envoyées par Datamapper via notamment: &lt;code&gt;xx.errors.inspect&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -94,9 +94,9 @@ b002 | 2011/09/19 10:24.04 | 40.2KB | SHARED_DATABASE
       <pubDate>Sun, 06 Mar 2011 21:09:06 &#43;0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/03/rtfm/</guid>
-      <description>&lt;p&gt;Dans un &lt;a href=&#34;Google App Engine: une demi-déception&#34;&gt;billet précédent&lt;/a&gt;, je me plaignais de l&amp;rsquo;infrastructure google et en creusant un peu, j&amp;rsquo;ai découvert que mon problème venait de requête d&amp;rsquo;écriture à la base de donnée, qui à la première écriture de chaque session prenait jusqu&amp;rsquo;à 15 secondes.&lt;/p&gt;
+      <description>&lt;p&gt;Dans un &lt;a href=&#34;http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/&#34;&gt;billet précédent&lt;/a&gt;, je me plaignais de l&amp;rsquo;infrastructure google et en creusant un peu, j&amp;rsquo;ai découvert que mon problème venait de requête d&amp;rsquo;écriture à la base de donnée, qui à la première écriture de chaque session prenait jusqu&amp;rsquo;à 15 secondes.&lt;/p&gt;
 
-&lt;p&gt;En regardant de près la documentation de &lt;a href=&#34;http://datamapper.org/&#34;&gt;datamapper&lt;/a&gt;, l&amp;rsquo;ORM utilisé pour &lt;a href=&#34;http://labs.zeneffy.fr/projets/veilleur&#34;&gt;Veilleur&lt;/a&gt;, je me suis rendu que je n&amp;rsquo;utilisais pas correctement les requêtes avec les associations 1-n. En simplifiant, l&amp;rsquo;application récupérait la liste de toutes les valeurs des tests dans la base (1 toute les 10 minutes depuis 15 jours, faites le calcul&amp;hellip;) avant d&amp;rsquo;écrire la nouvelle valeur - ce qui était inutile et surtout gourmant (15secondes !)&lt;/p&gt;
+&lt;p&gt;En regardant de près la documentation de &lt;a href=&#34;http://datamapper.org/&#34;&gt;datamapper&lt;/a&gt;, l&amp;rsquo;ORM utilisé pour &lt;a href=&#34;https://github.com/jraigneau/veilleur&#34;&gt;Veilleur&lt;/a&gt;, je me suis rendu que je n&amp;rsquo;utilisais pas correctement les requêtes avec les associations 1-n. En simplifiant, l&amp;rsquo;application récupérait la liste de toutes les valeurs des tests dans la base (1 toute les 10 minutes depuis 15 jours, faites le calcul&amp;hellip;) avant d&amp;rsquo;écrire la nouvelle valeur - ce qui était inutile et surtout gourmant (15secondes !)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Morale&lt;/strong&gt;: il faut bien lire les manuels et la documentation des frameworks, librairies&amp;hellip;utilisés dans son code.&lt;/p&gt;
 </description>

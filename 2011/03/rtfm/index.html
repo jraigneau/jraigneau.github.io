@@ -43,9 +43,9 @@
     </div>
 	<div class="row">
 		<div class="twelve columns"  align="justify">
-			<p>Dans un <a href="Google App Engine: une demi-déception">billet précédent</a>, je me plaignais de l&rsquo;infrastructure google et en creusant un peu, j&rsquo;ai découvert que mon problème venait de requête d&rsquo;écriture à la base de donnée, qui à la première écriture de chaque session prenait jusqu&rsquo;à 15 secondes.</p>
+			<p>Dans un <a href="/2011/02/google-app-engine-une-emi-deception/">billet précédent</a>, je me plaignais de l&rsquo;infrastructure google et en creusant un peu, j&rsquo;ai découvert que mon problème venait de requête d&rsquo;écriture à la base de donnée, qui à la première écriture de chaque session prenait jusqu&rsquo;à 15 secondes.</p>
 
-<p>En regardant de près la documentation de <a href="http://datamapper.org/">datamapper</a>, l&rsquo;ORM utilisé pour <a href="http://labs.zeneffy.fr/projets/veilleur">Veilleur</a>, je me suis rendu que je n&rsquo;utilisais pas correctement les requêtes avec les associations 1-n. En simplifiant, l&rsquo;application récupérait la liste de toutes les valeurs des tests dans la base (1 toute les 10 minutes depuis 15 jours, faites le calcul&hellip;) avant d&rsquo;écrire la nouvelle valeur - ce qui était inutile et surtout gourmant (15secondes !)</p>
+<p>En regardant de près la documentation de <a href="http://datamapper.org/">datamapper</a>, l&rsquo;ORM utilisé pour <a href="https://github.com/jraigneau/veilleur">Veilleur</a>, je me suis rendu que je n&rsquo;utilisais pas correctement les requêtes avec les associations 1-n. En simplifiant, l&rsquo;application récupérait la liste de toutes les valeurs des tests dans la base (1 toute les 10 minutes depuis 15 jours, faites le calcul&hellip;) avant d&rsquo;écrire la nouvelle valeur - ce qui était inutile et surtout gourmant (15secondes !)</p>
 
 <p><strong>Morale</strong>: il faut bien lire les manuels et la documentation des frameworks, librairies&hellip;utilisés dans son code.</p>
 

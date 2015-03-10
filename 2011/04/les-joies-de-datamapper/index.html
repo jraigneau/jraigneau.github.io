@@ -48,7 +48,7 @@
 <p>Grand fan de du framework web <a href="http://www.sinatrarb.com/">Sinatra</a>, j&rsquo;utilise souvent datamapper&hellip;et je tombe souvent dans ses pièges:</p>
 
 <ol>
-<li>Etre vigilant sur les relations 1-n ou n-n et sur l&rsquo;utilisation des objets pour éviter de charger en mémoire des centaines de données inutiles (cela m&rsquo;est arrivé sur Veilleur, voir le <a href="/post/rtfm">post correspondant</a>.</li>
+<li>Etre vigilant sur les relations 1-n ou n-n et sur l&rsquo;utilisation des objets pour éviter de charger en mémoire des centaines de données inutiles (cela m&rsquo;est arrivé sur Veilleur, voir le <a href="/2011/03/rtfm">post correspondant</a>.</li>
 <li>Vérifier systématiquement que les données sont bien sauvegardées: par défaut (c&rsquo;est à dire sans l&rsquo;option <code>#DataMapper::Model.raise_on_save_failure = true</code>), aucun message ne prévient de l&rsquo;erreur</li>
 <li>Mettre en place un système de pour récupérer les erreurs envoyées par Datamapper via notamment: <code>xx.errors.inspect</code></li>
 </ol>

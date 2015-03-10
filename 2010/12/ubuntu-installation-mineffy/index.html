@@ -45,25 +45,21 @@
 		<div class="twelve columns"  align="justify">
 			<p>Un petit pense-bête sur le <strong>min</strong>imum à réinstaller avant d&rsquo;être <strong>eff</strong>icace avec une nouvelle version d&rsquo;ubuntu</p>
 
-<ul>
-<li><p>Installer<a href="http://doc.ubuntu-fr.org/chromium-browser"> Chromium</a>, le navigateur web:</p>
+<p>Installer <a href="http://doc.ubuntu-fr.org/chromium-browser">Chromium</a>, le navigateur web:</p>
 
-<pre><code>sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg chromium-codecs-ffmpeg-nonfree
-</code></pre></li>
-</ul>
+<pre><code>    sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg chromium-codecs-ffmpeg-nonfree
+</code></pre>
 
 <p>et installer extensions: <a href="https://chrome.google.com/extensions/detail/lnejbeiilmbliffhdepeobjemekgdnok">Gmail</a> et <a href="https://chrome.google.com/extensions/detail/lnejbeiilmbliffhdepeobjemekgdnok">Delici.ous</a></p>
 
-<ul>
-<li><p>Installer le nécessaire pour <a href="http://doc.ubuntu-fr.org/rubyonrails#installation_complete_de_ruby_192_et_rails_30_via_rvm_maverick_meerkat">Ruby et Ruby On Rails via RVM</a></p>
+<p>Installer le nécessaire pour <a href="http://doc.ubuntu-fr.org/rubyonrails#installation_complete_de_ruby_192_et_rails_30_via_rvm_maverick_meerkat">Ruby et Ruby On Rails via RVM</a></p>
 
-<pre><code>sudo apt-get install curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev
-sudo bash &lt; &lt;( curl -L http://bit.ly/rvm-install-system-wide )
-sudo adduser julien rvm
-sudo rvm install 1.9.2
-sudo rvm --default ruby-1.9.2
-</code></pre></li>
-</ul>
+<pre><code>    sudo apt-get install curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev
+    sudo bash &lt; &lt;( curl -L http://bit.ly/rvm-install-system-wide )
+    sudo adduser julien rvm
+    sudo rvm install 1.9.2
+    sudo rvm --default ruby-1.9.2
+</code></pre>
 
 <p>puis modifier <code>.bashrc</code></p>
 
@@ -80,39 +76,35 @@ sudo rvm --default ruby-1.9.2
 sudo rvm gem install redcar heroku vagrant cheat
 </code></pre>
 
-<ul>
-<li><p>Utilitaires à ajouter ou à enlever</p>
+<p>Utilitaires à ajouter ou à enlever</p>
 
-<pre><code>sudo apt-get install gnome-do gimp terminator
-sudo apt-get install vim ctags vim-doc vim-scripts
-sudo apt-get install desktopnova
-sudo apt-get purge f-spot gbrainy tomboy evolution evolution-common evolution-couchdb evolution-exchange evolution-indicator evolution-plugins evolution-webcal libegroupwise1.2-13
-sudo add-apt-repository ppa:tiheum/equinox
-sudo apt-get update &amp;&amp; sudo apt-get install faenza-icon-theme
-</code></pre></li>
-
-<li><p>l&rsquo;obligatoire <a href="http://www.dropbox.com/downloading?os=lnx">DropBox</a> pour synchroniser mes fichiers entre PC</p></li>
-
-<li><p>Les clés ssh</p></li>
-
-<li><p>Ajout des montages NFS</p>
-
-<pre><code>installer autofs: sudo apt-get install autofs
+<pre><code>    sudo apt-get install gnome-do gimp terminator
+    sudo apt-get install vim ctags vim-doc vim-scripts
+    sudo apt-get install desktopnova
+    sudo apt-get purge f-spot gbrainy tomboy evolution evolution-common evolution-couchdb evolution-exchange evolution-indicator evolution-plugins evolution-webcal libegroupwise1.2-13
+    sudo add-apt-repository ppa:tiheum/equinox
+    sudo apt-get update &amp;&amp; sudo apt-get install faenza-icon-theme
 </code></pre>
 
-<p>dans /etc/auto.master</p>
+<p>l&rsquo;obligatoire <a href="http://www.dropbox.com/downloading?os=lnx">DropBox</a> pour synchroniser mes fichiers entre PC</p>
 
-<pre><code>/media/partages /etc/auto.types --ghost,--timeout=30
+<p>Les clés ssh</p>
+
+<p>Ajout des montages NFS</p>
+
+<pre><code>    installer autofs: sudo apt-get install autofs
+
+dans /etc/auto.master
+
+    /media/partages /etc/auto.types --ghost,--timeout=30
+
+dans /etc/auto.types
+
+    Documents -fstype=nfs,rw 192.168.1.21:/volume1/documents
+    Musique -fstype=nfs,rw 192.168.1.21:/volume1/music
+    Photos -fstype=nfs,rw 192.168.1.21:/volume1/photo
+    Videos -fstype=nfs,rw 192.168.1.21:/volume1/video
 </code></pre>
-
-<p>dans /etc/auto.types</p>
-
-<pre><code>Documents -fstype=nfs,rw 192.168.1.21:/volume1/documents
-Musique -fstype=nfs,rw 192.168.1.21:/volume1/music
-Photos -fstype=nfs,rw 192.168.1.21:/volume1/photo
-Videos -fstype=nfs,rw 192.168.1.21:/volume1/video
-</code></pre></li>
-</ul>
 
 		</div>
 	</div>

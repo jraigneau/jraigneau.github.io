@@ -45,34 +45,29 @@
 		<div class="twelve columns"  align="justify">
 			<p>Dans le cadre de l&rsquo;application <a href="http://labs.zeneffy.fr/projets/vauban/">vauban</a> développée via le framework <a href="http://rubyonrails.org/">RubyOnRails</a>, j&rsquo;ai été amené à intégrer <a href="http://www.google.com/analytics/">Google Analytics</a> en 3 étapes très simples:</p>
 
-<ol>
-<li><p>Créer le compte dans Google Analytics pour obtenir un code javascript du type</p>
+<p>Créer le compte dans Google Analytics pour obtenir un code javascript du type</p>
 
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+<pre><code>    &lt;script type=&quot;text/javascript&quot;&gt;
 
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-12194039-4']);
+      _gaq.push(['_trackPageview']);
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-12194039-4']);
-  _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
 
+    &lt;/script&gt;
+</code></pre>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+<p>Créer un &ldquo;partial&rdquo; dans <code>app/views/layouts_ appelé __ga.html.rb</code> et y copier le javascript</p>
 
+<p>Insérer le code dans la balise <code>&lt;head&gt;</code> du fichier <code>app/view/layouts/application.html.erb</code> (pour l&rsquo;avoir sur tout le site - à modifier éventuellement)</p>
 
-&lt;/script&gt;
-</code></pre></li>
-
-<li><p>Créer un &ldquo;partial&rdquo; dans <code>app/views/layouts_ appelé __ga.html.rb</code> et y copier le javascript</p></li>
-
-<li><p>Insérer le code dans la balise <code>&lt;head&gt;</code> du fichier <code>app/view/layouts/application.html.erb</code> (pour l&rsquo;avoir sur tout le site - à modifier éventuellement)</p>
-
-<pre><code>&lt;%= render :partial =&gt; &quot;layouts/ga&quot; if Rails.env.production? %&gt;
-</code></pre></li>
-</ol>
+<pre><code>    &lt;%= render :partial =&gt; &quot;layouts/ga&quot; if Rails.env.production? %&gt;
+</code></pre>
 
 <p>A noter que la condition <code>if Rails.env.production</code> permet de n&rsquo;afficher le code que lorsque l&rsquo;application est en production, ceci afin de ne pas pertuber les statistiques lors du développement.</p>
 

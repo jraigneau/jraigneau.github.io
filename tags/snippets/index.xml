@@ -56,25 +56,21 @@ A noter que l&amp;rsquo;application &lt;a href=&#34;http://winff.org/html_new/&#
       <guid>http://www.zeneffy.fr/2010/12/ubuntu-installation-mineffy/</guid>
       <description>&lt;p&gt;Un petit pense-bête sur le &lt;strong&gt;min&lt;/strong&gt;imum à réinstaller avant d&amp;rsquo;être &lt;strong&gt;eff&lt;/strong&gt;icace avec une nouvelle version d&amp;rsquo;ubuntu&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Installer&lt;a href=&#34;http://doc.ubuntu-fr.org/chromium-browser&#34;&gt; Chromium&lt;/a&gt;, le navigateur web:&lt;/p&gt;
+&lt;p&gt;Installer &lt;a href=&#34;http://doc.ubuntu-fr.org/chromium-browser&#34;&gt;Chromium&lt;/a&gt;, le navigateur web:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg chromium-codecs-ffmpeg-nonfree
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg chromium-codecs-ffmpeg-nonfree
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;et installer extensions: &lt;a href=&#34;https://chrome.google.com/extensions/detail/lnejbeiilmbliffhdepeobjemekgdnok&#34;&gt;Gmail&lt;/a&gt; et &lt;a href=&#34;https://chrome.google.com/extensions/detail/lnejbeiilmbliffhdepeobjemekgdnok&#34;&gt;Delici.ous&lt;/a&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Installer le nécessaire pour &lt;a href=&#34;http://doc.ubuntu-fr.org/rubyonrails#installation_complete_de_ruby_192_et_rails_30_via_rvm_maverick_meerkat&#34;&gt;Ruby et Ruby On Rails via RVM&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Installer le nécessaire pour &lt;a href=&#34;http://doc.ubuntu-fr.org/rubyonrails#installation_complete_de_ruby_192_et_rails_30_via_rvm_maverick_meerkat&#34;&gt;Ruby et Ruby On Rails via RVM&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev
-sudo bash &amp;lt; &amp;lt;( curl -L http://bit.ly/rvm-install-system-wide )
-sudo adduser julien rvm
-sudo rvm install 1.9.2
-sudo rvm --default ruby-1.9.2
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev
+    sudo bash &amp;lt; &amp;lt;( curl -L http://bit.ly/rvm-install-system-wide )
+    sudo adduser julien rvm
+    sudo rvm install 1.9.2
+    sudo rvm --default ruby-1.9.2
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;puis modifier &lt;code&gt;.bashrc&lt;/code&gt;&lt;/p&gt;
 
@@ -91,39 +87,35 @@ sudo rvm --default ruby-1.9.2
 sudo rvm gem install redcar heroku vagrant cheat
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Utilitaires à ajouter ou à enlever&lt;/p&gt;
+&lt;p&gt;Utilitaires à ajouter ou à enlever&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install gnome-do gimp terminator
-sudo apt-get install vim ctags vim-doc vim-scripts
-sudo apt-get install desktopnova
-sudo apt-get purge f-spot gbrainy tomboy evolution evolution-common evolution-couchdb evolution-exchange evolution-indicator evolution-plugins evolution-webcal libegroupwise1.2-13
-sudo add-apt-repository ppa:tiheum/equinox
-sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install faenza-icon-theme
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;l&amp;rsquo;obligatoire &lt;a href=&#34;http://www.dropbox.com/downloading?os=lnx&#34;&gt;DropBox&lt;/a&gt; pour synchroniser mes fichiers entre PC&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Les clés ssh&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Ajout des montages NFS&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;installer autofs: sudo apt-get install autofs
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install gnome-do gimp terminator
+    sudo apt-get install vim ctags vim-doc vim-scripts
+    sudo apt-get install desktopnova
+    sudo apt-get purge f-spot gbrainy tomboy evolution evolution-common evolution-couchdb evolution-exchange evolution-indicator evolution-plugins evolution-webcal libegroupwise1.2-13
+    sudo add-apt-repository ppa:tiheum/equinox
+    sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install faenza-icon-theme
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;dans /etc/auto.master&lt;/p&gt;
+&lt;p&gt;l&amp;rsquo;obligatoire &lt;a href=&#34;http://www.dropbox.com/downloading?os=lnx&#34;&gt;DropBox&lt;/a&gt; pour synchroniser mes fichiers entre PC&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;/media/partages /etc/auto.types --ghost,--timeout=30
+&lt;p&gt;Les clés ssh&lt;/p&gt;
+
+&lt;p&gt;Ajout des montages NFS&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    installer autofs: sudo apt-get install autofs
+
+dans /etc/auto.master
+
+    /media/partages /etc/auto.types --ghost,--timeout=30
+
+dans /etc/auto.types
+
+    Documents -fstype=nfs,rw 192.168.1.21:/volume1/documents
+    Musique -fstype=nfs,rw 192.168.1.21:/volume1/music
+    Photos -fstype=nfs,rw 192.168.1.21:/volume1/photo
+    Videos -fstype=nfs,rw 192.168.1.21:/volume1/video
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;dans /etc/auto.types&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Documents -fstype=nfs,rw 192.168.1.21:/volume1/documents
-Musique -fstype=nfs,rw 192.168.1.21:/volume1/music
-Photos -fstype=nfs,rw 192.168.1.21:/volume1/photo
-Videos -fstype=nfs,rw 192.168.1.21:/volume1/video
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
@@ -178,11 +170,9 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;C&amp;rsquo;est mon premier développement &amp;ldquo;important&amp;rdquo; en Python - il m&amp;rsquo;a permis notamment de voir:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Interface graphique et GTK2 et utilisation de &lt;a href=&#34;http://daniel.coquette.free.fr/dotclear/index.php/post/2006/12/11/Creer-des-interfaces-graphique-avec-PyGTK-et-Glade&#34;&gt;Glade&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Utilisation de la librairie &lt;a href=&#34;http://docs.python.org/lib/module-ftplib.html&#34;&gt;ftplib&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://faq.pygtk.org/index.py?req=show&amp;amp;file=faq20.006.htp&#34;&gt;Mécanique des threads&lt;/a&gt; dans une IHM.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Interface graphique et GTK2 et utilisation de &lt;a href=&#34;http://daniel.coquette.free.fr/dotclear/index.php/post/2006/12/11/Creer-des-interfaces-graphique-avec-PyGTK-et-Glade&#34;&gt;Glade&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Utilisation de la librairie &lt;a href=&#34;http://docs.python.org/lib/module-ftplib.html&#34;&gt;ftplib&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://faq.pygtk.org/index.py?req=show&amp;amp;file=faq20.006.htp&#34;&gt;Mécanique des threads&lt;/a&gt; dans une IHM.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Il reste fortement améliorable, notamment en ce qui concerne la gestion des exceptions (try&amp;hellip;except).&lt;/p&gt;
@@ -459,11 +449,9 @@ if __name__ == &#39;__main__&#39;:
 &lt;p&gt;&lt;strong&gt;Ressources&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://nedbatchelder.com/code/modules/FtpUpload.py&#34;&gt;http://nedbatchelder.com/code/modules/FtpUpload.py&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://effbot.org/librarybook/ftplib.htm&#34;&gt;http://effbot.org/librarybook/ftplib.htm&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://mail.python.org/pipermail/python-list/2003-September/224679.html&#34;&gt;http://mail.python.org/pipermail/python-list/2003-September/224679.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://nedbatchelder.com/code/modules/FtpUpload.py&#34;&gt;http://nedbatchelder.com/code/modules/FtpUpload.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://effbot.org/librarybook/ftplib.htm&#34;&gt;http://effbot.org/librarybook/ftplib.htm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mail.python.org/pipermail/python-list/2003-September/224679.html&#34;&gt;http://mail.python.org/pipermail/python-list/2003-September/224679.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -521,7 +509,7 @@ except:
 
 &lt;p&gt;Il permet par ailleurs de suivre de manière centralisé l&amp;rsquo;avancement de plusieurs projets et gère le concept d&amp;rsquo;archivage.&lt;/p&gt;
 
-&lt;p&gt;Ce projet est entièrement géré via Google Code:&lt;a href=&#34;http://code.google.com/p/pessac/&#34;&gt; http://code.google.com/p/pessac/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ce projet est entièrement géré via &lt;a href=&#34;https://code.google.com/p/pessac/&#34;&gt;Google Code&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
