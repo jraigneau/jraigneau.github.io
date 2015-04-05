@@ -9,16 +9,29 @@
     
     
     
-    <lastBuildDate>Fri, 06 Mar 2015 20:17:05 CET</lastBuildDate>
+    <lastBuildDate>Sat, 04 Apr 2015 20:17:05 &#43;0100</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Premier Post</title>
-      <link>http://www.zeneffy.fr/2015/03/premier-post/</link>
-      <pubDate>Fri, 06 Mar 2015 20:17:05 CET</pubDate>
+      <title>Obiran versus synology</title>
+      <link>http://www.zeneffy.fr/2015/04/obiran-vs-synology/</link>
+      <pubDate>Sat, 04 Apr 2015 20:17:05 &#43;0100</pubDate>
       
-      <guid>http://www.zeneffy.fr/2015/03/premier-post/</guid>
-      <description>&lt;p&gt;Test&lt;/p&gt;
+      <guid>http://www.zeneffy.fr/2015/04/obiran-vs-synology/</guid>
+      <description>&lt;p&gt;Depuis quelques mois, j’ai mis en oeuvre une nouvelle infrastructure chez moi de type &lt;a href=&#34;http://techhead.co/vmware-esxi-home-lab-why-what-and-how-considerations-when-building-your-own-home-lab/&#34;&gt;homelab&lt;/a&gt;, basée sur un petit serveur intel NUC, ESXi et Ubuntu.&lt;/p&gt;
+
+&lt;p&gt;Comme tout bon exploitant avec des tendances &lt;a href=&#34;http://www.zeneffy.fr/tags/devops&#34;&gt;devops&lt;/a&gt;, j’ai rajouté de la supervision avec &lt;a href=&#34;http://newrelic.com/server-monitoring&#34;&gt;NewRelic&lt;/a&gt;, divers scripts de contrôle, un dashboard basé sur &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt;, l’installation automatisée de VM via &lt;a href=&#34;http://www.ansible.com/home&#34;&gt;ansible&lt;/a&gt; et évidemment je me suis ensuite attaqué à la problématique des sauvegardes.&lt;/p&gt;
+
+&lt;p&gt;De nombreuses solutions opensource existent déjà (&lt;a href=&#34;http://www.amanda.org/&#34;&gt;amanda&lt;/a&gt;, &lt;a href=&#34;http://www.baculasystems.com/&#34;&gt;bacula&lt;/a&gt; …) permettant entre autre d’avoir une architecture de type client-serveur. Toutefois, la sauvegarde étant un sujet qui me tient à &lt;a href=&#34;http://www.zeneffy.fr/tags/backup/&#34;&gt;coeur&lt;/a&gt;, j’ai décidé de réutiliser un de mes scripts assez ancien « &lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;obiran&lt;/a&gt; » pour sauvegarder les fichiers importants directement sur mon NAS Synology.&lt;/p&gt;
+
+&lt;p&gt;Mais la mauvaise fée de l’informatique est intervenu d’un coup de baguette numérique rendant impossible de faire fonctionner &lt;code&gt;rsync&lt;/code&gt; entre mes VM et le NAS, avec un message d’erreur peu parlant du type &lt;code&gt;Permission denied, please try again.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Après quelques recherches, la solution semble être d’expliciter le chemin du binaire &lt;code&gt;rsync&lt;/code&gt; côté synology, avec le paramètre &lt;code&gt;—rsync-path=/usr/syno/bin/rsync&lt;/code&gt;. La commande à lancer devient donc:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rsync -azv —rsync-path=/usr/syno/bin/rsync REPERTOIRE_A_SAUVEGARDER -e « ssh -p PORT -i FICHIER-CLEF » USER@SYNOLOGY:REPERTOIRE_DESTINATION
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;J’ai donc mis à jour Obiran avec un nouveau paramètre pour prendre en compte cette spécificité: Obiran est donc passé en version 0.6, sept ans avec la version 0.5 !&lt;/p&gt;
 </description>
     </item>
     

@@ -9,8 +9,31 @@
     
     
     
-    <lastBuildDate>Mon, 19 Sep 2011 17:34:01 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sat, 04 Apr 2015 20:17:05 &#43;0100</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/backup/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Obiran versus synology</title>
+      <link>http://www.zeneffy.fr/2015/04/obiran-vs-synology/</link>
+      <pubDate>Sat, 04 Apr 2015 20:17:05 &#43;0100</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2015/04/obiran-vs-synology/</guid>
+      <description>&lt;p&gt;Depuis quelques mois, j’ai mis en oeuvre une nouvelle infrastructure chez moi de type &lt;a href=&#34;http://techhead.co/vmware-esxi-home-lab-why-what-and-how-considerations-when-building-your-own-home-lab/&#34;&gt;homelab&lt;/a&gt;, basée sur un petit serveur intel NUC, ESXi et Ubuntu.&lt;/p&gt;
+
+&lt;p&gt;Comme tout bon exploitant avec des tendances &lt;a href=&#34;http://www.zeneffy.fr/tags/devops&#34;&gt;devops&lt;/a&gt;, j’ai rajouté de la supervision avec &lt;a href=&#34;http://newrelic.com/server-monitoring&#34;&gt;NewRelic&lt;/a&gt;, divers scripts de contrôle, un dashboard basé sur &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt;, l’installation automatisée de VM via &lt;a href=&#34;http://www.ansible.com/home&#34;&gt;ansible&lt;/a&gt; et évidemment je me suis ensuite attaqué à la problématique des sauvegardes.&lt;/p&gt;
+
+&lt;p&gt;De nombreuses solutions opensource existent déjà (&lt;a href=&#34;http://www.amanda.org/&#34;&gt;amanda&lt;/a&gt;, &lt;a href=&#34;http://www.baculasystems.com/&#34;&gt;bacula&lt;/a&gt; …) permettant entre autre d’avoir une architecture de type client-serveur. Toutefois, la sauvegarde étant un sujet qui me tient à &lt;a href=&#34;http://www.zeneffy.fr/tags/backup/&#34;&gt;coeur&lt;/a&gt;, j’ai décidé de réutiliser un de mes scripts assez ancien « &lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;obiran&lt;/a&gt; » pour sauvegarder les fichiers importants directement sur mon NAS Synology.&lt;/p&gt;
+
+&lt;p&gt;Mais la mauvaise fée de l’informatique est intervenu d’un coup de baguette numérique rendant impossible de faire fonctionner &lt;code&gt;rsync&lt;/code&gt; entre mes VM et le NAS, avec un message d’erreur peu parlant du type &lt;code&gt;Permission denied, please try again.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Après quelques recherches, la solution semble être d’expliciter le chemin du binaire &lt;code&gt;rsync&lt;/code&gt; côté synology, avec le paramètre &lt;code&gt;—rsync-path=/usr/syno/bin/rsync&lt;/code&gt;. La commande à lancer devient donc:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rsync -azv —rsync-path=/usr/syno/bin/rsync REPERTOIRE_A_SAUVEGARDER -e « ssh -p PORT -i FICHIER-CLEF » USER@SYNOLOGY:REPERTOIRE_DESTINATION
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;J’ai donc mis à jour Obiran avec un nouveau paramètre pour prendre en compte cette spécificité: Obiran est donc passé en version 0.6, sept ans avec la version 0.5 !&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Sauvegarder une base de donnée PostgreSQL chez Heroku</title>
@@ -49,6 +72,35 @@ b002 | 2011/09/19 10:24.04 | 40.2KB | SHARED_DATABASE
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Rappelez vous que la sauvegarde reste l&amp;rsquo;un des meilleurs moyens de sécuriser vos données.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SaveMyPrecious - Sauvegardes de fichier</title>
+      <link>http://www.zeneffy.fr/2009/07/savemyprecious-sauvegardes-de-fichier/</link>
+      <pubDate>Sat, 04 Jul 2009 14:45:05 &#43;0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2009/07/savemyprecious-sauvegardes-de-fichier/</guid>
+      <description>&lt;p&gt;SaveMyPrecious remplace &lt;a href=&#34;http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/&#34;&gt;Saise&lt;/a&gt; et permet donc une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;Obiran&lt;/a&gt;, le premier script de sauvegarde que j&amp;rsquo;ai écrit.&lt;/p&gt;
+
+&lt;p&gt;A l&amp;rsquo;inverse de Saise, SaveMyPrecious ne crypte pas les données, mais subit une nette amélioration de l&amp;rsquo;interface graphique.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Dépendances&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Pour faire fonctionner SaveMyPrecious, il vous faut:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SaveMyPrecious&lt;/li&gt;
+&lt;li&gt;rsync&lt;/li&gt;
+&lt;li&gt;ssh&lt;/li&gt;
+&lt;li&gt;libraires python: &lt;a href=&#34;http://roscidus.com/desktop/node/336&#34;&gt;pynotify&lt;/a&gt; et pygtk&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Où trouver SaveMyPrecious ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Le code est disponible en open source &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;sous license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/SaveMyPrecious&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
 </description>
     </item>
     
@@ -173,7 +225,7 @@ if __name__ == &#39;__main__&#39;:
       <pubDate>Sat, 27 Sep 2008 09:23:21 &#43;0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/</guid>
-      <description>&lt;p&gt;SAISE est le digne successeur d&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;Obiran&lt;/a&gt; dont il reprend toutes les fonctionnalités, soit une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, lui-même disponible sur &lt;a href=&#34;http://code.google.com/p/obiran/&#34;&gt;http://code.google.com/p/obiran/&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;SAISE est le digne successeur d&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;Obiran&lt;/a&gt; dont il reprend toutes les fonctionnalités, soit une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, lui-même disponible sur &lt;a href=&#34;https://github.com/jraigneau/obiran&#34;&gt;https://github.com/jraigneau/obiran&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;SAISE apporte toutefois des différences importantes:&lt;/p&gt;
 
@@ -237,7 +289,7 @@ if __name__ == &#39;__main__&#39;:
 
 &lt;p&gt;&lt;strong&gt;Où trouver SAISE ?&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Ce projet est actuellement dans l&amp;rsquo;incubateur sur &lt;a href=&#34;https://code.google.com/p/tifauve-labs/&#34;&gt;Google Code&lt;/a&gt;, et les sources sont gérés via subversion sur &lt;a href=&#34;http://code.google.com/p/tifauve-labs/source/browse/trunk/SAISE&#34;&gt;http://code.google.com/p/tifauve-labs/source/browse/trunk/SAISE&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ce projet est actuellement disponible sur &lt;a href=&#34;https://github.com/jraigneau/saise&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
@@ -311,7 +363,7 @@ if __name__ == &#39;__main__&#39;:
 
 &lt;p&gt;L&amp;rsquo;association de ces deux commandes permet de faire des sauvegardes rapidement et en occupant un minimum de place.&lt;/p&gt;
 
-&lt;p&gt;Ce projet est entièrement géré via Google Code: &lt;a href=&#34;http://code.google.com/p/obiran/&#34;&gt;http://code.google.com/p/obiran/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ce projet est entièrement géré via Github: &lt;a href=&#34;https://github.com/jraigneau/obiran&#34;&gt;https://github.com/jraigneau/obiran&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

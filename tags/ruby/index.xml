@@ -396,7 +396,7 @@ $HTTP[&amp;quot;host&amp;quot;]  =~ &amp;quot;labs.zeneffy.fr&amp;quot; { # nom 
 
 &lt;p&gt;L&amp;rsquo;association de ces deux commandes permet de faire des sauvegardes rapidement et en occupant un minimum de place.&lt;/p&gt;
 
-&lt;p&gt;Ce projet est entièrement géré via Google Code: &lt;a href=&#34;http://code.google.com/p/obiran/&#34;&gt;http://code.google.com/p/obiran/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ce projet est entièrement géré via Github: &lt;a href=&#34;https://github.com/jraigneau/obiran&#34;&gt;https://github.com/jraigneau/obiran&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
