@@ -9,8 +9,92 @@
     
     
     
-    <lastBuildDate>Sat, 04 Apr 2015 20:17:05 &#43;0100</lastBuildDate>
+    <lastBuildDate>Thu, 16 Apr 2015 22:06:42 CEST</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/projets/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Mon datacenter</title>
+      <link>http://www.zeneffy.fr/2015/04/mon-datacenter/</link>
+      <pubDate>Thu, 16 Apr 2015 22:06:42 CEST</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2015/04/mon-datacenter/</guid>
+      <description>
+
+&lt;h4 id=&#34;le-datacenter-à-la-maison-un-rêve-de-geek:ea04fef0779b2df1cb264c6e16c063f6&#34;&gt;le datacenter à la maison : un rêve de geek&lt;/h4&gt;
+
+&lt;p&gt;Ayant acheté une maison l’année dernière avec beaucoup d’espace et surtout un grand garage, j’en ai profité pour réaliser un vieux fantasme de geek : Avoir un endroit dédié pour mon matériel informatique…bref mon propre mini datacenter.&lt;/p&gt;
+
+&lt;p&gt;Derrière ce fantasme, un besoin simple: créer un espace protégé, ventilé et &lt;a href=&#34;http://fr.wikipedia.org/wiki/Facteur_d%27acceptation_f%C3%A9minine&#34;&gt;présentable&lt;/a&gt; pour héberger un NAS Synology, un  mini-serveur NUC, un antenne RFXCom pour la domotique, un hub NetGear et un UPS APC - le tout avec des capacités d’évolution et en respectant certaines règles d’urbanisation. En bonus, un vieux PC avec hauts-parleurs est installé pour me permettre d’écouter de la musique en bricolant ou pour consulter rapidement des infos domotiques.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8708/16972064590_a4f1719aec_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;datacenter1&#34; align=&#34;middle&#34;&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;de-la-récup-et-de-l-huile-de-coude:ea04fef0779b2df1cb264c6e16c063f6&#34;&gt;De la « récup » et de l’huile de coude&lt;/h4&gt;
+
+&lt;p&gt;Après quelques recherches sur internet sur le sujet, j’ai trouvé de nombreux exemples de bricoleurs geek qui ont transformé (ou même créer) des meubles pour cette usage: j’ai donc décidé de me lancer moi aussi en partant d’un petit meuble existant.&lt;/p&gt;
+
+&lt;p&gt;Quatre étapes majeures ont composé la création de ce meuble datacenter:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Créer les aérations et prévoir les circulations d’air&lt;/li&gt;
+&lt;li&gt;Structurer le câblage des courants forts (électricité) et faibles (réseau)&lt;/li&gt;
+&lt;li&gt;Mettre en place le matériel&lt;/li&gt;
+&lt;li&gt;Installer le PC « domotique »&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;une-aération-intelligente:ea04fef0779b2df1cb264c6e16c063f6&#34;&gt;Une aération intelligente&lt;/h4&gt;
+
+&lt;p&gt;Tout d’abord, j’ai percé des ouvertures sur la porte avant, sur l’arrière pour le passage des câbles.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8732/16539846743_53e48f0cb9_n.jpg&#34; width=&#34;320&#34; height=&#34;239&#34; alt=&#34;IMG_0786&#34;&gt;
+&lt;img src=&#34;https://farm8.staticflickr.com/7710/17159850705_0d20c08d1b_n.jpg&#34; width=&#34;239&#34; height=&#34;320&#34; alt=&#34;IMG_0812&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Puis j’ai rajouté une VMC de salle de bain pour assurer extraction d’air optimale, avec un allumage automatique via un &lt;a href=&#34;http://www.amazon.fr/Myfox-TA3010-62592-Module-1000/dp/B0033ZREXU/ref=pd_sim_hi_1?ie=UTF8&amp;amp;refRID=1R4NH6AP9KE53T4K6F7K&#34;&gt;micro-module Chacon&lt;/a&gt; commandé par la box domotique opensource &lt;a href=&#34;http://domoticz.com/&#34;&gt;Domoticz&lt;/a&gt; et basé sur un capteur de température &lt;a href=&#34;http://www.amazon.fr/Oregon-Scientific-THN-D%C3%A9tecteur-temp%C3%A9rature/dp/B000PEDJVI&#34;&gt;Oregon Scientific&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7637/16972282098_f363ed97bb_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;IMG_0818&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Grâce à ce montage, la VMC ne se déclenche que si la température à l’intérieur du DC dépasse les 30°C et s’éteint une fois la température revenue sous les 27°C, tout en m’envoyant des alertes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8701/16539781163_9c69f57da3_c.jpg&#34; width=&#34;800&#34; height=&#34;221&#34; alt=&#34;Domoticz&#34;&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;l-importance-d-optimiser-son-câblage:ea04fef0779b2df1cb264c6e16c063f6&#34;&gt;L’importance d’optimiser son câblage&lt;/h4&gt;
+
+&lt;p&gt;Qui n’a jamais eu de problème de câble qui se mélangent, s’entortillent et se croisent (regardez donc les câbles entre votre télévision, votre box tv et votre lecteur de DVD par exemple!)? Sur un environnement confiné avec à la fois des câbles électriques et des câbles réseau, cela peut devenir l’enfer en cas de modification ou de dépannage.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8765/17159460861_efc4b76ef2_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;IMG_0817&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Aussi j’ai utilisé des accroches de tuyaux de plomberie pour définir des chemins de câbles, en séparant courant faible et courant fort - ce qui m’a permis notamment de changer plusieurs fois des éléments dans le datacenter sans coup férir.&lt;/p&gt;
+
+&lt;h4 id=&#34;organisation-et-remplissage-du-datacenter:ea04fef0779b2df1cb264c6e16c063f6&#34;&gt;Organisation et remplissage du datacenter&lt;/h4&gt;
+
+&lt;p&gt;Avant de remplir, j’ai rajouté des roulettes pour faciliter les manipulations.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7612/17160121785_315be2a776_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;IMG_0785&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Puis, J&amp;rsquo;ai positionné l&amp;rsquo;UPS en bas, le NUC au milieu avec le NAS et pour l&amp;rsquo;instant juste le switch réseau en haut: l&amp;rsquo;idée étant de garder de la place à côté du NUC et du switch pour des évolutions.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7703/16550162503_48d1435116_z.jpg&#34; width=&#34;478&#34; height=&#34;640&#34; alt=&#34;IMG_0001&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Vous noterez le capteur de température pour le déclenchement de la VMC juste au dessus du NUC.&lt;/p&gt;
+
+&lt;h4 id=&#34;un-pc-facile-d-accès:ea04fef0779b2df1cb264c6e16c063f6&#34;&gt;Un PC facile d’accès&lt;/h4&gt;
+
+&lt;p&gt;Avoir un PC dans le garage/atelier peut être pratique pour accéder rapidement à un terminal, vérifier des points sur internet lors du bricolage ou simplement écouter de la musique.&lt;/p&gt;
+
+&lt;p&gt;Pour cela, un peu de récupération avec une planche pour le moniteur et une plaque de métal pour le clavier, le tout fixé au mur au dessus du datacenter pour avoir le réseau et le tour est joué !&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7701/16547925704_5a723568a9_z.jpg&#34; width=&#34;478&#34; height=&#34;640&#34; alt=&#34;IMG_0002&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Ce système permet aussi de positionner le boîtier radio RFXcom en dehors du meuble pour éviter les interférences.&lt;/p&gt;
+
+&lt;h4 id=&#34;résultats:ea04fef0779b2df1cb264c6e16c063f6&#34;&gt;Résultats&lt;/h4&gt;
+
+&lt;p&gt;Les objectifs sont tous atteints, avec finalement peu de moyens engagés (moins de 80€ de matériel) et un résultat très correct.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7613/16984219739_fbf422e7f9_z.jpg&#34; width=&#34;478&#34; height=&#34;640&#34; alt=&#34;IMG_0003&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Je réfléchis maintenant à acheter un mini-PC pas cher pour remplacer le vieux Celeron 1Go qui peine même sous linux.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Obiran versus synology</title>
@@ -384,39 +468,6 @@ production:
 
 &lt;p&gt;&lt;img src=&#34;http://lh4.ggpht.com/_RTJjPWCgPV8/S6y-Z8_UDKI/AAAAAAAAGVI/kLfG6OI0b-4/s800/Capture10.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Harpagon V1.0</title>
-      <link>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</link>
-      <pubDate>Sun, 17 Jan 2010 22:44:21 &#43;0000</pubDate>
-      
-      <guid>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</guid>
-      <description>&lt;p&gt;Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt; et sur &lt;a href=&#34;http://code.google.com/intl/fr/apis/chart/&#34;&gt;Google Chart API&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Fonctionnalités de la 1.0&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Import de données de la BRED&lt;/li&gt;
-&lt;li&gt;Tableau de bord fonctionnel avec stats sur 30j/3mois/Toutes dates&lt;/li&gt;
-&lt;li&gt;Gestion des catégories et des règles de catégorisation&lt;/li&gt;
-&lt;li&gt;Rejoue des règles possibles à tout moment&lt;/li&gt;
-&lt;li&gt;Gestion des transactions&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Captures d&amp;rsquo;écran&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://lh5.ggpht.com/_RTJjPWCgPV8/S4xEfX9PBeI/AAAAAAAAGTo/-bLQndZOZTY/s800/harpagon1.png&#34;&gt;&lt;img src=&#34;http://lh5.ggpht.com/_RTJjPWCgPV8/S4xEfX9PBeI/AAAAAAAAGTo/-bLQndZOZTY/s400/harpagon1.png&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;
-&lt;a href=&#34;http://lh3.ggpht.com/_RTJjPWCgPV8/S4xEfthQ4vI/AAAAAAAAGTs/w1tgq61g684/s800/harpagon2.png&#34;&gt;&lt;img src=&#34;http://lh3.ggpht.com/_RTJjPWCgPV8/S4xEfthQ4vI/AAAAAAAAGTs/w1tgq61g684/s400/harpagon2.png&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Où trouver Harpagon ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Le code est disponible en open source &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;sous license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
 </description>
     </item>
     
