@@ -6,8 +6,96 @@
     <description>Recent content in Projets on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Thu, 16 Apr 2015 22:06:42 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jun 2015 21:31:23 +0200</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/projets/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Premiers pas en domotique</title>
+      <link>http://www.zeneffy.fr/2015/06/premiers-pas-en-domotique/</link>
+      <pubDate>Sat, 20 Jun 2015 21:31:23 +0200</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2015/06/premiers-pas-en-domotique/</guid>
+      <description>
+
+&lt;p&gt;J&amp;rsquo;ai décidé l&amp;rsquo;année dernière de me lancer dans l&amp;rsquo;aventure de la &lt;a href=&#34;http://www.zeneffy.fr/tags/domotique&#34;&gt;domotique&lt;/a&gt;, avec pleins d&amp;rsquo;idées en tête sur la sécurité et la détection, les mesures de température, l&amp;rsquo;optimisation de la consommation de l&amp;rsquo;énergie, le contrôle des lampes et autres, et plus globalement l’automatisation.&lt;/p&gt;
+
+&lt;h4 id=&#34;étude-préalable:3d9212b867547cfb9bedcf14c12268c0&#34;&gt;Étude préalable&lt;/h4&gt;
+
+&lt;p&gt;En m&amp;rsquo;intéressant à ce domaine, j&amp;rsquo;ai découvert d&amp;rsquo;une part sa richesse et d&amp;rsquo;autre part le nombre très important de protocoles, les différentes box domotiques plus ou moins compatibles, les prix (élevés) des différents composants.&lt;/p&gt;
+
+&lt;p&gt;Par ailleurs, ce domaine est à la fois très récent et assez ancien et nécessite des connaissances en électronique, électricité, informatique avec une notion forte d&amp;rsquo;intégration de composants et systèmes entre eux… ce qui rend le sujet d&amp;rsquo;autant plus intéressant.&lt;/p&gt;
+
+&lt;p&gt;J&amp;rsquo;en ai tiré plusieurs postulats et décisions sur la suite des événements.&lt;/p&gt;
+
+&lt;h4 id=&#34;postulats-choix:3d9212b867547cfb9bedcf14c12268c0&#34;&gt;Postulats / Choix&lt;/h4&gt;
+
+&lt;p&gt;Le matériel de contrôle de la bureautique pouvant être envahissant, j&amp;rsquo;ai décidé en premier lieu de me créer &lt;a href=&#34;http://www.zeneffy.fr/2015/04/mon-datacenter/&#34;&gt;mon propre espace&lt;/a&gt; pour le matériel.&lt;/p&gt;
+
+&lt;p&gt;Utilisateur heureux de l’open-source depuis plusieurs années, j&amp;rsquo;ai choisi de faire ma propre box domotique
+open-source en me basant sur l&amp;rsquo;application &lt;a href=&#34;http://domoticz.com/&#34;&gt;domoticz&lt;/a&gt; pour le cœur du système et en rajoutant au fur et à mesure des applications dédiées par fonction (Surveillance, Graph, Ordonnancement).&lt;/p&gt;
+
+&lt;p&gt;Toutes ces applications sont installées sur des machines virtuelles Ubuntu/Linux sur un ESX VMware.
+L&amp;rsquo;ESX est le seul élément non open-source, choisi par rapport à mes expériences professionnelles, mais j&amp;rsquo;aurai pu (dû?) choisir à la place &lt;a href=&#34;http://www.xenproject.org/&#34;&gt;XEN&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Le dernier choix important a été pour moi d&amp;rsquo;isoler complètement la maison: aucun des systèmes domestiques n&amp;rsquo;est accessible de l&amp;rsquo;extérieur afin d&amp;rsquo;éviter tout piratage qui pourrait être particulièrement grave.&lt;/p&gt;
+
+&lt;h4 id=&#34;mesurer-pour-contrôler:3d9212b867547cfb9bedcf14c12268c0&#34;&gt;Mesurer pour contrôler&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Measurement is the first step that leads to control and eventually to improvement. If you can’t measure something, you can’t understand it. If you can’t understand it, you can’t control it. If you can’t control it, you can’t improve it — Dr. H. James Harrington&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Un premier point important de la domotique est la mesure, selon l&amp;rsquo;adage &lt;em&gt;On ne contrôle que ce qu&amp;rsquo;on peut mesurer&lt;/em&gt;. Il faut donc prévoir les capteurs (avec par exemple les mesures de température via des Oregon Scientific THN 132) et surtout l&amp;rsquo;infrastructure de collecte des données.&lt;/p&gt;
+
+&lt;p&gt;Dans mon cas, j&amp;rsquo;ai choisi de mettre en œuvre &lt;a href=&#34;http://emoncms.org/&#34;&gt;emoncms&lt;/a&gt;, qui me permet d&amp;rsquo;agréger l&amp;rsquo;ensemble des données et d&amp;rsquo;en tirer des tableaux de bord très lisibles.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://c1.staticflickr.com/1/461/18397964043_7c43f8dea1.jpg&#34; width=&#34;500&#34; height=&#34;207&#34; alt=&#34;conso Electrique&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Évidemment, ces tableaux de bord ne sont pas accessibles de l&amp;rsquo;extérieur comme définit précédemment: j&amp;rsquo;ai donc mis en œuvre une copie des données temps réel vers l&amp;rsquo;extérieur, via un simple push vers un tableau de bord type &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt; hébergé chez &lt;a href=&#34;http://www.heroku.co&#34;&gt;Heroku&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://c1.staticflickr.com/1/537/18397961713_b644294b27.jpg&#34; width=&#34;500&#34; height=&#34;276&#34; alt=&#34;temperature&#34;&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;intégration-des-systèmes:3d9212b867547cfb9bedcf14c12268c0&#34;&gt;Intégration des systèmes&lt;/h4&gt;
+
+&lt;p&gt;Pour bien gérer &amp;ldquo;l&amp;rsquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/Internet_of_Things&#34;&gt;internet of things&lt;/a&gt;&amp;rdquo; et mixer les services logiciels, les objets connectés, et les différents capteurs, j&amp;rsquo;ai par ailleurs installé &lt;a href=&#34;http://nodered.org/&#34;&gt;node-red&lt;/a&gt;, qui est développé par IBM.&lt;/p&gt;
+
+&lt;p&gt;Node-red permet de créer des workflows entre objet pour les faire interagir entre eux simple, le tout via une IHM web. Ces workflows permettent via un peu de développement très simple en javascript d&amp;rsquo;analyser des flux de données venant de sondes ou de services, de les transformer avant de les renvoyer vers d&amp;rsquo;autres sondes ou services.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://nodered.org/images/node-red-screenshot-sm.png&#34; alt=&#34;nodered&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Ainsi, j&amp;rsquo;ai pu créer des flux pour récupérer les données de la box domotique avant de les envoyer vers emoncms et d&amp;rsquo;en faire des graphiques et des premières analyses.&lt;/p&gt;
+
+&lt;h4 id=&#34;réalisations-actuelles-plutôt-orientées-mesures:3d9212b867547cfb9bedcf14c12268c0&#34;&gt;Réalisations actuelles - plutôt orientées mesures&lt;/h4&gt;
+
+&lt;p&gt;Ces derniers mois, je me suis attaché à mettre en œuvre les différents points de mesure, avec notamment:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mesures de la température dans toutes les pièces de vie (Chambres, Salon) via des sondes &lt;a href=&#34;http://www.amazon.fr/Oregon-Scientific-THN-D%C3%A9tecteur-temp%C3%A9rature/dp/B000PEDJVI&#34;&gt;Oregon Scientific&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Récupération de la consommation électrique directement sur le compteur avec une pince ampérométrique de chez &lt;a href=&#34;http://www.amazon.fr/dp/B006R7E8MG/ref=pe_386181_37038081_TE_3p_dp_1&#34;&gt;OWL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;J&amp;rsquo;ai par ailleurs commencé à installer des caméras intérieures pour la vidéosurveillance, avec &lt;a href=&#34;http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome&#34;&gt;motion&lt;/a&gt; et &lt;a href=&#34;https://github.com/ccrisan/motioneye&#34;&gt;motioneye&lt;/a&gt; pour gérer les détections et l&amp;rsquo;enregistrement des films. Ces films sont enregistrés à la fois en local et sur une DropBox dédiée en cas de coupure (ou disparition du disque dur&amp;hellip;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/ccrisan/motioneye/wiki/images/desktop-view.png&#34; width=&#34;500&#34; height=&#34;276&#34; alt=&#34;motioneye&#34;&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;réalisations-à-venir-ou-qui-reste-à-étudier:3d9212b867547cfb9bedcf14c12268c0&#34;&gt;Réalisations à venir ou qui reste à étudier&lt;/h4&gt;
+
+&lt;p&gt;Le champ des possibles de la domotique est impressionnant et j&amp;rsquo;imagine par exemple mettre en œuvre d&amp;rsquo;autres activités comme:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Contrôle automatique des lumières du jardin selon l&amp;rsquo;heure de la journée.&lt;/li&gt;
+&lt;li&gt;Mise en œuvre d&amp;rsquo;un contrôle vocal type &lt;a href=&#34;http://blog.encausse.net/s-a-r-a-h/&#34;&gt;S.A.R.A.H&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Extension de la vidéo surveillance à l&amp;rsquo;extérieure, avec déclenchement d&amp;rsquo;actions suite à des événements&lt;/li&gt;
+&lt;li&gt;Mesure de l&amp;rsquo;humidité dans la salle de douche pour allumer/éteindre la VMC&lt;/li&gt;
+&lt;li&gt;Contrôle des radiateurs via boutons électroniques&lt;/li&gt;
+&lt;li&gt;Détection des lumières laissées allumées par les enfants&lt;/li&gt;
+&lt;li&gt;Automatisation des fermetures de volets&lt;/li&gt;
+&lt;li&gt;envoi d&amp;rsquo;information via SMS&lt;/li&gt;
+&lt;li&gt;&amp;hellip;.
+Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Mon datacenter</title>
@@ -399,72 +487,6 @@ production:
 &lt;p&gt;Le code est disponible en open source sous &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Ma petite histoire du web</title>
-      <link>http://www.zeneffy.fr/2010/03/ma-petite-histoire-du-web/</link>
-      <pubDate>Mon, 01 Mar 2010 13:43:15 +0000</pubDate>
-      
-      <guid>http://www.zeneffy.fr/2010/03/ma-petite-histoire-du-web/</guid>
-      <description>&lt;p&gt;10 ans de web déjà - avec presque autant de sites web, de concept et de technologie !&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1999-2001: Pages statiques et javascript hébergées en école d&amp;rsquo;ingénieur&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://picasaweb.google.com/lh/photo/cht5j07YQH4Qv4U9IhkLcg?authkey=Gv1sRgCLPK3uvvsa_BJQ&amp;amp;feat=directlink&#34;&gt;&lt;img src=&#34;http://lh6.ggpht.com/_RTJjPWCgPV8/S5z03-AWWJI/AAAAAAAAGUI/17Zd3DW1sW8/s800/Capture2.png&#34; alt=&#34;&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2001-2002: La troisième version, hébergée chez free: une interface avec des CSS et encore du javascript (la V2 semble avoir disparu!) sur l&amp;rsquo;url julien.ht.st&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://lh4.ggpht.com/_RTJjPWCgPV8/S5z04Hq3AdI/AAAAAAAAGUM/fntS00g3exI/s800/Capture3.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2002-2003: Première version dynamique, mélangeant XML et PHP&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://lh6.ggpht.com/_RTJjPWCgPV8/S5z04XockLI/AAAAAAAAGUQ/AIXNFhnTuAo/s800/Capture4.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2003-2005: Première version de blog, basée sur mon propre moteur &amp;ldquo;tiwelo&amp;rdquo; avec l&amp;rsquo;url tifauve.net&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://lh5.ggpht.com/_RTJjPWCgPV8/S5z04ZIHtiI/AAAAAAAAGUU/crA_hrh7DJY/s800/Capture6.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2004-2006: Passage sous dotclear&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://lh5.ggpht.com/_RTJjPWCgPV8/S5z04lJevaI/AAAAAAAAGUY/wJW86pN6MVc/s800/Capture7.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2006-2008: Passage du blog sous wordpress&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://lh4.ggpht.com/_RTJjPWCgPV8/S5z0-4poKjI/AAAAAAAAGUc/z52mx09NL-E/s800/Capture8.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2008-2009: Abandon du blog pour mettre en place un wiki (mediawiki) à la place&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://lh5.ggpht.com/_RTJjPWCgPV8/S5z0_M94t_I/AAAAAAAAGUg/QBYovwQ4EK4/s800/Capture9.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2010: Retour du blog, cette fois sur blog.zeneffy.fr et toujours sous wordpress&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://lh4.ggpht.com/_RTJjPWCgPV8/S6y-Z8_UDKI/AAAAAAAAGVI/kLfG6OI0b-4/s800/Capture10.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
 </description>
     </item>
     
