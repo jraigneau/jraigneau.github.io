@@ -6,16 +6,13 @@
     <description>Recent content in Node.Js on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Sun, 22 Jan 2012 15:41:38 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Jan 2012 15:41:38 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/node.js/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Utiliser les versions 0.6.x de Nodejs sur Heroku</title>
       <link>http://www.zeneffy.fr/2012/01/utiliser-les-versions-0-6-x-de-nodejs-sur-heroku/</link>
-      <pubDate>Sun, 22 Jan 2012 15:41:38 &#43;0000</pubDate>
+      <pubDate>Sun, 22 Jan 2012 15:41:38 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2012/01/utiliser-les-versions-0-6-x-de-nodejs-sur-heroku/</guid>
       <description>&lt;p&gt;L&amp;rsquo;hébergeur &lt;a href=&#34;http://heroku.com&#34;&gt;heroku&lt;/a&gt; permet de mettre en place des applications &lt;a href=&#34;http://nodejs.org/&#34;&gt;nodejs&lt;/a&gt; depuis l&amp;rsquo;année dernière, toutefois par défaut la version est la 0.4.7 - version stable mais qui est devenue obsolète avec l&amp;rsquo;apparition des versions 0.6.x.&lt;/p&gt;
@@ -67,7 +64,7 @@ git push heroku master
     <item>
       <title>Instant de bonheur: une application complète node.js</title>
       <link>http://www.zeneffy.fr/2011/12/instant-de-bonheur-une-application-complete-node-js/</link>
-      <pubDate>Tue, 27 Dec 2011 12:08:26 &#43;0000</pubDate>
+      <pubDate>Tue, 27 Dec 2011 12:08:26 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/12/instant-de-bonheur-une-application-complete-node-js/</guid>
       <description>&lt;p&gt;M&amp;rsquo;intéressant depuis quelques temps à &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; (framework web basé sur le moteur javascript V8 de chrome), j&amp;rsquo;avais décidé de réaliser une petite application pour tester et me faire une opinion sur l&amp;rsquo;utilisation du javascript côté serveur - par un hasard extraordinaire j&amp;rsquo;ai eu l&amp;rsquo;occasion de trouver une idée et de la réaliser lors d&amp;rsquo;une formation, par ailleurs sans aucun rapport.&lt;/p&gt;
@@ -83,7 +80,7 @@ git push heroku master
     <item>
       <title>Node.js/Express sur heroku</title>
       <link>http://www.zeneffy.fr/2011/06/node-jsexpress-sur-heroku/</link>
-      <pubDate>Mon, 27 Jun 2011 20:30:26 &#43;0000</pubDate>
+      <pubDate>Mon, 27 Jun 2011 20:30:26 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/06/node-jsexpress-sur-heroku/</guid>
       <description>&lt;p&gt;Je suis en train de tester &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; ces derniers jours, et notamment le &lt;a href=&#34;http://expressjs.com/&#34;&gt;framework web Express&lt;/a&gt; - Fan de l&amp;rsquo;hébergeur &lt;a href=&#34;http://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;, d&amp;rsquo;autant plus depuis qu&amp;rsquo;il est possible d&amp;rsquo;avoir des applications &lt;a href=&#34;http://blog.heroku.com/archives/2011/5/31/celadon_cedar/&#34;&gt;node.js&lt;/a&gt; (entre autres), j&amp;rsquo;ai souhaité installer une application de test en suivant &lt;a href=&#34;http://pcoding.blogspot.com/2011/06/hebergement-nodejs-avec-heroku-celadon.html&#34;&gt;ce tutorial&lt;/a&gt; - et tout n&amp;rsquo;a pas fonctionné du premier coup :(&lt;/p&gt;
@@ -121,7 +118,7 @@ app.listen(port, function(){
     <item>
       <title>npm, le gestionnaire de package de node.js</title>
       <link>http://www.zeneffy.fr/2011/06/npm-le-gestionnaire-de-package-de-node-js/</link>
-      <pubDate>Sun, 19 Jun 2011 06:54:20 &#43;0000</pubDate>
+      <pubDate>Sun, 19 Jun 2011 06:54:20 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/06/npm-le-gestionnaire-de-package-de-node-js/</guid>
       <description>&lt;p&gt;Je suis en train de me documenter et de tester &lt;a href=&#34;http://nodejs.org&#34;&gt;node.js&lt;/a&gt;, un framework pour construire des applications réseaux (type serveur web, chat&amp;hellip;), basé d&amp;rsquo;une part sur le moteur &lt;a href=&#34;http://code.google.com/p/v8/&#34;&gt;javascript V8&lt;/a&gt; et conçu d&amp;rsquo;autre part pour être complètement asynchrone afin de gérer au mieux la concurrence.&lt;/p&gt;
@@ -157,7 +154,7 @@ app.listen(port, function(){
     <item>
       <title>Pow &amp; Radiant</title>
       <link>http://www.zeneffy.fr/2011/06/pow-radiant/</link>
-      <pubDate>Tue, 14 Jun 2011 20:51:30 &#43;0000</pubDate>
+      <pubDate>Tue, 14 Jun 2011 20:51:30 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/06/pow-radiant/</guid>
       <description>&lt;p&gt;J&amp;rsquo;ai découvert dernièrement le serveur de développement &lt;a href=&#34;http://pow.cx/&#34;&gt;Pow&lt;/a&gt; qui permet très simplement de mettre en place un serveur Rack (pour les applications Ruby comme &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; ou &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Rails&lt;/a&gt;) sur un Mac sans aucune configuration.&lt;/p&gt;

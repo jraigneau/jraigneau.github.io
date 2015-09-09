@@ -6,16 +6,13 @@
     <description>Recent content in Sinatra on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Sat, 15 Oct 2011 08:21:18 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Oct 2011 08:21:18 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/sinatra/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Scala sur Heroku</title>
       <link>http://www.zeneffy.fr/2011/10/scala-sur-heroku/</link>
-      <pubDate>Sat, 15 Oct 2011 08:21:18 &#43;0000</pubDate>
+      <pubDate>Sat, 15 Oct 2011 08:21:18 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/10/scala-sur-heroku/</guid>
       <description>&lt;p&gt;En plein apprentissage de scala, j&amp;rsquo;ai décidé de m&amp;rsquo;intéresser au framework web &lt;a href=&#34;http://www.scalatra.org/&#34;&gt;Scalatra&lt;/a&gt; qui ressemble à &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;Sinatra&lt;/a&gt;, mon environnement favori en Ruby. Evidemment, je souhaite pouvoir partager rapidement mes &amp;lsquo;créations&amp;rsquo; en les hébergeant sur la plate-forme &lt;a href=&#34;http://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;, devenue &lt;a href=&#34;http://blog.heroku.com/archives/2011/8/3/polyglot_platform/&#34;&gt;polyglotte&lt;/a&gt; depuis quelques semaines en supportant d&amp;rsquo;autres langages que Ruby (notamment node.js, Java, Clojure, Scala et Python).&lt;/p&gt;
@@ -41,7 +38,7 @@ heroku open
     <item>
       <title>Pow &amp; Radiant</title>
       <link>http://www.zeneffy.fr/2011/06/pow-radiant/</link>
-      <pubDate>Tue, 14 Jun 2011 20:51:30 &#43;0000</pubDate>
+      <pubDate>Tue, 14 Jun 2011 20:51:30 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/06/pow-radiant/</guid>
       <description>&lt;p&gt;J&amp;rsquo;ai découvert dernièrement le serveur de développement &lt;a href=&#34;http://pow.cx/&#34;&gt;Pow&lt;/a&gt; qui permet très simplement de mettre en place un serveur Rack (pour les applications Ruby comme &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; ou &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Rails&lt;/a&gt;) sur un Mac sans aucune configuration.&lt;/p&gt;
@@ -66,7 +63,7 @@ run ActionController::Dispatcher.new
     <item>
       <title>Nouvelle application ZenRunnin&#39;</title>
       <link>http://www.zeneffy.fr/2011/06/nouvelle-application-zenrunnin/</link>
-      <pubDate>Sat, 11 Jun 2011 12:40:09 &#43;0000</pubDate>
+      <pubDate>Sat, 11 Jun 2011 12:40:09 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/06/nouvelle-application-zenrunnin/</guid>
       <description>&lt;p&gt;Coureur amateur, je me suis acheté à Noël une montre Polar pour mesurer mes performances (temps, distance&amp;hellip;) - j&amp;rsquo;ai commencé à utiliser le logiciel fourni (polarpersonaltrainer), sans être convaincu par son ergonomie ou ses fonctionnalités.&lt;/p&gt;
@@ -88,7 +85,7 @@ run ActionController::Dispatcher.new
     <item>
       <title>Les joies de datamapper</title>
       <link>http://www.zeneffy.fr/2011/04/les-joies-de-datamapper/</link>
-      <pubDate>Sun, 24 Apr 2011 18:55:40 &#43;0000</pubDate>
+      <pubDate>Sun, 24 Apr 2011 18:55:40 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/04/les-joies-de-datamapper/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://datamapper.org/&#34;&gt;Datamapper&lt;/a&gt; est un ORM (&lt;a href=&#34;http://en.wikipedia.org/wiki/Object-relational_mapping&#34;&gt;Object Relational Mapper&lt;/a&gt;) écrit en ruby et permettant de lier facilement Ruby à n&amp;rsquo;importe quelle base de données (mysql, postgresql&amp;hellip;).&lt;/p&gt;
@@ -108,7 +105,7 @@ run ActionController::Dispatcher.new
     <item>
       <title>Application Sinatra pour Heroku</title>
       <link>http://www.zeneffy.fr/2011/02/application-sinatra-pour-heroku/</link>
-      <pubDate>Sat, 05 Feb 2011 07:50:50 &#43;0000</pubDate>
+      <pubDate>Sat, 05 Feb 2011 07:50:50 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/application-sinatra-pour-heroku/</guid>
       <description>&lt;p&gt;Dernièrement je m&amp;rsquo;intéresse au framework de développement  &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; qui est basé sur le langage Ruby (comme Ruby on Rails donc). Sinatra est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Domain-specific_programming_language&#34;&gt;DSL&lt;/a&gt; permettant de développer rapidement et simplement des applications web (un peu comme &lt;a href=&#34;http://webpy.org/&#34;&gt;webpy&lt;/a&gt; que j&amp;rsquo;avais utilisé sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Harpagon&lt;/a&gt;).&lt;/p&gt;

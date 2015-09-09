@@ -6,16 +6,13 @@
     <description>Recent content in Scala on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Sun, 30 Oct 2011 09:37:51 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Oct 2011 09:37:51 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/scala/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Démarrer avec Play! Framework, scala et MongoDB sur Heroku</title>
       <link>http://www.zeneffy.fr/2011/10/demarrer-avec-play-framework-scala-et-mongodb-sur-heroku/</link>
-      <pubDate>Sun, 30 Oct 2011 09:37:51 &#43;0000</pubDate>
+      <pubDate>Sun, 30 Oct 2011 09:37:51 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/10/demarrer-avec-play-framework-scala-et-mongodb-sur-heroku/</guid>
       <description>&lt;p&gt;J&amp;rsquo;ai découvert &lt;a href=&#34;http://www.playframework.org/&#34;&gt;Play! Framework&lt;/a&gt; il y a quelques mois avec beaucoup d&amp;rsquo;intérêt et je me suis rendu compte qu&amp;rsquo;un module &lt;a href=&#34;http://scala.playframework.org/&#34;&gt;scala&lt;/a&gt; existait. Voici donc un premier petit projet qui permet à la fois d&amp;rsquo;installer Play! (1.2.3) mais aussi d&amp;rsquo;utiliser MongoDB sur Heroku en quelques étapes:&lt;/p&gt;
@@ -151,14 +148,14 @@ heroku open
 
 &lt;p&gt;Ce petit tutoriel peut (doit) être complété avec le &lt;a href=&#34;http://scala.playframework.org/documentation/scala-0.9.1/home&#34;&gt;tutoriel officiel disponible sur le site de Play&lt;/a&gt;, en attendant vous pourrez jouer avec mon application sur &lt;a href=&#34;http://glowing-fog-2793.herokuapp.com/&#34;&gt;http://glowing-fog-2793.herokuapp.com/&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Tutoriel basé en partie sur &lt;a href=&#34;http://jaredrosoff.com/2011/05/getting-started-with-play-framework-scala-and-casbah/&#34;&gt;http://jaredrosoff.com/&lt;sup&gt;2011&lt;/sup&gt;&amp;frasl;&lt;sub&gt;05&lt;/sub&gt;/getting-started-with-play-framework-scala-and-casbah/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Tutoriel basé en partie sur &lt;a href=&#34;http://jaredrosoff.com/2011/05/getting-started-with-play-framework-scala-and-casbah/&#34;&gt;http://jaredrosoff.com/2011/05/getting-started-with-play-framework-scala-and-casbah/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Scala sur Heroku</title>
       <link>http://www.zeneffy.fr/2011/10/scala-sur-heroku/</link>
-      <pubDate>Sat, 15 Oct 2011 08:21:18 &#43;0000</pubDate>
+      <pubDate>Sat, 15 Oct 2011 08:21:18 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/10/scala-sur-heroku/</guid>
       <description>&lt;p&gt;En plein apprentissage de scala, j&amp;rsquo;ai décidé de m&amp;rsquo;intéresser au framework web &lt;a href=&#34;http://www.scalatra.org/&#34;&gt;Scalatra&lt;/a&gt; qui ressemble à &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;Sinatra&lt;/a&gt;, mon environnement favori en Ruby. Evidemment, je souhaite pouvoir partager rapidement mes &amp;lsquo;créations&amp;rsquo; en les hébergeant sur la plate-forme &lt;a href=&#34;http://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;, devenue &lt;a href=&#34;http://blog.heroku.com/archives/2011/8/3/polyglot_platform/&#34;&gt;polyglotte&lt;/a&gt; depuis quelques semaines en supportant d&amp;rsquo;autres langages que Ruby (notamment node.js, Java, Clojure, Scala et Python).&lt;/p&gt;
@@ -184,7 +181,7 @@ heroku open
     <item>
       <title>En avant pour Scala avec Vim</title>
       <link>http://www.zeneffy.fr/2011/10/en-avant-pour-scala-avec-vim/</link>
-      <pubDate>Sun, 02 Oct 2011 10:31:59 &#43;0000</pubDate>
+      <pubDate>Sun, 02 Oct 2011 10:31:59 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/10/en-avant-pour-scala-avec-vim/</guid>
       <description>&lt;p&gt;Après quelques années de développement avec mes deux langages favoris &lt;a href=&#34;http://blog.zeneffy.fr/tag/python/&#34;&gt;Python&lt;/a&gt; et de &lt;a href=&#34;http://blog.zeneffy.fr/tag/ruby/&#34;&gt;Ruby&lt;/a&gt;, j&amp;rsquo;ai décidé de me lancer dans un nouveau langage basé sur la &lt;a href=&#34;http://fr.wikipedia.org/wiki/JVM_(informatique&#34;&gt;JVM&lt;/a&gt;) (donc pas de Java pur, j&amp;rsquo;ai déjà donné!). Après avoir étudié &lt;a href=&#34;http://clojure.org/&#34;&gt;Clojure&lt;/a&gt; et &lt;a href=&#34;http://www.scala-lang.org/&#34;&gt;Scala&lt;/a&gt;, j&amp;rsquo;ai décidé de me concentrer sur Scala qui me semble plus naturel et qui mélange les paradigmes &amp;ldquo;Orienté-Objet&amp;rdquo; et &amp;ldquo;programmation fonctionnelle&amp;rdquo; - Clojure pour sa part est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Lisp&#34;&gt;lisp&lt;/a&gt; qui semble très puissant mais moins accessible pour un développeur moyen et dilettante comme moi.&lt;/p&gt;

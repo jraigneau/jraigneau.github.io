@@ -6,16 +6,13 @@
     <description>Recent content in Rubyonrails on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Tue, 03 Jul 2012 13:07:41 &#43;0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Jul 2012 13:07:41 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/rubyonrails/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Dans combien de jours ?</title>
       <link>http://www.zeneffy.fr/2012/07/dans-combien-de-jours/</link>
-      <pubDate>Tue, 03 Jul 2012 13:07:41 &#43;0000</pubDate>
+      <pubDate>Tue, 03 Jul 2012 13:07:41 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2012/07/dans-combien-de-jours/</guid>
       <description>&lt;p&gt;Mon fils compte très souvent les jours restants avant chaque événement (Mariages, entrée au CP, Vacances…) et chaque jour demande donc &lt;em&gt;&amp;ldquo;Dans combien de jours c&amp;rsquo;est xxx&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
@@ -35,7 +32,7 @@
     <item>
       <title>Haml on Rails</title>
       <link>http://www.zeneffy.fr/2011/07/haml-on-rails/</link>
-      <pubDate>Tue, 12 Jul 2011 19:30:54 &#43;0000</pubDate>
+      <pubDate>Tue, 12 Jul 2011 19:30:54 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/07/haml-on-rails/</guid>
       <description>&lt;p&gt;Pour utiliser &lt;a href=&#34;http://haml-lang.com/&#34;&gt;haml&lt;/a&gt; avec &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails 3.x&lt;/a&gt;, il suffit d&amp;rsquo;ajouter dans le fichier &lt;code&gt;GemFile&lt;/code&gt;&lt;/p&gt;
@@ -59,7 +56,7 @@ end
     <item>
       <title>Pow &amp; Radiant</title>
       <link>http://www.zeneffy.fr/2011/06/pow-radiant/</link>
-      <pubDate>Tue, 14 Jun 2011 20:51:30 &#43;0000</pubDate>
+      <pubDate>Tue, 14 Jun 2011 20:51:30 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/06/pow-radiant/</guid>
       <description>&lt;p&gt;J&amp;rsquo;ai découvert dernièrement le serveur de développement &lt;a href=&#34;http://pow.cx/&#34;&gt;Pow&lt;/a&gt; qui permet très simplement de mettre en place un serveur Rack (pour les applications Ruby comme &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; ou &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Rails&lt;/a&gt;) sur un Mac sans aucune configuration.&lt;/p&gt;
@@ -84,7 +81,7 @@ run ActionController::Dispatcher.new
     <item>
       <title>Installer Radiant CMS sous heroku</title>
       <link>http://www.zeneffy.fr/2011/04/installer-radiant-cms-sous-heroku/</link>
-      <pubDate>Wed, 13 Apr 2011 11:09:20 &#43;0000</pubDate>
+      <pubDate>Wed, 13 Apr 2011 11:09:20 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/04/installer-radiant-cms-sous-heroku/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://radiantcms.org/&#34;&gt;RadiantCMS&lt;/a&gt; est un gestionnaire de contenus simple basé sur le framework &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;RubyOnRails&lt;/a&gt;, permettant de mettre en place facilement des sites relativement complexes, notamment grâce à son langage de tags (Radius).&lt;/p&gt;
@@ -155,7 +152,7 @@ git push heroku master
     <item>
       <title>Application Sinatra pour Heroku</title>
       <link>http://www.zeneffy.fr/2011/02/application-sinatra-pour-heroku/</link>
-      <pubDate>Sat, 05 Feb 2011 07:50:50 &#43;0000</pubDate>
+      <pubDate>Sat, 05 Feb 2011 07:50:50 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/application-sinatra-pour-heroku/</guid>
       <description>&lt;p&gt;Dernièrement je m&amp;rsquo;intéresse au framework de développement  &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; qui est basé sur le langage Ruby (comme Ruby on Rails donc). Sinatra est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Domain-specific_programming_language&#34;&gt;DSL&lt;/a&gt; permettant de développer rapidement et simplement des applications web (un peu comme &lt;a href=&#34;http://webpy.org/&#34;&gt;webpy&lt;/a&gt; que j&amp;rsquo;avais utilisé sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Harpagon&lt;/a&gt;).&lt;/p&gt;
@@ -217,7 +214,7 @@ production:
     <item>
       <title>Google Analytics dans une application Ruby On Rails</title>
       <link>http://www.zeneffy.fr/2010/10/google-analytics-dans-une-application-ruby-on-rails/</link>
-      <pubDate>Thu, 21 Oct 2010 13:48:55 &#43;0000</pubDate>
+      <pubDate>Thu, 21 Oct 2010 13:48:55 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/10/google-analytics-dans-une-application-ruby-on-rails/</guid>
       <description>&lt;p&gt;Dans le cadre de l&amp;rsquo;application &lt;a href=&#34;http://labs.zeneffy.fr/projets/vauban/&#34;&gt;vauban&lt;/a&gt; développée via le framework &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;RubyOnRails&lt;/a&gt;, j&amp;rsquo;ai été amené à intégrer &lt;a href=&#34;http://www.google.com/analytics/&#34;&gt;Google Analytics&lt;/a&gt; en 3 étapes très simples:&lt;/p&gt;
@@ -257,7 +254,7 @@ production:
     <item>
       <title>Migration de Zeneffy Labs</title>
       <link>http://www.zeneffy.fr/2010/04/migration-de-zeneffy-labs/</link>
-      <pubDate>Sat, 24 Apr 2010 13:36:29 &#43;0000</pubDate>
+      <pubDate>Sat, 24 Apr 2010 13:36:29 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/04/migration-de-zeneffy-labs/</guid>
       <description>&lt;p&gt;Hier, j&amp;rsquo;ai migré &lt;a href=&#34;http://labs.zeneffy.fr/&#34;&gt;Zeneffy Labs&lt;/a&gt; de &lt;a href=&#34;http://www.redmine.org/&#34;&gt;Redmine&lt;/a&gt; vers le couple&lt;a href=&#34;http://radiantcms.org/&#34;&gt; Radiant CMS&lt;/a&gt; / &lt;a href=&#34;github.com/jraigneau&#34;&gt;GitHub&lt;/a&gt;. En effet Redmine était un peu trop conséquent pour mes besoins et prenait trop de ressources sur mon serveur.  Mon choix s&amp;rsquo;est alors porté d&amp;rsquo;une part sur Radiant CMS pour servir de mini wiki  et d&amp;rsquo;autre part sur GitHub pour les dépôts de code.&lt;/p&gt;
@@ -273,7 +270,7 @@ production:
     <item>
       <title>Redécouverte de Ruby On Rails</title>
       <link>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</link>
-      <pubDate>Wed, 14 Apr 2010 14:00:33 &#43;0000</pubDate>
+      <pubDate>Wed, 14 Apr 2010 14:00:33 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</guid>
       <description>&lt;p&gt;Suite à des recherches sur les frameworks web du moment (python: &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt;, &lt;a href=&#34;http://turbogears.org/&#34;&gt;Turbogears&lt;/a&gt;, &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt;, scala: &lt;a href=&#34;http://liftweb.net/&#34;&gt;lift&lt;/a&gt;, java: &lt;a href=&#34;http://www.playframework.org/&#34;&gt;play!&lt;/a&gt;), je me suis réintéressé à l&amp;rsquo;un des premiers frameworks que j&amp;rsquo;avais utilisé (2003 / 2004 &amp;hellip;): &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt;.&lt;/p&gt;
@@ -287,7 +284,7 @@ production:
     <item>
       <title>Installer Redmine sur lighttpd</title>
       <link>http://www.zeneffy.fr/2010/03/installer-redmine-sur-lighttpd/</link>
-      <pubDate>Fri, 26 Mar 2010 15:19:22 &#43;0000</pubDate>
+      <pubDate>Fri, 26 Mar 2010 15:19:22 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/03/installer-redmine-sur-lighttpd/</guid>
       <description>&lt;p&gt;J&amp;rsquo;utilise actuellement le serveur web &lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;lighttpd&lt;/a&gt; sur mon serveur personnel, ce qui nécessite un peu de paramétrage différent de Apache. Ainsi pour faire fonctionner &lt;a href=&#34;http://www.redmine.org/&#34;&gt;Redmine&lt;/a&gt; (Application Ruby on Rails de gestion de projet), j&amp;rsquo;ai utilisé cette configuration:&lt;/p&gt;

@@ -6,16 +6,13 @@
     <description>Recent content in Google on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Sun, 06 Mar 2011 21:09:06 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sun, 06 Mar 2011 21:09:06 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/google/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>RTFM !!!</title>
       <link>http://www.zeneffy.fr/2011/03/rtfm/</link>
-      <pubDate>Sun, 06 Mar 2011 21:09:06 &#43;0000</pubDate>
+      <pubDate>Sun, 06 Mar 2011 21:09:06 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/03/rtfm/</guid>
       <description>&lt;p&gt;Dans un &lt;a href=&#34;http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/&#34;&gt;billet précédent&lt;/a&gt;, je me plaignais de l&amp;rsquo;infrastructure google et en creusant un peu, j&amp;rsquo;ai découvert que mon problème venait de requête d&amp;rsquo;écriture à la base de donnée, qui à la première écriture de chaque session prenait jusqu&amp;rsquo;à 15 secondes.&lt;/p&gt;
@@ -29,7 +26,7 @@
     <item>
       <title>Google App Engine: une demie déception</title>
       <link>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</link>
-      <pubDate>Fri, 25 Feb 2011 22:47:37 &#43;0000</pubDate>
+      <pubDate>Fri, 25 Feb 2011 22:47:37 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</guid>
       <description>&lt;p&gt;Dans le cadre de ma petite application de surveillance de site web, &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;veilleur&lt;/a&gt;, j&amp;rsquo;ai &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;utilisé l&amp;rsquo;infrastructure Google App Engine&lt;/a&gt; pour héberger code &amp;amp; base de donnée. Le résultat au bout de 2 semaines est assez peu concluant- du moins pour la version &amp;ldquo;Free&amp;rdquo;:&lt;/p&gt;
@@ -47,7 +44,7 @@
     <item>
       <title>Veilleur: une application de surveillance des sites web</title>
       <link>http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/</link>
-      <pubDate>Sun, 13 Feb 2011 19:20:45 &#43;0000</pubDate>
+      <pubDate>Sun, 13 Feb 2011 19:20:45 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/</guid>
       <description>&lt;p&gt;Abonné depuis plusieurs mois à plusieurs services de monitoring de sites web (notamment &lt;a href=&#34;http://www.pingdom.com&#34;&gt;pingdom&lt;/a&gt;), j&amp;rsquo;ai décidé de me faire mon propre service en profitant de l&amp;rsquo;architecture de &lt;a href=&#34;http://code.google.com/intl/fr-FR/appengine/&#34;&gt;Google App Engine&lt;/a&gt;.&lt;/p&gt;
@@ -65,7 +62,7 @@
     <item>
       <title>Google Analytics dans une application Ruby On Rails</title>
       <link>http://www.zeneffy.fr/2010/10/google-analytics-dans-une-application-ruby-on-rails/</link>
-      <pubDate>Thu, 21 Oct 2010 13:48:55 &#43;0000</pubDate>
+      <pubDate>Thu, 21 Oct 2010 13:48:55 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/10/google-analytics-dans-une-application-ruby-on-rails/</guid>
       <description>&lt;p&gt;Dans le cadre de l&amp;rsquo;application &lt;a href=&#34;http://labs.zeneffy.fr/projets/vauban/&#34;&gt;vauban&lt;/a&gt; développée via le framework &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;RubyOnRails&lt;/a&gt;, j&amp;rsquo;ai été amené à intégrer &lt;a href=&#34;http://www.google.com/analytics/&#34;&gt;Google Analytics&lt;/a&gt; en 3 étapes très simples:&lt;/p&gt;
@@ -105,7 +102,7 @@
     <item>
       <title>Supprimer tous les albums d&#39;un compte picasa web</title>
       <link>http://www.zeneffy.fr/2010/03/supprimer-tous-les-albums-dun-compte-picasa-web/</link>
-      <pubDate>Mon, 01 Mar 2010 14:18:22 &#43;0000</pubDate>
+      <pubDate>Mon, 01 Mar 2010 14:18:22 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/03/supprimer-tous-les-albums-dun-compte-picasa-web/</guid>
       <description>&lt;p&gt;Un petit script pour supprimer en une seule opération tous les albums d&amp;rsquo;un compte picasa web - à utiliser avec modération !&lt;/p&gt;
@@ -145,7 +142,7 @@ if __name__ == &#39;__main__&#39;:
     <item>
       <title>Harpagon V1.0</title>
       <link>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</link>
-      <pubDate>Sun, 17 Jan 2010 22:44:21 &#43;0000</pubDate>
+      <pubDate>Sun, 17 Jan 2010 22:44:21 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</guid>
       <description>&lt;p&gt;Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt; et sur &lt;a href=&#34;http://code.google.com/intl/fr/apis/chart/&#34;&gt;Google Chart API&lt;/a&gt;.&lt;/p&gt;

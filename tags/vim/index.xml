@@ -6,16 +6,13 @@
     <description>Recent content in Vim on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Sun, 02 Oct 2011 10:31:59 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Oct 2011 10:31:59 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>En avant pour Scala avec Vim</title>
       <link>http://www.zeneffy.fr/2011/10/en-avant-pour-scala-avec-vim/</link>
-      <pubDate>Sun, 02 Oct 2011 10:31:59 &#43;0000</pubDate>
+      <pubDate>Sun, 02 Oct 2011 10:31:59 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/10/en-avant-pour-scala-avec-vim/</guid>
       <description>&lt;p&gt;Après quelques années de développement avec mes deux langages favoris &lt;a href=&#34;http://blog.zeneffy.fr/tag/python/&#34;&gt;Python&lt;/a&gt; et de &lt;a href=&#34;http://blog.zeneffy.fr/tag/ruby/&#34;&gt;Ruby&lt;/a&gt;, j&amp;rsquo;ai décidé de me lancer dans un nouveau langage basé sur la &lt;a href=&#34;http://fr.wikipedia.org/wiki/JVM_(informatique&#34;&gt;JVM&lt;/a&gt;) (donc pas de Java pur, j&amp;rsquo;ai déjà donné!). Après avoir étudié &lt;a href=&#34;http://clojure.org/&#34;&gt;Clojure&lt;/a&gt; et &lt;a href=&#34;http://www.scala-lang.org/&#34;&gt;Scala&lt;/a&gt;, j&amp;rsquo;ai décidé de me concentrer sur Scala qui me semble plus naturel et qui mélange les paradigmes &amp;ldquo;Orienté-Objet&amp;rdquo; et &amp;ldquo;programmation fonctionnelle&amp;rdquo; - Clojure pour sa part est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Lisp&#34;&gt;lisp&lt;/a&gt; qui semble très puissant mais moins accessible pour un développeur moyen et dilettante comme moi.&lt;/p&gt;
@@ -102,7 +99,7 @@ let s:known_types.scala = type_scala
     <item>
       <title>MacVim, Command-T et RVM</title>
       <link>http://www.zeneffy.fr/2011/09/macvim-command-t-et-rvm/</link>
-      <pubDate>Sun, 04 Sep 2011 18:55:28 &#43;0000</pubDate>
+      <pubDate>Sun, 04 Sep 2011 18:55:28 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/09/macvim-command-t-et-rvm/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/macvim/&#34;&gt;MacVim&lt;/a&gt; (une forme de l&amp;rsquo;éditeur VIM adaptée à MacOS) est mon éditeur de prédilection actuellement malgré de nombreux autres essais (entre autres: &lt;a href=&#34;http://macromates.com/&#34;&gt;Textmate&lt;/a&gt;, &lt;a href=&#34;http://kodapp.com/&#34;&gt;Kod&lt;/a&gt;, &lt;a href=&#34;http://www.sublimetext.com/&#34;&gt;Sublime Text&lt;/a&gt;).&lt;/p&gt;
@@ -143,7 +140,7 @@ make
     <item>
       <title>Environnement de développement Mac</title>
       <link>http://www.zeneffy.fr/2011/03/dev-mac/</link>
-      <pubDate>Fri, 04 Mar 2011 10:25:03 &#43;0000</pubDate>
+      <pubDate>Fri, 04 Mar 2011 10:25:03 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/03/dev-mac/</guid>
       <description>&lt;p&gt;Je suis l&amp;rsquo;heureux possesseur d&amp;rsquo;un MacBook Air 13&amp;rdquo; depuis quelques jours, et j&amp;rsquo;ai commencé à installer mon environnement de développement habituel.&lt;/p&gt;
@@ -157,7 +154,7 @@ make
 &lt;p&gt;puis configuration de MacVim:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://blog.danielfischer.com/2010/11/19/a-starting-guide-to-vim-from-textmate/&#34;&gt;http://blog.danielfischer.com/&lt;sup&gt;2010&lt;/sup&gt;&amp;frasl;&lt;sub&gt;11&lt;/sub&gt;/19/a-starting-guide-to-vim-from-textmate/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.danielfischer.com/2010/11/19/a-starting-guide-to-vim-from-textmate/&#34;&gt;http://blog.danielfischer.com/2010/11/19/a-starting-guide-to-vim-from-textmate/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/carlhuda/janus&#34;&gt;https://github.com/carlhuda/janus&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://net.tutsplus.com/articles/general/top-10-pitfalls-when-switching-to-vim/&#34;&gt;http://net.tutsplus.com/articles/general/top-10-pitfalls-when-switching-to-vim/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -169,7 +166,7 @@ make
     <item>
       <title>Personnaliser l&#39;installation de Ubuntu 10.04</title>
       <link>http://www.zeneffy.fr/2010/05/personnaliser-linstallation-de-ubuntu-10-04/</link>
-      <pubDate>Sun, 16 May 2010 12:04:00 &#43;0000</pubDate>
+      <pubDate>Sun, 16 May 2010 12:04:00 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/05/personnaliser-linstallation-de-ubuntu-10-04/</guid>
       <description>&lt;p&gt;Suite à la sortie de Ubuntu 10.04, je me suis décidé à l&amp;rsquo;installer en machine virtuelle (&lt;a href=&#34;http://www.virtualbox.org/&#34;&gt;VirtualBox&lt;/a&gt;) sur mon portable pro, tout s&amp;rsquo;est très bien passé et voici quelques tuning complémentaires:&lt;/p&gt;
@@ -255,7 +252,7 @@ sudo gem install sqlite3-ruby
     <item>
       <title>Ma configuration de Vim</title>
       <link>http://www.zeneffy.fr/2010/03/ma-configuration-de-vim/</link>
-      <pubDate>Sun, 21 Mar 2010 18:11:55 &#43;0000</pubDate>
+      <pubDate>Sun, 21 Mar 2010 18:11:55 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/03/ma-configuration-de-vim/</guid>
       <description>&lt;p&gt;Quelques liens utiles&lt;/p&gt;

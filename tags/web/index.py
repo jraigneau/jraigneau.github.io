@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
 		<meta charset="utf-8">
-		<title>Premier Post</title>
+		<title>Web.Py</title>
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,52 +35,32 @@
 	<div class="container" style="padding-top:110px">
 
 
+	<div class="row">
+		<h2 style="font-weight: 700;"><span style="color: red;">3</span> notes avec le mot-clef <span style="color: red;">#Web.Py</span></h2>
+		<div class="twelve columns">
+		
+    	
+			<div class="row">
+				<div class="twelve columns">
+					<a class="post-title-link" href="http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/">#Redécouverte de Ruby On Rails</a>
+				</div>
+			</div>
+		
+			<div class="row">
+				<div class="twelve columns">
+					<a class="post-title-link" href="http://www.zeneffy.fr/2010/03/harpagon-la-version-1-1-pingre-est-enfin-sortie/">#Harpagon: la version 1.1 &#34;Pingre&#34; est enfin sortie</a>
+				</div>
+			</div>
+		
+			<div class="row">
+				<div class="twelve columns">
+					<a class="post-title-link" href="http://www.zeneffy.fr/2010/01/harpagon-v1-0/">#Harpagon V1.0</a>
+				</div>
+			</div>
+		
+		</div>
+	</div>
 
-	<div class="row">
-    	<div class="twelve columns">
-    		<h1>Premier Post</h1>
-    	</div>
-    </div>
-	<div class="row">
-		<div class="twelve columns"  align="justify">
-			<p>Test</p>
-
-		</div>
-	</div>
-	
-	<div class="row" style="border-top: 1px solid #eee; ">
-		<div class="twelve columns" style="background-color:white; color: black;">
-				<span class="post-postedby">Date de publication: 06/03/2015</span>
-		</div>
-		<div class="twelve columns" style="background-color:white; color: black;">
-			<span class="post-postedby">Mots-clefs: </span>
-				
-				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/projets" class="tags-link">#projets</a>
-				
-		</div>
-	</div>
-	
-	<br/><br/>
-	<div class="row">
-		<div class="six columns" style="text-align: left;">
-	        
-	        &nbsp;
-	        
-		</div>
-		<div class="six columns" style="text-align: right;">
-        
-        <a href="http://www.zeneffy.fr/2012/10/labs-zeneffy-fr-change-de-cremerie/" style="text-decoration: none;">Plus Ancien <span aria-hidden="true">&rarr;</span></a>
-        
-		</div>
-	</div>
-	
-    
-	
-	<div class="row">
-        <div class="twelve columns">
-            &nbsp;
-        </div>
-    </div>
 
       </div>
 	  
@@ -120,6 +100,8 @@
 			  	  	    <a href="/tags/macos" class="tags-link-footer">#macos</a>
 			  	  	  	  
 			  	  	    <a href="/tags/management" class="tags-link-footer">#management</a>
+			  	  	  	  
+			  	  	    <a href="/tags/mes-projets" class="tags-link-footer">#mes-projets</a>
 			  	  	  	  
 			  	  	    <a href="/tags/mono" class="tags-link-footer">#mono</a>
 			  	  	  	  
@@ -165,7 +147,16 @@
   <script>
     hljs.initHighlightingOnLoad();
   </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-12194039-8', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 </body>
 </html>

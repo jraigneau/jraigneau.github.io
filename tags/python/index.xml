@@ -6,16 +6,13 @@
     <description>Recent content in Python on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Fri, 11 Mar 2011 17:10:17 &#43;0000</lastBuildDate>
+    <lastBuildDate>Fri, 11 Mar 2011 17:10:17 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Scripter MacOS</title>
       <link>http://www.zeneffy.fr/2011/03/scripter-macos/</link>
-      <pubDate>Fri, 11 Mar 2011 17:10:17 &#43;0000</pubDate>
+      <pubDate>Fri, 11 Mar 2011 17:10:17 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/03/scripter-macos/</guid>
       <description>&lt;p&gt;Dans ma très récente période Ubuntu/Linux, j&amp;rsquo;avais rédigé un petit script en python qui vérifiait régulièrement la présence de nouveaux fichiers dans un répertoire FTP - ce script étant basé sur GTK, il était nécessaire de le changer pour notamment utiliser &lt;a href=&#34;http://growl.info/&#34;&gt;Growl&lt;/a&gt;, le système de notification disponible dans MacOS.&lt;/p&gt;
@@ -93,7 +90,7 @@ except:
     <item>
       <title>Redécouverte de Ruby On Rails</title>
       <link>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</link>
-      <pubDate>Wed, 14 Apr 2010 14:00:33 &#43;0000</pubDate>
+      <pubDate>Wed, 14 Apr 2010 14:00:33 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</guid>
       <description>&lt;p&gt;Suite à des recherches sur les frameworks web du moment (python: &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt;, &lt;a href=&#34;http://turbogears.org/&#34;&gt;Turbogears&lt;/a&gt;, &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt;, scala: &lt;a href=&#34;http://liftweb.net/&#34;&gt;lift&lt;/a&gt;, java: &lt;a href=&#34;http://www.playframework.org/&#34;&gt;play!&lt;/a&gt;), je me suis réintéressé à l&amp;rsquo;un des premiers frameworks que j&amp;rsquo;avais utilisé (2003 / 2004 &amp;hellip;): &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt;.&lt;/p&gt;
@@ -107,7 +104,7 @@ except:
     <item>
       <title>Harpagon: la version 1.1 &#34;Pingre&#34; est enfin sortie</title>
       <link>http://www.zeneffy.fr/2010/03/harpagon-la-version-1-1-pingre-est-enfin-sortie/</link>
-      <pubDate>Sun, 07 Mar 2010 15:19:56 &#43;0000</pubDate>
+      <pubDate>Sun, 07 Mar 2010 15:19:56 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/03/harpagon-la-version-1-1-pingre-est-enfin-sortie/</guid>
       <description>&lt;p&gt;Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt; et sur &lt;a href=&#34;http://code.google.com/intl/fr/apis/chart/&#34;&gt;Google Chart API&lt;/a&gt;.&lt;/p&gt;
@@ -139,7 +136,7 @@ except:
     <item>
       <title>Supprimer tous les albums d&#39;un compte picasa web</title>
       <link>http://www.zeneffy.fr/2010/03/supprimer-tous-les-albums-dun-compte-picasa-web/</link>
-      <pubDate>Mon, 01 Mar 2010 14:18:22 &#43;0000</pubDate>
+      <pubDate>Mon, 01 Mar 2010 14:18:22 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/03/supprimer-tous-les-albums-dun-compte-picasa-web/</guid>
       <description>&lt;p&gt;Un petit script pour supprimer en une seule opération tous les albums d&amp;rsquo;un compte picasa web - à utiliser avec modération !&lt;/p&gt;
@@ -179,7 +176,7 @@ if __name__ == &#39;__main__&#39;:
     <item>
       <title>Harpagon V1.0</title>
       <link>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</link>
-      <pubDate>Sun, 17 Jan 2010 22:44:21 &#43;0000</pubDate>
+      <pubDate>Sun, 17 Jan 2010 22:44:21 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</guid>
       <description>&lt;p&gt;Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt; et sur &lt;a href=&#34;http://code.google.com/intl/fr/apis/chart/&#34;&gt;Google Chart API&lt;/a&gt;.&lt;/p&gt;
@@ -212,7 +209,7 @@ if __name__ == &#39;__main__&#39;:
     <item>
       <title>SaveMyPrecious - Sauvegardes de fichier</title>
       <link>http://www.zeneffy.fr/2009/07/savemyprecious-sauvegardes-de-fichier/</link>
-      <pubDate>Sat, 04 Jul 2009 14:45:05 &#43;0000</pubDate>
+      <pubDate>Sat, 04 Jul 2009 14:45:05 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2009/07/savemyprecious-sauvegardes-de-fichier/</guid>
       <description>&lt;p&gt;SaveMyPrecious remplace &lt;a href=&#34;http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/&#34;&gt;Saise&lt;/a&gt; et permet donc une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;Obiran&lt;/a&gt;, le premier script de sauvegarde que j&amp;rsquo;ai écrit.&lt;/p&gt;
@@ -241,7 +238,7 @@ if __name__ == &#39;__main__&#39;:
     <item>
       <title>iPieuvre - Aggrégateur de contenus multimédia</title>
       <link>http://www.zeneffy.fr/2009/06/ipieuvre-aggregateur-de-contenus-multimedia/</link>
-      <pubDate>Tue, 09 Jun 2009 09:40:36 &#43;0000</pubDate>
+      <pubDate>Tue, 09 Jun 2009 09:40:36 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2009/06/ipieuvre-aggregateur-de-contenus-multimedia/</guid>
       <description>&lt;p&gt;&lt;strong&gt;iPieuvre&lt;/strong&gt; permet d&amp;rsquo;aggréger des contenus personnels hébergés sur PicasaWeb et sur YouTube (prochainement) via l&amp;rsquo;&lt;a href=&#34;http://code.google.com/intl/fr/apis/gdata/overview.html&#34;&gt;API Google Data&lt;/a&gt;.&lt;/p&gt;
@@ -267,7 +264,7 @@ if __name__ == &#39;__main__&#39;:
     <item>
       <title>Gestion d&#39;urgence de l&#39;énergie</title>
       <link>http://www.zeneffy.fr/2009/03/gestion-durgence-de-lenergie/</link>
-      <pubDate>Thu, 26 Mar 2009 10:41:00 &#43;0000</pubDate>
+      <pubDate>Thu, 26 Mar 2009 10:41:00 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2009/03/gestion-durgence-de-lenergie/</guid>
       <description>&lt;p&gt;J&amp;rsquo;utilise un portable comme serveur, notamment pour diminuer consommation et bruit, mais cela a un autre avantage: la batterie du portable qui peut servir &amp;ldquo;d&amp;rsquo;onduleur&amp;rdquo; en cas de perte de courant.&lt;/p&gt;
@@ -382,7 +379,7 @@ if __name__ == &#39;__main__&#39;:
     <item>
       <title>Catanyste</title>
       <link>http://www.zeneffy.fr/2009/02/catanyste/</link>
-      <pubDate>Sun, 01 Feb 2009 09:33:18 &#43;0000</pubDate>
+      <pubDate>Sun, 01 Feb 2009 09:33:18 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2009/02/catanyste/</guid>
       <description>&lt;p&gt;&lt;em&gt;Stratégies, Optimisations et IA pour le jeu de plateau les Colons de Catane&lt;/em&gt;&lt;/p&gt;
@@ -401,7 +398,7 @@ if __name__ == &#39;__main__&#39;:
     <item>
       <title>SAISE - Sauvegarde Incrémentale Sécurisée</title>
       <link>http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/</link>
-      <pubDate>Sat, 27 Sep 2008 09:23:21 &#43;0000</pubDate>
+      <pubDate>Sat, 27 Sep 2008 09:23:21 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/</guid>
       <description>&lt;p&gt;SAISE est le digne successeur d&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;Obiran&lt;/a&gt; dont il reprend toutes les fonctionnalités, soit une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, lui-même disponible sur &lt;a href=&#34;https://github.com/jraigneau/obiran&#34;&gt;https://github.com/jraigneau/obiran&lt;/a&gt;.&lt;/p&gt;
@@ -475,7 +472,7 @@ if __name__ == &#39;__main__&#39;:
     <item>
       <title>Photo2Web</title>
       <link>http://www.zeneffy.fr/2008/05/photo2web/</link>
-      <pubDate>Mon, 26 May 2008 20:19:39 &#43;0000</pubDate>
+      <pubDate>Mon, 26 May 2008 20:19:39 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2008/05/photo2web/</guid>
       <description>&lt;p&gt;Ce script écrit Python permet d&amp;rsquo;envoyer des photos extraites via &lt;a href=&#34;http://picasa.google.fr/&#34;&gt;Picasa&lt;/a&gt; sur un site FTP, le tout avec une interface graphique GTK2.&lt;/p&gt;
@@ -772,7 +769,7 @@ if __name__ == &#39;__main__&#39;:
     <item>
       <title>CheckMyFTP</title>
       <link>http://www.zeneffy.fr/2008/05/checkmyftp/</link>
-      <pubDate>Mon, 19 May 2008 19:41:51 &#43;0000</pubDate>
+      <pubDate>Mon, 19 May 2008 19:41:51 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2008/05/checkmyftp/</guid>
       <description>&lt;p&gt;Ce script simple vérifie s&amp;rsquo;il y a du contenu sur un site FTP et dans ce cas affiche une image. Ce script est le préambule à &lt;a href=&#34;http://blog.zeneffy.fr/2008/05/photo2web/&#34;&gt;Photo2Web&lt;/a&gt; avec GUI et utilisation de ftplib.&lt;/p&gt;

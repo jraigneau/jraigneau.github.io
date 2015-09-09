@@ -6,16 +6,13 @@
     <description>Recent content in Snippets on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Sat, 05 Feb 2011 13:31:25 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 Feb 2011 13:31:25 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/snippets/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Créer une nouvelle application sous heroku</title>
       <link>http://www.zeneffy.fr/2011/02/creer-une-nouvelle-application-sous-heroku/</link>
-      <pubDate>Sat, 05 Feb 2011 13:31:25 &#43;0000</pubDate>
+      <pubDate>Sat, 05 Feb 2011 13:31:25 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/creer-une-nouvelle-application-sous-heroku/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Aide-Mémoire&lt;/strong&gt;: Pour créer rapidement une nouvelle application sur heroku&lt;/p&gt;
@@ -33,7 +30,7 @@ heroku addons:add newrelic:bronze
     <item>
       <title>Convertir en masse des vidéos</title>
       <link>http://www.zeneffy.fr/2011/02/convertir-en-masse-des-videos/</link>
-      <pubDate>Sat, 05 Feb 2011 07:33:43 &#43;0000</pubDate>
+      <pubDate>Sat, 05 Feb 2011 07:33:43 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/convertir-en-masse-des-videos/</guid>
       <description>&lt;p&gt;Pour rendre disponible des films sur ma télévision &lt;a href=&#34;http://www.erenumerique.fr/televiseur_sony_kdl40w5500_la_qualite_au_meilleur_prix-art-2302-1.html&#34;&gt;Sony&lt;/a&gt; via mon &lt;a href=&#34;http://www.synology.com/enu/products/DS211j/index.php&#34;&gt;NAS Synology&lt;/a&gt;, j&amp;rsquo;ai été obligé de transformer mes vidéos du format AVI au format MPG pour être lisible via &lt;a href=&#34;http://fr.wikipedia.org/wiki/Digital_Living_Network_Alliance&#34;&gt;DLNA&lt;/a&gt;.&lt;/p&gt;
@@ -51,7 +48,7 @@ A noter que l&amp;rsquo;application &lt;a href=&#34;http://winff.org/html_new/&#
     <item>
       <title>Ubuntu: Installation &#34;mineffy&#34;</title>
       <link>http://www.zeneffy.fr/2010/12/ubuntu-installation-mineffy/</link>
-      <pubDate>Sun, 19 Dec 2010 10:26:48 &#43;0000</pubDate>
+      <pubDate>Sun, 19 Dec 2010 10:26:48 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/12/ubuntu-installation-mineffy/</guid>
       <description>&lt;p&gt;Un petit pense-bête sur le &lt;strong&gt;min&lt;/strong&gt;imum à réinstaller avant d&amp;rsquo;être &lt;strong&gt;eff&lt;/strong&gt;icace avec une nouvelle version d&amp;rsquo;ubuntu&lt;/p&gt;
@@ -122,7 +119,7 @@ dans /etc/auto.types
     <item>
       <title>Supprimer tous les albums d&#39;un compte picasa web</title>
       <link>http://www.zeneffy.fr/2010/03/supprimer-tous-les-albums-dun-compte-picasa-web/</link>
-      <pubDate>Mon, 01 Mar 2010 14:18:22 &#43;0000</pubDate>
+      <pubDate>Mon, 01 Mar 2010 14:18:22 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/03/supprimer-tous-les-albums-dun-compte-picasa-web/</guid>
       <description>&lt;p&gt;Un petit script pour supprimer en une seule opération tous les albums d&amp;rsquo;un compte picasa web - à utiliser avec modération !&lt;/p&gt;
@@ -162,7 +159,7 @@ if __name__ == &#39;__main__&#39;:
     <item>
       <title>Photo2Web</title>
       <link>http://www.zeneffy.fr/2008/05/photo2web/</link>
-      <pubDate>Mon, 26 May 2008 20:19:39 &#43;0000</pubDate>
+      <pubDate>Mon, 26 May 2008 20:19:39 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2008/05/photo2web/</guid>
       <description>&lt;p&gt;Ce script écrit Python permet d&amp;rsquo;envoyer des photos extraites via &lt;a href=&#34;http://picasa.google.fr/&#34;&gt;Picasa&lt;/a&gt; sur un site FTP, le tout avec une interface graphique GTK2.&lt;/p&gt;
@@ -459,7 +456,7 @@ if __name__ == &#39;__main__&#39;:
     <item>
       <title>CheckMyFTP</title>
       <link>http://www.zeneffy.fr/2008/05/checkmyftp/</link>
-      <pubDate>Mon, 19 May 2008 19:41:51 &#43;0000</pubDate>
+      <pubDate>Mon, 19 May 2008 19:41:51 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2008/05/checkmyftp/</guid>
       <description>&lt;p&gt;Ce script simple vérifie s&amp;rsquo;il y a du contenu sur un site FTP et dans ce cas affiche une image. Ce script est le préambule à &lt;a href=&#34;http://blog.zeneffy.fr/2008/05/photo2web/&#34;&gt;Photo2Web&lt;/a&gt; avec GUI et utilisation de ftplib.&lt;/p&gt;
@@ -500,7 +497,7 @@ except:
     <item>
       <title>Pessac</title>
       <link>http://www.zeneffy.fr/2008/05/pessac/</link>
-      <pubDate>Mon, 12 May 2008 08:22:40 &#43;0000</pubDate>
+      <pubDate>Mon, 12 May 2008 08:22:40 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2008/05/pessac/</guid>
       <description>&lt;p&gt;Pessac est une application écrite en C# (compilable/utilisable via le framework Open Source &lt;a href=&#34;http://www.mono-project.com/Main_Page&#34;&gt;mono&lt;/a&gt;) permet de sortir un reporting &amp;ldquo;projet&amp;rdquo; à partir de l&amp;rsquo;analyse de répertoires du système de fichier.&lt;/p&gt;

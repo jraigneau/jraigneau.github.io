@@ -6,16 +6,13 @@
     <description>Recent content in Web.Py on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Wed, 14 Apr 2010 14:00:33 &#43;0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Apr 2010 14:00:33 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/web.py/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Redécouverte de Ruby On Rails</title>
       <link>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</link>
-      <pubDate>Wed, 14 Apr 2010 14:00:33 &#43;0000</pubDate>
+      <pubDate>Wed, 14 Apr 2010 14:00:33 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</guid>
       <description>&lt;p&gt;Suite à des recherches sur les frameworks web du moment (python: &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt;, &lt;a href=&#34;http://turbogears.org/&#34;&gt;Turbogears&lt;/a&gt;, &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt;, scala: &lt;a href=&#34;http://liftweb.net/&#34;&gt;lift&lt;/a&gt;, java: &lt;a href=&#34;http://www.playframework.org/&#34;&gt;play!&lt;/a&gt;), je me suis réintéressé à l&amp;rsquo;un des premiers frameworks que j&amp;rsquo;avais utilisé (2003 / 2004 &amp;hellip;): &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt;.&lt;/p&gt;
@@ -29,7 +26,7 @@
     <item>
       <title>Harpagon: la version 1.1 &#34;Pingre&#34; est enfin sortie</title>
       <link>http://www.zeneffy.fr/2010/03/harpagon-la-version-1-1-pingre-est-enfin-sortie/</link>
-      <pubDate>Sun, 07 Mar 2010 15:19:56 &#43;0000</pubDate>
+      <pubDate>Sun, 07 Mar 2010 15:19:56 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/03/harpagon-la-version-1-1-pingre-est-enfin-sortie/</guid>
       <description>&lt;p&gt;Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt; et sur &lt;a href=&#34;http://code.google.com/intl/fr/apis/chart/&#34;&gt;Google Chart API&lt;/a&gt;.&lt;/p&gt;
@@ -61,7 +58,7 @@
     <item>
       <title>Harpagon V1.0</title>
       <link>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</link>
-      <pubDate>Sun, 17 Jan 2010 22:44:21 &#43;0000</pubDate>
+      <pubDate>Sun, 17 Jan 2010 22:44:21 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</guid>
       <description>&lt;p&gt;Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt; et sur &lt;a href=&#34;http://code.google.com/intl/fr/apis/chart/&#34;&gt;Google Chart API&lt;/a&gt;.&lt;/p&gt;

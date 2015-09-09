@@ -6,16 +6,13 @@
     <description>Recent content in Ubuntu on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Sun, 19 Dec 2010 10:26:48 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 Dec 2010 10:26:48 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Ubuntu: Installation &#34;mineffy&#34;</title>
       <link>http://www.zeneffy.fr/2010/12/ubuntu-installation-mineffy/</link>
-      <pubDate>Sun, 19 Dec 2010 10:26:48 &#43;0000</pubDate>
+      <pubDate>Sun, 19 Dec 2010 10:26:48 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/12/ubuntu-installation-mineffy/</guid>
       <description>&lt;p&gt;Un petit pense-bête sur le &lt;strong&gt;min&lt;/strong&gt;imum à réinstaller avant d&amp;rsquo;être &lt;strong&gt;eff&lt;/strong&gt;icace avec une nouvelle version d&amp;rsquo;ubuntu&lt;/p&gt;
@@ -86,7 +83,7 @@ dans /etc/auto.types
     <item>
       <title>Cloner une machine virtuelle Ubuntu/Debian dans VirtualBox</title>
       <link>http://www.zeneffy.fr/2010/10/cloner-une-machine-virtuelle-ubuntudebian-dans-virtualbox/</link>
-      <pubDate>Fri, 29 Oct 2010 17:11:35 &#43;0000</pubDate>
+      <pubDate>Fri, 29 Oct 2010 17:11:35 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/10/cloner-une-machine-virtuelle-ubuntudebian-dans-virtualbox/</guid>
       <description>&lt;p&gt;Pour cloner une machine virtuelle dans &lt;a href=&#34;http://www.virtualbox.org/&#34;&gt;VirtualBox&lt;/a&gt;, il suffit d&amp;rsquo;utiliser les outils d&amp;rsquo;administration (en mode ligne de commande)&lt;/p&gt;
@@ -119,7 +116,7 @@ SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&a
     <item>
       <title>Adieu darwin...version Geek!</title>
       <link>http://www.zeneffy.fr/2010/07/adieu-darwin/</link>
-      <pubDate>Thu, 15 Jul 2010 18:31:06 &#43;0000</pubDate>
+      <pubDate>Thu, 15 Jul 2010 18:31:06 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/07/adieu-darwin/</guid>
       <description>&lt;p&gt;N&amp;rsquo;étant pas particulièrement fan de certaines applications intégrées dans Ubuntu par défaut, j&amp;rsquo;ai tendance à vite les enlever post-installation.&lt;/p&gt;
@@ -139,7 +136,7 @@ SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&a
     <item>
       <title>Optimisation des OS avec un disque SSD</title>
       <link>http://www.zeneffy.fr/2010/06/optimisation-des-os-avec-un-disque-ssd/</link>
-      <pubDate>Sun, 06 Jun 2010 06:28:49 &#43;0000</pubDate>
+      <pubDate>Sun, 06 Jun 2010 06:28:49 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/06/optimisation-des-os-avec-un-disque-ssd/</guid>
       <description>&lt;p&gt;Ayant acheté dernièrement un disque dur SSD pour mon portable, il a fallu chercher quelques informations complémentaires pour m&amp;rsquo;assurer de la meilleur optimisation possible:&lt;/p&gt;
@@ -180,7 +177,7 @@ Timing buffered disk reads:  454 MB in  3.01 seconds = 150.66 MB/sec
     <item>
       <title>Résolutions et VirtualBox</title>
       <link>http://www.zeneffy.fr/2010/05/resolutions-et-virtualbox/</link>
-      <pubDate>Wed, 19 May 2010 09:51:21 &#43;0000</pubDate>
+      <pubDate>Wed, 19 May 2010 09:51:21 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/05/resolutions-et-virtualbox/</guid>
       <description>&lt;p&gt;Suite à l&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2010/05/16/personnaliser-linstallation-de-ubuntu-10-04/&#34;&gt;installation de Ubuntu 10.04 sous VirtualBox&lt;/a&gt;, je me suis un peu battu pour avoir une résolution correcte en mode plein écran (aka 1280x800 sur mon portable).&lt;/p&gt;
@@ -202,7 +199,7 @@ Timing buffered disk reads:  454 MB in  3.01 seconds = 150.66 MB/sec
     <item>
       <title>Personnaliser l&#39;installation de Ubuntu 10.04</title>
       <link>http://www.zeneffy.fr/2010/05/personnaliser-linstallation-de-ubuntu-10-04/</link>
-      <pubDate>Sun, 16 May 2010 12:04:00 &#43;0000</pubDate>
+      <pubDate>Sun, 16 May 2010 12:04:00 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/05/personnaliser-linstallation-de-ubuntu-10-04/</guid>
       <description>&lt;p&gt;Suite à la sortie de Ubuntu 10.04, je me suis décidé à l&amp;rsquo;installer en machine virtuelle (&lt;a href=&#34;http://www.virtualbox.org/&#34;&gt;VirtualBox&lt;/a&gt;) sur mon portable pro, tout s&amp;rsquo;est très bien passé et voici quelques tuning complémentaires:&lt;/p&gt;
@@ -288,7 +285,7 @@ sudo gem install sqlite3-ruby
     <item>
       <title>Installer Redmine sur lighttpd</title>
       <link>http://www.zeneffy.fr/2010/03/installer-redmine-sur-lighttpd/</link>
-      <pubDate>Fri, 26 Mar 2010 15:19:22 &#43;0000</pubDate>
+      <pubDate>Fri, 26 Mar 2010 15:19:22 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/03/installer-redmine-sur-lighttpd/</guid>
       <description>&lt;p&gt;J&amp;rsquo;utilise actuellement le serveur web &lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;lighttpd&lt;/a&gt; sur mon serveur personnel, ce qui nécessite un peu de paramétrage différent de Apache. Ainsi pour faire fonctionner &lt;a href=&#34;http://www.redmine.org/&#34;&gt;Redmine&lt;/a&gt; (Application Ruby on Rails de gestion de projet), j&amp;rsquo;ai utilisé cette configuration:&lt;/p&gt;

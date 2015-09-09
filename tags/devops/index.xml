@@ -6,16 +6,13 @@
     <description>Recent content in Devops on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Sat, 04 Apr 2015 20:17:05 &#43;0100</lastBuildDate>
+    <lastBuildDate>Sat, 04 Apr 2015 20:17:05 +0100</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Obiran versus synology</title>
       <link>http://www.zeneffy.fr/2015/04/obiran-vs-synology/</link>
-      <pubDate>Sat, 04 Apr 2015 20:17:05 &#43;0100</pubDate>
+      <pubDate>Sat, 04 Apr 2015 20:17:05 +0100</pubDate>
       
       <guid>http://www.zeneffy.fr/2015/04/obiran-vs-synology/</guid>
       <description>&lt;p&gt;Depuis quelques mois, j’ai mis en oeuvre une nouvelle infrastructure chez moi de type &lt;a href=&#34;http://techhead.co/vmware-esxi-home-lab-why-what-and-how-considerations-when-building-your-own-home-lab/&#34;&gt;homelab&lt;/a&gt;, basée sur un petit serveur intel NUC, ESXi et Ubuntu.&lt;/p&gt;
@@ -38,7 +35,7 @@
     <item>
       <title>Le motto de l&#39;exploitant</title>
       <link>http://www.zeneffy.fr/2012/09/le-motto-de-lexploitant/</link>
-      <pubDate>Sun, 02 Sep 2012 12:56:19 &#43;0000</pubDate>
+      <pubDate>Sun, 02 Sep 2012 12:56:19 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2012/09/le-motto-de-lexploitant/</guid>
       <description>&lt;p&gt;En lisant le très bon article &lt;a href=&#34;http://agiletesting.blogspot.co.uk/2012/08/10-things-to-know-when-starting-out-as.html&#34;&gt;10 things to know when starting out as a sysadmin&lt;/a&gt;, j&amp;rsquo;ai retrouvé des points importants que tout exploitant doit connaître sur le bout des doigts à mon humble avis et d&amp;rsquo;après mes diverses (et parfois malheureuses) expériences:&lt;/p&gt;
@@ -75,7 +72,7 @@
     <item>
       <title>Règles du bricolage numérique</title>
       <link>http://www.zeneffy.fr/2011/05/regles-du-bricolage-numerique/</link>
-      <pubDate>Sat, 28 May 2011 18:48:56 &#43;0000</pubDate>
+      <pubDate>Sat, 28 May 2011 18:48:56 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/05/regles-du-bricolage-numerique/</guid>
       <description>&lt;p&gt;Le développement n&amp;rsquo;étant pas mon métier mais plutôt un hobby, les petits projets de &amp;ldquo;bricolage numérique&amp;rdquo; que je mène partagent certaines règles simples pour s&amp;rsquo;assurer de l&amp;rsquo;efficience du travail:&lt;/p&gt;
@@ -94,7 +91,7 @@
     <item>
       <title>Extensions de base sous heroku</title>
       <link>http://www.zeneffy.fr/2011/04/extensions-de-base-sous-heroku/</link>
-      <pubDate>Mon, 11 Apr 2011 11:03:33 &#43;0000</pubDate>
+      <pubDate>Mon, 11 Apr 2011 11:03:33 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/04/extensions-de-base-sous-heroku/</guid>
       <description>&lt;p&gt;Voici quelques extensions que j&amp;rsquo;installe systématiquement sous Heroku:&lt;/p&gt;

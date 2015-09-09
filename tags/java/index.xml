@@ -6,16 +6,13 @@
     <description>Recent content in Java on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Sun, 13 Feb 2011 19:20:45 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Feb 2011 19:20:45 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Veilleur: une application de surveillance des sites web</title>
       <link>http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/</link>
-      <pubDate>Sun, 13 Feb 2011 19:20:45 &#43;0000</pubDate>
+      <pubDate>Sun, 13 Feb 2011 19:20:45 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/</guid>
       <description>&lt;p&gt;Abonné depuis plusieurs mois à plusieurs services de monitoring de sites web (notamment &lt;a href=&#34;http://www.pingdom.com&#34;&gt;pingdom&lt;/a&gt;), j&amp;rsquo;ai décidé de me faire mon propre service en profitant de l&amp;rsquo;architecture de &lt;a href=&#34;http://code.google.com/intl/fr-FR/appengine/&#34;&gt;Google App Engine&lt;/a&gt;.&lt;/p&gt;

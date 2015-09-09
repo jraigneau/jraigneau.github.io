@@ -42,31 +42,31 @@
     	
 			<div class="row">
 				<div class="twelve columns">
-					<a class="post-title-link" href="http://www.zeneffy.fr/2012/01/utiliser-les-versions-0-6-x-de-nodejs-sur-heroku/">Utiliser les versions 0.6.x de Nodejs sur Heroku</a>
+					<a class="post-title-link" href="http://www.zeneffy.fr/2012/01/utiliser-les-versions-0-6-x-de-nodejs-sur-heroku/">#Utiliser les versions 0.6.x de Nodejs sur Heroku</a>
 				</div>
 			</div>
 		
 			<div class="row">
 				<div class="twelve columns">
-					<a class="post-title-link" href="http://www.zeneffy.fr/2011/12/instant-de-bonheur-une-application-complete-node-js/">Instant de bonheur: une application complète node.js</a>
+					<a class="post-title-link" href="http://www.zeneffy.fr/2011/12/instant-de-bonheur-une-application-complete-node-js/">#Instant de bonheur: une application complète node.js</a>
 				</div>
 			</div>
 		
 			<div class="row">
 				<div class="twelve columns">
-					<a class="post-title-link" href="http://www.zeneffy.fr/2011/06/node-jsexpress-sur-heroku/">Node.js/Express sur heroku</a>
+					<a class="post-title-link" href="http://www.zeneffy.fr/2011/06/node-jsexpress-sur-heroku/">#Node.js/Express sur heroku</a>
 				</div>
 			</div>
 		
 			<div class="row">
 				<div class="twelve columns">
-					<a class="post-title-link" href="http://www.zeneffy.fr/2011/06/npm-le-gestionnaire-de-package-de-node-js/">npm, le gestionnaire de package de node.js</a>
+					<a class="post-title-link" href="http://www.zeneffy.fr/2011/06/npm-le-gestionnaire-de-package-de-node-js/">#npm, le gestionnaire de package de node.js</a>
 				</div>
 			</div>
 		
 			<div class="row">
 				<div class="twelve columns">
-					<a class="post-title-link" href="http://www.zeneffy.fr/2011/06/pow-radiant/">Pow &amp; Radiant</a>
+					<a class="post-title-link" href="http://www.zeneffy.fr/2011/06/pow-radiant/">#Pow &amp; Radiant</a>
 				</div>
 			</div>
 		
@@ -113,6 +113,8 @@
 			  	  	  	  
 			  	  	    <a href="/tags/management" class="tags-link-footer">#management</a>
 			  	  	  	  
+			  	  	    <a href="/tags/mes-projets" class="tags-link-footer">#mes-projets</a>
+			  	  	  	  
 			  	  	    <a href="/tags/mono" class="tags-link-footer">#mono</a>
 			  	  	  	  
 			  	  	    <a href="/tags/node.js" class="tags-link-footer">#node.js</a>
@@ -157,7 +159,16 @@
   <script>
     hljs.initHighlightingOnLoad();
   </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-12194039-8', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 </body>
 </html>

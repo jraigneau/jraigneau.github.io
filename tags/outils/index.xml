@@ -6,16 +6,13 @@
     <description>Recent content in Outils on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Sun, 28 Oct 2012 18:49:04 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sun, 28 Oct 2012 18:49:04 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/outils/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Labs.zeneffy.fr change de crémerie</title>
       <link>http://www.zeneffy.fr/2012/10/labs-zeneffy-fr-change-de-cremerie/</link>
-      <pubDate>Sun, 28 Oct 2012 18:49:04 &#43;0000</pubDate>
+      <pubDate>Sun, 28 Oct 2012 18:49:04 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2012/10/labs-zeneffy-fr-change-de-cremerie/</guid>
       <description>&lt;p&gt;Suite à l&amp;rsquo;arrêt de la stack &amp;ldquo;aspen&amp;rdquo; sur &lt;a href=&#34;http://www.heroku.com&#34;&gt;Heroku.com&lt;/a&gt; sur laquelle tournait originellement le site &lt;a href=&#34;http://labs.zeneffy.fr&#34;&gt;labs.zeneffy.fr&lt;/a&gt; (basé sur le CMS ruby on rails &lt;a href=&#34;http://radiantcms.org/&#34;&gt;RadiantCMS&lt;/a&gt;), j&amp;rsquo;ai été obligé de chercher une solution : migration simple vers une stack plus récente ou changement complet de CMS.&lt;/p&gt;
@@ -29,7 +26,7 @@
     <item>
       <title>Utiliser les versions 0.6.x de Nodejs sur Heroku</title>
       <link>http://www.zeneffy.fr/2012/01/utiliser-les-versions-0-6-x-de-nodejs-sur-heroku/</link>
-      <pubDate>Sun, 22 Jan 2012 15:41:38 &#43;0000</pubDate>
+      <pubDate>Sun, 22 Jan 2012 15:41:38 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2012/01/utiliser-les-versions-0-6-x-de-nodejs-sur-heroku/</guid>
       <description>&lt;p&gt;L&amp;rsquo;hébergeur &lt;a href=&#34;http://heroku.com&#34;&gt;heroku&lt;/a&gt; permet de mettre en place des applications &lt;a href=&#34;http://nodejs.org/&#34;&gt;nodejs&lt;/a&gt; depuis l&amp;rsquo;année dernière, toutefois par défaut la version est la 0.4.7 - version stable mais qui est devenue obsolète avec l&amp;rsquo;apparition des versions 0.6.x.&lt;/p&gt;
@@ -81,7 +78,7 @@ git push heroku master
     <item>
       <title>Démarrer avec Play! Framework, scala et MongoDB sur Heroku</title>
       <link>http://www.zeneffy.fr/2011/10/demarrer-avec-play-framework-scala-et-mongodb-sur-heroku/</link>
-      <pubDate>Sun, 30 Oct 2011 09:37:51 &#43;0000</pubDate>
+      <pubDate>Sun, 30 Oct 2011 09:37:51 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/10/demarrer-avec-play-framework-scala-et-mongodb-sur-heroku/</guid>
       <description>&lt;p&gt;J&amp;rsquo;ai découvert &lt;a href=&#34;http://www.playframework.org/&#34;&gt;Play! Framework&lt;/a&gt; il y a quelques mois avec beaucoup d&amp;rsquo;intérêt et je me suis rendu compte qu&amp;rsquo;un module &lt;a href=&#34;http://scala.playframework.org/&#34;&gt;scala&lt;/a&gt; existait. Voici donc un premier petit projet qui permet à la fois d&amp;rsquo;installer Play! (1.2.3) mais aussi d&amp;rsquo;utiliser MongoDB sur Heroku en quelques étapes:&lt;/p&gt;
@@ -217,14 +214,14 @@ heroku open
 
 &lt;p&gt;Ce petit tutoriel peut (doit) être complété avec le &lt;a href=&#34;http://scala.playframework.org/documentation/scala-0.9.1/home&#34;&gt;tutoriel officiel disponible sur le site de Play&lt;/a&gt;, en attendant vous pourrez jouer avec mon application sur &lt;a href=&#34;http://glowing-fog-2793.herokuapp.com/&#34;&gt;http://glowing-fog-2793.herokuapp.com/&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Tutoriel basé en partie sur &lt;a href=&#34;http://jaredrosoff.com/2011/05/getting-started-with-play-framework-scala-and-casbah/&#34;&gt;http://jaredrosoff.com/&lt;sup&gt;2011&lt;/sup&gt;&amp;frasl;&lt;sub&gt;05&lt;/sub&gt;/getting-started-with-play-framework-scala-and-casbah/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Tutoriel basé en partie sur &lt;a href=&#34;http://jaredrosoff.com/2011/05/getting-started-with-play-framework-scala-and-casbah/&#34;&gt;http://jaredrosoff.com/2011/05/getting-started-with-play-framework-scala-and-casbah/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Scala sur Heroku</title>
       <link>http://www.zeneffy.fr/2011/10/scala-sur-heroku/</link>
-      <pubDate>Sat, 15 Oct 2011 08:21:18 &#43;0000</pubDate>
+      <pubDate>Sat, 15 Oct 2011 08:21:18 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/10/scala-sur-heroku/</guid>
       <description>&lt;p&gt;En plein apprentissage de scala, j&amp;rsquo;ai décidé de m&amp;rsquo;intéresser au framework web &lt;a href=&#34;http://www.scalatra.org/&#34;&gt;Scalatra&lt;/a&gt; qui ressemble à &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;Sinatra&lt;/a&gt;, mon environnement favori en Ruby. Evidemment, je souhaite pouvoir partager rapidement mes &amp;lsquo;créations&amp;rsquo; en les hébergeant sur la plate-forme &lt;a href=&#34;http://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;, devenue &lt;a href=&#34;http://blog.heroku.com/archives/2011/8/3/polyglot_platform/&#34;&gt;polyglotte&lt;/a&gt; depuis quelques semaines en supportant d&amp;rsquo;autres langages que Ruby (notamment node.js, Java, Clojure, Scala et Python).&lt;/p&gt;
@@ -250,7 +247,7 @@ heroku open
     <item>
       <title>Sauvegarder une base de donnée PostgreSQL chez Heroku</title>
       <link>http://www.zeneffy.fr/2011/09/sauvegarder-une-base-de-donnee-postgresql-chez-heroku/</link>
-      <pubDate>Mon, 19 Sep 2011 17:34:01 &#43;0000</pubDate>
+      <pubDate>Mon, 19 Sep 2011 17:34:01 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/09/sauvegarder-une-base-de-donnee-postgresql-chez-heroku/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.heroku.com&#34;&gt;Heroku&lt;/a&gt; permet de faire très simplement des sauvegardes des bases de données de production en utilisant le module &lt;a href=&#34;http://addons.heroku.com/pgbackups&#34;&gt;PGBackups&lt;/a&gt;.&lt;/p&gt;
@@ -290,7 +287,7 @@ b002 | 2011/09/19 10:24.04 | 40.2KB | SHARED_DATABASE
     <item>
       <title>MacVim, Command-T et RVM</title>
       <link>http://www.zeneffy.fr/2011/09/macvim-command-t-et-rvm/</link>
-      <pubDate>Sun, 04 Sep 2011 18:55:28 &#43;0000</pubDate>
+      <pubDate>Sun, 04 Sep 2011 18:55:28 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/09/macvim-command-t-et-rvm/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/macvim/&#34;&gt;MacVim&lt;/a&gt; (une forme de l&amp;rsquo;éditeur VIM adaptée à MacOS) est mon éditeur de prédilection actuellement malgré de nombreux autres essais (entre autres: &lt;a href=&#34;http://macromates.com/&#34;&gt;Textmate&lt;/a&gt;, &lt;a href=&#34;http://kodapp.com/&#34;&gt;Kod&lt;/a&gt;, &lt;a href=&#34;http://www.sublimetext.com/&#34;&gt;Sublime Text&lt;/a&gt;).&lt;/p&gt;
@@ -331,7 +328,7 @@ make
     <item>
       <title>Node.js/Express sur heroku</title>
       <link>http://www.zeneffy.fr/2011/06/node-jsexpress-sur-heroku/</link>
-      <pubDate>Mon, 27 Jun 2011 20:30:26 &#43;0000</pubDate>
+      <pubDate>Mon, 27 Jun 2011 20:30:26 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/06/node-jsexpress-sur-heroku/</guid>
       <description>&lt;p&gt;Je suis en train de tester &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; ces derniers jours, et notamment le &lt;a href=&#34;http://expressjs.com/&#34;&gt;framework web Express&lt;/a&gt; - Fan de l&amp;rsquo;hébergeur &lt;a href=&#34;http://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;, d&amp;rsquo;autant plus depuis qu&amp;rsquo;il est possible d&amp;rsquo;avoir des applications &lt;a href=&#34;http://blog.heroku.com/archives/2011/5/31/celadon_cedar/&#34;&gt;node.js&lt;/a&gt; (entre autres), j&amp;rsquo;ai souhaité installer une application de test en suivant &lt;a href=&#34;http://pcoding.blogspot.com/2011/06/hebergement-nodejs-avec-heroku-celadon.html&#34;&gt;ce tutorial&lt;/a&gt; - et tout n&amp;rsquo;a pas fonctionné du premier coup :(&lt;/p&gt;
@@ -369,7 +366,7 @@ app.listen(port, function(){
     <item>
       <title>Règles du bricolage numérique</title>
       <link>http://www.zeneffy.fr/2011/05/regles-du-bricolage-numerique/</link>
-      <pubDate>Sat, 28 May 2011 18:48:56 &#43;0000</pubDate>
+      <pubDate>Sat, 28 May 2011 18:48:56 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/05/regles-du-bricolage-numerique/</guid>
       <description>&lt;p&gt;Le développement n&amp;rsquo;étant pas mon métier mais plutôt un hobby, les petits projets de &amp;ldquo;bricolage numérique&amp;rdquo; que je mène partagent certaines règles simples pour s&amp;rsquo;assurer de l&amp;rsquo;efficience du travail:&lt;/p&gt;
@@ -388,7 +385,7 @@ app.listen(port, function(){
     <item>
       <title>Environnements de préproduction sous Heroku</title>
       <link>http://www.zeneffy.fr/2011/04/environnements-de-preproduction-sous-heroku/</link>
-      <pubDate>Sun, 17 Apr 2011 20:58:06 &#43;0000</pubDate>
+      <pubDate>Sun, 17 Apr 2011 20:58:06 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/04/environnements-de-preproduction-sous-heroku/</guid>
       <description>&lt;p&gt;Il est assez simple de créer des environnement de préproduction sans recopier tout le code:&lt;/p&gt;
@@ -415,7 +412,7 @@ heroku db:push --app myapp-preprod
     <item>
       <title>Extensions Radiant sur Heroku via les sous-modules Git</title>
       <link>http://www.zeneffy.fr/2011/04/extensions-radiant-sur-heroku-via-les-sous-modules-git/</link>
-      <pubDate>Thu, 14 Apr 2011 14:34:01 &#43;0000</pubDate>
+      <pubDate>Thu, 14 Apr 2011 14:34:01 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/04/extensions-radiant-sur-heroku-via-les-sous-modules-git/</guid>
       <description>&lt;p&gt;Heroku ne supportant pas les sous-modules git, il convient d&amp;rsquo;être vigilant en utilisant les extensions radiant : en effet tout fonctionnera en local mais les données des extensions dans /vendor ne seront pas poussées sur heroku - d&amp;rsquo;où des erreurs.&lt;/p&gt;
@@ -443,7 +440,7 @@ $ git commit -m &amp;quot;récupération des sousmodules git&amp;quot;
     <item>
       <title>Installer Radiant CMS sous heroku</title>
       <link>http://www.zeneffy.fr/2011/04/installer-radiant-cms-sous-heroku/</link>
-      <pubDate>Wed, 13 Apr 2011 11:09:20 &#43;0000</pubDate>
+      <pubDate>Wed, 13 Apr 2011 11:09:20 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/04/installer-radiant-cms-sous-heroku/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://radiantcms.org/&#34;&gt;RadiantCMS&lt;/a&gt; est un gestionnaire de contenus simple basé sur le framework &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;RubyOnRails&lt;/a&gt;, permettant de mettre en place facilement des sites relativement complexes, notamment grâce à son langage de tags (Radius).&lt;/p&gt;
@@ -514,7 +511,7 @@ git push heroku master
     <item>
       <title>Extensions de base sous heroku</title>
       <link>http://www.zeneffy.fr/2011/04/extensions-de-base-sous-heroku/</link>
-      <pubDate>Mon, 11 Apr 2011 11:03:33 &#43;0000</pubDate>
+      <pubDate>Mon, 11 Apr 2011 11:03:33 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/04/extensions-de-base-sous-heroku/</guid>
       <description>&lt;p&gt;Voici quelques extensions que j&amp;rsquo;installe systématiquement sous Heroku:&lt;/p&gt;
@@ -558,7 +555,7 @@ git push heroku master
     <item>
       <title>Scripter MacOS</title>
       <link>http://www.zeneffy.fr/2011/03/scripter-macos/</link>
-      <pubDate>Fri, 11 Mar 2011 17:10:17 &#43;0000</pubDate>
+      <pubDate>Fri, 11 Mar 2011 17:10:17 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/03/scripter-macos/</guid>
       <description>&lt;p&gt;Dans ma très récente période Ubuntu/Linux, j&amp;rsquo;avais rédigé un petit script en python qui vérifiait régulièrement la présence de nouveaux fichiers dans un répertoire FTP - ce script étant basé sur GTK, il était nécessaire de le changer pour notamment utiliser &lt;a href=&#34;http://growl.info/&#34;&gt;Growl&lt;/a&gt;, le système de notification disponible dans MacOS.&lt;/p&gt;
@@ -636,7 +633,7 @@ except:
     <item>
       <title>Google App Engine: une demie déception</title>
       <link>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</link>
-      <pubDate>Fri, 25 Feb 2011 22:47:37 &#43;0000</pubDate>
+      <pubDate>Fri, 25 Feb 2011 22:47:37 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</guid>
       <description>&lt;p&gt;Dans le cadre de ma petite application de surveillance de site web, &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;veilleur&lt;/a&gt;, j&amp;rsquo;ai &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;utilisé l&amp;rsquo;infrastructure Google App Engine&lt;/a&gt; pour héberger code &amp;amp; base de donnée. Le résultat au bout de 2 semaines est assez peu concluant- du moins pour la version &amp;ldquo;Free&amp;rdquo;:&lt;/p&gt;
@@ -654,7 +651,7 @@ except:
     <item>
       <title>Créer une nouvelle application sous heroku</title>
       <link>http://www.zeneffy.fr/2011/02/creer-une-nouvelle-application-sous-heroku/</link>
-      <pubDate>Sat, 05 Feb 2011 13:31:25 &#43;0000</pubDate>
+      <pubDate>Sat, 05 Feb 2011 13:31:25 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/creer-une-nouvelle-application-sous-heroku/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Aide-Mémoire&lt;/strong&gt;: Pour créer rapidement une nouvelle application sur heroku&lt;/p&gt;

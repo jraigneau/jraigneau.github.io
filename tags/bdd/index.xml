@@ -6,16 +6,13 @@
     <description>Recent content in Bdd on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Tue, 27 Dec 2011 12:08:26 &#43;0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Dec 2011 12:08:26 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/bdd/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Instant de bonheur: une application complète node.js</title>
       <link>http://www.zeneffy.fr/2011/12/instant-de-bonheur-une-application-complete-node-js/</link>
-      <pubDate>Tue, 27 Dec 2011 12:08:26 &#43;0000</pubDate>
+      <pubDate>Tue, 27 Dec 2011 12:08:26 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/12/instant-de-bonheur-une-application-complete-node-js/</guid>
       <description>&lt;p&gt;M&amp;rsquo;intéressant depuis quelques temps à &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; (framework web basé sur le moteur javascript V8 de chrome), j&amp;rsquo;avais décidé de réaliser une petite application pour tester et me faire une opinion sur l&amp;rsquo;utilisation du javascript côté serveur - par un hasard extraordinaire j&amp;rsquo;ai eu l&amp;rsquo;occasion de trouver une idée et de la réaliser lors d&amp;rsquo;une formation, par ailleurs sans aucun rapport.&lt;/p&gt;
@@ -31,7 +28,7 @@
     <item>
       <title>Sauvegarder une base de donnée PostgreSQL chez Heroku</title>
       <link>http://www.zeneffy.fr/2011/09/sauvegarder-une-base-de-donnee-postgresql-chez-heroku/</link>
-      <pubDate>Mon, 19 Sep 2011 17:34:01 &#43;0000</pubDate>
+      <pubDate>Mon, 19 Sep 2011 17:34:01 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/09/sauvegarder-une-base-de-donnee-postgresql-chez-heroku/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.heroku.com&#34;&gt;Heroku&lt;/a&gt; permet de faire très simplement des sauvegardes des bases de données de production en utilisant le module &lt;a href=&#34;http://addons.heroku.com/pgbackups&#34;&gt;PGBackups&lt;/a&gt;.&lt;/p&gt;
@@ -71,7 +68,7 @@ b002 | 2011/09/19 10:24.04 | 40.2KB | SHARED_DATABASE
     <item>
       <title>Les joies de datamapper</title>
       <link>http://www.zeneffy.fr/2011/04/les-joies-de-datamapper/</link>
-      <pubDate>Sun, 24 Apr 2011 18:55:40 &#43;0000</pubDate>
+      <pubDate>Sun, 24 Apr 2011 18:55:40 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/04/les-joies-de-datamapper/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://datamapper.org/&#34;&gt;Datamapper&lt;/a&gt; est un ORM (&lt;a href=&#34;http://en.wikipedia.org/wiki/Object-relational_mapping&#34;&gt;Object Relational Mapper&lt;/a&gt;) écrit en ruby et permettant de lier facilement Ruby à n&amp;rsquo;importe quelle base de données (mysql, postgresql&amp;hellip;).&lt;/p&gt;
@@ -91,7 +88,7 @@ b002 | 2011/09/19 10:24.04 | 40.2KB | SHARED_DATABASE
     <item>
       <title>RTFM !!!</title>
       <link>http://www.zeneffy.fr/2011/03/rtfm/</link>
-      <pubDate>Sun, 06 Mar 2011 21:09:06 &#43;0000</pubDate>
+      <pubDate>Sun, 06 Mar 2011 21:09:06 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/03/rtfm/</guid>
       <description>&lt;p&gt;Dans un &lt;a href=&#34;http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/&#34;&gt;billet précédent&lt;/a&gt;, je me plaignais de l&amp;rsquo;infrastructure google et en creusant un peu, j&amp;rsquo;ai découvert que mon problème venait de requête d&amp;rsquo;écriture à la base de donnée, qui à la première écriture de chaque session prenait jusqu&amp;rsquo;à 15 secondes.&lt;/p&gt;

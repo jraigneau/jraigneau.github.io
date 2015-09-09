@@ -6,16 +6,13 @@
     <description>Recent content in Ruby on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    
-    
-    
-    <lastBuildDate>Sat, 11 Jun 2011 12:40:09 &#43;0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jun 2011 12:40:09 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Nouvelle application ZenRunnin&#39;</title>
       <link>http://www.zeneffy.fr/2011/06/nouvelle-application-zenrunnin/</link>
-      <pubDate>Sat, 11 Jun 2011 12:40:09 &#43;0000</pubDate>
+      <pubDate>Sat, 11 Jun 2011 12:40:09 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/06/nouvelle-application-zenrunnin/</guid>
       <description>&lt;p&gt;Coureur amateur, je me suis acheté à Noël une montre Polar pour mesurer mes performances (temps, distance&amp;hellip;) - j&amp;rsquo;ai commencé à utiliser le logiciel fourni (polarpersonaltrainer), sans être convaincu par son ergonomie ou ses fonctionnalités.&lt;/p&gt;
@@ -37,7 +34,7 @@
     <item>
       <title>Les joies de datamapper</title>
       <link>http://www.zeneffy.fr/2011/04/les-joies-de-datamapper/</link>
-      <pubDate>Sun, 24 Apr 2011 18:55:40 &#43;0000</pubDate>
+      <pubDate>Sun, 24 Apr 2011 18:55:40 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/04/les-joies-de-datamapper/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://datamapper.org/&#34;&gt;Datamapper&lt;/a&gt; est un ORM (&lt;a href=&#34;http://en.wikipedia.org/wiki/Object-relational_mapping&#34;&gt;Object Relational Mapper&lt;/a&gt;) écrit en ruby et permettant de lier facilement Ruby à n&amp;rsquo;importe quelle base de données (mysql, postgresql&amp;hellip;).&lt;/p&gt;
@@ -57,7 +54,7 @@
     <item>
       <title>Installer Radiant CMS sous heroku</title>
       <link>http://www.zeneffy.fr/2011/04/installer-radiant-cms-sous-heroku/</link>
-      <pubDate>Wed, 13 Apr 2011 11:09:20 &#43;0000</pubDate>
+      <pubDate>Wed, 13 Apr 2011 11:09:20 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/04/installer-radiant-cms-sous-heroku/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://radiantcms.org/&#34;&gt;RadiantCMS&lt;/a&gt; est un gestionnaire de contenus simple basé sur le framework &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;RubyOnRails&lt;/a&gt;, permettant de mettre en place facilement des sites relativement complexes, notamment grâce à son langage de tags (Radius).&lt;/p&gt;
@@ -128,7 +125,7 @@ git push heroku master
     <item>
       <title>Environnement de développement Mac</title>
       <link>http://www.zeneffy.fr/2011/03/dev-mac/</link>
-      <pubDate>Fri, 04 Mar 2011 10:25:03 &#43;0000</pubDate>
+      <pubDate>Fri, 04 Mar 2011 10:25:03 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/03/dev-mac/</guid>
       <description>&lt;p&gt;Je suis l&amp;rsquo;heureux possesseur d&amp;rsquo;un MacBook Air 13&amp;rdquo; depuis quelques jours, et j&amp;rsquo;ai commencé à installer mon environnement de développement habituel.&lt;/p&gt;
@@ -142,7 +139,7 @@ git push heroku master
 &lt;p&gt;puis configuration de MacVim:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://blog.danielfischer.com/2010/11/19/a-starting-guide-to-vim-from-textmate/&#34;&gt;http://blog.danielfischer.com/&lt;sup&gt;2010&lt;/sup&gt;&amp;frasl;&lt;sub&gt;11&lt;/sub&gt;/19/a-starting-guide-to-vim-from-textmate/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.danielfischer.com/2010/11/19/a-starting-guide-to-vim-from-textmate/&#34;&gt;http://blog.danielfischer.com/2010/11/19/a-starting-guide-to-vim-from-textmate/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/carlhuda/janus&#34;&gt;https://github.com/carlhuda/janus&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://net.tutsplus.com/articles/general/top-10-pitfalls-when-switching-to-vim/&#34;&gt;http://net.tutsplus.com/articles/general/top-10-pitfalls-when-switching-to-vim/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -154,7 +151,7 @@ git push heroku master
     <item>
       <title>Veilleur: une application de surveillance des sites web</title>
       <link>http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/</link>
-      <pubDate>Sun, 13 Feb 2011 19:20:45 &#43;0000</pubDate>
+      <pubDate>Sun, 13 Feb 2011 19:20:45 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/</guid>
       <description>&lt;p&gt;Abonné depuis plusieurs mois à plusieurs services de monitoring de sites web (notamment &lt;a href=&#34;http://www.pingdom.com&#34;&gt;pingdom&lt;/a&gt;), j&amp;rsquo;ai décidé de me faire mon propre service en profitant de l&amp;rsquo;architecture de &lt;a href=&#34;http://code.google.com/intl/fr-FR/appengine/&#34;&gt;Google App Engine&lt;/a&gt;.&lt;/p&gt;
@@ -172,7 +169,7 @@ git push heroku master
     <item>
       <title>Application Sinatra pour Heroku</title>
       <link>http://www.zeneffy.fr/2011/02/application-sinatra-pour-heroku/</link>
-      <pubDate>Sat, 05 Feb 2011 07:50:50 &#43;0000</pubDate>
+      <pubDate>Sat, 05 Feb 2011 07:50:50 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/application-sinatra-pour-heroku/</guid>
       <description>&lt;p&gt;Dernièrement je m&amp;rsquo;intéresse au framework de développement  &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; qui est basé sur le langage Ruby (comme Ruby on Rails donc). Sinatra est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Domain-specific_programming_language&#34;&gt;DSL&lt;/a&gt; permettant de développer rapidement et simplement des applications web (un peu comme &lt;a href=&#34;http://webpy.org/&#34;&gt;webpy&lt;/a&gt; que j&amp;rsquo;avais utilisé sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Harpagon&lt;/a&gt;).&lt;/p&gt;
@@ -234,7 +231,7 @@ production:
     <item>
       <title>Google Analytics dans une application Ruby On Rails</title>
       <link>http://www.zeneffy.fr/2010/10/google-analytics-dans-une-application-ruby-on-rails/</link>
-      <pubDate>Thu, 21 Oct 2010 13:48:55 &#43;0000</pubDate>
+      <pubDate>Thu, 21 Oct 2010 13:48:55 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/10/google-analytics-dans-une-application-ruby-on-rails/</guid>
       <description>&lt;p&gt;Dans le cadre de l&amp;rsquo;application &lt;a href=&#34;http://labs.zeneffy.fr/projets/vauban/&#34;&gt;vauban&lt;/a&gt; développée via le framework &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;RubyOnRails&lt;/a&gt;, j&amp;rsquo;ai été amené à intégrer &lt;a href=&#34;http://www.google.com/analytics/&#34;&gt;Google Analytics&lt;/a&gt; en 3 étapes très simples:&lt;/p&gt;
@@ -274,7 +271,7 @@ production:
     <item>
       <title>Redécouverte de Ruby On Rails</title>
       <link>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</link>
-      <pubDate>Wed, 14 Apr 2010 14:00:33 &#43;0000</pubDate>
+      <pubDate>Wed, 14 Apr 2010 14:00:33 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</guid>
       <description>&lt;p&gt;Suite à des recherches sur les frameworks web du moment (python: &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt;, &lt;a href=&#34;http://turbogears.org/&#34;&gt;Turbogears&lt;/a&gt;, &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt;, scala: &lt;a href=&#34;http://liftweb.net/&#34;&gt;lift&lt;/a&gt;, java: &lt;a href=&#34;http://www.playframework.org/&#34;&gt;play!&lt;/a&gt;), je me suis réintéressé à l&amp;rsquo;un des premiers frameworks que j&amp;rsquo;avais utilisé (2003 / 2004 &amp;hellip;): &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt;.&lt;/p&gt;
@@ -288,7 +285,7 @@ production:
     <item>
       <title>Installer Redmine sur lighttpd</title>
       <link>http://www.zeneffy.fr/2010/03/installer-redmine-sur-lighttpd/</link>
-      <pubDate>Fri, 26 Mar 2010 15:19:22 &#43;0000</pubDate>
+      <pubDate>Fri, 26 Mar 2010 15:19:22 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/03/installer-redmine-sur-lighttpd/</guid>
       <description>&lt;p&gt;J&amp;rsquo;utilise actuellement le serveur web &lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;lighttpd&lt;/a&gt; sur mon serveur personnel, ce qui nécessite un peu de paramétrage différent de Apache. Ainsi pour faire fonctionner &lt;a href=&#34;http://www.redmine.org/&#34;&gt;Redmine&lt;/a&gt; (Application Ruby on Rails de gestion de projet), j&amp;rsquo;ai utilisé cette configuration:&lt;/p&gt;
@@ -329,7 +326,7 @@ $HTTP[&amp;quot;host&amp;quot;]  =~ &amp;quot;labs.zeneffy.fr&amp;quot; { # nom 
     <item>
       <title>Obiran - Outil de backup incrémental en Ruby</title>
       <link>http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/</link>
-      <pubDate>Mon, 12 May 2008 09:19:09 &#43;0000</pubDate>
+      <pubDate>Mon, 12 May 2008 09:19:09 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/</guid>
       <description>&lt;p&gt;&lt;strong&gt;A propos&lt;/strong&gt;&lt;/p&gt;
