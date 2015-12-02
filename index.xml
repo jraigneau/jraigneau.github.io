@@ -6,8 +6,36 @@
     <description>Recent content on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sat, 20 Jun 2015 21:31:23 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 02 Dec 2015 07:39:21 +0000</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Remplacement de emoncms par Grafana&#43;influxDB</title>
+      <link>http://www.zeneffy.fr/2015/12/remplacement-emoncms/</link>
+      <pubDate>Wed, 02 Dec 2015 07:39:21 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2015/12/remplacement-emoncms/</guid>
+      <description>&lt;p&gt;Utilisateur de &lt;a href=&#34;http://emoncms.org/&#34;&gt;emoncms&lt;/a&gt; comme solution de métrologie de mon installation domotique depuis quelques mois, j&amp;rsquo;ai décidé dernièrement de basculer sur une solution moins spécialisée et beaucoup plus ouverte, basée sur &lt;a href=&#34;https://influxdb.com/&#34;&gt;influxDB&lt;/a&gt; pour la partie stockage des données et sur le superbe &lt;a href=&#34;http://grafana.org/&#34;&gt;Grafana&lt;/a&gt; pour la partie affichage des indicateurs.&lt;/p&gt;
+
+&lt;p&gt;InfluxDB est une base de donnée permettant de stocker des données chronologiques (Time series en anglais), avec intégration de fonctions mathématiques simples (min/max, moyenne&amp;hellip;), et un langage de requêtage proche du SQL et simple à utiliser.&lt;/p&gt;
+
+&lt;p&gt;Grafana est, quant à lui, un visualiseur de données, pouvant se connecter à Graphite, influxDB, openTSDB&amp;hellip;afin de créer des tableaux de bord composés de graphiques ou de données brutes avec des possibilités avancées de corrélation.&lt;/p&gt;
+
+&lt;p&gt;L&amp;rsquo;installation de ces deux outils se fait très facilement (le classique `sudo apt-get sur ubuntu) et le paramétrage est aussi simple (du moins pour une installation comme la mienne) - aussi je ne n&amp;rsquo;épiloguerai pas dessus (en bref utilisation de &lt;a href=&#34;http://nodered.org/&#34;&gt;nodered&lt;/a&gt; ou de scripts bash pour récupérer les données puis envoi en POST via l&amp;rsquo;API influxDB, rien d&amp;rsquo;exotique).&lt;/p&gt;
+
+&lt;p&gt;Ainsi en quelques minutes, j&amp;rsquo;ai pu obtenir des tableaux de bord sur différents types de données, tant domotique qu&amp;rsquo;informatique, eg:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Consommation électrique&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm1.staticflickr.com/602/23106880869_9878c217b9.jpg&#34; width=&#34;500&#34; height=&#34;297&#34; alt=&#34;graphana-elec&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Traffic internet sur ma box&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm1.staticflickr.com/683/23366332332_caa0a653e9.jpg&#34; width=&#34;500&#34; height=&#34;297&#34; alt=&#34;grafana-traffic&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Pour conclure, ce qui me satisfait le plus dans cette solution c&amp;rsquo;est la possibilité de mettre n&amp;rsquo;importe quelle donnée en très peu de temps: utile parfois pour du troubleshooting.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Premiers pas en domotique</title>
@@ -701,44 +729,6 @@ end
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;dans le fichier &lt;code&gt;config/application.rb&lt;/code&gt; (dans la classe &lt;code&gt;Application &amp;lt; Rails::Application&lt;/code&gt;) - chaque scaffold sera automatiquement en Haml&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Node.js/Express sur heroku</title>
-      <link>http://www.zeneffy.fr/2011/06/node-jsexpress-sur-heroku/</link>
-      <pubDate>Mon, 27 Jun 2011 20:30:26 +0000</pubDate>
-      
-      <guid>http://www.zeneffy.fr/2011/06/node-jsexpress-sur-heroku/</guid>
-      <description>&lt;p&gt;Je suis en train de tester &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; ces derniers jours, et notamment le &lt;a href=&#34;http://expressjs.com/&#34;&gt;framework web Express&lt;/a&gt; - Fan de l&amp;rsquo;hébergeur &lt;a href=&#34;http://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;, d&amp;rsquo;autant plus depuis qu&amp;rsquo;il est possible d&amp;rsquo;avoir des applications &lt;a href=&#34;http://blog.heroku.com/archives/2011/5/31/celadon_cedar/&#34;&gt;node.js&lt;/a&gt; (entre autres), j&amp;rsquo;ai souhaité installer une application de test en suivant &lt;a href=&#34;http://pcoding.blogspot.com/2011/06/hebergement-nodejs-avec-heroku-celadon.html&#34;&gt;ce tutorial&lt;/a&gt; - et tout n&amp;rsquo;a pas fonctionné du premier coup :(&lt;/p&gt;
-
-&lt;p&gt;En effet, pour créer mon squelette d&amp;rsquo;application &amp;ldquo;zen-hw&amp;rdquo;, j&amp;rsquo;ai utilisé la commande&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[julien.newton: zen-hw]$ express
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;qui crée par défaut une arborescence d&amp;rsquo;application Express - or par défaut le fichier app.js lancera la webapp via la commande&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;app.listen(3000);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;qui fonctionne parfaitement en local (sauf si &lt;a href=&#34;http://pow.cx/&#34;&gt;pow&lt;/a&gt; est installé, mais c&amp;rsquo;est une autre histoire) mais pas sur heroku, avec un beau crash de l&amp;rsquo;application visible via:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[julien.newton: zen-hw]$ heroku ps
-Process       State               Command
-------------  ------------------  ------------------------------
-web.1         crashed for 8s      node app.js 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Pour éviter ce point, il suffit de modifier app.js pour chaque application Express créée via la commande &lt;code&gt;_express_&lt;/code&gt; pour utiliser &lt;code&gt;_process.env.PORT_&lt;/code&gt;, ce qui donne à la fin du fichier:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var port = process.env.PORT || 3210;
-app.listen(port, function(){
-  console.log(&amp;quot;Listening on &amp;quot; + port);
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;et voilà l&amp;rsquo;application fonctionne sous heroku !&lt;/p&gt;
 </description>
     </item>
     

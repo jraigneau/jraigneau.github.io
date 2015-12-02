@@ -43,6 +43,51 @@
 			
 			<div class="row">
 				<div class="twelve columns">
+					<h1>#Remplacement de emoncms par Grafana&#43;influxDB</h1>
+				</div>
+			</div>
+
+            <div class="row">
+                    <div class="twelve columns" align="justify">
+                        <p>Utilisateur de <a href="http://emoncms.org/">emoncms</a> comme solution de métrologie de mon installation domotique depuis quelques mois, j&rsquo;ai décidé dernièrement de basculer sur une solution moins spécialisée et beaucoup plus ouverte, basée sur <a href="https://influxdb.com/">influxDB</a> pour la partie stockage des données et sur le superbe <a href="http://grafana.org/">Grafana</a> pour la partie affichage des indicateurs.</p>
+
+<p>InfluxDB est une base de donnée permettant de stocker des données chronologiques (Time series en anglais), avec intégration de fonctions mathématiques simples (min/max, moyenne&hellip;), et un langage de requêtage proche du SQL et simple à utiliser.</p>
+
+<p>Grafana est, quant à lui, un visualiseur de données, pouvant se connecter à Graphite, influxDB, openTSDB&hellip;afin de créer des tableaux de bord composés de graphiques ou de données brutes avec des possibilités avancées de corrélation.</p>
+
+<p>L&rsquo;installation de ces deux outils se fait très facilement (le classique `sudo apt-get sur ubuntu) et le paramétrage est aussi simple (du moins pour une installation comme la mienne) - aussi je ne n&rsquo;épiloguerai pas dessus (en bref utilisation de <a href="http://nodered.org/">nodered</a> ou de scripts bash pour récupérer les données puis envoi en POST via l&rsquo;API influxDB, rien d&rsquo;exotique).</p>
+
+<p>Ainsi en quelques minutes, j&rsquo;ai pu obtenir des tableaux de bord sur différents types de données, tant domotique qu&rsquo;informatique, eg:</p>
+
+<p><em>Consommation électrique</em></p>
+
+<p><img src="https://farm1.staticflickr.com/602/23106880869_9878c217b9.jpg" width="500" height="297" alt="graphana-elec"></p>
+
+<p><em>Traffic internet sur ma box</em></p>
+
+<p><img src="https://farm1.staticflickr.com/683/23366332332_caa0a653e9.jpg" width="500" height="297" alt="grafana-traffic"></p>
+
+<p>Pour conclure, ce qui me satisfait le plus dans cette solution c&rsquo;est la possibilité de mettre n&rsquo;importe quelle donnée en très peu de temps: utile parfois pour du troubleshooting.</p>
+
+                    </div>
+            </div>
+            <div class="row" style="border-top: 1px solid #eee; ">
+				<div class="twelve columns" style="background-color:white; color: black;">
+					<span class="post-postedby">Date de publication: 02/12/2015</span>
+				</div>
+				<div class="twelve columns" style="background-color:white; color: black;">
+					<span class="post-postedby">Mots-clefs: </span>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/domotique" class="tags-link">#domotique</a>
+				
+				</div>
+			</div>
+            <br/><br/>
+			
+	    
+			
+			<div class="row">
+				<div class="twelve columns">
 					<h1>#Premiers pas en domotique</h1>
 				</div>
 			</div>
@@ -321,62 +366,6 @@ Bref, de quoi s&rsquo;occuper quelques temps !</li>
 				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/outils" class="tags-link">#outils</a>
 				
 				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/projets" class="tags-link">#projets</a>
-				
-				</div>
-			</div>
-            <br/><br/>
-			
-	    
-			
-			<div class="row">
-				<div class="twelve columns">
-					<h1>#Le motto de l&#39;exploitant</h1>
-				</div>
-			</div>
-
-            <div class="row">
-                    <div class="twelve columns" align="justify">
-                        <p>En lisant le très bon article <a href="http://agiletesting.blogspot.co.uk/2012/08/10-things-to-know-when-starting-out-as.html">10 things to know when starting out as a sysadmin</a>, j&rsquo;ai retrouvé des points importants que tout exploitant doit connaître sur le bout des doigts à mon humble avis et d&rsquo;après mes diverses (et parfois malheureuses) expériences:</p>
-
-<ol>
-<li>Sauvegarder est important, tester la restauration l&rsquo;est tout autant.</li>
-<li>Tous les systèmes et applications en production doivent être supervisés, en adaptant le niveau de supervision à la criticité du système.</li>
-<li>L&rsquo;exploitant doit être techniquement très compétent, notamment sur les protocoles réseau (http, DNS, routages&hellip;) qui sont à la base du troubleshooting.<br /></li>
-<li>L&rsquo;exploitant est avant tout un expert de la gestion des problèmes qui sait analyser les anomalies en identifiant et éliminant les variables une à une jusqu&rsquo;à trouver la rootcause.</li>
-<li>Redondance et résilience sont les amies de l&rsquo;exploitant, qui n&rsquo;oublie pas de les tester régulièrement&hellip;il est toujours dommage de se rendre compte en plein incident que le backup ne fonctionne pas alors que le master est tombé</li>
-<li>Exploiter des machines, c&rsquo;est maintenir la disponibilité <strong>et</strong> la sécurité des applications: vos clients ne vous pardonneront jamais d&rsquo;avoir égarer leurs données personnelles.</li>
-<li>Les logs sont et resteront l&rsquo;outil de diagnostic principal de l&rsquo;exploitant: cela nécessite d&rsquo;une part une infrastructure pour les gérer correctement mais aussi un travail en amont avec les développeurs pour savoir ce qui doit être dans des logs ou pas!</li>
-<li>Savoir développer des outils est important pour industrialiser des actions de production ou pour trouver un &ldquo;quick hack&rdquo; afin de rétablir le service&hellip;et ces outils sont presque toujours écrit en langage de script (python, ruby, bash, lua - choisissez votre préféré) que devra connaître voire masteriser l&rsquo;exploitant.</li>
-<li>La documentation sauve la journée de l&rsquo;exploitant (et permet accessoirement de rétablir le service): manuels d&rsquo;exploitation, guides de troubleshooting, schémas de flux&hellip;sont à construire, collecter et surtout stocker dans des bases de connaissance efficientes - les wikis sont souvent de parfaits candidats pour cela en rajoutant une dimension collaborative entre exploitants et développeurs.</li>
-<li>Bien que la réactivité soit la première qualité de l&rsquo;exploitant, la proactivité est tout aussi importante, d&rsquo;une part en amont des projets pour préparer l&rsquo;exploitabilité des solutions avec architectes et développeurs et d&rsquo;autre part en aval en analysant quotidiennement la performance des applications afin d&rsquo;anticiper les dégradations.</li>
-</ol>
-
-<p>Dernier point et non des moindres: l&rsquo;opensource permet à l&rsquo;exploitant d&rsquo;avoir une boîte à outils efficace et à moindre frais:</p>
-
-<ul>
-<li>Déploiement (Puppet/Chef/Vagrant)</li>
-<li>Intégration et les tests (Selenium, Cucumber &amp; Co)</li>
-<li>Sauvegarde (Amanda/Bacula)</li>
-<li>Supervision (Nagios, Centreon, Zabbix)</li>
-<li>Analyse de la performance (Cacti, Smokeping)</li>
-<li>Gestion des problèmes et des incidents (Bugzilla, Mantis, Trac)</li>
-<li>Documentation (MoinMoinwiki, MediaWiki).</li>
-</ul>
-
-<p>Ainsi pour chaque usage plusieurs alternatives libres existent et sont par ailleurs largement utilisées dans le monde de la production pour faciliter la vie de l&rsquo;exploitant.</p>
-
-                    </div>
-            </div>
-            <div class="row" style="border-top: 1px solid #eee; ">
-				<div class="twelve columns" style="background-color:white; color: black;">
-					<span class="post-postedby">Date de publication: 02/09/2012</span>
-				</div>
-				<div class="twelve columns" style="background-color:white; color: black;">
-					<span class="post-postedby">Mots-clefs: </span>
-				
-				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/devops" class="tags-link">#Devops</a>
-				
-				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/management" class="tags-link">#management</a>
 				
 				</div>
 			</div>
