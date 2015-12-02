@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/windows/</link>
+    <description>Recent content in Windows on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 06 Jun 2010 06:28:49 +0000</lastBuildDate>
+    <atom:link href="http://www.zeneffy.fr/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Optimisation des OS avec un disque SSD</title>
+      <link>http://www.zeneffy.fr/2010/06/optimisation-des-os-avec-un-disque-ssd/</link>
+      <pubDate>Sun, 06 Jun 2010 06:28:49 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/06/optimisation-des-os-avec-un-disque-ssd/</guid>
+      <description>&lt;p&gt;Ayant acheté dernièrement un disque dur SSD pour mon portable, il a fallu chercher quelques informations complémentaires pour m&amp;rsquo;assurer de la meilleur optimisation possible:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sous Windows Vista&lt;/strong&gt;
+&lt;a href=&#34;http://www.ocztechnologyforum.com/forum/showthread.php?47212-Vista-32-64-SSD-Windows-Registry-tweaks&#34;&gt;www.ocztechnologyforum.com/forum/showthread.php?47212-Vista-32-64-SSD-Windows-Registry-tweaks&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;En bref:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Désactiver superfetch &amp;amp; prefetch&lt;/li&gt;
+&lt;li&gt;Activer &lt;code&gt;clearPageFilesAtShutdown&lt;/code&gt; et &lt;code&gt;LargeSystemCache&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Amélioration du cache disque NTFS&lt;/li&gt;
+&lt;li&gt;Suppression indexation automatique + hibernation (pour gagner de l&amp;rsquo;espace)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Optimisations sous Linux:&lt;/strong&gt;
+&lt;a href=&#34;http://itezer.com/blog/ubuntu-linux/125-Four-Tweaks-for-Using-Linux-with-SSD.html&#34;&gt;itezer.com/blog/ubuntu-linux/125-Four-Tweaks-for-Using-Linux-with-SSD.html&lt;/a&gt;
+&lt;a href=&#34;http://www.zdnet.com/blog/perlow/geek-sheet-a-tweakers-guide-to-solid-state-drives-ssds-and-linux/9190&#34;&gt;www.zdnet.com/blog/perlow/geek-sheet-a-tweakers-guide-to-solid-state-drives-ssds-and-linux/9190&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;En synthèse:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;S&amp;rsquo;assurer d&amp;rsquo;être en noatime&lt;/li&gt;
+&lt;li&gt;Utiliser la mémoire vive comme /tmp&lt;/li&gt;
+&lt;li&gt;Changer le scheduler disque (prendre noop)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Résultat:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;julien@einstein:~$ sudo hdparm -t /dev/sda
+/dev/sda:
+Timing buffered disk reads:  454 MB in  3.01 seconds = 150.66 MB/sec
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

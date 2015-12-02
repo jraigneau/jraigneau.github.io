@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mono on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/mono/</link>
+    <description>Recent content in Mono on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Thu, 15 Jul 2010 18:31:06 +0000</lastBuildDate>
+    <atom:link href="http://www.zeneffy.fr/tags/mono/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Adieu darwin...version Geek!</title>
+      <link>http://www.zeneffy.fr/2010/07/adieu-darwin/</link>
+      <pubDate>Thu, 15 Jul 2010 18:31:06 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/07/adieu-darwin/</guid>
+      <description>&lt;p&gt;N&amp;rsquo;étant pas particulièrement fan de certaines applications intégrées dans Ubuntu par défaut, j&amp;rsquo;ai tendance à vite les enlever post-installation.&lt;/p&gt;
+
+&lt;p&gt;Ici des applications mono pas très utile:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get purge f-spot gbrainy tomboy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;et surtout le gros gourmand evolution:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get purge evolution evolution-common evolution-couchdb evolution-exchange evolution-indicator evolution-plugins evolution-webcal libegroupwise1.2-13 libexchange-storage1.2-3
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pessac</title>
+      <link>http://www.zeneffy.fr/2008/05/pessac/</link>
+      <pubDate>Mon, 12 May 2008 08:22:40 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/pessac/</guid>
+      <description>&lt;p&gt;Pessac est une application écrite en C# (compilable/utilisable via le framework Open Source &lt;a href=&#34;http://www.mono-project.com/Main_Page&#34;&gt;mono&lt;/a&gt;) permet de sortir un reporting &amp;ldquo;projet&amp;rdquo; à partir de l&amp;rsquo;analyse de répertoires du système de fichier.&lt;/p&gt;
+
+&lt;p&gt;Ce reporting est basé non sur l&amp;rsquo;avancement planning du projet mais sur la présence des livrables/Jalons d&amp;rsquo;un projet.&lt;/p&gt;
+
+&lt;p&gt;Il permet par ailleurs de suivre de manière centralisé l&amp;rsquo;avancement de plusieurs projets et gère le concept d&amp;rsquo;archivage.&lt;/p&gt;
+
+&lt;p&gt;Ce projet est entièrement géré via &lt;a href=&#34;https://code.google.com/p/pessac/&#34;&gt;Google Code&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

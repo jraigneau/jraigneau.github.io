@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/java/</link>
+    <description>Recent content in Java on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 13 Feb 2011 19:20:45 +0000</lastBuildDate>
+    <atom:link href="http://www.zeneffy.fr/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Veilleur: une application de surveillance des sites web</title>
+      <link>http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/</link>
+      <pubDate>Sun, 13 Feb 2011 19:20:45 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/</guid>
+      <description>&lt;p&gt;Abonné depuis plusieurs mois à plusieurs services de monitoring de sites web (notamment &lt;a href=&#34;http://www.pingdom.com&#34;&gt;pingdom&lt;/a&gt;), j&amp;rsquo;ai décidé de me faire mon propre service en profitant de l&amp;rsquo;architecture de &lt;a href=&#34;http://code.google.com/intl/fr-FR/appengine/&#34;&gt;Google App Engine&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Bien évidemment, l&amp;rsquo;application est en Ruby avec le framework &lt;a href=&#34;http://www.sinatrarb.com&#34;&gt;Sinatra&lt;/a&gt; et se base sur &lt;a href=&#34;http://code.google.com/p/appengine-jruby/&#34;&gt;appengine-jruby&lt;/a&gt;, qui permet d&amp;rsquo;utiliser Ruby via &lt;a href=&#34;http://jruby.org/&#34;&gt;JRuby&lt;/a&gt; (Implémentation de Ruby en Java).&lt;/p&gt;
+
+&lt;p&gt;En utilisant Google App Engine, je m&amp;rsquo;affranchis de la gestion de l&amp;rsquo;authentification (comptes google), de la base de donnée et surtout je peux utiliser un système &lt;a href=&#34;http://fr.wikipedia.org/wiki/Cron&#34;&gt;CRON&lt;/a&gt; intégré dans le service Google. Ce système me permet de lancer automatiquement et périodiquement les tests d&amp;rsquo;URL pour me donner le temps d&amp;rsquo;accès et calculer la disponibilité du site web.&lt;/p&gt;
+
+&lt;p&gt;Après une petite semaine de travail, le premier résultat est très intéressant et peut-être utilisé par tous.&lt;/p&gt;
+
+&lt;p&gt;Le projet en lui même est géré via &lt;a href=&#34;https://github.com/jraigneau/veilleur&#34;&gt;GitHub&lt;/a&gt; + &lt;a href=&#34;http://zeneffy.lighthouseapp.com/projects/69787-veilleur/overview&#34;&gt;Lighthouse&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

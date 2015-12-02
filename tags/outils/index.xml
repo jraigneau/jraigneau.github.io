@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Outils on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/outils/</link>
+    <description>Recent content in Outils on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 28 Oct 2012 18:49:04 +0000</lastBuildDate>
+    <atom:link href="http://www.zeneffy.fr/tags/outils/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Labs.zeneffy.fr change de crémerie</title>
+      <link>http://www.zeneffy.fr/2012/10/labs-zeneffy-fr-change-de-cremerie/</link>
+      <pubDate>Sun, 28 Oct 2012 18:49:04 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2012/10/labs-zeneffy-fr-change-de-cremerie/</guid>
+      <description>&lt;p&gt;Suite à l&amp;rsquo;arrêt de la stack &amp;ldquo;aspen&amp;rdquo; sur &lt;a href=&#34;http://www.heroku.com&#34;&gt;Heroku.com&lt;/a&gt; sur laquelle tournait originellement le site &lt;a href=&#34;http://labs.zeneffy.fr&#34;&gt;labs.zeneffy.fr&lt;/a&gt; (basé sur le CMS ruby on rails &lt;a href=&#34;http://radiantcms.org/&#34;&gt;RadiantCMS&lt;/a&gt;), j&amp;rsquo;ai été obligé de chercher une solution : migration simple vers une stack plus récente ou changement complet de CMS.&lt;/p&gt;
+
+&lt;p&gt;Finalement, j&amp;rsquo;ai simplifié à l&amp;rsquo;extrème en utilisant &lt;a href=&#34;http://pages.github.com/&#34;&gt;github pages&lt;/a&gt; avec un site complètement statique et se résumant à une page.&lt;/p&gt;
+
+&lt;p&gt;Comme quoi les CMS et les bases de données ne sont pas la solution à tous les problèmes !&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Utiliser les versions 0.6.x de Nodejs sur Heroku</title>
+      <link>http://www.zeneffy.fr/2012/01/utiliser-les-versions-0-6-x-de-nodejs-sur-heroku/</link>
+      <pubDate>Sun, 22 Jan 2012 15:41:38 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2012/01/utiliser-les-versions-0-6-x-de-nodejs-sur-heroku/</guid>
+      <description>&lt;p&gt;L&amp;rsquo;hébergeur &lt;a href=&#34;http://heroku.com&#34;&gt;heroku&lt;/a&gt; permet de mettre en place des applications &lt;a href=&#34;http://nodejs.org/&#34;&gt;nodejs&lt;/a&gt; depuis l&amp;rsquo;année dernière, toutefois par défaut la version est la 0.4.7 - version stable mais qui est devenue obsolète avec l&amp;rsquo;apparition des versions 0.6.x.&lt;/p&gt;
+
+&lt;p&gt;Heureusement, il est possible très facilement de forcer la version - pour cela il suffit d&amp;rsquo;une part de rajouter un &amp;ldquo;buildpack&amp;rdquo; dans les variables d&amp;rsquo;environnement de votre application:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku config:add BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-nodejs.git#versions
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;puis de modifier le fichier &lt;em&gt;packages.json&lt;/em&gt; pour rajouter une entrée &amp;ldquo;engines&amp;rdquo;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;name&amp;quot;: &amp;quot;monAppli&amp;quot;
+  , &amp;quot;version&amp;quot;: &amp;quot;0.1.0&amp;quot;
+  , &amp;quot;private&amp;quot;: true
+  , &amp;quot;dependencies&amp;quot;: {
+      &amp;quot;express&amp;quot;: &amp;quot;2.5.6&amp;quot;
+    , &amp;quot;jade&amp;quot;: &amp;quot;0.20.0&amp;quot;
+  },
+  &amp;quot;engines&amp;quot;: {
+    &amp;quot;node&amp;quot;: &amp;quot;0.6.x&amp;quot;,
+    &amp;quot;npm&amp;quot;: &amp;quot;1.0.x&amp;quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis les classiques&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git add .
+git commit -m &amp;quot;passage en en 0.6&amp;quot;
+git push heroku master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Normalement vous devriez voir les lignes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-----&amp;gt; Heroku receiving push
+-----&amp;gt; Fetching custom buildpack... done
+-----&amp;gt; Node.js app detected
+-----&amp;gt; Resolving engine versions
+       Using Node.js version: 0.6.8
+       Using npm version: 1.0.106
+-----&amp;gt; Fetching Node.js binaries
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Et voilà, votre application tourne en 0.6.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Démarrer avec Play! Framework, scala et MongoDB sur Heroku</title>
+      <link>http://www.zeneffy.fr/2011/10/demarrer-avec-play-framework-scala-et-mongodb-sur-heroku/</link>
+      <pubDate>Sun, 30 Oct 2011 09:37:51 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/10/demarrer-avec-play-framework-scala-et-mongodb-sur-heroku/</guid>
+      <description>&lt;p&gt;J&amp;rsquo;ai découvert &lt;a href=&#34;http://www.playframework.org/&#34;&gt;Play! Framework&lt;/a&gt; il y a quelques mois avec beaucoup d&amp;rsquo;intérêt et je me suis rendu compte qu&amp;rsquo;un module &lt;a href=&#34;http://scala.playframework.org/&#34;&gt;scala&lt;/a&gt; existait. Voici donc un premier petit projet qui permet à la fois d&amp;rsquo;installer Play! (1.2.3) mais aussi d&amp;rsquo;utiliser MongoDB sur Heroku en quelques étapes:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Suivant votre système, &lt;a href=&#34;http://www.playframework.org/download&#34;&gt;installez Play! via le zip&lt;/a&gt; ou via brew: &lt;code&gt;brew install play&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Installez le support java pour Play! &lt;code&gt;play install scala&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Créez l&amp;rsquo;application avec le support java: &lt;code&gt;play new maSuperDemo --with scala&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Testez que tout s&amp;rsquo;est bien passé: &lt;code&gt;play run&lt;/code&gt; puis ouvrez votre navigateur sur &lt;code&gt;http//localhost:9000&lt;/code&gt;. Normalement vous devez avoir une belle fenêtre résumant le fonctionnement de Play!. Passons maintenant au choses sérieuses.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Modifiez les dépendances du projet pour ajouter &lt;a href=&#34;http://api.mongodb.org/scala/casbah/2.1.5.0/index.html&#34;&gt;Casbah&lt;/a&gt;, la librairie Scala permettant de manipuler &lt;a href=&#34;mongodb&#34;&gt;MongoDB&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Application dependencies
+require:
+    - play
+    - play -&amp;gt; scala 0.9.1
+    - com.mongodb.casbah -&amp;gt; casbah_2.8.1 2.1.5-1
+
+repositories:
+  - scalatools:
+     type: iBiblio
+     root: http://scala-tools.org/repo-releases/
+     contains:
+       - com.mongodb.casbah -&amp;gt; *
+       - org.scalaj -&amp;gt; *
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Attention de bien utiliser la version 2.8.1 qui est la seule compatible avec Play! 1.2.3 à l&amp;rsquo;heure actuelle.&lt;/p&gt;
+
+&lt;p&gt;Forcez Play! à charger toutes les dépendances (qui seront stockées dans le répertoire /lib):
+    play dependencies&lt;/p&gt;
+
+&lt;p&gt;Préparez l&amp;rsquo;application pour le déploiement sur heroku: pour des raisons de simplicité nous allons utiliser la base MongoDB de heroku directement (pas de base de développement&amp;hellip;c&amp;rsquo;est mal mais c&amp;rsquo;est une démo !).
+Avant toute chose, créez un fichier &lt;code&gt;.gitignore&lt;/code&gt; contenant:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/modules
+/tmp
+/lib
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis la magie git habituelle&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+git add .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;et enfin la déclaration sous heroku (je ne donne pas de nom à l&amp;rsquo;application, Heroku m&amp;rsquo;en choisira un tout seul) et l&amp;rsquo;installation de l&amp;rsquo;addon mongodb (ici via mongolab mais mongoHQ ferait aussi l&amp;rsquo;affaire)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku create --stack cedar
+heroku addons:add mongolab:starter
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Point important: la commande heroku config vous permettra de récupérer l&amp;rsquo;url et le port de la base mongoDB automatiquement créée. Exemple:
+    &lt;code&gt;MONGOLAB_URI =&amp;gt; mongodb://nombase:motdepasse@urlmongolab:portmongolab/nombase&lt;/code&gt;
+Ces données sont à intégrer dans la prochaine étape.&lt;/p&gt;
+
+&lt;p&gt;Créez un nouveau controleur dans /app/controllers/Messages.scala avec le code suivant:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package controllers;
+
+import play.mvc._;
+import com.mongodb.casbah.Imports._
+import scala.collection.JavaConverters._
+
+object Messages extends Controller {
+
+//Création de la connexion et authentification
+  val _mongoConn = MongoConnection(&amp;quot;urlmongolab&amp;quot;, portmongolab)
+  _mongoConn(&amp;quot;nombase&amp;quot;).authenticate(&amp;quot;nombase&amp;quot;,&amp;quot;motdepasse&amp;quot;)
+
+
+  def index = {
+    val msgs = _mongoConn(&amp;quot;nombase&amp;quot;)(&amp;quot;test_data&amp;quot;).find( &amp;quot;msg&amp;quot; $exists true $ne &amp;quot;&amp;quot; )
+    val msgStrings = msgs.map( (obj: DBObject) =&amp;gt; obj.getOrElse(&amp;quot;msg&amp;quot;,&amp;quot;&amp;quot;) )
+    Template( &#39;msgStrings -&amp;gt; msgStrings.asJava )
+  }
+
+  def save(msg:String) = {
+    val doc = MongoDBObject(&amp;quot;msg&amp;quot; -&amp;gt; msg)
+    _mongoConn(&amp;quot;nombase&amp;quot;)(&amp;quot;test_data&amp;quot;).save( doc )
+    Redirect(&amp;quot;/&amp;quot;)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vous noterez les transformations des méthodes &amp;ldquo;.asJava&amp;rdquo; qui permettent à Groovy (le langage de scripting intégré dans Play) de gérer les listes typique de Scala.&lt;/p&gt;
+
+&lt;p&gt;Ajoutez une vue pour gérer le controleur avec un fichier dans /app/views/Messages/index.html&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;form action=&amp;quot;@{Messages.save()}&amp;quot; method=&amp;quot;POST&amp;quot;/&amp;gt;
+  &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;msg&amp;quot;/&amp;gt;
+  &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;Add message&amp;quot; /&amp;gt;
+&amp;lt;/form&amp;gt;
+
+&amp;lt;ul&amp;gt;
+  #{list items:msgStrings, as:&#39;mess&#39; }
+  &amp;lt;li&amp;gt;${ mess }&amp;lt;/li&amp;gt;
+  #{/list}
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Modifiez les routes dans /config/routes&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Messages.index
+POST    /                                       Messages.save
+
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Testez votre application en lançant la commande play run - normalement vous devriez être capable d&amp;rsquo;enregistrer des petites messages et de les voir apparaître à l&amp;rsquo;écran.&lt;/p&gt;
+
+&lt;p&gt;Déployez votre application sur heroku et admirez la !&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git add .
+git commit -m &amp;quot;Premier commit&amp;quot;
+git push heroku master
+heroku open
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ce petit tutoriel peut (doit) être complété avec le &lt;a href=&#34;http://scala.playframework.org/documentation/scala-0.9.1/home&#34;&gt;tutoriel officiel disponible sur le site de Play&lt;/a&gt;, en attendant vous pourrez jouer avec mon application sur &lt;a href=&#34;http://glowing-fog-2793.herokuapp.com/&#34;&gt;http://glowing-fog-2793.herokuapp.com/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Tutoriel basé en partie sur &lt;a href=&#34;http://jaredrosoff.com/2011/05/getting-started-with-play-framework-scala-and-casbah/&#34;&gt;http://jaredrosoff.com/2011/05/getting-started-with-play-framework-scala-and-casbah/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Scala sur Heroku</title>
+      <link>http://www.zeneffy.fr/2011/10/scala-sur-heroku/</link>
+      <pubDate>Sat, 15 Oct 2011 08:21:18 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/10/scala-sur-heroku/</guid>
+      <description>&lt;p&gt;En plein apprentissage de scala, j&amp;rsquo;ai décidé de m&amp;rsquo;intéresser au framework web &lt;a href=&#34;http://www.scalatra.org/&#34;&gt;Scalatra&lt;/a&gt; qui ressemble à &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;Sinatra&lt;/a&gt;, mon environnement favori en Ruby. Evidemment, je souhaite pouvoir partager rapidement mes &amp;lsquo;créations&amp;rsquo; en les hébergeant sur la plate-forme &lt;a href=&#34;http://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;, devenue &lt;a href=&#34;http://blog.heroku.com/archives/2011/8/3/polyglot_platform/&#34;&gt;polyglotte&lt;/a&gt; depuis quelques semaines en supportant d&amp;rsquo;autres langages que Ruby (notamment node.js, Java, Clojure, Scala et Python).&lt;/p&gt;
+
+&lt;p&gt;Après quelques recherches sur internet, j&amp;rsquo;ai trouvé mon bonheur sur github &lt;a href=&#34;https://gist.github.com/1209277&#34;&gt;ici&lt;/a&gt; et &lt;a href=&#34;https://github.com/mikkelbd/scalatra-hello-heroku&#34;&gt;là&lt;/a&gt;. Pour gagner du temps dans mes futurs projets, j&amp;rsquo;ai alors transformé ces informations en un template &lt;a href=&#34;https://github.com/n8han/giter8&#34;&gt;giter8&lt;/a&gt;. Giter8 est un simple outil basé sur scala et &lt;a href=&#34;https://github.com/harrah/xsbt/wiki&#34;&gt;SBT&lt;/a&gt; qui installe des templates stockés sur Github.&lt;/p&gt;
+
+&lt;p&gt;Une fois &lt;a href=&#34;https://github.com/n8han/giter8&#34;&gt;g8&lt;/a&gt; et le &lt;a href=&#34;http://devcenter.heroku.com/articles/git&#34;&gt;gem heroku&lt;/a&gt; installés, mettre en ligne un projet scalatra devient alors très simple:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;g8 jraigneau/scalatra-sbt-heroku.g8
+cd monProjet
+git init
+git add . (conseil: pensez à mettre les répertoires de compilation (target) dans votre fichier .gitignore avant...)
+git commit -m &amp;quot;Premier commit&amp;quot;
+heroku create monProjet --stack cedar
+git push heroku master
+heroku open
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Et voilà, votre navigateur s&amp;rsquo;ouvre sur la nouvelle application !&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Sauvegarder une base de donnée PostgreSQL chez Heroku</title>
+      <link>http://www.zeneffy.fr/2011/09/sauvegarder-une-base-de-donnee-postgresql-chez-heroku/</link>
+      <pubDate>Mon, 19 Sep 2011 17:34:01 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/09/sauvegarder-une-base-de-donnee-postgresql-chez-heroku/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.heroku.com&#34;&gt;Heroku&lt;/a&gt; permet de faire très simplement des sauvegardes des bases de données de production en utilisant le module &lt;a href=&#34;http://addons.heroku.com/pgbackups&#34;&gt;PGBackups&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Il faut d&amp;rsquo;abord installer le module soit via l&amp;rsquo;IHM web , soit via la commande ((dans le répertoire de l&amp;rsquo;application):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add pgbackups
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis simplement lancer une sauvegarde:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku pgbackups:capture
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Une petite vérification s&amp;rsquo;impose:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku pgbackups
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;qui renvoie normalement:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;D   | Backup Time         | Size   | Database
+-----+---------------------+--------+----------------
+b001 | 2011/08/18 11:08.22 | 39.2KB | SHARED_DATABASE
+b002 | 2011/09/19 10:24.04 | 40.2KB | SHARED_DATABASE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Et finalement pour restaurer (avec b001 la base):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku pgbackups:restore DATABASE b001
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Rappelez vous que la sauvegarde reste l&amp;rsquo;un des meilleurs moyens de sécuriser vos données.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MacVim, Command-T et RVM</title>
+      <link>http://www.zeneffy.fr/2011/09/macvim-command-t-et-rvm/</link>
+      <pubDate>Sun, 04 Sep 2011 18:55:28 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/09/macvim-command-t-et-rvm/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/macvim/&#34;&gt;MacVim&lt;/a&gt; (une forme de l&amp;rsquo;éditeur VIM adaptée à MacOS) est mon éditeur de prédilection actuellement malgré de nombreux autres essais (entre autres: &lt;a href=&#34;http://macromates.com/&#34;&gt;Textmate&lt;/a&gt;, &lt;a href=&#34;http://kodapp.com/&#34;&gt;Kod&lt;/a&gt;, &lt;a href=&#34;http://www.sublimetext.com/&#34;&gt;Sublime Text&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Il est très configurable et permet de rajouter de nombreuses fonctionnalités utiles: ici je vous parlerai du module &lt;a href=&#34;https://wincent.com/products/command-t&#34;&gt;Command-T&lt;/a&gt; qui permet de faire des recherches très fines et surtout pertinentes à travers les répertoires et fichiers d&amp;rsquo;un projet - un screencast est disponible &lt;a href=&#34;https://s3.amazonaws.com/s3.wincent.com/command-t/screencasts/command-t-demo.mov?width=640&amp;amp;height=480&#34;&gt;sur le site de l&amp;rsquo;auteur&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pour l&amp;rsquo;installer sur un mac avec RVM, il faut être vigilant sur la version de Ruby employée car MacVim ne compilant pas avec ruby 1.9.&lt;/p&gt;
+
+&lt;p&gt;Installation de MacVim via &lt;a href=&#34;http://mxcl.github.com/homebrew/&#34;&gt;homebrew&lt;/a&gt; avec ruby 1.8.7:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rvm use system
+/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.github.com/gist/323731)&amp;quot;
+brew install wget macvim
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Installation de CommandT à partir de vim.org:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://www.vim.org/scripts/download_script.php?src_id=15560
+mvim command-t-1.2.1.vba
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis une fois MacVim ouvert:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:so %
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;En sortant de MacVim:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /$HOME/.vim/ruby/command-t
+ruby extconf.rb
+make
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Et voilà normalement tout fonctionne, vous pouvez utiliser la version de ruby que vous souhaitez sans problème.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Node.js/Express sur heroku</title>
+      <link>http://www.zeneffy.fr/2011/06/node-jsexpress-sur-heroku/</link>
+      <pubDate>Mon, 27 Jun 2011 20:30:26 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/06/node-jsexpress-sur-heroku/</guid>
+      <description>&lt;p&gt;Je suis en train de tester &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; ces derniers jours, et notamment le &lt;a href=&#34;http://expressjs.com/&#34;&gt;framework web Express&lt;/a&gt; - Fan de l&amp;rsquo;hébergeur &lt;a href=&#34;http://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;, d&amp;rsquo;autant plus depuis qu&amp;rsquo;il est possible d&amp;rsquo;avoir des applications &lt;a href=&#34;http://blog.heroku.com/archives/2011/5/31/celadon_cedar/&#34;&gt;node.js&lt;/a&gt; (entre autres), j&amp;rsquo;ai souhaité installer une application de test en suivant &lt;a href=&#34;http://pcoding.blogspot.com/2011/06/hebergement-nodejs-avec-heroku-celadon.html&#34;&gt;ce tutorial&lt;/a&gt; - et tout n&amp;rsquo;a pas fonctionné du premier coup :(&lt;/p&gt;
+
+&lt;p&gt;En effet, pour créer mon squelette d&amp;rsquo;application &amp;ldquo;zen-hw&amp;rdquo;, j&amp;rsquo;ai utilisé la commande&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[julien.newton: zen-hw]$ express
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;qui crée par défaut une arborescence d&amp;rsquo;application Express - or par défaut le fichier app.js lancera la webapp via la commande&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;app.listen(3000);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;qui fonctionne parfaitement en local (sauf si &lt;a href=&#34;http://pow.cx/&#34;&gt;pow&lt;/a&gt; est installé, mais c&amp;rsquo;est une autre histoire) mais pas sur heroku, avec un beau crash de l&amp;rsquo;application visible via:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[julien.newton: zen-hw]$ heroku ps
+Process       State               Command
+------------  ------------------  ------------------------------
+web.1         crashed for 8s      node app.js 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Pour éviter ce point, il suffit de modifier app.js pour chaque application Express créée via la commande &lt;code&gt;_express_&lt;/code&gt; pour utiliser &lt;code&gt;_process.env.PORT_&lt;/code&gt;, ce qui donne à la fin du fichier:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var port = process.env.PORT || 3210;
+app.listen(port, function(){
+  console.log(&amp;quot;Listening on &amp;quot; + port);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;et voilà l&amp;rsquo;application fonctionne sous heroku !&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Règles du bricolage numérique</title>
+      <link>http://www.zeneffy.fr/2011/05/regles-du-bricolage-numerique/</link>
+      <pubDate>Sat, 28 May 2011 18:48:56 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/05/regles-du-bricolage-numerique/</guid>
+      <description>&lt;p&gt;Le développement n&amp;rsquo;étant pas mon métier mais plutôt un hobby, les petits projets de &amp;ldquo;bricolage numérique&amp;rdquo; que je mène partagent certaines règles simples pour s&amp;rsquo;assurer de l&amp;rsquo;efficience du travail:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Toujours se lancer sur des projets qui ont une utilité immédiate pour mes proches ou moi (&lt;a href=&#34;https://github.com/jraigneau/INmemoria&#34;&gt;inmemoria&lt;/a&gt;, &lt;a href=&#34;https://github.com/jraigneau/veilleur&#34;&gt;veilleur&lt;/a&gt; &amp;hellip;)&lt;/li&gt;
+&lt;li&gt;Profiter de chaque projet pour tester des nouvelles technologies (dernière en date: les &lt;a href=&#34;https://github.com/jraigneau/zen-running&#34;&gt;API facebook&lt;/a&gt;, prochaine: les technos javascript &lt;a href=&#34;http://documentcloud.github.com/backbone/&#34;&gt;avancées&lt;/a&gt; comme &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; et le développement sous iOS)&lt;/li&gt;
+&lt;li&gt;Utiliser les mêmes outils de base pour développer (Github, MacVim par exemple)&lt;/li&gt;
+&lt;li&gt;Pour les applications web, utiliser un socle de feuilles de style css et de morceaux de code ou librairies javascript réutilisables&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Ces quatre règles me permettent en ce moment de sortir une application tous les deux mois.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Environnements de préproduction sous Heroku</title>
+      <link>http://www.zeneffy.fr/2011/04/environnements-de-preproduction-sous-heroku/</link>
+      <pubDate>Sun, 17 Apr 2011 20:58:06 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/04/environnements-de-preproduction-sous-heroku/</guid>
+      <description>&lt;p&gt;Il est assez simple de créer des environnement de préproduction sans recopier tout le code:&lt;/p&gt;
+
+&lt;p&gt;Création de l&amp;rsquo;application de préproduction&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku create myapp-preprod --remote preprod
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;si l&amp;rsquo;environnement de préproduction est différent de l&amp;rsquo;environnement de production - sinon &lt;strong&gt;ne pas jouer ces commandes&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku config:add RACK_ENV=preprod --app myapp-preprod
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis on déploie l&amp;rsquo;application:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git push preprod master
+heroku rake db:migrate --app myapp-preprod
+heroku db:push --app myapp-preprod
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Extensions Radiant sur Heroku via les sous-modules Git</title>
+      <link>http://www.zeneffy.fr/2011/04/extensions-radiant-sur-heroku-via-les-sous-modules-git/</link>
+      <pubDate>Thu, 14 Apr 2011 14:34:01 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/04/extensions-radiant-sur-heroku-via-les-sous-modules-git/</guid>
+      <description>&lt;p&gt;Heroku ne supportant pas les sous-modules git, il convient d&amp;rsquo;être vigilant en utilisant les extensions radiant : en effet tout fonctionnera en local mais les données des extensions dans /vendor ne seront pas poussées sur heroku - d&amp;rsquo;où des erreurs.&lt;/p&gt;
+
+&lt;p&gt;Tout d&amp;rsquo;abord pour vérifier l&amp;rsquo;existence de sous module:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;find . -mindepth 2 -name .git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Si il y a une réponse, il faut modifier cela:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd myapp
+$ rm -rf `find . -mindepth 2 -name .git`
+$ git rm --cache `git submodule | cut -f2 -d&#39; &#39;`
+$ git rm .gitmodules
+$ git add .
+$ git config -l | grep &#39;^submodule&#39; | cut -d&#39;=&#39; -f1 | xargs -n1 git config --unset-all
+$ git commit -m &amp;quot;récupération des sousmodules git&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;source: &lt;a href=&#34;http://stackoverflow.com/questions/894647/radiant-extensions-on-heroku&#34;&gt;http://stackoverflow.com/questions/894647/radiant-extensions-on-heroku&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installer Radiant CMS sous heroku</title>
+      <link>http://www.zeneffy.fr/2011/04/installer-radiant-cms-sous-heroku/</link>
+      <pubDate>Wed, 13 Apr 2011 11:09:20 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/04/installer-radiant-cms-sous-heroku/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://radiantcms.org/&#34;&gt;RadiantCMS&lt;/a&gt; est un gestionnaire de contenus simple basé sur le framework &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;RubyOnRails&lt;/a&gt;, permettant de mettre en place facilement des sites relativement complexes, notamment grâce à son langage de tags (Radius).&lt;/p&gt;
+
+&lt;p&gt;RadiantCMS fonctionne très bien avec l&amp;rsquo;hébergement Heroku, avec quelques petits changements à effectuer - décrit ci-dessous.&lt;/p&gt;
+
+&lt;p&gt;Installation des gems nécessaires en local&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gem install radiant sqlite3 heroku taps
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Création de l&amp;rsquo;application &amp;ldquo;myapp&amp;rdquo;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir myapp
+cd myapp
+radiant --database=sqlite3  .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Création de la base de donnée:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rake db:bootstrap
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ajout du fichier Gemfile:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;source :gemcutter
+gem &#39;rails&#39;, &#39;2.3.8&#39;
+gem &#39;RedCloth&#39;
+gem &#39;will_paginate&#39;,&#39;2.3.11&#39;
+gem &#39;radiant&#39; , &#39;0.9.1&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Important: une modification de &lt;code&gt;radiant-0.9.1/vendor/rails/activesupport/lib/active_support.rb&lt;/code&gt; pour ajouter &lt;code&gt;require ‘thread’&lt;/code&gt; avant &lt;code&gt;module ActiveSupport&lt;/code&gt; est nécessaire pour éviter une erreur du type: &lt;code&gt;gems/radiant-0.9.1/vendor/rails/activesupport/lib/active_support/dependencies.rb:55: uninitialized constant ActiveSupport::Dependencies::Mutex (NameError)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Lancer l&amp;rsquo;application en mode préprod puis en mode prod en visitant &lt;a href=&#34;http://localhost:3000/admin&#34;&gt;http://localhost:3000/admin&lt;/a&gt; pour créer les fichiers .js nécessaires (il n&amp;rsquo;est pas possible d&amp;rsquo;écrire dans le filesystem d&amp;rsquo;Heroku)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./script/server
+./script/server -e production
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Création du référentiel git:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+git add .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Création du fichier &lt;code&gt;.gitignore&lt;/code&gt;, contenant:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db/*.sqlite3.db
+log
+tmp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Premier commit:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git commit -m &amp;quot;First commit&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hébergement sur heroku (pour l&amp;rsquo;instant sur ruby 1.8.7):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku create myapp --stack bamboo-ree-1.8.7
+heroku db:push
+git push heroku master
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Extensions de base sous heroku</title>
+      <link>http://www.zeneffy.fr/2011/04/extensions-de-base-sous-heroku/</link>
+      <pubDate>Mon, 11 Apr 2011 11:03:33 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/04/extensions-de-base-sous-heroku/</guid>
+      <description>&lt;p&gt;Voici quelques extensions que j&amp;rsquo;installe systématiquement sous Heroku:&lt;/p&gt;
+
+&lt;p&gt;Gestion des noms de domaine personalisés&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add custom_domains:basic
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gestion d&amp;rsquo;un cache via memcached&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add memcache:5mb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Visualisation de Meilleures logs&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add logging:expanded
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Supervision applicative&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add newrelic:bronze
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Envoi de mail&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add sendgrid:free
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;D&amp;rsquo;autres extension en béta, à étudier de près:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Release Management (gestion de version comme sur GAE): &lt;code&gt;heroku addons:add releases:basic&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;CloudMailin (Réception de mail): &lt;code&gt;heroku addons:add cloudmailin:test&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Custom Error Pages (Gestion de pages de maintenance): &lt;code&gt;heroku addons:add custom_error_pages&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;PG Backups (Sauvegardes de la base de donnée): &lt;code&gt;heroku addons:add pgbackups:basic&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Scripter MacOS</title>
+      <link>http://www.zeneffy.fr/2011/03/scripter-macos/</link>
+      <pubDate>Fri, 11 Mar 2011 17:10:17 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/03/scripter-macos/</guid>
+      <description>&lt;p&gt;Dans ma très récente période Ubuntu/Linux, j&amp;rsquo;avais rédigé un petit script en python qui vérifiait régulièrement la présence de nouveaux fichiers dans un répertoire FTP - ce script étant basé sur GTK, il était nécessaire de le changer pour notamment utiliser &lt;a href=&#34;http://growl.info/&#34;&gt;Growl&lt;/a&gt;, le système de notification disponible dans MacOS.&lt;/p&gt;
+
+&lt;p&gt;Ainsi le code en python donne&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
+# -*- coding: utf8 -*-
+&amp;quot;&amp;quot;&amp;quot;
+Vérifie si du nouveau contenu a été rajouté sur le FTP
+&amp;quot;&amp;quot;&amp;quot;
+import ftplib
+import os,sys
+import Growl
+
+try:
+    session = ftplib.FTP(&#39;xxServeur&#39;,&#39;xxLogin&#39;,&#39;xxMdP&#39;) # On se connecte au serveur
+    fileList = [] # La liste des fichiers sera dedans
+    session.retrlines(&#39;LIST&#39;,fileList.append)
+    session.quit() #On se déconnecte
+    for txt in fileList:
+        if txt.find(&amp;quot;.DS_Store&amp;quot;) &amp;gt; -1: #macOS a parfois de drole de spécificité
+            fileList.remove(txt)
+    if len(fileList) == 0:
+        print &amp;quot;Vide&amp;quot;
+    else: 
+        gn = Growl.GrowlNotifier( &amp;quot;CheckMyFTP&amp;quot;, [&amp;quot;Nouveau contenu&amp;quot;] )
+        gn.register()
+        image = Growl.Image.imageFromPath(os.path.join(os.path.dirname(__file__), &amp;quot;kfind.png&amp;quot;))
+        gn.notify( &amp;quot;Nouveau contenu&amp;quot;, &amp;quot;Nouveau contenu disponible&amp;quot;, &amp;quot;Un nouveau contenu a été ajouté sur le FTP de papa&amp;quot;,icon=image )
+except:
+    print &amp;quot;Impossible de se connecter&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis, il s&amp;rsquo;agit de faire jouer ce script régulièrement (toutes les heures par exemple). Dans le cas de MacOS 10.5+, il faut utiliser launchd à la place de crontab: dans le répertoire ``&lt;code&gt;$HOME/Library/LaunchAgents&lt;/code&gt;, il suffit alors de créer un fichier fr.zeneffy.checkftp.plist qui contiendra:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot; &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt;
+&amp;lt;plist version=&amp;quot;1.0&amp;quot;&amp;gt;
+&amp;lt;dict&amp;gt;
+        &amp;lt;key&amp;gt;label&amp;lt;/key&amp;gt;
+        &amp;lt;string&amp;gt;fr.zeneffy.checkftp.plist&amp;lt;/string&amp;gt;
+
+        &amp;lt;key&amp;gt;ProgramArguments&amp;lt;/key&amp;gt;
+        &amp;lt;array&amp;gt;
+                &amp;lt;string&amp;gt;/Users/julien/Code/scripts/CheckMyFTP/CheckMyFTP.py&amp;lt;/string&amp;gt;
+        &amp;lt;/array&amp;gt;
+
+        &amp;lt;key&amp;gt;Nice&amp;lt;/key&amp;gt;
+        &amp;lt;integer&amp;gt;1&amp;lt;/integer&amp;gt;
+
+        &amp;lt;key&amp;gt;StartInterval&amp;lt;/key&amp;gt;
+        &amp;lt;integer&amp;gt;3600&amp;lt;/integer&amp;gt;
+
+        &amp;lt;key&amp;gt;StandardErrorPath&amp;lt;/key&amp;gt;
+        &amp;lt;string&amp;gt;/tmp/checkftp.err&amp;lt;/string&amp;gt;
+
+        &amp;lt;key&amp;gt;StandardOutPath&amp;lt;/key&amp;gt;
+        &amp;lt;string&amp;gt;/tmp/checkftp.out&amp;lt;/string&amp;gt;
+&amp;lt;/dict&amp;gt;
+&amp;lt;/plist&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;puis de charger ce fichier de configuration&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;launchctl load fr.zeneffy.checkftp.plist
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;et voilà, toutes les heures CheckMyFTP.py sera lancé et il m&amp;rsquo;affichera une notification en cas de nouveaux fichiers disponibles sur le répertoire FTP.&lt;/p&gt;
+
+&lt;p&gt;Ressources: &lt;a href=&#34;http://www.devdaily.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs&#34;&gt;http://www.devdaily.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Google App Engine: une demie déception</title>
+      <link>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</link>
+      <pubDate>Fri, 25 Feb 2011 22:47:37 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</guid>
+      <description>&lt;p&gt;Dans le cadre de ma petite application de surveillance de site web, &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;veilleur&lt;/a&gt;, j&amp;rsquo;ai &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;utilisé l&amp;rsquo;infrastructure Google App Engine&lt;/a&gt; pour héberger code &amp;amp; base de donnée. Le résultat au bout de 2 semaines est assez peu concluant- du moins pour la version &amp;ldquo;Free&amp;rdquo;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Le système de quotas est contraignant, et atteint vite ses limites (pour moi de temps machine à cause des requêtes nécessaires pour vérifier l&amp;rsquo;état de santé des sites)&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;applicatif se lance de façon dynamique par défaut pour l&amp;rsquo;offre &amp;ldquo;free&amp;rdquo;, i.e. il y a un temps d&amp;rsquo;initialisation lors des requêtes web, surtout sur un site de faible trafic comme celui ci - l&amp;rsquo;option &amp;ldquo;Always On&amp;rdquo; évitant ce problème étant payante.&lt;/li&gt;
+&lt;li&gt;En deux semaines d&amp;rsquo;utilisation, l&amp;rsquo;infrastructure m&amp;rsquo;a semblé peu fiable, avec des erreurs étranges non reproductible - causées manifestement par Google App Engine lui même.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Mes prochaines applications ne seront donc pas hébergées sur GAE - mais plutôt chez Heroku comme &lt;a href=&#34;http://vauban.heroku.com&#34;&gt;vauban&lt;/a&gt; qui reste pour moi une référence de l&amp;rsquo;hébergement Rails / Sinatra.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Créer une nouvelle application sous heroku</title>
+      <link>http://www.zeneffy.fr/2011/02/creer-une-nouvelle-application-sous-heroku/</link>
+      <pubDate>Sat, 05 Feb 2011 13:31:25 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/02/creer-une-nouvelle-application-sous-heroku/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Aide-Mémoire&lt;/strong&gt;: Pour créer rapidement une nouvelle application sur heroku&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+git add .
+git commit -m &amp;quot;nouvelle application&amp;quot;
+heroku create nomapplication
+git push heroku master
+heroku addons:add newrelic:bronze
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

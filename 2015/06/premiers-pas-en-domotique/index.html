@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+		<title>Premiers pas en domotique</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/normalize.css">
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/skeleton.css">
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/custom.css">
+		<link rel="stylesheet" href="http://www.zeneffy.fr/css/github.css">
+	</head>
+<body>
+	<div class="container-header">
+		<div class="container">
+			<div class="row">
+				<div class="four columns">
+					<a href="http://www.zeneffy.fr" class="title-link"><span style="font-size: 60px ;font-family: 'Roboto Slab', serif;">Zen<span style="color: red;font-weight: 900;font-size: 60px;font-family: 'Roboto Slab', serif;" >effy</span></span></a>
+				</div>
+				<div class="eight columns" style="padding-top: 10px;">
+					<div class="navbar-spacer"></div>
+							<ul class="navbar-list" style="float:right">
+								<li class="navbar-item"><a class="navbar-link" href="http://www.zeneffy.fr/about/">A propos</a></li>
+								<li class="navbar-item"><a class="navbar-link" href="http://www.zeneffy.fr/post/">Archives</a></li>
+								<li class="navbar-item"><a class="navbar-link" href="http://github.com/jraigneau" target="#">Projets</a></li>
+							</ul>
+	
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container" style="padding-top:110px">
+
+
+
+	<div class="row">
+    	<div class="twelve columns">
+    		<h1>#Premiers pas en domotique</h1>
+    	</div>
+    </div>
+	<div class="row">
+		<div class="twelve columns"  align="justify">
+			
+
+<p>J&rsquo;ai décidé l&rsquo;année dernière de me lancer dans l&rsquo;aventure de la <a href="/tags/domotique">domotique</a>, avec pleins d&rsquo;idées en tête sur la sécurité et la détection, les mesures de température, l&rsquo;optimisation de la consommation de l&rsquo;énergie, le contrôle des lampes et autres, et plus globalement l’automatisation.</p>
+
+<h4 id="étude-préalable:3d9212b867547cfb9bedcf14c12268c0">Étude préalable</h4>
+
+<p>En m&rsquo;intéressant à ce domaine, j&rsquo;ai découvert d&rsquo;une part sa richesse et d&rsquo;autre part le nombre très important de protocoles, les différentes box domotiques plus ou moins compatibles, les prix (élevés) des différents composants.</p>
+
+<p>Par ailleurs, ce domaine est à la fois très récent et assez ancien et nécessite des connaissances en électronique, électricité, informatique avec une notion forte d&rsquo;intégration de composants et systèmes entre eux… ce qui rend le sujet d&rsquo;autant plus intéressant.</p>
+
+<p>J&rsquo;en ai tiré plusieurs postulats et décisions sur la suite des événements.</p>
+
+<h4 id="postulats-choix:3d9212b867547cfb9bedcf14c12268c0">Postulats / Choix</h4>
+
+<p>Le matériel de contrôle de la bureautique pouvant être envahissant, j&rsquo;ai décidé en premier lieu de me créer <a href="/2015/04/mon-datacenter/">mon propre espace</a> pour le matériel.</p>
+
+<p>Utilisateur heureux de l’open-source depuis plusieurs années, j&rsquo;ai choisi de faire ma propre box domotique
+open-source en me basant sur l&rsquo;application <a href="http://domoticz.com/">domoticz</a> pour le cœur du système et en rajoutant au fur et à mesure des applications dédiées par fonction (Surveillance, Graph, Ordonnancement).</p>
+
+<p>Toutes ces applications sont installées sur des machines virtuelles Ubuntu/Linux sur un ESX VMware.
+L&rsquo;ESX est le seul élément non open-source, choisi par rapport à mes expériences professionnelles, mais j&rsquo;aurai pu (dû?) choisir à la place <a href="http://www.xenproject.org/">XEN</a>.</p>
+
+<p>Le dernier choix important a été pour moi d&rsquo;isoler complètement la maison: aucun des systèmes domestiques n&rsquo;est accessible de l&rsquo;extérieur afin d&rsquo;éviter tout piratage qui pourrait être particulièrement grave.</p>
+
+<h4 id="mesurer-pour-contrôler:3d9212b867547cfb9bedcf14c12268c0">Mesurer pour contrôler</h4>
+
+<blockquote>
+<p><em>Measurement is the first step that leads to control and eventually to improvement. If you can’t measure something, you can’t understand it. If you can’t understand it, you can’t control it. If you can’t control it, you can’t improve it — Dr. H. James Harrington</em></p>
+</blockquote>
+
+<p>Un premier point important de la domotique est la mesure, selon l&rsquo;adage <em>On ne contrôle que ce qu&rsquo;on peut mesurer</em>. Il faut donc prévoir les capteurs (avec par exemple les mesures de température via des Oregon Scientific THN 132) et surtout l&rsquo;infrastructure de collecte des données.</p>
+
+<p>Dans mon cas, j&rsquo;ai choisi de mettre en œuvre <a href="http://emoncms.org/">emoncms</a>, qui me permet d&rsquo;agréger l&rsquo;ensemble des données et d&rsquo;en tirer des tableaux de bord très lisibles.</p>
+
+<p><img src="https://c1.staticflickr.com/1/461/18397964043_7c43f8dea1.jpg" width="500" height="207" alt="conso Electrique"></p>
+
+<p>Évidemment, ces tableaux de bord ne sont pas accessibles de l&rsquo;extérieur comme définit précédemment: j&rsquo;ai donc mis en œuvre une copie des données temps réel vers l&rsquo;extérieur, via un simple push vers un tableau de bord type <a href="http://dashing.io/">dashing</a> hébergé chez <a href="http://www.heroku.co">Heroku</a>.</p>
+
+<p><img src="https://c1.staticflickr.com/1/537/18397961713_b644294b27.jpg" width="500" height="276" alt="temperature"></p>
+
+<h4 id="intégration-des-systèmes:3d9212b867547cfb9bedcf14c12268c0">Intégration des systèmes</h4>
+
+<p>Pour bien gérer &ldquo;l&rsquo;<a href="https://en.wikipedia.org/wiki/Internet_of_Things">internet of things</a>&rdquo; et mixer les services logiciels, les objets connectés, et les différents capteurs, j&rsquo;ai par ailleurs installé <a href="http://nodered.org/">node-red</a>, qui est développé par IBM.</p>
+
+<p>Node-red permet de créer des workflows entre objet pour les faire interagir entre eux simple, le tout via une IHM web. Ces workflows permettent via un peu de développement très simple en javascript d&rsquo;analyser des flux de données venant de sondes ou de services, de les transformer avant de les renvoyer vers d&rsquo;autres sondes ou services.</p>
+
+<p><img src="http://nodered.org/images/node-red-screenshot-sm.png" alt="nodered"></p>
+
+<p>Ainsi, j&rsquo;ai pu créer des flux pour récupérer les données de la box domotique avant de les envoyer vers emoncms et d&rsquo;en faire des graphiques et des premières analyses.</p>
+
+<h4 id="réalisations-actuelles-plutôt-orientées-mesures:3d9212b867547cfb9bedcf14c12268c0">Réalisations actuelles - plutôt orientées mesures</h4>
+
+<p>Ces derniers mois, je me suis attaché à mettre en œuvre les différents points de mesure, avec notamment:</p>
+
+<ul>
+<li>Mesures de la température dans toutes les pièces de vie (Chambres, Salon) via des sondes <a href="http://www.amazon.fr/Oregon-Scientific-THN-D%C3%A9tecteur-temp%C3%A9rature/dp/B000PEDJVI">Oregon Scientific</a></li>
+<li>Récupération de la consommation électrique directement sur le compteur avec une pince ampérométrique de chez <a href="http://www.amazon.fr/dp/B006R7E8MG/ref=pe_386181_37038081_TE_3p_dp_1">OWL</a></li>
+</ul>
+
+<p>J&rsquo;ai par ailleurs commencé à installer des caméras intérieures pour la vidéosurveillance, avec <a href="http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome">motion</a> et <a href="https://github.com/ccrisan/motioneye">motioneye</a> pour gérer les détections et l&rsquo;enregistrement des films. Ces films sont enregistrés à la fois en local et sur une DropBox dédiée en cas de coupure (ou disparition du disque dur&hellip;)</p>
+
+<p><img src="https://github.com/ccrisan/motioneye/wiki/images/desktop-view.png" width="500" height="276" alt="motioneye"></p>
+
+<h4 id="réalisations-à-venir-ou-qui-reste-à-étudier:3d9212b867547cfb9bedcf14c12268c0">Réalisations à venir ou qui reste à étudier</h4>
+
+<p>Le champ des possibles de la domotique est impressionnant et j&rsquo;imagine par exemple mettre en œuvre d&rsquo;autres activités comme:</p>
+
+<ul>
+<li>Contrôle automatique des lumières du jardin selon l&rsquo;heure de la journée.</li>
+<li>Mise en œuvre d&rsquo;un contrôle vocal type <a href="http://blog.encausse.net/s-a-r-a-h/">S.A.R.A.H</a></li>
+<li>Extension de la vidéo surveillance à l&rsquo;extérieure, avec déclenchement d&rsquo;actions suite à des événements</li>
+<li>Mesure de l&rsquo;humidité dans la salle de douche pour allumer/éteindre la VMC</li>
+<li>Contrôle des radiateurs via boutons électroniques</li>
+<li>Détection des lumières laissées allumées par les enfants</li>
+<li>Automatisation des fermetures de volets</li>
+<li>envoi d&rsquo;information via SMS</li>
+<li>&hellip;.
+Bref, de quoi s&rsquo;occuper quelques temps !</li>
+</ul>
+
+		</div>
+	</div>
+	
+	<div class="row" style="border-top: 1px solid #eee; ">
+		<div class="twelve columns" style="background-color:white; color: black;">
+				<span class="post-postedby">Date de publication: 20/06/2015</span>
+		</div>
+		<div class="twelve columns" style="background-color:white; color: black;">
+			<span class="post-postedby">Mots-clefs: </span>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/domotique" class="tags-link">#domotique</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/projets" class="tags-link">#projets</a>
+				
+		</div>
+	</div>
+	
+	<br/><br/>
+	<div class="row">
+		<div class="six columns" style="text-align: left;">
+	        
+	        <a href="http://www.zeneffy.fr/2015/12/remplacement-emoncms/" style="text-decoration: none;"><span aria-hidden="true">&larr;</span> Plus Récent</a>
+	        
+		</div>
+		<div class="six columns" style="text-align: right;">
+        
+        <a href="http://www.zeneffy.fr/2015/04/mon-datacenter/" style="text-decoration: none;">Plus Ancien <span aria-hidden="true">&rarr;</span></a>
+        
+		</div>
+	</div>
+	
+    
+	
+	<div class="row">
+        <div class="twelve columns">
+            &nbsp;
+        </div>
+    </div>
+
+      </div>
+	  
+	  <div id="footer" class="container-footer">
+  		<div class="container">
+  			<div class="row">
+		    	<div class="twelve columns"  style="border-top: 5px solid #eee;">
+					<center>
+						<span style="font-family: 'Roboto Slab', serif;" >&#0169; 2008 - 2015, Julien Raigneau &nbsp;&nbsp;  | &nbsp;&nbsp;  Zeneffy >> Zen &amp; Efficace</pan>
+					</center>
+				</div>
+				<div style="line-height: 1;">
+					<center>
+			  	  	  	  
+			  	  	    <a href="/tags/backup" class="tags-link-footer">#backup</a>
+			  	  	  	  
+			  	  	    <a href="/tags/bash" class="tags-link-footer">#bash</a>
+			  	  	  	  
+			  	  	    <a href="/tags/bdd" class="tags-link-footer">#bdd</a>
+			  	  	  	  
+			  	  	    <a href="/tags/clojure" class="tags-link-footer">#clojure</a>
+			  	  	  	  
+			  	  	    <a href="/tags/devops" class="tags-link-footer">#devops</a>
+			  	  	  	  
+			  	  	    <a href="/tags/domotique" class="tags-link-footer">#domotique</a>
+			  	  	  	  
+			  	  	    <a href="/tags/formation" class="tags-link-footer">#formation</a>
+			  	  	  	  
+			  	  	    <a href="/tags/google" class="tags-link-footer">#google</a>
+			  	  	  	  
+			  	  	    <a href="/tags/hardware" class="tags-link-footer">#hardware</a>
+			  	  	  	  
+			  	  	    <a href="/tags/java" class="tags-link-footer">#java</a>
+			  	  	  	  
+			  	  	    <a href="/tags/lecture" class="tags-link-footer">#lecture</a>
+			  	  	  	  
+			  	  	    <a href="/tags/macos" class="tags-link-footer">#macos</a>
+			  	  	  	  
+			  	  	    <a href="/tags/management" class="tags-link-footer">#management</a>
+			  	  	  	  
+			  	  	    <a href="/tags/mono" class="tags-link-footer">#mono</a>
+			  	  	  	  
+			  	  	    <a href="/tags/node.js" class="tags-link-footer">#node.js</a>
+			  	  	  	  
+			  	  	    <a href="/tags/outils" class="tags-link-footer">#outils</a>
+			  	  	  	  
+			  	  	    <a href="/tags/productivit%C3%A9" class="tags-link-footer">#productivité</a>
+			  	  	  	  
+			  	  	    <a href="/tags/projets" class="tags-link-footer">#projets</a>
+			  	  	  	  
+			  	  	    <a href="/tags/python" class="tags-link-footer">#python</a>
+			  	  	  	  
+			  	  	    <a href="/tags/ruby" class="tags-link-footer">#ruby</a>
+			  	  	  	  
+			  	  	    <a href="/tags/rubyonrails" class="tags-link-footer">#rubyonrails</a>
+			  	  	  	  
+			  	  	    <a href="/tags/r%C3%A9seau" class="tags-link-footer">#réseau</a>
+			  	  	  	  
+			  	  	    <a href="/tags/scala" class="tags-link-footer">#scala</a>
+			  	  	  	  
+			  	  	    <a href="/tags/sinatra" class="tags-link-footer">#sinatra</a>
+			  	  	  	  
+			  	  	    <a href="/tags/snippets" class="tags-link-footer">#snippets</a>
+			  	  	  	  
+			  	  	    <a href="/tags/ubuntu" class="tags-link-footer">#ubuntu</a>
+			  	  	  	  
+			  	  	    <a href="/tags/vim" class="tags-link-footer">#vim</a>
+			  	  	  	  
+			  	  	    <a href="/tags/virtualisation" class="tags-link-footer">#virtualisation</a>
+			  	  	  	  
+			  	  	    <a href="/tags/web.py" class="tags-link-footer">#web.py</a>
+			  	  	  	  
+			  	  	    <a href="/tags/windows" class="tags-link-footer">#windows</a>
+			  	  	  	  
+			  		</center>
+				</div>
+			</div>
+		</div>
+    </div>
+
+  <script src="http://www.zeneffy.fr/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12194039-8', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
+
+

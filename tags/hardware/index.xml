@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hardware on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/hardware/</link>
+    <description>Recent content in Hardware on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Mon, 27 Sep 2010 21:01:30 +0000</lastBuildDate>
+    <atom:link href="http://www.zeneffy.fr/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Un pont (pas) trop loin</title>
+      <link>http://www.zeneffy.fr/2010/09/un-pont-pas-trop-loin/</link>
+      <pubDate>Mon, 27 Sep 2010 21:01:30 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/09/un-pont-pas-trop-loin/</guid>
+      <description>&lt;p&gt;Dans le cadre de ses nouvelles activités, ma femme a eu besoin que nous installions un bureau dans notre chambre. La partie ikea-choix-achat-montage s&amp;rsquo;étant passée presque sans accroc, j&amp;rsquo;ai changé le PC portable de place pour évidemment utiliser le bureau. Mauvaise surprise, le WiFi de la 9Box n&amp;rsquo;est pas accessible (trop de murs et trop de ferrite dans les murs).&lt;/p&gt;
+
+&lt;p&gt;Par chance, j&amp;rsquo;avais gardé un vieux routeur wifi &lt;a href=&#34;http://en.wikipedia.org/wiki/Linksys_WRT54G_series&#34;&gt;Linksys WRT54G&lt;/a&gt; - en cherchant un peu, j&amp;rsquo;ai trouvé d&amp;rsquo;une part qu&amp;rsquo;il existait des &lt;a href=&#34;http://www.dd-wrt.com/site/index&#34;&gt;firmwares opensource récents&lt;/a&gt; pour ce routeur et surtout qu&amp;rsquo;ils permettaient de faire un &amp;ldquo;Pont Répéteur WiFi&amp;rdquo; (Repeater Bridge pour les anglophones).&lt;/p&gt;
+
+&lt;p&gt;Un Pont Répéteur WiFi permet de lier un routeur secondaire au premier routeur (ici ma box) via WiFi: des clients peuvent alors se connecter au secondaire et profiter du DHCP, DNS et de la connexion internet du primaire - le WRT54G étant plus sensible au WiFi que mon PC il permet donc en d&amp;rsquo;autres termes de faire &lt;a href=&#34;http://www.dd-wrt.com/wiki/index.php/Image:Repeater_Bridge.jpg&#34;&gt;relais WiFi&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Après quelques manipulations détaillées sur la &lt;a href=&#34;http://www.dd-wrt.com/wiki/index.php/Repeater_Bridge&#34;&gt;page dédiée du wifi&lt;/a&gt;, j&amp;rsquo;ai pu faire fonctionner relativement facilement le linksys qui me permet maintenant d&amp;rsquo;écrire ce billet du bureau - la seule difficulté venant de la 9Box sur laquelle j&amp;rsquo;avais configuré des IP en DHCP et d&amp;rsquo;autres en statique, ces dernières posant problèmes pour accéder à internet (problème de route retour probablement).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Optimisation des OS avec un disque SSD</title>
+      <link>http://www.zeneffy.fr/2010/06/optimisation-des-os-avec-un-disque-ssd/</link>
+      <pubDate>Sun, 06 Jun 2010 06:28:49 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/06/optimisation-des-os-avec-un-disque-ssd/</guid>
+      <description>&lt;p&gt;Ayant acheté dernièrement un disque dur SSD pour mon portable, il a fallu chercher quelques informations complémentaires pour m&amp;rsquo;assurer de la meilleur optimisation possible:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sous Windows Vista&lt;/strong&gt;
+&lt;a href=&#34;http://www.ocztechnologyforum.com/forum/showthread.php?47212-Vista-32-64-SSD-Windows-Registry-tweaks&#34;&gt;www.ocztechnologyforum.com/forum/showthread.php?47212-Vista-32-64-SSD-Windows-Registry-tweaks&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;En bref:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Désactiver superfetch &amp;amp; prefetch&lt;/li&gt;
+&lt;li&gt;Activer &lt;code&gt;clearPageFilesAtShutdown&lt;/code&gt; et &lt;code&gt;LargeSystemCache&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Amélioration du cache disque NTFS&lt;/li&gt;
+&lt;li&gt;Suppression indexation automatique + hibernation (pour gagner de l&amp;rsquo;espace)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Optimisations sous Linux:&lt;/strong&gt;
+&lt;a href=&#34;http://itezer.com/blog/ubuntu-linux/125-Four-Tweaks-for-Using-Linux-with-SSD.html&#34;&gt;itezer.com/blog/ubuntu-linux/125-Four-Tweaks-for-Using-Linux-with-SSD.html&lt;/a&gt;
+&lt;a href=&#34;http://www.zdnet.com/blog/perlow/geek-sheet-a-tweakers-guide-to-solid-state-drives-ssds-and-linux/9190&#34;&gt;www.zdnet.com/blog/perlow/geek-sheet-a-tweakers-guide-to-solid-state-drives-ssds-and-linux/9190&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;En synthèse:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;S&amp;rsquo;assurer d&amp;rsquo;être en noatime&lt;/li&gt;
+&lt;li&gt;Utiliser la mémoire vive comme /tmp&lt;/li&gt;
+&lt;li&gt;Changer le scheduler disque (prendre noop)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Résultat:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;julien@einstein:~$ sudo hdparm -t /dev/sda
+/dev/sda:
+Timing buffered disk reads:  454 MB in  3.01 seconds = 150.66 MB/sec
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

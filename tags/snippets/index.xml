@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Snippets on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/snippets/</link>
+    <description>Recent content in Snippets on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sat, 05 Feb 2011 13:31:25 +0000</lastBuildDate>
+    <atom:link href="http://www.zeneffy.fr/tags/snippets/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Créer une nouvelle application sous heroku</title>
+      <link>http://www.zeneffy.fr/2011/02/creer-une-nouvelle-application-sous-heroku/</link>
+      <pubDate>Sat, 05 Feb 2011 13:31:25 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/02/creer-une-nouvelle-application-sous-heroku/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Aide-Mémoire&lt;/strong&gt;: Pour créer rapidement une nouvelle application sur heroku&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+git add .
+git commit -m &amp;quot;nouvelle application&amp;quot;
+heroku create nomapplication
+git push heroku master
+heroku addons:add newrelic:bronze
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Convertir en masse des vidéos</title>
+      <link>http://www.zeneffy.fr/2011/02/convertir-en-masse-des-videos/</link>
+      <pubDate>Sat, 05 Feb 2011 07:33:43 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/02/convertir-en-masse-des-videos/</guid>
+      <description>&lt;p&gt;Pour rendre disponible des films sur ma télévision &lt;a href=&#34;http://www.erenumerique.fr/televiseur_sony_kdl40w5500_la_qualite_au_meilleur_prix-art-2302-1.html&#34;&gt;Sony&lt;/a&gt; via mon &lt;a href=&#34;http://www.synology.com/enu/products/DS211j/index.php&#34;&gt;NAS Synology&lt;/a&gt;, j&amp;rsquo;ai été obligé de transformer mes vidéos du format AVI au format MPG pour être lisible via &lt;a href=&#34;http://fr.wikipedia.org/wiki/Digital_Living_Network_Alliance&#34;&gt;DLNA&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;J&amp;rsquo;ai utilisé la ligne de commande suivante:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/usr/bin/ffmpeg -i &amp;quot;film.avi&amp;quot; -f dvd -vcodec mpeg2video -r 25.00 -s 352x576 -aspect 16:9 -b 4000kb -mbd rd -trellis -mv0 -cmp 2 -subcmp 2 -acodec mp2 -ab 192kb -ar 48000 -ac 2 &amp;quot;film.mpg&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Il suffit ensuite de créer un script bash contenant les commandes&amp;hellip;et d&amp;rsquo;attendre la fin de convertion!
+A noter que l&amp;rsquo;application &lt;a href=&#34;http://winff.org/html_new/&#34;&gt;WinFF&lt;/a&gt; permet entre autres de créer ces lignes de commandes.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu: Installation &#34;mineffy&#34;</title>
+      <link>http://www.zeneffy.fr/2010/12/ubuntu-installation-mineffy/</link>
+      <pubDate>Sun, 19 Dec 2010 10:26:48 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/12/ubuntu-installation-mineffy/</guid>
+      <description>&lt;p&gt;Un petit pense-bête sur le &lt;strong&gt;min&lt;/strong&gt;imum à réinstaller avant d&amp;rsquo;être &lt;strong&gt;eff&lt;/strong&gt;icace avec une nouvelle version d&amp;rsquo;ubuntu&lt;/p&gt;
+
+&lt;p&gt;Installer &lt;a href=&#34;http://doc.ubuntu-fr.org/chromium-browser&#34;&gt;Chromium&lt;/a&gt;, le navigateur web:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg chromium-codecs-ffmpeg-nonfree
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;et installer extensions: &lt;a href=&#34;https://chrome.google.com/extensions/detail/lnejbeiilmbliffhdepeobjemekgdnok&#34;&gt;Gmail&lt;/a&gt; et &lt;a href=&#34;https://chrome.google.com/extensions/detail/lnejbeiilmbliffhdepeobjemekgdnok&#34;&gt;Delici.ous&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Installer le nécessaire pour &lt;a href=&#34;http://doc.ubuntu-fr.org/rubyonrails#installation_complete_de_ruby_192_et_rails_30_via_rvm_maverick_meerkat&#34;&gt;Ruby et Ruby On Rails via RVM&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev
+    sudo bash &amp;lt; &amp;lt;( curl -L http://bit.ly/rvm-install-system-wide )
+    sudo adduser julien rvm
+    sudo rvm install 1.9.2
+    sudo rvm --default ruby-1.9.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;puis modifier &lt;code&gt;.bashrc&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  commenter [ -z &amp;quot;$PS1&amp;quot; ] &amp;amp;&amp;amp; return
+  ajouter if [[ -n &amp;quot;$PS1&amp;quot; ]]; then
+  indenter toutes les lignes jusqu&#39;à la fin
+  ajouter fi
+  ajouter [[ -s &amp;quot;/usr/local/lib/rvm&amp;quot; ]] &amp;amp;&amp;amp; . &amp;quot;/usr/local/lib/rvm&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Installer Rails et autres gem utiles:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo rvm gem install rails
+sudo rvm gem install redcar heroku vagrant cheat
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Utilitaires à ajouter ou à enlever&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    sudo apt-get install gnome-do gimp terminator
+    sudo apt-get install vim ctags vim-doc vim-scripts
+    sudo apt-get install desktopnova
+    sudo apt-get purge f-spot gbrainy tomboy evolution evolution-common evolution-couchdb evolution-exchange evolution-indicator evolution-plugins evolution-webcal libegroupwise1.2-13
+    sudo add-apt-repository ppa:tiheum/equinox
+    sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install faenza-icon-theme
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;l&amp;rsquo;obligatoire &lt;a href=&#34;http://www.dropbox.com/downloading?os=lnx&#34;&gt;DropBox&lt;/a&gt; pour synchroniser mes fichiers entre PC&lt;/p&gt;
+
+&lt;p&gt;Les clés ssh&lt;/p&gt;
+
+&lt;p&gt;Ajout des montages NFS&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    installer autofs: sudo apt-get install autofs
+
+dans /etc/auto.master
+
+    /media/partages /etc/auto.types --ghost,--timeout=30
+
+dans /etc/auto.types
+
+    Documents -fstype=nfs,rw 192.168.1.21:/volume1/documents
+    Musique -fstype=nfs,rw 192.168.1.21:/volume1/music
+    Photos -fstype=nfs,rw 192.168.1.21:/volume1/photo
+    Videos -fstype=nfs,rw 192.168.1.21:/volume1/video
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Supprimer tous les albums d&#39;un compte picasa web</title>
+      <link>http://www.zeneffy.fr/2010/03/supprimer-tous-les-albums-dun-compte-picasa-web/</link>
+      <pubDate>Mon, 01 Mar 2010 14:18:22 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/03/supprimer-tous-les-albums-dun-compte-picasa-web/</guid>
+      <description>&lt;p&gt;Un petit script pour supprimer en une seule opération tous les albums d&amp;rsquo;un compte picasa web - à utiliser avec modération !&lt;/p&gt;
+
+&lt;p&gt;il faut penser à installer l&amp;rsquo;&lt;a href=&#34;http://code.google.com/intl/fr/apis/picasaweb/overview.html&#34;&gt;API Google Picasa Web&lt;/a&gt; pour que cela fonctionne.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/python2.5
+# -*- coding: utf-8 -*-
+
+import gdata.photos.service
+import gdata.media
+import gdata.geo
+
+#http://code.google.com/intl/fr/apis/picasaweb/developers_guide_protocol.html
+
+def get_albums():
+      email = &amp;quot;xx@gmail.com&amp;quot;
+      pwd = &amp;quot;xxpwd&amp;quot;
+      gd_client = gdata.photos.service.PhotosService()
+      gd_client.email = email   # Set your Picasaweb e-mail address...
+      gd_client.password = pwd  # ... and password
+      gd_client.source = &#39;api-sample-google-com&#39;
+      gd_client.ProgrammaticLogin()
+
+      albums = gd_client.GetUserFeed()
+      for album in albums.entry: #on parse les albums dispo sur le compte
+        print &amp;quot;suppression de &amp;quot; + album.title.text
+        gd_client.Delete(album)
+
+##Début script
+if __name__ == &#39;__main__&#39;:
+    get_albums()
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Photo2Web</title>
+      <link>http://www.zeneffy.fr/2008/05/photo2web/</link>
+      <pubDate>Mon, 26 May 2008 20:19:39 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/photo2web/</guid>
+      <description>&lt;p&gt;Ce script écrit Python permet d&amp;rsquo;envoyer des photos extraites via &lt;a href=&#34;http://picasa.google.fr/&#34;&gt;Picasa&lt;/a&gt; sur un site FTP, le tout avec une interface graphique GTK2.&lt;/p&gt;
+
+&lt;p&gt;C&amp;rsquo;est mon premier développement &amp;ldquo;important&amp;rdquo; en Python - il m&amp;rsquo;a permis notamment de voir:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Interface graphique et GTK2 et utilisation de &lt;a href=&#34;http://daniel.coquette.free.fr/dotclear/index.php/post/2006/12/11/Creer-des-interfaces-graphique-avec-PyGTK-et-Glade&#34;&gt;Glade&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Utilisation de la librairie &lt;a href=&#34;http://docs.python.org/lib/module-ftplib.html&#34;&gt;ftplib&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://faq.pygtk.org/index.py?req=show&amp;amp;file=faq20.006.htp&#34;&gt;Mécanique des threads&lt;/a&gt; dans une IHM.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Il reste fortement améliorable, notamment en ce qui concerne la gestion des exceptions (try&amp;hellip;except).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Code&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
+# -*- coding: utf8 -*-
+&amp;quot;&amp;quot;&amp;quot;
+Envoie les photos de picasa vers photo.raigneau.net
+v1.0: Release Initiale
+V1.1: modification picasa,os.F_OK pour gestion fichier picasa.ini
+&amp;quot;&amp;quot;&amp;quot;
+
+import os,sys,ftplib
+import pygtk
+pygtk.require(&amp;quot;2.0&amp;quot;)
+import gtk
+import gtk.glade
+import threading
+import time
+import gobject
+
+gobject.threads_init()
+
+class MyThread(threading.Thread):
+    &amp;quot;&amp;quot;&amp;quot;
+    Does the stuff
+    &amp;quot;&amp;quot;&amp;quot;
+    def __init__(self, progressBar,console):
+        super(MyThread, self).__init__()
+        self.progressBar = progressBar
+        self.console = console
+        self.quit = False
+
+    def update_progressBar(self):
+        self.progressBar.pulse()
+        return False
+
+    def run(self):
+        try:
+            self.writeInConsole(&amp;quot;Ouverture de la session&amp;quot;)
+            session = ftplib.FTP(&#39;XXX&#39;,&#39;XXX&#39;,&#39;XXX&#39;) # On se connecte au serveur
+            #Création des repertoires sur lesquelles travailler
+            gobject.idle_add(self.update_progressBar)
+            directories = os.environ.get(&amp;quot;NAUTILUS_SCRIPT_SELECTED_FILE_PATHS&amp;quot;).splitlines(False)
+            #directories = [&amp;quot;/home/tifauve/Documents/Code/Python/CheckMyFTP&amp;quot;,&amp;quot;/home/tifauve/Documents/Code/Python/gtk&amp;quot;]
+            #self.writeInConsole(&amp;quot;Répertoires à télécharger:&amp;quot;+directories)
+            for dir in directories:
+                #suppression .picasa
+                picasa = os.path.join(dir, &#39;Picasa.ini&#39;)
+                if(os.access(picasa,os.F_OK)):
+                    self.writeInConsole(&amp;quot;Suppression du fichier Picasa.ini dans &amp;quot;+dir)
+                    os.remove(picasa)
+                gobject.idle_add(self.update_progressBar)
+                self.uploadDir(session,dir)
+            self.writeInConsole(&amp;quot;Fin des téléchargements&amp;quot;)
+            self.progressBar.set_fraction(1.0)
+            self.writeInConsole(&amp;quot;Vous pouvez fermer l&#39;application&amp;quot;)
+            session.quit() # On se déconnecte
+
+        except:
+            self.writeInConsole(&amp;quot;Impossible de se connecter&amp;quot;)
+            print &amp;quot;Impossible de se connecter&amp;quot;
+
+    def upload(self, ftp, dir, file):
+        &amp;quot;&amp;quot;&amp;quot;
+        Fonction pour uploader un fichier
+        &amp;quot;&amp;quot;&amp;quot;
+        try:
+            ftp.storbinary(&amp;quot;STOR &amp;quot; + file, open(os.path.join(dir,file)), 1024)
+        except:
+            self.writeInConsole(&amp;quot;Impossible d&#39;uploader le fichier&amp;quot;+file)
+            print &amp;quot;Impossible d&#39;uploader le fichier&amp;quot;+file
+
+    def uploadDir(self, session, dir):
+        &amp;quot;&amp;quot;&amp;quot;
+        Fonction pour uploader un repertoire
+        &amp;quot;&amp;quot;&amp;quot;
+        try:
+            self.writeInConsole(&amp;quot;Téléchargement du répertoire: &amp;quot;+dir)
+            serverDir = os.path.split(dir)[1]
+            session.mkd(serverDir)
+            session.cwd(serverDir)
+            for file in os.listdir(dir):
+                self.writeInConsole(&amp;quot;\t&amp;quot;+file)
+                gobject.idle_add(self.update_progressBar)
+                self.upload(session, dir, file)
+            session.cwd(&#39;..&#39;)
+        except:
+            self.writeInConsole(&amp;quot;Impossible de traiter le répertoire &amp;quot;+serverDir)
+            print &amp;quot;Impossible de traiter le répertoire &amp;quot;+serverDir
+
+    def writeInConsole(self , text):
+        &amp;quot;&amp;quot;&amp;quot;
+        Ecrit dans la console
+        &amp;quot;&amp;quot;&amp;quot;
+        # Récupération du buffer
+        text_buffer = self.console.get_buffer()
+        end_iter = text_buffer.get_end_iter()
+        text_buffer.insert(end_iter, &amp;quot;\n&amp;quot;+text)
+        self.console.scroll_to_iter(text_buffer.get_end_iter(),0.0)
+
+class Photo2Web:
+    &amp;quot;&amp;quot;&amp;quot;
+    Classe principale (initialise GUI)
+    &amp;quot;&amp;quot;&amp;quot;
+    def __init__(self):
+        &amp;quot;&amp;quot;&amp;quot;
+        Initialisation
+        &amp;quot;&amp;quot;&amp;quot;
+        gladefile=os.path.join(sys.path[0],&amp;quot;photo2web.glade&amp;quot;)
+        windowname=&amp;quot;window&amp;quot;
+        self.widgets=gtk.glade.XML (gladefile,windowname)
+        self.autoConnect()
+
+    def __getitem__(self, key):
+        &amp;quot;&amp;quot;&amp;quot;
+        Permet d&#39;accéder plus vite à un widget: self[&#39;label1&#39;].set_text(&#39;Vous avez cliqué !&#39;)
+        &amp;quot;&amp;quot;&amp;quot;
+        return self.widgets.get_widget(key)
+
+    def autoConnect(self):
+        &amp;quot;&amp;quot;&amp;quot;
+        Auto-connection automatique des handlers gtk_handler dans python &amp;lt;=&amp;gt; handler dans glade
+        &amp;quot;&amp;quot;&amp;quot;
+        eventHandlers = {}
+        for (itemName,value) in self.__class__.__dict__.items():
+            if callable(value) and itemName.startswith(&#39;gtk_&#39;):
+                eventHandlers[itemName[4:]] = getattr(self,itemName)
+        self.widgets.signal_autoconnect(eventHandlers)
+
+    def gtk_destroy(self, source=None, event=None):
+        gtk.main_quit()
+
+    def main(self):
+        t = MyThread(self[&#39;progression&#39;],self[&#39;console&#39;])
+        t.start()
+        gtk.main()
+        t.quit = True
+        return 0
+
+# we start the app like this...
+if __name__ == &#39;__main__&#39;:
+    app = Photo2Web()
+    app.main()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;et le fichier glade correspondant&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt;
+&amp;lt;!DOCTYPE glade-interface SYSTEM &amp;quot;glade-2.0.dtd&amp;quot;&amp;gt;
+&amp;lt;!--*- mode: xml -*--&amp;gt;
+&amp;lt;glade-interface&amp;gt;
+  &amp;lt;widget class=&amp;quot;GtkWindow&amp;quot; id=&amp;quot;window&amp;quot;&amp;gt;
+    &amp;lt;property name=&amp;quot;width_request&amp;quot;&amp;gt;350&amp;lt;/property&amp;gt;
+    &amp;lt;property name=&amp;quot;height_request&amp;quot;&amp;gt;210&amp;lt;/property&amp;gt;
+    &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+    &amp;lt;property name=&amp;quot;title&amp;quot; translatable=&amp;quot;yes&amp;quot;&amp;gt;Photo2Web&amp;lt;/property&amp;gt;
+    &amp;lt;property name=&amp;quot;resizable&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
+    &amp;lt;property name=&amp;quot;window_position&amp;quot;&amp;gt;GTK_WIN_POS_CENTER&amp;lt;/property&amp;gt;
+    &amp;lt;property name=&amp;quot;icon_name&amp;quot;&amp;gt;gtk-network&amp;lt;/property&amp;gt;
+    &amp;lt;signal name=&amp;quot;delete_event&amp;quot; handler=&amp;quot;destroy&amp;quot;/&amp;gt;
+    &amp;lt;child&amp;gt;
+      &amp;lt;widget class=&amp;quot;GtkVBox&amp;quot; id=&amp;quot;vbox1&amp;quot;&amp;gt;
+        &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+        &amp;lt;child&amp;gt;
+          &amp;lt;widget class=&amp;quot;GtkImage&amp;quot; id=&amp;quot;image1&amp;quot;&amp;gt;
+            &amp;lt;property name=&amp;quot;height_request&amp;quot;&amp;gt;20&amp;lt;/property&amp;gt;
+            &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+            &amp;lt;property name=&amp;quot;pixbuf&amp;quot;&amp;gt;logoPhoto2Web.png&amp;lt;/property&amp;gt;
+          &amp;lt;/widget&amp;gt;
+        &amp;lt;/child&amp;gt;
+        &amp;lt;child&amp;gt;
+          &amp;lt;widget class=&amp;quot;GtkToolbar&amp;quot; id=&amp;quot;toolbar1&amp;quot;&amp;gt;
+            &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+            &amp;lt;property name=&amp;quot;border_width&amp;quot;&amp;gt;3&amp;lt;/property&amp;gt;
+            &amp;lt;property name=&amp;quot;toolbar_style&amp;quot;&amp;gt;GTK_TOOLBAR_BOTH&amp;lt;/property&amp;gt;
+            &amp;lt;child&amp;gt;
+              &amp;lt;widget class=&amp;quot;GtkToolItem&amp;quot; id=&amp;quot;toolitem2&amp;quot;&amp;gt;
+                &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+                &amp;lt;child&amp;gt;
+                  &amp;lt;widget class=&amp;quot;GtkLabel&amp;quot; id=&amp;quot;label1&amp;quot;&amp;gt;
+                    &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+                    &amp;lt;property name=&amp;quot;label&amp;quot; translatable=&amp;quot;yes&amp;quot;&amp;gt;Avancement: &amp;lt;/property&amp;gt;
+                  &amp;lt;/widget&amp;gt;
+                &amp;lt;/child&amp;gt;
+              &amp;lt;/widget&amp;gt;
+              &amp;lt;packing&amp;gt;
+                &amp;lt;property name=&amp;quot;expand&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
+                &amp;lt;property name=&amp;quot;homogeneous&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
+              &amp;lt;/packing&amp;gt;
+            &amp;lt;/child&amp;gt;
+            &amp;lt;child&amp;gt;
+              &amp;lt;widget class=&amp;quot;GtkToolItem&amp;quot; id=&amp;quot;toolitem3&amp;quot;&amp;gt;
+                &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+                &amp;lt;child&amp;gt;
+                  &amp;lt;widget class=&amp;quot;GtkProgressBar&amp;quot; id=&amp;quot;progression&amp;quot;&amp;gt;
+                    &amp;lt;property name=&amp;quot;width_request&amp;quot;&amp;gt;260&amp;lt;/property&amp;gt;
+                    &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+                    &amp;lt;property name=&amp;quot;activity_mode&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+                    &amp;lt;property name=&amp;quot;pulse_step&amp;quot;&amp;gt;0.10000000149&amp;lt;/property&amp;gt;
+                  &amp;lt;/widget&amp;gt;
+                &amp;lt;/child&amp;gt;
+              &amp;lt;/widget&amp;gt;
+              &amp;lt;packing&amp;gt;
+                &amp;lt;property name=&amp;quot;expand&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
+                &amp;lt;property name=&amp;quot;homogeneous&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
+              &amp;lt;/packing&amp;gt;
+            &amp;lt;/child&amp;gt;
+            &amp;lt;child&amp;gt;
+              &amp;lt;widget class=&amp;quot;GtkToolItem&amp;quot; id=&amp;quot;toolitem4&amp;quot;&amp;gt;
+                &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+                &amp;lt;child&amp;gt;
+                  &amp;lt;widget class=&amp;quot;GtkProgressBar&amp;quot; id=&amp;quot;progressbar1&amp;quot;&amp;gt;
+                    &amp;lt;property name=&amp;quot;width_request&amp;quot;&amp;gt;257&amp;lt;/property&amp;gt;
+                    &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+                    &amp;lt;property name=&amp;quot;pulse_step&amp;quot;&amp;gt;0.10000000149&amp;lt;/property&amp;gt;
+                  &amp;lt;/widget&amp;gt;
+                &amp;lt;/child&amp;gt;
+              &amp;lt;/widget&amp;gt;
+              &amp;lt;packing&amp;gt;
+                &amp;lt;property name=&amp;quot;expand&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
+                &amp;lt;property name=&amp;quot;homogeneous&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
+              &amp;lt;/packing&amp;gt;
+            &amp;lt;/child&amp;gt;
+          &amp;lt;/widget&amp;gt;
+          &amp;lt;packing&amp;gt;
+            &amp;lt;property name=&amp;quot;expand&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
+            &amp;lt;property name=&amp;quot;fill&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
+            &amp;lt;property name=&amp;quot;position&amp;quot;&amp;gt;1&amp;lt;/property&amp;gt;
+          &amp;lt;/packing&amp;gt;
+        &amp;lt;/child&amp;gt;
+        &amp;lt;child&amp;gt;
+          &amp;lt;widget class=&amp;quot;GtkScrolledWindow&amp;quot; id=&amp;quot;scrolledwindow1&amp;quot;&amp;gt;
+            &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+            &amp;lt;property name=&amp;quot;can_focus&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+            &amp;lt;property name=&amp;quot;shadow_type&amp;quot;&amp;gt;GTK_SHADOW_IN&amp;lt;/property&amp;gt;
+            &amp;lt;child&amp;gt;
+              &amp;lt;widget class=&amp;quot;GtkTextView&amp;quot; id=&amp;quot;console&amp;quot;&amp;gt;
+                &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+                &amp;lt;property name=&amp;quot;can_focus&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+                &amp;lt;property name=&amp;quot;border_width&amp;quot;&amp;gt;3&amp;lt;/property&amp;gt;
+                &amp;lt;property name=&amp;quot;editable&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
+                &amp;lt;property name=&amp;quot;cursor_visible&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
+                &amp;lt;property name=&amp;quot;text&amp;quot; translatable=&amp;quot;yes&amp;quot;&amp;gt;Photo2Web transmet vos photos avec classe!
+&amp;lt;/property&amp;gt;
+              &amp;lt;/widget&amp;gt;
+            &amp;lt;/child&amp;gt;
+          &amp;lt;/widget&amp;gt;
+          &amp;lt;packing&amp;gt;
+            &amp;lt;property name=&amp;quot;position&amp;quot;&amp;gt;2&amp;lt;/property&amp;gt;
+          &amp;lt;/packing&amp;gt;
+        &amp;lt;/child&amp;gt;
+        &amp;lt;child&amp;gt;
+          &amp;lt;widget class=&amp;quot;GtkLabel&amp;quot; id=&amp;quot;label2&amp;quot;&amp;gt;
+            &amp;lt;property name=&amp;quot;height_request&amp;quot;&amp;gt;1&amp;lt;/property&amp;gt;
+            &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+            &amp;lt;property name=&amp;quot;label&amp;quot; translatable=&amp;quot;yes&amp;quot;&amp;gt;Photo2Web - Copyright (C) Julien Raigneau&amp;lt;/property&amp;gt;
+            &amp;lt;property name=&amp;quot;justify&amp;quot;&amp;gt;GTK_JUSTIFY_CENTER&amp;lt;/property&amp;gt;
+            &amp;lt;property name=&amp;quot;width_chars&amp;quot;&amp;gt;0&amp;lt;/property&amp;gt;
+            &amp;lt;property name=&amp;quot;single_line_mode&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
+          &amp;lt;/widget&amp;gt;
+          &amp;lt;packing&amp;gt;
+            &amp;lt;property name=&amp;quot;position&amp;quot;&amp;gt;3&amp;lt;/property&amp;gt;
+          &amp;lt;/packing&amp;gt;
+        &amp;lt;/child&amp;gt;
+      &amp;lt;/widget&amp;gt;
+    &amp;lt;/child&amp;gt;
+  &amp;lt;/widget&amp;gt;
+&amp;lt;/glade-interface&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Ressources&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://nedbatchelder.com/code/modules/FtpUpload.py&#34;&gt;http://nedbatchelder.com/code/modules/FtpUpload.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://effbot.org/librarybook/ftplib.htm&#34;&gt;http://effbot.org/librarybook/ftplib.htm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mail.python.org/pipermail/python-list/2003-September/224679.html&#34;&gt;http://mail.python.org/pipermail/python-list/2003-September/224679.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>CheckMyFTP</title>
+      <link>http://www.zeneffy.fr/2008/05/checkmyftp/</link>
+      <pubDate>Mon, 19 May 2008 19:41:51 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/checkmyftp/</guid>
+      <description>&lt;p&gt;Ce script simple vérifie s&amp;rsquo;il y a du contenu sur un site FTP et dans ce cas affiche une image. Ce script est le préambule à &lt;a href=&#34;http://blog.zeneffy.fr/2008/05/photo2web/&#34;&gt;Photo2Web&lt;/a&gt; avec GUI et utilisation de ftplib.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
+# -*- coding: utf8 -*-
+&amp;quot;&amp;quot;&amp;quot;
+Vérifie si du nouveau contenu a été rajouté sur le FTP
+&amp;quot;&amp;quot;&amp;quot;
+import ftplib
+import pygtk,gtk
+pygtk.require(&#39;2.0&#39;)
+import os,sys
+
+try:
+    session = ftplib.FTP(&#39;XXX&#39;,&#39;XXX&#39;,&#39;XXX&#39;) # On se connecte au serveur
+    fileList = [] # La liste des fichiers sera dedans
+    session.retrlines(&#39;LIST&#39;,fileList.append)
+    session.quit() # On se déconnecte
+    if fileList == []:
+        print &amp;quot;Vide&amp;quot;
+    else:
+        window = gtk.Window()
+        window.set_title(&#39;CheckMyFTP&#39;)
+        image = gtk.Image()
+        image.set_from_file(os.path.join(sys.path[0], &#39;contenu.jpg&#39;))
+        window.connect(&#39;delete-event&#39;, gtk.main_quit)
+        window.add(image)
+        window.set_position(gtk.WIN_POS_CENTER)
+        window.show_all()
+        gtk.main()
+except:
+    print &amp;quot;Impossible de se connecter&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pessac</title>
+      <link>http://www.zeneffy.fr/2008/05/pessac/</link>
+      <pubDate>Mon, 12 May 2008 08:22:40 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/pessac/</guid>
+      <description>&lt;p&gt;Pessac est une application écrite en C# (compilable/utilisable via le framework Open Source &lt;a href=&#34;http://www.mono-project.com/Main_Page&#34;&gt;mono&lt;/a&gt;) permet de sortir un reporting &amp;ldquo;projet&amp;rdquo; à partir de l&amp;rsquo;analyse de répertoires du système de fichier.&lt;/p&gt;
+
+&lt;p&gt;Ce reporting est basé non sur l&amp;rsquo;avancement planning du projet mais sur la présence des livrables/Jalons d&amp;rsquo;un projet.&lt;/p&gt;
+
+&lt;p&gt;Il permet par ailleurs de suivre de manière centralisé l&amp;rsquo;avancement de plusieurs projets et gère le concept d&amp;rsquo;archivage.&lt;/p&gt;
+
+&lt;p&gt;Ce projet est entièrement géré via &lt;a href=&#34;https://code.google.com/p/pessac/&#34;&gt;Google Code&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

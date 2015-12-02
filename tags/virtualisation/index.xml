@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Virtualisation on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/virtualisation/</link>
+    <description>Recent content in Virtualisation on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Fri, 29 Oct 2010 17:11:35 +0000</lastBuildDate>
+    <atom:link href="http://www.zeneffy.fr/tags/virtualisation/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Cloner une machine virtuelle Ubuntu/Debian dans VirtualBox</title>
+      <link>http://www.zeneffy.fr/2010/10/cloner-une-machine-virtuelle-ubuntudebian-dans-virtualbox/</link>
+      <pubDate>Fri, 29 Oct 2010 17:11:35 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/10/cloner-une-machine-virtuelle-ubuntudebian-dans-virtualbox/</guid>
+      <description>&lt;p&gt;Pour cloner une machine virtuelle dans &lt;a href=&#34;http://www.virtualbox.org/&#34;&gt;VirtualBox&lt;/a&gt;, il suffit d&amp;rsquo;utiliser les outils d&amp;rsquo;administration (en mode ligne de commande)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;VBoxManage clonevdi &amp;quot;chemin absolu vers source.vdi&amp;quot; &amp;quot;chemin absolu vers cible.vdi&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Attention de bien respecter les chemins absolu pour ne pas avoir une erreur &lt;code&gt;ERROR: Cannot register the hard disk&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Toutefois il y a une petite subtilité pour un clone Ubuntu et Debian en général. En effet par défaut les MAC adresses (qui changent pour chaque VM) sont enregistrées dans &lt;code&gt;/etc/udev/rules.d/70-persistent-net.rules&lt;/code&gt; avec le formalisme suivant:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&amp;quot;?*&amp;quot;, ATTR{address}==&amp;quot;08:00:27:12:34:46&amp;quot;, ATTR{type}==&amp;quot;1&amp;quot;, KERNEL==&amp;quot;eth*&amp;quot;, NAME=&amp;quot;eth0&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or en clonant la VM, une nouvelle adresse MAC est créée et ajoutée à &lt;code&gt;70-persistent-net.rules&lt;/code&gt; lors du lancement de la nouvelle VM - on obtient alors&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&amp;quot;?*&amp;quot;, ATTR{address}==&amp;quot;08:00:27:12:34:46&amp;quot;, ATTR{type}==&amp;quot;1&amp;quot;, KERNEL==&amp;quot;eth*&amp;quot;, NAME=&amp;quot;eth0&amp;quot;
+SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&amp;quot;?*&amp;quot;, ATTR{address}==&amp;quot;08:00:28:24:47:67&amp;quot;, ATTR{type}==&amp;quot;1&amp;quot;, KERNEL==&amp;quot;eth*&amp;quot;, NAME=&amp;quot;eth1&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Le démon &lt;code&gt;udev&lt;/code&gt; ne sait alors plus quelle carte réseau utilisé et donc aucune connexion n&amp;rsquo;est plus possible. Pour corriger, il suffit d&amp;rsquo;enlever la première ligne et de modifier la seconde en mettant &lt;code&gt;eth0&lt;/code&gt; à la place de &lt;code&gt;eth1&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&amp;quot;?*&amp;quot;, ATTR{address}==&amp;quot;08:00:28:24:47:67&amp;quot;, ATTR{type}==&amp;quot;1&amp;quot;, KERNEL==&amp;quot;eth*&amp;quot;, NAME=&amp;quot;eth0&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;et voilà !&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Résolutions et VirtualBox</title>
+      <link>http://www.zeneffy.fr/2010/05/resolutions-et-virtualbox/</link>
+      <pubDate>Wed, 19 May 2010 09:51:21 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/05/resolutions-et-virtualbox/</guid>
+      <description>&lt;p&gt;Suite à l&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2010/05/16/personnaliser-linstallation-de-ubuntu-10-04/&#34;&gt;installation de Ubuntu 10.04 sous VirtualBox&lt;/a&gt;, je me suis un peu battu pour avoir une résolution correcte en mode plein écran (aka 1280x800 sur mon portable).&lt;/p&gt;
+
+&lt;p&gt;Voici ce que j&amp;rsquo;ai trouvé: tout d&amp;rsquo;abord il faut rajouter la résolution nécessaire:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;VBoxManage setextradata &amp;quot;Ubuntu104&amp;quot; &amp;quot;CustomVideoMode1&amp;quot; &amp;quot;1280x800x24&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis suite à des problèmes de curseur de souris bloqué par des bords invisibles:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;VBoxManage controlvm &amp;quot;Ubuntu104&amp;quot; setvideomodehint 1280 800 24
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Par contre je suis obligé de lancer la dernière commande à chaque fois - pas de solution miracle pour l&amp;rsquo;instant.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
