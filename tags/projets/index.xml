@@ -6,8 +6,28 @@
     <description>Recent content in Projets on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sat, 20 Jun 2015 21:31:23 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 02 Apr 2016 14:17:38 +0200</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/projets/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Godillot, une alternative à M/Monit</title>
+      <link>http://www.zeneffy.fr/2016/04/godillot/</link>
+      <pubDate>Sat, 02 Apr 2016 14:17:38 +0200</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2016/04/godillot/</guid>
+      <description>&lt;p&gt;Suite à une coupure de courant le mois dernier, suffisamment longue pour vider la batterie de l&amp;rsquo;UPS, mes systèmes ont tous redémarrés automatiquement - ou du moins je le croyais jusqu&amp;rsquo;à ce que je me rende compte quelques jours plus tard que la base &lt;a href=&#34;http://influxdb.com/&#34;&gt;influxDB&lt;/a&gt; ne tournait plus, plantée suite à la coupure.&lt;/p&gt;
+
+&lt;p&gt;Après avoir réparé cette base de donnée (et avoir mis en oeuvre un vrai &lt;a href=&#34;https://docs.influxdata.com/influxdb/v0.11/administration/backup_and_restore/&#34;&gt;système de backup&lt;/a&gt; sur les data influxdb&amp;hellip;), j&amp;rsquo;ai décidé d&amp;rsquo;installer un système de monitoring simple des processus avec &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;. est un agent qui vérifie régulièrement les processus (Existence, Consommation, Code erreur), et envoie des alertes en cas de problèmes&amp;hellip;bref rien de plus que Nagios ou &lt;a href=&#34;http://newrelic.com&#34;&gt;New Relic&lt;/a&gt;, sauf que &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;. peut aussi lancer des actions comme relancer les processus en cas de problèmes ou de dépassement de seuil. Dans le cas d&amp;rsquo;une infrastructure peu administrée/monitorée comme la mienne cela devient très intéressant pour automatiser et se faciliter la vie.&lt;/p&gt;
+
+&lt;p&gt;Toutefois, &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt; a un inconvénient majeur: pour avoir une vision globale de l&amp;rsquo;état de l&amp;rsquo;ensemble des serveurs il faut utiliser &lt;a href=&#34;https://mmonit.com/&#34;&gt;M/Monit&lt;/a&gt; qui est payant.&lt;/p&gt;
+
+&lt;p&gt;Aussi, j&amp;rsquo;ai développé en langage &lt;a href=&#34;http://golang.org&#34;&gt;Go&lt;/a&gt; une mini application appelée &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Godillot&lt;/a&gt; qui récupère les informations Monit de chaque serveur et les agrège dans un fichier html simple à lire comme vous pourrez le voir &lt;a href=&#34;http://godillot.zeneffy.fr&#34;&gt;en exemple&lt;/a&gt;. &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Godillot&lt;/a&gt; n&amp;rsquo;a pas vocation à remplacer M/Monit qui est très complet mais permet d&amp;rsquo;assurer un minimum de surveillance via u tableau de bord.&lt;/p&gt;
+
+&lt;p&gt;Godillot est bien entendu disponible en open-source (Licence Apache), directement sur &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Github&lt;/a&gt;, pour utilisation, modification (je ne suis pas fier du template html) et commentaires à votre convenance !&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Premiers pas en domotique</title>
@@ -455,38 +475,6 @@ production:
 &lt;p&gt;J&amp;rsquo;ai redécouvert l&amp;rsquo;élégance et la simplicité de &lt;a href=&#34;http://www.ruby-lang.org/fr/&#34;&gt;Ruby&lt;/a&gt; et la puissance de Rails.&lt;/p&gt;
 
 &lt;p&gt;Du coup, je me suis lancé un nouveau défi: créer une application de gestion des identités web - afin de ne plus oublier identifiant/mots de passe des sites où je suis inscrit (et il y en a!) - avec Ruby on Rails évidemment: &lt;a href=&#34;https://github.com/jraigneau/vauban/&#34;&gt;Vauban&lt;/a&gt; est donc en cours de développement. La suite prochainement&amp;hellip;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Harpagon: la version 1.1 &#34;Pingre&#34; est enfin sortie</title>
-      <link>http://www.zeneffy.fr/2010/03/harpagon-la-version-1-1-pingre-est-enfin-sortie/</link>
-      <pubDate>Sun, 07 Mar 2010 15:19:56 +0000</pubDate>
-      
-      <guid>http://www.zeneffy.fr/2010/03/harpagon-la-version-1-1-pingre-est-enfin-sortie/</guid>
-      <description>&lt;p&gt;Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt; et sur &lt;a href=&#34;http://code.google.com/intl/fr/apis/chart/&#34;&gt;Google Chart API&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Nouveautés&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Contrôle des fichiers avant validation et traitement&lt;/li&gt;
-&lt;li&gt;Mise en avant ce qui a été déjà dépensé par rapport à la moyenne mensuelle&lt;/li&gt;
-&lt;li&gt;Simulation de ce qu&amp;rsquo;il reste à payer dans le mois au prorata des jours écoulés&lt;/li&gt;
-&lt;li&gt;Meilleure gestion des chèques, notamment en mettant les numéros&lt;/li&gt;
-&lt;li&gt;Constance du tri sur la liste de transaction lors des modifications de transaction&lt;/li&gt;
-&lt;li&gt;Spinner sur le chargement de nouvelles données&lt;/li&gt;
-&lt;li&gt;Listes déroulantes de catégorie trié alphabétiquement&lt;/li&gt;
-&lt;li&gt;Couleurs des camenberts pour les catégories&lt;/li&gt;
-&lt;li&gt;Tri sur listes&lt;/li&gt;
-&lt;li&gt;Spinner lors du rejoue des règles&lt;/li&gt;
-&lt;li&gt;Confirmation des suppressions de catégorie et règles&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Où trouver Harpagon ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Le code est disponible en open source sous &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
 </description>
     </item>
     

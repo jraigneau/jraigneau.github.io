@@ -6,8 +6,28 @@
     <description>Recent content on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Wed, 02 Dec 2015 07:39:21 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 02 Apr 2016 14:17:38 +0200</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Godillot, une alternative à M/Monit</title>
+      <link>http://www.zeneffy.fr/2016/04/godillot/</link>
+      <pubDate>Sat, 02 Apr 2016 14:17:38 +0200</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2016/04/godillot/</guid>
+      <description>&lt;p&gt;Suite à une coupure de courant le mois dernier, suffisamment longue pour vider la batterie de l&amp;rsquo;UPS, mes systèmes ont tous redémarrés automatiquement - ou du moins je le croyais jusqu&amp;rsquo;à ce que je me rende compte quelques jours plus tard que la base &lt;a href=&#34;http://influxdb.com/&#34;&gt;influxDB&lt;/a&gt; ne tournait plus, plantée suite à la coupure.&lt;/p&gt;
+
+&lt;p&gt;Après avoir réparé cette base de donnée (et avoir mis en oeuvre un vrai &lt;a href=&#34;https://docs.influxdata.com/influxdb/v0.11/administration/backup_and_restore/&#34;&gt;système de backup&lt;/a&gt; sur les data influxdb&amp;hellip;), j&amp;rsquo;ai décidé d&amp;rsquo;installer un système de monitoring simple des processus avec &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;. est un agent qui vérifie régulièrement les processus (Existence, Consommation, Code erreur), et envoie des alertes en cas de problèmes&amp;hellip;bref rien de plus que Nagios ou &lt;a href=&#34;http://newrelic.com&#34;&gt;New Relic&lt;/a&gt;, sauf que &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;. peut aussi lancer des actions comme relancer les processus en cas de problèmes ou de dépassement de seuil. Dans le cas d&amp;rsquo;une infrastructure peu administrée/monitorée comme la mienne cela devient très intéressant pour automatiser et se faciliter la vie.&lt;/p&gt;
+
+&lt;p&gt;Toutefois, &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt; a un inconvénient majeur: pour avoir une vision globale de l&amp;rsquo;état de l&amp;rsquo;ensemble des serveurs il faut utiliser &lt;a href=&#34;https://mmonit.com/&#34;&gt;M/Monit&lt;/a&gt; qui est payant.&lt;/p&gt;
+
+&lt;p&gt;Aussi, j&amp;rsquo;ai développé en langage &lt;a href=&#34;http://golang.org&#34;&gt;Go&lt;/a&gt; une mini application appelée &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Godillot&lt;/a&gt; qui récupère les informations Monit de chaque serveur et les agrège dans un fichier html simple à lire comme vous pourrez le voir &lt;a href=&#34;http://godillot.zeneffy.fr&#34;&gt;en exemple&lt;/a&gt;. &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Godillot&lt;/a&gt; n&amp;rsquo;a pas vocation à remplacer M/Monit qui est très complet mais permet d&amp;rsquo;assurer un minimum de surveillance via u tableau de bord.&lt;/p&gt;
+
+&lt;p&gt;Godillot est bien entendu disponible en open-source (Licence Apache), directement sur &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Github&lt;/a&gt;, pour utilisation, modification (je ne suis pas fier du template html) et commentaires à votre convenance !&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Remplacement de emoncms par Grafana&#43;influxDB</title>
@@ -705,30 +725,6 @@ make
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Et voilà normalement tout fonctionne, vous pouvez utiliser la version de ruby que vous souhaitez sans problème.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Haml on Rails</title>
-      <link>http://www.zeneffy.fr/2011/07/haml-on-rails/</link>
-      <pubDate>Tue, 12 Jul 2011 19:30:54 +0000</pubDate>
-      
-      <guid>http://www.zeneffy.fr/2011/07/haml-on-rails/</guid>
-      <description>&lt;p&gt;Pour utiliser &lt;a href=&#34;http://haml-lang.com/&#34;&gt;haml&lt;/a&gt; avec &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails 3.x&lt;/a&gt;, il suffit d&amp;rsquo;ajouter dans le fichier &lt;code&gt;GemFile&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;gem &#39;haml-rails&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;puis lancer la commande &lt;code&gt;bundle install&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;et finalement ajouter&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;config.generators do |g|
-  g.template_engine :haml
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;dans le fichier &lt;code&gt;config/application.rb&lt;/code&gt; (dans la classe &lt;code&gt;Application &amp;lt; Rails::Application&lt;/code&gt;) - chaque scaffold sera automatiquement en Haml&lt;/p&gt;
 </description>
     </item>
     

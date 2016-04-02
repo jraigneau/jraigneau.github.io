@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
 		<meta charset="utf-8">
-		<title>Optimisation des OS avec un disque SSD</title>
+		<title>Godillot, une alternative à M/Monit</title>
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,59 +38,38 @@
 
 	<div class="row">
     	<div class="twelve columns">
-    		<h1>#Optimisation des OS avec un disque SSD</h1>
+    		<h1>#Godillot, une alternative à M/Monit</h1>
     	</div>
     </div>
 	<div class="row">
 		<div class="twelve columns"  align="justify">
-			<p>Ayant acheté dernièrement un disque dur SSD pour mon portable, il a fallu chercher quelques informations complémentaires pour m&rsquo;assurer de la meilleur optimisation possible:</p>
+			<p>Suite à une coupure de courant le mois dernier, suffisamment longue pour vider la batterie de l&rsquo;UPS, mes systèmes ont tous redémarrés automatiquement - ou du moins je le croyais jusqu&rsquo;à ce que je me rende compte quelques jours plus tard que la base <a href="http://influxdb.com/">influxDB</a> ne tournait plus, plantée suite à la coupure.</p>
 
-<p><strong>Sous Windows Vista</strong>
-<a href="http://www.ocztechnologyforum.com/forum/showthread.php?47212-Vista-32-64-SSD-Windows-Registry-tweaks">www.ocztechnologyforum.com/forum/showthread.php?47212-Vista-32-64-SSD-Windows-Registry-tweaks</a></p>
+<p>Après avoir réparé cette base de donnée (et avoir mis en oeuvre un vrai <a href="https://docs.influxdata.com/influxdb/v0.11/administration/backup_and_restore/">système de backup</a> sur les data influxdb&hellip;), j&rsquo;ai décidé d&rsquo;installer un système de monitoring simple des processus avec <a href="https://mmonit.com/monit/">Monit</a>.</p>
 
-<p>En bref:</p>
+<p><a href="https://mmonit.com/monit/">Monit</a>. est un agent qui vérifie régulièrement les processus (Existence, Consommation, Code erreur), et envoie des alertes en cas de problèmes&hellip;bref rien de plus que Nagios ou <a href="http://newrelic.com">New Relic</a>, sauf que <a href="https://mmonit.com/monit/">Monit</a>. peut aussi lancer des actions comme relancer les processus en cas de problèmes ou de dépassement de seuil. Dans le cas d&rsquo;une infrastructure peu administrée/monitorée comme la mienne cela devient très intéressant pour automatiser et se faciliter la vie.</p>
 
-<ul>
-<li>Désactiver superfetch &amp; prefetch</li>
-<li>Activer <code>clearPageFilesAtShutdown</code> et <code>LargeSystemCache</code></li>
-<li>Amélioration du cache disque NTFS</li>
-<li>Suppression indexation automatique + hibernation (pour gagner de l&rsquo;espace)</li>
-</ul>
+<p>Toutefois, <a href="https://mmonit.com/monit/">Monit</a> a un inconvénient majeur: pour avoir une vision globale de l&rsquo;état de l&rsquo;ensemble des serveurs il faut utiliser <a href="https://mmonit.com/">M/Monit</a> qui est payant.</p>
 
-<p><strong>Optimisations sous Linux:</strong>
-<a href="http://itezer.com/blog/ubuntu-linux/125-Four-Tweaks-for-Using-Linux-with-SSD.html">itezer.com/blog/ubuntu-linux/125-Four-Tweaks-for-Using-Linux-with-SSD.html</a>
-<a href="http://www.zdnet.com/blog/perlow/geek-sheet-a-tweakers-guide-to-solid-state-drives-ssds-and-linux/9190">www.zdnet.com/blog/perlow/geek-sheet-a-tweakers-guide-to-solid-state-drives-ssds-and-linux/9190</a></p>
+<p>Aussi, j&rsquo;ai développé en langage <a href="http://golang.org">Go</a> une mini application appelée <a href="https://github.com/jraigneau/godillot">Godillot</a> qui récupère les informations Monit de chaque serveur et les agrège dans un fichier html simple à lire comme vous pourrez le voir <a href="http://godillot.zeneffy.fr">en exemple</a>. <a href="https://github.com/jraigneau/godillot">Godillot</a> n&rsquo;a pas vocation à remplacer M/Monit qui est très complet mais permet d&rsquo;assurer un minimum de surveillance via u tableau de bord.</p>
 
-<p>En synthèse:</p>
-
-<ul>
-<li>S&rsquo;assurer d&rsquo;être en noatime</li>
-<li>Utiliser la mémoire vive comme /tmp</li>
-<li>Changer le scheduler disque (prendre noop)</li>
-</ul>
-
-<p>Résultat:</p>
-
-<pre><code>julien@einstein:~$ sudo hdparm -t /dev/sda
-/dev/sda:
-Timing buffered disk reads:  454 MB in  3.01 seconds = 150.66 MB/sec
-</code></pre>
+<p>Godillot est bien entendu disponible en open-source (Licence Apache), directement sur <a href="https://github.com/jraigneau/godillot">Github</a>, pour utilisation, modification (je ne suis pas fier du template html) et commentaires à votre convenance !</p>
 
 		</div>
 	</div>
 	
 	<div class="row" style="border-top: 1px solid #eee; ">
 		<div class="twelve columns" style="background-color:white; color: black;">
-				<span class="post-postedby">Date de publication: 06/06/2010</span>
+				<span class="post-postedby">Date de publication: 02/04/2016</span>
 		</div>
 		<div class="twelve columns" style="background-color:white; color: black;">
 			<span class="post-postedby">Mots-clefs: </span>
 				
-				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/ubuntu" class="tags-link">#ubuntu</a>
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/go" class="tags-link">#go</a>
 				
-				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/hardware" class="tags-link">#hardware</a>
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/projets" class="tags-link">#projets</a>
 				
-				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/windows" class="tags-link">#windows</a>
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/outils" class="tags-link">#outils</a>
 				
 		</div>
 	</div>
@@ -99,12 +78,12 @@ Timing buffered disk reads:  454 MB in  3.01 seconds = 150.66 MB/sec
 	<div class="row">
 		<div class="six columns" style="text-align: left;">
 	        
-	        <a href="http://www.zeneffy.fr/2010/06/alerte-sur-la-banquise/" style="text-decoration: none;"><span aria-hidden="true">&larr;</span> Plus Récent</a>
+	        &nbsp;
 	        
 		</div>
 		<div class="six columns" style="text-align: right;">
         
-        <a href="http://www.zeneffy.fr/2010/06/lier-github-lighthouse/" style="text-decoration: none;">Plus Ancien <span aria-hidden="true">&rarr;</span></a>
+        <a href="http://www.zeneffy.fr/2015/12/remplacement-emoncms/" style="text-decoration: none;">Plus Ancien <span aria-hidden="true">&rarr;</span></a>
         
 		</div>
 	</div>

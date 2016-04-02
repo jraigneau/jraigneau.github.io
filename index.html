@@ -43,6 +43,47 @@
 			
 			<div class="row">
 				<div class="twelve columns">
+					<h1>#Godillot, une alternative à M/Monit</h1>
+				</div>
+			</div>
+
+            <div class="row">
+                    <div class="twelve columns" align="justify">
+                        <p>Suite à une coupure de courant le mois dernier, suffisamment longue pour vider la batterie de l&rsquo;UPS, mes systèmes ont tous redémarrés automatiquement - ou du moins je le croyais jusqu&rsquo;à ce que je me rende compte quelques jours plus tard que la base <a href="http://influxdb.com/">influxDB</a> ne tournait plus, plantée suite à la coupure.</p>
+
+<p>Après avoir réparé cette base de donnée (et avoir mis en oeuvre un vrai <a href="https://docs.influxdata.com/influxdb/v0.11/administration/backup_and_restore/">système de backup</a> sur les data influxdb&hellip;), j&rsquo;ai décidé d&rsquo;installer un système de monitoring simple des processus avec <a href="https://mmonit.com/monit/">Monit</a>.</p>
+
+<p><a href="https://mmonit.com/monit/">Monit</a>. est un agent qui vérifie régulièrement les processus (Existence, Consommation, Code erreur), et envoie des alertes en cas de problèmes&hellip;bref rien de plus que Nagios ou <a href="http://newrelic.com">New Relic</a>, sauf que <a href="https://mmonit.com/monit/">Monit</a>. peut aussi lancer des actions comme relancer les processus en cas de problèmes ou de dépassement de seuil. Dans le cas d&rsquo;une infrastructure peu administrée/monitorée comme la mienne cela devient très intéressant pour automatiser et se faciliter la vie.</p>
+
+<p>Toutefois, <a href="https://mmonit.com/monit/">Monit</a> a un inconvénient majeur: pour avoir une vision globale de l&rsquo;état de l&rsquo;ensemble des serveurs il faut utiliser <a href="https://mmonit.com/">M/Monit</a> qui est payant.</p>
+
+<p>Aussi, j&rsquo;ai développé en langage <a href="http://golang.org">Go</a> une mini application appelée <a href="https://github.com/jraigneau/godillot">Godillot</a> qui récupère les informations Monit de chaque serveur et les agrège dans un fichier html simple à lire comme vous pourrez le voir <a href="http://godillot.zeneffy.fr">en exemple</a>. <a href="https://github.com/jraigneau/godillot">Godillot</a> n&rsquo;a pas vocation à remplacer M/Monit qui est très complet mais permet d&rsquo;assurer un minimum de surveillance via u tableau de bord.</p>
+
+<p>Godillot est bien entendu disponible en open-source (Licence Apache), directement sur <a href="https://github.com/jraigneau/godillot">Github</a>, pour utilisation, modification (je ne suis pas fier du template html) et commentaires à votre convenance !</p>
+
+                    </div>
+            </div>
+            <div class="row" style="border-top: 1px solid #eee; ">
+				<div class="twelve columns" style="background-color:white; color: black;">
+					<span class="post-postedby">Date de publication: 02/04/2016</span>
+				</div>
+				<div class="twelve columns" style="background-color:white; color: black;">
+					<span class="post-postedby">Mots-clefs: </span>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/go" class="tags-link">#go</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/projets" class="tags-link">#projets</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/outils" class="tags-link">#outils</a>
+				
+				</div>
+			</div>
+            <br/><br/>
+			
+	    
+			
+			<div class="row">
+				<div class="twelve columns">
 					<h1>#Remplacement de emoncms par Grafana&#43;influxDB</h1>
 				</div>
 			</div>
@@ -339,39 +380,6 @@ Bref, de quoi s&rsquo;occuper quelques temps !</li>
             <br/><br/>
 			
 	    
-			
-			<div class="row">
-				<div class="twelve columns">
-					<h1>#Labs.zeneffy.fr change de crémerie</h1>
-				</div>
-			</div>
-
-            <div class="row">
-                    <div class="twelve columns" align="justify">
-                        <p>Suite à l&rsquo;arrêt de la stack &ldquo;aspen&rdquo; sur <a href="http://www.heroku.com">Heroku.com</a> sur laquelle tournait originellement le site <a href="http://labs.zeneffy.fr">labs.zeneffy.fr</a> (basé sur le CMS ruby on rails <a href="http://radiantcms.org/">RadiantCMS</a>), j&rsquo;ai été obligé de chercher une solution : migration simple vers une stack plus récente ou changement complet de CMS.</p>
-
-<p>Finalement, j&rsquo;ai simplifié à l&rsquo;extrème en utilisant <a href="http://pages.github.com/">github pages</a> avec un site complètement statique et se résumant à une page.</p>
-
-<p>Comme quoi les CMS et les bases de données ne sont pas la solution à tous les problèmes !</p>
-
-                    </div>
-            </div>
-            <div class="row" style="border-top: 1px solid #eee; ">
-				<div class="twelve columns" style="background-color:white; color: black;">
-					<span class="post-postedby">Date de publication: 28/10/2012</span>
-				</div>
-				<div class="twelve columns" style="background-color:white; color: black;">
-					<span class="post-postedby">Mots-clefs: </span>
-				
-				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/outils" class="tags-link">#outils</a>
-				
-				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/projets" class="tags-link">#projets</a>
-				
-				</div>
-			</div>
-            <br/><br/>
-			
-	    
 		</div>
 	</div>
 	
@@ -408,6 +416,8 @@ Bref, de quoi s&rsquo;occuper quelques temps !</li>
 			  	  	    <a href="/tags/domotique" class="tags-link-footer">#domotique</a>
 			  	  	  	  
 			  	  	    <a href="/tags/formation" class="tags-link-footer">#formation</a>
+			  	  	  	  
+			  	  	    <a href="/tags/go" class="tags-link-footer">#go</a>
 			  	  	  	  
 			  	  	    <a href="/tags/google" class="tags-link-footer">#google</a>
 			  	  	  	  
