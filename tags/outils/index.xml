@@ -6,8 +6,109 @@
     <description>Recent content in Outils on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sat, 02 Apr 2016 14:17:38 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 11 Oct 2016 07:48:54 +0200</lastBuildDate>
     <atom:link href="http://www.zeneffy.fr/tags/outils/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A bot to rule them all</title>
+      <link>http://www.zeneffy.fr/2016/10/go-bot-domotique/</link>
+      <pubDate>Tue, 11 Oct 2016 07:48:54 +0200</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2016/10/go-bot-domotique/</guid>
+      <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;Un Anneau pour les gouverner tous&lt;/p&gt;
+
+&lt;p&gt;Un Anneau pour les trouver&lt;/p&gt;
+
+&lt;p&gt;Un Anneau pour les amener tous [&amp;hellip;]&lt;/p&gt;
+
+&lt;p&gt;&amp;ndash; J. R. R. Tolkien, Le seigneurs des anneaux&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Pour des raisons de sécurité, j&amp;rsquo;ai décidé de n&amp;rsquo;avoir aucun accès de l&amp;rsquo;extérieur vers mes éléments de domotique, avec toutefois un inconvénient majeur: aucun moyen de consulter les diverses données ou de lancer des actions.&lt;/p&gt;
+
+&lt;p&gt;Pour résoudre ce problème j&amp;rsquo;ai tenté plusieurs approches à base de tableaux de bord &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt; ou de solutions maison comme &lt;a href=&#34;https://github.com/jraigneau/proxana&#34;&gt;proxana&lt;/a&gt; mais qui ne m&amp;rsquo;ont jamais vraiment convaincues pour mon cas d&amp;rsquo;usage.&lt;/p&gt;
+
+&lt;h4 id=&#34;de-l-usage-d-un-bot-pour-la-domotique&#34;&gt;De l&amp;rsquo;usage d&amp;rsquo;un bot pour la domotique&lt;/h4&gt;
+
+&lt;p&gt;Et j&amp;rsquo;ai commencé à m&amp;rsquo;intéresser aux bots de type &lt;a href=&#34;https://hubot.github.com/&#34;&gt;Hubot&lt;/a&gt; et à leur utilité pour finalement créer mon propre bot nommé&lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt; est un service écrit en langage Go, basé sur mon système domotique déjà en place (&lt;a href=&#34;https://www.influxdata.com/&#34;&gt;InfluxDB&lt;/a&gt; et &lt;a href=&#34;http://nodered.org/&#34;&gt;NodeRed&lt;/a&gt;) et utilisant l&amp;rsquo;infrastructure de &lt;a href=&#34;https://telegram.org/&#34;&gt;Telegram&lt;/a&gt; pour me permettre de lancer des actions domotiques, du type &amp;ldquo;quelle est la température chez moi?&amp;rdquo;, sans risque sur la sécurité de mon système.&lt;/p&gt;
+
+&lt;p&gt;Une capture d&amp;rsquo;écran étant toujours plus simple que des mots, cela donne donc:
+   &lt;center&gt;&lt;img src=&#34;https://c3.staticflickr.com/9/8268/30137861482_00e066e485.jpg&#34; width=&#34;500&#34; height=&#34;363&#34; alt=&#34;graphana-elec&#34;&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;dans-les-coulisses-de-goule&#34;&gt;Dans les coulisses de Goule&lt;/h4&gt;
+
+&lt;p&gt;Pour développer &lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt; en langage Go (décidemment j&amp;rsquo;aime beaucoup ce langage), je me suis appuyé de façon classique sur des librairies existantes notamment &lt;a href=&#34;https://gopkg.in/telegram-bot-api.v4&#34;&gt;telegram-bot-api&lt;/a&gt; pour se connecter à &lt;a href=&#34;https://telegram.org/&#34;&gt;Telegram&lt;/a&gt; ainsi que la &lt;a href=&#34;https://github.com/influxdata/influxdb/tree/master/client&#34;&gt;librairie native pour influxdb&lt;/a&gt;. La seule difficulté rencontrée a été le formatage des données renvoyées par influxdb, qui nécessite de fouiller un peu dans les &lt;a href=&#34;https://golang.org/pkg/encoding/json/#Number&#34;&gt;API&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;const (
+    username = &amp;quot;grafana&amp;quot;
+    password = &amp;quot;paint&amp;quot;
+    addr = &amp;quot;http://obelix:8086&amp;quot;
+)
+# Crée la requete et l&#39;envoie à InfluxDB, renvoie le résultat
+func queryDB(cmd string, MyDB string) (res []client.Result, err error) {
+
+    log.Printf(&amp;quot;Connection à influxDB&amp;quot;)
+    clnt, err := client.NewHTTPClient(client.HTTPConfig{
+        Addr: addr,
+        Username: username,
+        Password: password,
+    })
+    if err != nil {
+        log.Fatalln(&amp;quot;Error: &amp;quot;, err)
+    }
+    q := client.Query{
+        Command:  cmd,
+        Database: MyDB,
+    }
+    response, err := clnt.Query(q)
+    if err != nil {
+        log.Fatalln(&amp;quot;Error: &amp;quot;, err)
+    }
+    if response.Error() != nil {
+        log.Fatalln(&amp;quot;Error: &amp;quot;, response.Error())
+    }
+    res = response.Results
+    log.Println(response.Results)
+    return res, nil
+}
+# Récupère la consommation électrique dans influxDB
+func getConsoElectrique() string {
+    q := fmt.Sprintf(&amp;quot;SELECT * FROM energy ORDER BY time DESC LIMIT 1&amp;quot;)
+    res, err := queryDB(q,&amp;quot;electricity&amp;quot;)
+    if err != nil {
+        log.Fatal(&amp;quot;Error: &amp;quot;,err)
+    }
+    day_energy := res[0].Series[0].Values[0][1].(json.Number).String()
+    instant_energy := res[0].Series[0].Values[0][2].(json.Number).String()
+
+    return fmt.Sprintf(&amp;quot;Actuellement la consommation instantanée est de *%sW* et le cumul est de *%skW*.&amp;quot;,instant_energy,day_energy)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Le point d&amp;rsquo;attention étant sur la manipulation des résultats, avec des tableaux dans tous les sens, et des transformations JSON à faire comme pour récupérer la consommation quotidienne:  &lt;code&gt;day_energy := res[0].Series[0].Values[0][1].(json.Number).String()&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;containers-are-the-new-black&#34;&gt;Containers are the new black&lt;/h4&gt;
+
+&lt;p&gt;Finalement pour faire tourner tout cela simplement (et tenter quelque chose de différent), j&amp;rsquo;ai utilisé un container &lt;a href=&#34;https://www.docker.com/&#34;&gt;docker&lt;/a&gt; construit directement à partir du container &lt;a href=&#34;https://hub.docker.com/_/golang/&#34;&gt;Golang officiel&lt;/a&gt; et en m&amp;rsquo;appuyant sur &lt;a href=&#34;https://blog.docker.com/2016/09/docker-golang/&#34;&gt;l&amp;rsquo;article de Jérôme Petazzoni&lt;/a&gt;, avec les commandes suivantes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# téléchargement de l&#39;image et des librairies + compilation de goule
+docker run golang go get -v github.com/jraigneau/goule
+# Transformation en image docker nommé goule
+docker commit $(docker ps -lq) goule
+# Lancement du programme goule dans l&#39;image goule en mode &amp;quot;daemon&amp;quot; à partir du containter goule
+docker run --restart=always --name goule -it -d goule goule
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Cela me permet d&amp;rsquo;avoir un &amp;ldquo;service&amp;rdquo; qui tourne sur ma VM principale dédiée aux containers, isolée des autres containers, avec une relance automatique en cas de problème (notamment coupure intempestive de ma ligne internet, ce qui est arrivé).&lt;/p&gt;
+
+&lt;p&gt;J&amp;rsquo;utilise ce système depuis un mois environ, et étant donné sa fiabilité je vais surement l&amp;rsquo;étendre à d&amp;rsquo;autres fonctions de ma domotique dans le futur.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Godillot, une alternative à M/Monit</title>
@@ -647,24 +748,6 @@ except:
 &lt;p&gt;et voilà, toutes les heures CheckMyFTP.py sera lancé et il m&amp;rsquo;affichera une notification en cas de nouveaux fichiers disponibles sur le répertoire FTP.&lt;/p&gt;
 
 &lt;p&gt;Ressources: &lt;a href=&#34;http://www.devdaily.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs&#34;&gt;http://www.devdaily.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Google App Engine: une demie déception</title>
-      <link>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</link>
-      <pubDate>Fri, 25 Feb 2011 22:47:37 +0000</pubDate>
-      
-      <guid>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</guid>
-      <description>&lt;p&gt;Dans le cadre de ma petite application de surveillance de site web, &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;veilleur&lt;/a&gt;, j&amp;rsquo;ai &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;utilisé l&amp;rsquo;infrastructure Google App Engine&lt;/a&gt; pour héberger code &amp;amp; base de donnée. Le résultat au bout de 2 semaines est assez peu concluant- du moins pour la version &amp;ldquo;Free&amp;rdquo;:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Le système de quotas est contraignant, et atteint vite ses limites (pour moi de temps machine à cause des requêtes nécessaires pour vérifier l&amp;rsquo;état de santé des sites)&lt;/li&gt;
-&lt;li&gt;L&amp;rsquo;applicatif se lance de façon dynamique par défaut pour l&amp;rsquo;offre &amp;ldquo;free&amp;rdquo;, i.e. il y a un temps d&amp;rsquo;initialisation lors des requêtes web, surtout sur un site de faible trafic comme celui ci - l&amp;rsquo;option &amp;ldquo;Always On&amp;rdquo; évitant ce problème étant payante.&lt;/li&gt;
-&lt;li&gt;En deux semaines d&amp;rsquo;utilisation, l&amp;rsquo;infrastructure m&amp;rsquo;a semblé peu fiable, avec des erreurs étranges non reproductible - causées manifestement par Google App Engine lui même.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Mes prochaines applications ne seront donc pas hébergées sur GAE - mais plutôt chez Heroku comme &lt;a href=&#34;http://vauban.heroku.com&#34;&gt;vauban&lt;/a&gt; qui reste pour moi une référence de l&amp;rsquo;hébergement Rails / Sinatra.&lt;/p&gt;
 </description>
     </item>
     

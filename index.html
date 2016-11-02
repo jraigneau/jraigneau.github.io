@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+	<meta name="generator" content="Hugo 0.16" />
 		<meta charset="utf-8">
 		<title>Zeneffy : journal de bord</title>
 		<meta name="description" content="">
@@ -40,6 +41,130 @@
 		<div class="twelve columns">
 		
 		
+			
+			<div class="row">
+				<div class="twelve columns">
+					<h1>#A bot to rule them all</h1>
+				</div>
+			</div>
+
+            <div class="row">
+                    <div class="twelve columns" align="justify">
+                        
+
+<blockquote>
+<p>Un Anneau pour les gouverner tous</p>
+
+<p>Un Anneau pour les trouver</p>
+
+<p>Un Anneau pour les amener tous [&hellip;]</p>
+
+<p>&ndash; J. R. R. Tolkien, Le seigneurs des anneaux</p>
+</blockquote>
+
+<p>Pour des raisons de sécurité, j&rsquo;ai décidé de n&rsquo;avoir aucun accès de l&rsquo;extérieur vers mes éléments de domotique, avec toutefois un inconvénient majeur: aucun moyen de consulter les diverses données ou de lancer des actions.</p>
+
+<p>Pour résoudre ce problème j&rsquo;ai tenté plusieurs approches à base de tableaux de bord <a href="http://dashing.io/">dashing</a> ou de solutions maison comme <a href="https://github.com/jraigneau/proxana">proxana</a> mais qui ne m&rsquo;ont jamais vraiment convaincues pour mon cas d&rsquo;usage.</p>
+
+<h4 id="de-l-usage-d-un-bot-pour-la-domotique">De l&rsquo;usage d&rsquo;un bot pour la domotique</h4>
+
+<p>Et j&rsquo;ai commencé à m&rsquo;intéresser aux bots de type <a href="https://hubot.github.com/">Hubot</a> et à leur utilité pour finalement créer mon propre bot nommé<a href="https://github.com/jraigneau/goule">Goule</a>.</p>
+
+<p><a href="https://github.com/jraigneau/goule">Goule</a> est un service écrit en langage Go, basé sur mon système domotique déjà en place (<a href="https://www.influxdata.com/">InfluxDB</a> et <a href="http://nodered.org/">NodeRed</a>) et utilisant l&rsquo;infrastructure de <a href="https://telegram.org/">Telegram</a> pour me permettre de lancer des actions domotiques, du type &ldquo;quelle est la température chez moi?&rdquo;, sans risque sur la sécurité de mon système.</p>
+
+<p>Une capture d&rsquo;écran étant toujours plus simple que des mots, cela donne donc:
+   <center><img src="https://c3.staticflickr.com/9/8268/30137861482_00e066e485.jpg" width="500" height="363" alt="graphana-elec"></center></p>
+
+<h4 id="dans-les-coulisses-de-goule">Dans les coulisses de Goule</h4>
+
+<p>Pour développer <a href="https://github.com/jraigneau/goule">Goule</a> en langage Go (décidemment j&rsquo;aime beaucoup ce langage), je me suis appuyé de façon classique sur des librairies existantes notamment <a href="https://gopkg.in/telegram-bot-api.v4">telegram-bot-api</a> pour se connecter à <a href="https://telegram.org/">Telegram</a> ainsi que la <a href="https://github.com/influxdata/influxdb/tree/master/client">librairie native pour influxdb</a>. La seule difficulté rencontrée a été le formatage des données renvoyées par influxdb, qui nécessite de fouiller un peu dans les <a href="https://golang.org/pkg/encoding/json/#Number">API</a>.</p>
+
+<pre><code>const (
+    username = &quot;grafana&quot;
+    password = &quot;paint&quot;
+    addr = &quot;http://obelix:8086&quot;
+)
+# Crée la requete et l'envoie à InfluxDB, renvoie le résultat
+func queryDB(cmd string, MyDB string) (res []client.Result, err error) {
+
+    log.Printf(&quot;Connection à influxDB&quot;)
+    clnt, err := client.NewHTTPClient(client.HTTPConfig{
+        Addr: addr,
+        Username: username,
+        Password: password,
+    })
+    if err != nil {
+        log.Fatalln(&quot;Error: &quot;, err)
+    }
+    q := client.Query{
+        Command:  cmd,
+        Database: MyDB,
+    }
+    response, err := clnt.Query(q)
+    if err != nil {
+        log.Fatalln(&quot;Error: &quot;, err)
+    }
+    if response.Error() != nil {
+        log.Fatalln(&quot;Error: &quot;, response.Error())
+    }
+    res = response.Results
+    log.Println(response.Results)
+    return res, nil
+}
+# Récupère la consommation électrique dans influxDB
+func getConsoElectrique() string {
+    q := fmt.Sprintf(&quot;SELECT * FROM energy ORDER BY time DESC LIMIT 1&quot;)
+    res, err := queryDB(q,&quot;electricity&quot;)
+    if err != nil {
+        log.Fatal(&quot;Error: &quot;,err)
+    }
+    day_energy := res[0].Series[0].Values[0][1].(json.Number).String()
+    instant_energy := res[0].Series[0].Values[0][2].(json.Number).String()
+
+    return fmt.Sprintf(&quot;Actuellement la consommation instantanée est de *%sW* et le cumul est de *%skW*.&quot;,instant_energy,day_energy)
+}
+</code></pre>
+
+<p>Le point d&rsquo;attention étant sur la manipulation des résultats, avec des tableaux dans tous les sens, et des transformations JSON à faire comme pour récupérer la consommation quotidienne:  <code>day_energy := res[0].Series[0].Values[0][1].(json.Number).String()</code></p>
+
+<h4 id="containers-are-the-new-black">Containers are the new black</h4>
+
+<p>Finalement pour faire tourner tout cela simplement (et tenter quelque chose de différent), j&rsquo;ai utilisé un container <a href="https://www.docker.com/">docker</a> construit directement à partir du container <a href="https://hub.docker.com/_/golang/">Golang officiel</a> et en m&rsquo;appuyant sur <a href="https://blog.docker.com/2016/09/docker-golang/">l&rsquo;article de Jérôme Petazzoni</a>, avec les commandes suivantes:</p>
+
+<pre><code># téléchargement de l'image et des librairies + compilation de goule
+docker run golang go get -v github.com/jraigneau/goule
+# Transformation en image docker nommé goule
+docker commit $(docker ps -lq) goule
+# Lancement du programme goule dans l'image goule en mode &quot;daemon&quot; à partir du containter goule
+docker run --restart=always --name goule -it -d goule goule
+</code></pre>
+
+<p>Cela me permet d&rsquo;avoir un &ldquo;service&rdquo; qui tourne sur ma VM principale dédiée aux containers, isolée des autres containers, avec une relance automatique en cas de problème (notamment coupure intempestive de ma ligne internet, ce qui est arrivé).</p>
+
+<p>J&rsquo;utilise ce système depuis un mois environ, et étant donné sa fiabilité je vais surement l&rsquo;étendre à d&rsquo;autres fonctions de ma domotique dans le futur.</p>
+
+                    </div>
+            </div>
+            <div class="row" style="border-top: 1px solid #eee; ">
+				<div class="twelve columns" style="background-color:white; color: black;">
+					<span class="post-postedby">Date de publication: 11/10/2016</span>
+				</div>
+				<div class="twelve columns" style="background-color:white; color: black;">
+					<span class="post-postedby">Mots-clefs: </span>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/projets" class="tags-link">#projets</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/go" class="tags-link">#go</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/outils" class="tags-link">#outils</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/domotique" class="tags-link">#domotique</a>
+				
+				</div>
+			</div>
+            <br/><br/>
+			
+	    
 			
 			<div class="row">
 				<div class="twelve columns">
@@ -139,7 +264,7 @@
 
 <p>J&rsquo;ai décidé l&rsquo;année dernière de me lancer dans l&rsquo;aventure de la <a href="/tags/domotique">domotique</a>, avec pleins d&rsquo;idées en tête sur la sécurité et la détection, les mesures de température, l&rsquo;optimisation de la consommation de l&rsquo;énergie, le contrôle des lampes et autres, et plus globalement l’automatisation.</p>
 
-<h4 id="étude-préalable:3d9212b867547cfb9bedcf14c12268c0">Étude préalable</h4>
+<h4 id="étude-préalable">Étude préalable</h4>
 
 <p>En m&rsquo;intéressant à ce domaine, j&rsquo;ai découvert d&rsquo;une part sa richesse et d&rsquo;autre part le nombre très important de protocoles, les différentes box domotiques plus ou moins compatibles, les prix (élevés) des différents composants.</p>
 
@@ -147,7 +272,7 @@
 
 <p>J&rsquo;en ai tiré plusieurs postulats et décisions sur la suite des événements.</p>
 
-<h4 id="postulats-choix:3d9212b867547cfb9bedcf14c12268c0">Postulats / Choix</h4>
+<h4 id="postulats-choix">Postulats / Choix</h4>
 
 <p>Le matériel de contrôle de la bureautique pouvant être envahissant, j&rsquo;ai décidé en premier lieu de me créer <a href="/2015/04/mon-datacenter/">mon propre espace</a> pour le matériel.</p>
 
@@ -159,7 +284,7 @@ L&rsquo;ESX est le seul élément non open-source, choisi par rapport à mes exp
 
 <p>Le dernier choix important a été pour moi d&rsquo;isoler complètement la maison: aucun des systèmes domestiques n&rsquo;est accessible de l&rsquo;extérieur afin d&rsquo;éviter tout piratage qui pourrait être particulièrement grave.</p>
 
-<h4 id="mesurer-pour-contrôler:3d9212b867547cfb9bedcf14c12268c0">Mesurer pour contrôler</h4>
+<h4 id="mesurer-pour-contrôler">Mesurer pour contrôler</h4>
 
 <blockquote>
 <p><em>Measurement is the first step that leads to control and eventually to improvement. If you can’t measure something, you can’t understand it. If you can’t understand it, you can’t control it. If you can’t control it, you can’t improve it — Dr. H. James Harrington</em></p>
@@ -175,7 +300,7 @@ L&rsquo;ESX est le seul élément non open-source, choisi par rapport à mes exp
 
 <p><img src="https://c1.staticflickr.com/1/537/18397961713_b644294b27.jpg" width="500" height="276" alt="temperature"></p>
 
-<h4 id="intégration-des-systèmes:3d9212b867547cfb9bedcf14c12268c0">Intégration des systèmes</h4>
+<h4 id="intégration-des-systèmes">Intégration des systèmes</h4>
 
 <p>Pour bien gérer &ldquo;l&rsquo;<a href="https://en.wikipedia.org/wiki/Internet_of_Things">internet of things</a>&rdquo; et mixer les services logiciels, les objets connectés, et les différents capteurs, j&rsquo;ai par ailleurs installé <a href="http://nodered.org/">node-red</a>, qui est développé par IBM.</p>
 
@@ -185,7 +310,7 @@ L&rsquo;ESX est le seul élément non open-source, choisi par rapport à mes exp
 
 <p>Ainsi, j&rsquo;ai pu créer des flux pour récupérer les données de la box domotique avant de les envoyer vers emoncms et d&rsquo;en faire des graphiques et des premières analyses.</p>
 
-<h4 id="réalisations-actuelles-plutôt-orientées-mesures:3d9212b867547cfb9bedcf14c12268c0">Réalisations actuelles - plutôt orientées mesures</h4>
+<h4 id="réalisations-actuelles-plutôt-orientées-mesures">Réalisations actuelles - plutôt orientées mesures</h4>
 
 <p>Ces derniers mois, je me suis attaché à mettre en œuvre les différents points de mesure, avec notamment:</p>
 
@@ -198,7 +323,7 @@ L&rsquo;ESX est le seul élément non open-source, choisi par rapport à mes exp
 
 <p><img src="https://github.com/ccrisan/motioneye/wiki/images/desktop-view.png" width="500" height="276" alt="motioneye"></p>
 
-<h4 id="réalisations-à-venir-ou-qui-reste-à-étudier:3d9212b867547cfb9bedcf14c12268c0">Réalisations à venir ou qui reste à étudier</h4>
+<h4 id="réalisations-à-venir-ou-qui-reste-à-étudier">Réalisations à venir ou qui reste à étudier</h4>
 
 <p>Le champ des possibles de la domotique est impressionnant et j&rsquo;imagine par exemple mettre en œuvre d&rsquo;autres activités comme:</p>
 
@@ -244,7 +369,7 @@ Bref, de quoi s&rsquo;occuper quelques temps !</li>
                     <div class="twelve columns" align="justify">
                         
 
-<h4 id="le-datacenter-à-la-maison-un-rêve-de-geek:ea04fef0779b2df1cb264c6e16c063f6">le datacenter à la maison : un rêve de geek</h4>
+<h4 id="le-datacenter-à-la-maison-un-rêve-de-geek">le datacenter à la maison : un rêve de geek</h4>
 
 <p>Ayant acheté une maison l’année dernière avec beaucoup d’espace et surtout un grand garage, j’en ai profité pour réaliser un vieux fantasme de geek : Avoir un endroit dédié pour mon matériel informatique, bref mon propre mini datacenter.</p>
 
@@ -252,7 +377,7 @@ Bref, de quoi s&rsquo;occuper quelques temps !</li>
 
 <p><img src="https://farm9.staticflickr.com/8708/16972064590_a4f1719aec_z.jpg" width="640" height="478" alt="datacenter1" align="middle"></p>
 
-<h4 id="de-la-récup-et-de-l-huile-de-coude:ea04fef0779b2df1cb264c6e16c063f6">De la « récup » et de l’huile de coude</h4>
+<h4 id="de-la-récup-et-de-l-huile-de-coude">De la « récup » et de l’huile de coude</h4>
 
 <p>Après quelques recherches sur internet sur le sujet, j’ai trouvé de nombreux exemples de bricoleurs geek qui ont transformé (ou même créé) des meubles pour cette usage: j’ai donc décidé de me lancer moi aussi en partant d’un petit meuble existant.</p>
 
@@ -265,7 +390,7 @@ Bref, de quoi s&rsquo;occuper quelques temps !</li>
 <li>Installer le PC « domotique »</li>
 </ol>
 
-<h4 id="une-aération-intelligente:ea04fef0779b2df1cb264c6e16c063f6">Une aération intelligente</h4>
+<h4 id="une-aération-intelligente">Une aération intelligente</h4>
 
 <p>Tout d’abord, j’ai percé des ouvertures sur la porte avant, sur l’arrière pour le passage des câbles.</p>
 
@@ -280,7 +405,7 @@ Bref, de quoi s&rsquo;occuper quelques temps !</li>
 
 <p><img src="https://farm9.staticflickr.com/8701/16539781163_9c69f57da3_c.jpg" width="800" height="221" alt="Domoticz"></p>
 
-<h4 id="l-importance-d-optimiser-son-câblage:ea04fef0779b2df1cb264c6e16c063f6">L’importance d’optimiser son câblage</h4>
+<h4 id="l-importance-d-optimiser-son-câblage">L’importance d’optimiser son câblage</h4>
 
 <p>Qui n’a jamais eu de problème de câble qui se mélangent, s’entortillent et se croisent (regardez donc les câbles entre votre télévision, votre box tv et votre lecteur de DVD par exemple)? Sur un environnement confiné avec à la fois des câbles électriques et des câbles réseau, cela peut devenir l’enfer en cas de modification ou de dépannage.</p>
 
@@ -288,7 +413,7 @@ Bref, de quoi s&rsquo;occuper quelques temps !</li>
 
 <p>Aussi j’ai utilisé des accroches de tuyaux de plomberie pour définir des chemins de câbles, en séparant courant faible et courant fort - ce qui m’a permis notamment de changer plusieurs fois des éléments dans le datacenter sans coup férir.</p>
 
-<h4 id="organisation-et-remplissage-du-datacenter:ea04fef0779b2df1cb264c6e16c063f6">Organisation et remplissage du datacenter</h4>
+<h4 id="organisation-et-remplissage-du-datacenter">Organisation et remplissage du datacenter</h4>
 
 <p>Avant de remplir, j’ai rajouté des roulettes pour faciliter les manipulations.</p>
 
@@ -300,7 +425,7 @@ Bref, de quoi s&rsquo;occuper quelques temps !</li>
 
 <p>Vous noterez le capteur de température pour le déclenchement de la VMC juste au dessus du NUC.</p>
 
-<h4 id="un-pc-facile-d-accès:ea04fef0779b2df1cb264c6e16c063f6">Un PC facile d’accès</h4>
+<h4 id="un-pc-facile-d-accès">Un PC facile d’accès</h4>
 
 <p>Avoir un PC dans le garage/atelier peut être pratique pour accéder rapidement à un terminal, vérifier des points sur internet lors du bricolage ou simplement écouter de la musique.</p>
 
@@ -310,7 +435,7 @@ Bref, de quoi s&rsquo;occuper quelques temps !</li>
 
 <p>Ce système permet aussi de positionner le boîtier radio RFXcom en dehors du meuble pour éviter les interférences.</p>
 
-<h4 id="résultats:ea04fef0779b2df1cb264c6e16c063f6">Résultats</h4>
+<h4 id="résultats">Résultats</h4>
 
 <p>Les objectifs sont tous atteints, avec finalement peu de moyens engagés (moins de 80€ de matériel) et un résultat très correct.</p>
 
@@ -336,50 +461,6 @@ Bref, de quoi s&rsquo;occuper quelques temps !</li>
             <br/><br/>
 			
 	    
-			
-			<div class="row">
-				<div class="twelve columns">
-					<h1>#Obiran versus synology</h1>
-				</div>
-			</div>
-
-            <div class="row">
-                    <div class="twelve columns" align="justify">
-                        <p>Depuis quelques mois, j’ai mis en oeuvre une nouvelle infrastructure chez moi de type <a href="http://techhead.co/vmware-esxi-home-lab-why-what-and-how-considerations-when-building-your-own-home-lab/">homelab</a>, basée sur un petit serveur intel NUC, ESXi et Ubuntu.</p>
-
-<p>Comme tout bon exploitant avec des tendances <a href="/tags/devops">devops</a>, j’ai rajouté de la supervision avec <a href="http://newrelic.com/server-monitoring">NewRelic</a>, divers scripts de contrôle, un dashboard basé sur <a href="http://dashing.io/">dashing</a>, l’installation automatisée de VM via <a href="http://www.ansible.com/home">ansible</a> et évidemment je me suis ensuite attaqué à la problématique des sauvegardes.</p>
-
-<p>De nombreuses solutions opensource existent déjà (<a href="http://www.amanda.org/">amanda</a>, <a href="http://www.baculasystems.com/">bacula</a> …) permettant entre autre d’avoir une architecture de type client-serveur. Toutefois, la sauvegarde étant un sujet qui me tient à <a href="http://www.zeneffy.fr/tags/backup/">coeur</a>, j’ai décidé de réutiliser un de mes scripts assez ancien « <a href="/2008/05/obiran-outil-de-backup-incremental-en-ruby/">obiran</a> » pour sauvegarder les fichiers importants directement sur mon NAS Synology.</p>
-
-<p>Mais la mauvaise fée de l’informatique est intervenu d’un coup de baguette numérique rendant impossible de faire fonctionner <code>rsync</code> entre mes VM et le NAS, avec un message d’erreur peu parlant du type <code>Permission denied, please try again.</code></p>
-
-<p>Après quelques recherches, la solution semble être d’expliciter le chemin du binaire <code>rsync</code> côté synology, avec le paramètre <code>—rsync-path=/usr/syno/bin/rsync</code>. La commande à lancer devient donc:</p>
-
-<pre><code>rsync -azv —rsync-path=/usr/syno/bin/rsync REPERTOIRE_A_SAUVEGARDER -e « ssh -p PORT -i FICHIER-CLEF » USER@SYNOLOGY:REPERTOIRE_DESTINATION
-</code></pre>
-
-<p>J’ai donc mis à jour Obiran avec un nouveau paramètre pour prendre en compte cette spécificité: Obiran est donc passé en version 0.6, sept ans avec la version 0.5 !</p>
-
-                    </div>
-            </div>
-            <div class="row" style="border-top: 1px solid #eee; ">
-				<div class="twelve columns" style="background-color:white; color: black;">
-					<span class="post-postedby">Date de publication: 04/04/2015</span>
-				</div>
-				<div class="twelve columns" style="background-color:white; color: black;">
-					<span class="post-postedby">Mots-clefs: </span>
-				
-				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/projets" class="tags-link">#projets</a>
-				
-				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/devops" class="tags-link">#devops</a>
-				
-				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/backup" class="tags-link">#backup</a>
-				
-				</div>
-			</div>
-            <br/><br/>
-			
-	    
 		</div>
 	</div>
 	
@@ -397,7 +478,7 @@ Bref, de quoi s&rsquo;occuper quelques temps !</li>
   			<div class="row">
 		    	<div class="twelve columns"  style="border-top: 5px solid #eee;">
 					<center>
-						<span style="font-family: 'Roboto Slab', serif;" >&#0169; 2008 - 2015, Julien Raigneau &nbsp;&nbsp;  | &nbsp;&nbsp;  Zeneffy >> Zen &amp; Efficace</pan>
+						<span style="font-family: 'Roboto Slab', serif;" >&#0169; 2008 - 2016, Julien Raigneau &nbsp;&nbsp;  | &nbsp;&nbsp;  Zeneffy >> Zen &amp; Efficace</pan>
 					</center>
 				</div>
 				<div style="line-height: 1;">

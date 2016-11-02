@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
 		<meta charset="utf-8">
-		<title>Mon datacenter</title>
+		<title>A bot to rule them all</title>
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,98 +38,119 @@
 
 	<div class="row">
     	<div class="twelve columns">
-    		<h1>#Mon datacenter</h1>
+    		<h1>#A bot to rule them all</h1>
     	</div>
     </div>
 	<div class="row">
 		<div class="twelve columns"  align="justify">
 			
 
-<h4 id="le-datacenter-à-la-maison-un-rêve-de-geek">le datacenter à la maison : un rêve de geek</h4>
+<blockquote>
+<p>Un Anneau pour les gouverner tous</p>
 
-<p>Ayant acheté une maison l’année dernière avec beaucoup d’espace et surtout un grand garage, j’en ai profité pour réaliser un vieux fantasme de geek : Avoir un endroit dédié pour mon matériel informatique, bref mon propre mini datacenter.</p>
+<p>Un Anneau pour les trouver</p>
 
-<p>Derrière ce fantasme, un besoin simple: créer un espace protégé, ventilé et <a href="http://fr.wikipedia.org/wiki/Facteur_d%27acceptation_f%C3%A9minine">présentable</a> pour héberger un NAS Synology, un  mini-serveur NUC, un antenne RFXCom pour la domotique, un hub NetGear et un UPS APC - le tout avec des capacités d’évolution et en respectant certaines règles d’urbanisation. En bonus, un vieux PC avec hauts-parleurs est installé pour me permettre d’écouter de la musique en bricolant ou pour consulter rapidement des infos domotiques.</p>
+<p>Un Anneau pour les amener tous [&hellip;]</p>
 
-<p><img src="https://farm9.staticflickr.com/8708/16972064590_a4f1719aec_z.jpg" width="640" height="478" alt="datacenter1" align="middle"></p>
+<p>&ndash; J. R. R. Tolkien, Le seigneurs des anneaux</p>
+</blockquote>
 
-<h4 id="de-la-récup-et-de-l-huile-de-coude">De la « récup » et de l’huile de coude</h4>
+<p>Pour des raisons de sécurité, j&rsquo;ai décidé de n&rsquo;avoir aucun accès de l&rsquo;extérieur vers mes éléments de domotique, avec toutefois un inconvénient majeur: aucun moyen de consulter les diverses données ou de lancer des actions.</p>
 
-<p>Après quelques recherches sur internet sur le sujet, j’ai trouvé de nombreux exemples de bricoleurs geek qui ont transformé (ou même créé) des meubles pour cette usage: j’ai donc décidé de me lancer moi aussi en partant d’un petit meuble existant.</p>
+<p>Pour résoudre ce problème j&rsquo;ai tenté plusieurs approches à base de tableaux de bord <a href="http://dashing.io/">dashing</a> ou de solutions maison comme <a href="https://github.com/jraigneau/proxana">proxana</a> mais qui ne m&rsquo;ont jamais vraiment convaincues pour mon cas d&rsquo;usage.</p>
 
-<p>Quatre étapes majeures ont composé la création de ce meuble datacenter:</p>
+<h4 id="de-l-usage-d-un-bot-pour-la-domotique">De l&rsquo;usage d&rsquo;un bot pour la domotique</h4>
 
-<ol>
-<li>Créer les aérations et prévoir les circulations d’air</li>
-<li>Structurer le câblage des courants forts (électricité) et faibles (réseau)</li>
-<li>Mettre en place le matériel</li>
-<li>Installer le PC « domotique »</li>
-</ol>
+<p>Et j&rsquo;ai commencé à m&rsquo;intéresser aux bots de type <a href="https://hubot.github.com/">Hubot</a> et à leur utilité pour finalement créer mon propre bot nommé<a href="https://github.com/jraigneau/goule">Goule</a>.</p>
 
-<h4 id="une-aération-intelligente">Une aération intelligente</h4>
+<p><a href="https://github.com/jraigneau/goule">Goule</a> est un service écrit en langage Go, basé sur mon système domotique déjà en place (<a href="https://www.influxdata.com/">InfluxDB</a> et <a href="http://nodered.org/">NodeRed</a>) et utilisant l&rsquo;infrastructure de <a href="https://telegram.org/">Telegram</a> pour me permettre de lancer des actions domotiques, du type &ldquo;quelle est la température chez moi?&rdquo;, sans risque sur la sécurité de mon système.</p>
 
-<p>Tout d’abord, j’ai percé des ouvertures sur la porte avant, sur l’arrière pour le passage des câbles.</p>
+<p>Une capture d&rsquo;écran étant toujours plus simple que des mots, cela donne donc:
+   <center><img src="https://c3.staticflickr.com/9/8268/30137861482_00e066e485.jpg" width="500" height="363" alt="graphana-elec"></center></p>
 
-<p><img src="https://farm9.staticflickr.com/8732/16539846743_53e48f0cb9_n.jpg" width="320" height="239" alt="IMG_0786">
-<img src="https://farm8.staticflickr.com/7710/17159850705_0d20c08d1b_n.jpg" width="239" height="320" alt="IMG_0812"></p>
+<h4 id="dans-les-coulisses-de-goule">Dans les coulisses de Goule</h4>
 
-<p>Puis j’ai rajouté une VMC de salle de bain pour assurer extraction d’air optimale, avec un allumage automatique via un <a href="http://www.amazon.fr/Myfox-TA3010-62592-Module-1000/dp/B0033ZREXU/ref=pd_sim_hi_1?ie=UTF8&amp;refRID=1R4NH6AP9KE53T4K6F7K">micro-module Chacon</a> commandé par la box domotique open-source <a href="http://domoticz.com/">Domoticz</a> et basé sur un capteur de température <a href="http://www.amazon.fr/Oregon-Scientific-THN-D%C3%A9tecteur-temp%C3%A9rature/dp/B000PEDJVI">Oregon Scientific</a>.</p>
+<p>Pour développer <a href="https://github.com/jraigneau/goule">Goule</a> en langage Go (décidemment j&rsquo;aime beaucoup ce langage), je me suis appuyé de façon classique sur des librairies existantes notamment <a href="https://gopkg.in/telegram-bot-api.v4">telegram-bot-api</a> pour se connecter à <a href="https://telegram.org/">Telegram</a> ainsi que la <a href="https://github.com/influxdata/influxdb/tree/master/client">librairie native pour influxdb</a>. La seule difficulté rencontrée a été le formatage des données renvoyées par influxdb, qui nécessite de fouiller un peu dans les <a href="https://golang.org/pkg/encoding/json/#Number">API</a>.</p>
 
-<p><img src="https://farm8.staticflickr.com/7637/16972282098_f363ed97bb_z.jpg" width="640" height="478" alt="IMG_0818"></p>
+<pre><code>const (
+    username = &quot;grafana&quot;
+    password = &quot;paint&quot;
+    addr = &quot;http://obelix:8086&quot;
+)
+# Crée la requete et l'envoie à InfluxDB, renvoie le résultat
+func queryDB(cmd string, MyDB string) (res []client.Result, err error) {
 
-<p>Grâce à ce montage, la VMC ne se déclenche que si la température à l’intérieur du DC dépasse les 30°C et s’éteint une fois la température revenue sous les 27°C, tout en m’envoyant des alertes.</p>
+    log.Printf(&quot;Connection à influxDB&quot;)
+    clnt, err := client.NewHTTPClient(client.HTTPConfig{
+        Addr: addr,
+        Username: username,
+        Password: password,
+    })
+    if err != nil {
+        log.Fatalln(&quot;Error: &quot;, err)
+    }
+    q := client.Query{
+        Command:  cmd,
+        Database: MyDB,
+    }
+    response, err := clnt.Query(q)
+    if err != nil {
+        log.Fatalln(&quot;Error: &quot;, err)
+    }
+    if response.Error() != nil {
+        log.Fatalln(&quot;Error: &quot;, response.Error())
+    }
+    res = response.Results
+    log.Println(response.Results)
+    return res, nil
+}
+# Récupère la consommation électrique dans influxDB
+func getConsoElectrique() string {
+    q := fmt.Sprintf(&quot;SELECT * FROM energy ORDER BY time DESC LIMIT 1&quot;)
+    res, err := queryDB(q,&quot;electricity&quot;)
+    if err != nil {
+        log.Fatal(&quot;Error: &quot;,err)
+    }
+    day_energy := res[0].Series[0].Values[0][1].(json.Number).String()
+    instant_energy := res[0].Series[0].Values[0][2].(json.Number).String()
 
-<p><img src="https://farm9.staticflickr.com/8701/16539781163_9c69f57da3_c.jpg" width="800" height="221" alt="Domoticz"></p>
+    return fmt.Sprintf(&quot;Actuellement la consommation instantanée est de *%sW* et le cumul est de *%skW*.&quot;,instant_energy,day_energy)
+}
+</code></pre>
 
-<h4 id="l-importance-d-optimiser-son-câblage">L’importance d’optimiser son câblage</h4>
+<p>Le point d&rsquo;attention étant sur la manipulation des résultats, avec des tableaux dans tous les sens, et des transformations JSON à faire comme pour récupérer la consommation quotidienne:  <code>day_energy := res[0].Series[0].Values[0][1].(json.Number).String()</code></p>
 
-<p>Qui n’a jamais eu de problème de câble qui se mélangent, s’entortillent et se croisent (regardez donc les câbles entre votre télévision, votre box tv et votre lecteur de DVD par exemple)? Sur un environnement confiné avec à la fois des câbles électriques et des câbles réseau, cela peut devenir l’enfer en cas de modification ou de dépannage.</p>
+<h4 id="containers-are-the-new-black">Containers are the new black</h4>
 
-<p><img src="https://farm9.staticflickr.com/8765/17159460861_efc4b76ef2_z.jpg" width="640" height="478" alt="IMG_0817"></p>
+<p>Finalement pour faire tourner tout cela simplement (et tenter quelque chose de différent), j&rsquo;ai utilisé un container <a href="https://www.docker.com/">docker</a> construit directement à partir du container <a href="https://hub.docker.com/_/golang/">Golang officiel</a> et en m&rsquo;appuyant sur <a href="https://blog.docker.com/2016/09/docker-golang/">l&rsquo;article de Jérôme Petazzoni</a>, avec les commandes suivantes:</p>
 
-<p>Aussi j’ai utilisé des accroches de tuyaux de plomberie pour définir des chemins de câbles, en séparant courant faible et courant fort - ce qui m’a permis notamment de changer plusieurs fois des éléments dans le datacenter sans coup férir.</p>
+<pre><code># téléchargement de l'image et des librairies + compilation de goule
+docker run golang go get -v github.com/jraigneau/goule
+# Transformation en image docker nommé goule
+docker commit $(docker ps -lq) goule
+# Lancement du programme goule dans l'image goule en mode &quot;daemon&quot; à partir du containter goule
+docker run --restart=always --name goule -it -d goule goule
+</code></pre>
 
-<h4 id="organisation-et-remplissage-du-datacenter">Organisation et remplissage du datacenter</h4>
+<p>Cela me permet d&rsquo;avoir un &ldquo;service&rdquo; qui tourne sur ma VM principale dédiée aux containers, isolée des autres containers, avec une relance automatique en cas de problème (notamment coupure intempestive de ma ligne internet, ce qui est arrivé).</p>
 
-<p>Avant de remplir, j’ai rajouté des roulettes pour faciliter les manipulations.</p>
-
-<p><img src="https://farm8.staticflickr.com/7612/17160121785_315be2a776_z.jpg" width="640" height="478" alt="IMG_0785"></p>
-
-<p>Puis, J&rsquo;ai positionné l&rsquo;UPS en bas, le NUC au milieu avec le NAS et pour l&rsquo;instant juste le switch réseau en haut: l&rsquo;idée étant de garder de la place à côté du NUC et du switch pour des évolutions.</p>
-
-<p><img src="https://farm8.staticflickr.com/7703/16550162503_48d1435116_z.jpg" width="478" height="640" alt="IMG_0001"></p>
-
-<p>Vous noterez le capteur de température pour le déclenchement de la VMC juste au dessus du NUC.</p>
-
-<h4 id="un-pc-facile-d-accès">Un PC facile d’accès</h4>
-
-<p>Avoir un PC dans le garage/atelier peut être pratique pour accéder rapidement à un terminal, vérifier des points sur internet lors du bricolage ou simplement écouter de la musique.</p>
-
-<p>Pour cela, un peu de récupération avec une planche pour le moniteur et une plaque de métal pour le clavier, le tout fixé au mur au dessus du datacenter pour avoir le réseau et le tour est joué !</p>
-
-<p><img src="https://farm8.staticflickr.com/7701/16547925704_5a723568a9_z.jpg" width="478" height="640" alt="IMG_0002"></p>
-
-<p>Ce système permet aussi de positionner le boîtier radio RFXcom en dehors du meuble pour éviter les interférences.</p>
-
-<h4 id="résultats">Résultats</h4>
-
-<p>Les objectifs sont tous atteints, avec finalement peu de moyens engagés (moins de 80€ de matériel) et un résultat très correct.</p>
-
-<p><img src="https://farm8.staticflickr.com/7613/16984219739_fbf422e7f9_z.jpg" width="478" height="640" alt="IMG_0003"></p>
-
-<p>Je réfléchis maintenant à acheter un mini-PC pas cher pour remplacer le vieux Celeron 1Go qui peine même sous linux.</p>
+<p>J&rsquo;utilise ce système depuis un mois environ, et étant donné sa fiabilité je vais surement l&rsquo;étendre à d&rsquo;autres fonctions de ma domotique dans le futur.</p>
 
 		</div>
 	</div>
 	
 	<div class="row" style="border-top: 1px solid #eee; ">
 		<div class="twelve columns" style="background-color:white; color: black;">
-				<span class="post-postedby">Date de publication: 16/04/2015</span>
+				<span class="post-postedby">Date de publication: 11/10/2016</span>
 		</div>
 		<div class="twelve columns" style="background-color:white; color: black;">
 			<span class="post-postedby">Mots-clefs: </span>
 				
 				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/projets" class="tags-link">#projets</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/go" class="tags-link">#go</a>
+				
+				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/outils" class="tags-link">#outils</a>
 				
 				<a style="text-decoration: none;" href="http://www.zeneffy.fr/tags/domotique" class="tags-link">#domotique</a>
 				
@@ -140,12 +161,12 @@
 	<div class="row">
 		<div class="six columns" style="text-align: left;">
 	        
-	        <a href="http://www.zeneffy.fr/2015/06/premiers-pas-en-domotique/" style="text-decoration: none;"><span aria-hidden="true">&larr;</span> Plus Récent</a>
+	        &nbsp;
 	        
 		</div>
 		<div class="six columns" style="text-align: right;">
         
-        <a href="http://www.zeneffy.fr/2015/04/obiran-vs-synology/" style="text-decoration: none;">Plus Ancien <span aria-hidden="true">&rarr;</span></a>
+        <a href="http://www.zeneffy.fr/2016/04/godillot/" style="text-decoration: none;">Plus Ancien <span aria-hidden="true">&rarr;</span></a>
         
 		</div>
 	</div>

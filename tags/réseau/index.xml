@@ -33,7 +33,7 @@
       <guid>http://www.zeneffy.fr/2009/05/routage-ip-sur-un-equipement-cisco/</guid>
       <description>
 
-&lt;h3 id=&#34;commandes-diverses-de-configuration:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;Commandes diverses de configuration&lt;/h3&gt;
+&lt;h3 id=&#34;commandes-diverses-de-configuration&#34;&gt;Commandes diverses de configuration&lt;/h3&gt;
 
 &lt;p&gt;passage en mode root: &lt;code&gt;enable&lt;/code&gt;&lt;/p&gt;
 
@@ -49,7 +49,7 @@
 
 &lt;p&gt;no shut du port fa0: &lt;code&gt;no shutdown&lt;/code&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;arp:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;ARP&lt;/h3&gt;
+&lt;h3 id=&#34;arp&#34;&gt;ARP&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;show arp&lt;/code&gt;&lt;/p&gt;
 
@@ -59,7 +59,7 @@
 
 &lt;p&gt;table de mac: &lt;code&gt;show mac-address-table&lt;/code&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;configuration-routeur-cisco:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;configuration routeur cisco&lt;/h3&gt;
+&lt;h3 id=&#34;configuration-routeur-cisco&#34;&gt;configuration routeur cisco&lt;/h3&gt;
 
 &lt;p&gt;sauvegarde configuration: &lt;code&gt;copy run start&lt;/code&gt;&lt;/p&gt;
 
@@ -75,7 +75,7 @@ exit
 enable password line
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;configuration-routes-statiques:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;Configuration routes statiques&lt;/h3&gt;
+&lt;h3 id=&#34;configuration-routes-statiques&#34;&gt;Configuration routes statiques&lt;/h3&gt;
 
 &lt;p&gt;sur Serial 0 S0&lt;/p&gt;
 
@@ -90,7 +90,7 @@ show ip route
 
 &lt;p&gt;côté DCE; penser à configurer l&amp;rsquo;horloge (clock rate) si côté opérateur (DCE)&lt;/p&gt;
 
-&lt;h3 id=&#34;routage-dynamique-rip:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;Routage dynamique rip&lt;/h3&gt;
+&lt;h3 id=&#34;routage-dynamique-rip&#34;&gt;Routage dynamique rip&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;enable
 conf t
@@ -112,7 +112,7 @@ enable
 debug ip rip
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;routage-dynamique-ospf:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;Routage dynamique OSPF&lt;/h3&gt;
+&lt;h3 id=&#34;routage-dynamique-ospf&#34;&gt;Routage dynamique OSPF&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://lh3.ggpht.com/_RTJjPWCgPV8/S6y4X1I77rI/AAAAAAAAGU8/Q6kMpYv_lhU/s800/Diapositive1_cisco.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
@@ -143,7 +143,7 @@ network 172.16.2.1 0.0.0.0 area 1
 network 192.168.2.1 0.0.0.0 area 0
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;configuration-internet-via-pat:a4a3f7737bc8281b6f0234b86ddf7258&#34;&gt;Configuration internet - via PAT&lt;/h3&gt;
+&lt;h3 id=&#34;configuration-internet-via-pat&#34;&gt;Configuration internet - via PAT&lt;/h3&gt;
 
 &lt;p&gt;sur routeur Area 0: passage en mode DHCP sur interface fa0&lt;/p&gt;
 
