@@ -6,8 +6,11 @@
     <description>Recent content in Projets on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
+    <copyright>&amp;#0169; 2008 - 2017, Julien Raigneau &amp;nbsp;&amp;nbsp;  | &amp;nbsp;&amp;nbsp;  Zeneffy &gt;&gt; Zen &amp;amp; Efficace</copyright>
     <lastBuildDate>Tue, 11 Oct 2016 07:48:54 +0200</lastBuildDate>
-    <atom:link href="http://www.zeneffy.fr/tags/projets/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.zeneffy.fr/tags/projets/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>A bot to rule them all</title>
@@ -15,99 +18,12 @@
       <pubDate>Tue, 11 Oct 2016 07:48:54 +0200</pubDate>
       
       <guid>http://www.zeneffy.fr/2016/10/go-bot-domotique/</guid>
-      <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;Un Anneau pour les gouverner tous&lt;/p&gt;
-
-&lt;p&gt;Un Anneau pour les trouver&lt;/p&gt;
-
-&lt;p&gt;Un Anneau pour les amener tous [&amp;hellip;]&lt;/p&gt;
-
-&lt;p&gt;&amp;ndash; J. R. R. Tolkien, Le seigneurs des anneaux&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Pour des raisons de sécurité, j&amp;rsquo;ai décidé de n&amp;rsquo;avoir aucun accès de l&amp;rsquo;extérieur vers mes éléments de domotique, avec toutefois un inconvénient majeur: aucun moyen de consulter les diverses données ou de lancer des actions.&lt;/p&gt;
-
-&lt;p&gt;Pour résoudre ce problème j&amp;rsquo;ai tenté plusieurs approches à base de tableaux de bord &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt; ou de solutions maison comme &lt;a href=&#34;https://github.com/jraigneau/proxana&#34;&gt;proxana&lt;/a&gt; mais qui ne m&amp;rsquo;ont jamais vraiment convaincues pour mon cas d&amp;rsquo;usage.&lt;/p&gt;
-
-&lt;h4 id=&#34;de-l-usage-d-un-bot-pour-la-domotique&#34;&gt;De l&amp;rsquo;usage d&amp;rsquo;un bot pour la domotique&lt;/h4&gt;
-
-&lt;p&gt;Et j&amp;rsquo;ai commencé à m&amp;rsquo;intéresser aux bots de type &lt;a href=&#34;https://hubot.github.com/&#34;&gt;Hubot&lt;/a&gt; et à leur utilité pour finalement créer mon propre bot nommé&lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt; est un service écrit en langage Go, basé sur mon système domotique déjà en place (&lt;a href=&#34;https://www.influxdata.com/&#34;&gt;InfluxDB&lt;/a&gt; et &lt;a href=&#34;http://nodered.org/&#34;&gt;NodeRed&lt;/a&gt;) et utilisant l&amp;rsquo;infrastructure de &lt;a href=&#34;https://telegram.org/&#34;&gt;Telegram&lt;/a&gt; pour me permettre de lancer des actions domotiques, du type &amp;ldquo;quelle est la température chez moi?&amp;rdquo;, sans risque sur la sécurité de mon système.&lt;/p&gt;
-
-&lt;p&gt;Une capture d&amp;rsquo;écran étant toujours plus simple que des mots, cela donne donc:
-   &lt;center&gt;&lt;img src=&#34;https://c3.staticflickr.com/9/8268/30137861482_00e066e485.jpg&#34; width=&#34;500&#34; height=&#34;363&#34; alt=&#34;graphana-elec&#34;&gt;&lt;/center&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;dans-les-coulisses-de-goule&#34;&gt;Dans les coulisses de Goule&lt;/h4&gt;
-
-&lt;p&gt;Pour développer &lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt; en langage Go (décidemment j&amp;rsquo;aime beaucoup ce langage), je me suis appuyé de façon classique sur des librairies existantes notamment &lt;a href=&#34;https://gopkg.in/telegram-bot-api.v4&#34;&gt;telegram-bot-api&lt;/a&gt; pour se connecter à &lt;a href=&#34;https://telegram.org/&#34;&gt;Telegram&lt;/a&gt; ainsi que la &lt;a href=&#34;https://github.com/influxdata/influxdb/tree/master/client&#34;&gt;librairie native pour influxdb&lt;/a&gt;. La seule difficulté rencontrée a été le formatage des données renvoyées par influxdb, qui nécessite de fouiller un peu dans les &lt;a href=&#34;https://golang.org/pkg/encoding/json/#Number&#34;&gt;API&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;const (
-    username = &amp;quot;grafana&amp;quot;
-    password = &amp;quot;paint&amp;quot;
-    addr = &amp;quot;http://obelix:8086&amp;quot;
-)
-# Crée la requete et l&#39;envoie à InfluxDB, renvoie le résultat
-func queryDB(cmd string, MyDB string) (res []client.Result, err error) {
-
-    log.Printf(&amp;quot;Connection à influxDB&amp;quot;)
-    clnt, err := client.NewHTTPClient(client.HTTPConfig{
-        Addr: addr,
-        Username: username,
-        Password: password,
-    })
-    if err != nil {
-        log.Fatalln(&amp;quot;Error: &amp;quot;, err)
-    }
-    q := client.Query{
-        Command:  cmd,
-        Database: MyDB,
-    }
-    response, err := clnt.Query(q)
-    if err != nil {
-        log.Fatalln(&amp;quot;Error: &amp;quot;, err)
-    }
-    if response.Error() != nil {
-        log.Fatalln(&amp;quot;Error: &amp;quot;, response.Error())
-    }
-    res = response.Results
-    log.Println(response.Results)
-    return res, nil
-}
-# Récupère la consommation électrique dans influxDB
-func getConsoElectrique() string {
-    q := fmt.Sprintf(&amp;quot;SELECT * FROM energy ORDER BY time DESC LIMIT 1&amp;quot;)
-    res, err := queryDB(q,&amp;quot;electricity&amp;quot;)
-    if err != nil {
-        log.Fatal(&amp;quot;Error: &amp;quot;,err)
-    }
-    day_energy := res[0].Series[0].Values[0][1].(json.Number).String()
-    instant_energy := res[0].Series[0].Values[0][2].(json.Number).String()
-
-    return fmt.Sprintf(&amp;quot;Actuellement la consommation instantanée est de *%sW* et le cumul est de *%skW*.&amp;quot;,instant_energy,day_energy)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Le point d&amp;rsquo;attention étant sur la manipulation des résultats, avec des tableaux dans tous les sens, et des transformations JSON à faire comme pour récupérer la consommation quotidienne:  &lt;code&gt;day_energy := res[0].Series[0].Values[0][1].(json.Number).String()&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;containers-are-the-new-black&#34;&gt;Containers are the new black&lt;/h4&gt;
-
-&lt;p&gt;Finalement pour faire tourner tout cela simplement (et tenter quelque chose de différent), j&amp;rsquo;ai utilisé un container &lt;a href=&#34;https://www.docker.com/&#34;&gt;docker&lt;/a&gt; construit directement à partir du container &lt;a href=&#34;https://hub.docker.com/_/golang/&#34;&gt;Golang officiel&lt;/a&gt; et en m&amp;rsquo;appuyant sur &lt;a href=&#34;https://blog.docker.com/2016/09/docker-golang/&#34;&gt;l&amp;rsquo;article de Jérôme Petazzoni&lt;/a&gt;, avec les commandes suivantes:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# téléchargement de l&#39;image et des librairies + compilation de goule
-docker run golang go get -v github.com/jraigneau/goule
-# Transformation en image docker nommé goule
-docker commit $(docker ps -lq) goule
-# Lancement du programme goule dans l&#39;image goule en mode &amp;quot;daemon&amp;quot; à partir du containter goule
-docker run --restart=always --name goule -it -d goule goule
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Cela me permet d&amp;rsquo;avoir un &amp;ldquo;service&amp;rdquo; qui tourne sur ma VM principale dédiée aux containers, isolée des autres containers, avec une relance automatique en cas de problème (notamment coupure intempestive de ma ligne internet, ce qui est arrivé).&lt;/p&gt;
-
-&lt;p&gt;J&amp;rsquo;utilise ce système depuis un mois environ, et étant donné sa fiabilité je vais surement l&amp;rsquo;étendre à d&amp;rsquo;autres fonctions de ma domotique dans le futur.&lt;/p&gt;
-</description>
+      <description>Un Anneau pour les gouverner tous
+Un Anneau pour les trouver
+Un Anneau pour les amener tous [&amp;hellip;]
+&amp;ndash; J. R. R. Tolkien, Le seigneurs des anneaux
+ Pour des raisons de sécurité, j&amp;rsquo;ai décidé de n&amp;rsquo;avoir aucun accès de l&amp;rsquo;extérieur vers mes éléments de domotique, avec toutefois un inconvénient majeur: aucun moyen de consulter les diverses données ou de lancer des actions.
+Pour résoudre ce problème j&amp;rsquo;ai tenté plusieurs approches à base de tableaux de bord dashing ou de solutions maison comme proxana mais qui ne m&amp;rsquo;ont jamais vraiment convaincues pour mon cas d&amp;rsquo;usage.</description>
     </item>
     
     <item>
@@ -116,18 +32,8 @@ docker run --restart=always --name goule -it -d goule goule
       <pubDate>Sat, 02 Apr 2016 14:17:38 +0200</pubDate>
       
       <guid>http://www.zeneffy.fr/2016/04/godillot/</guid>
-      <description>&lt;p&gt;Suite à une coupure de courant le mois dernier, suffisamment longue pour vider la batterie de l&amp;rsquo;UPS, mes systèmes ont tous redémarrés automatiquement - ou du moins je le croyais jusqu&amp;rsquo;à ce que je me rende compte quelques jours plus tard que la base &lt;a href=&#34;http://influxdb.com/&#34;&gt;influxDB&lt;/a&gt; ne tournait plus, plantée suite à la coupure.&lt;/p&gt;
-
-&lt;p&gt;Après avoir réparé cette base de donnée (et avoir mis en oeuvre un vrai &lt;a href=&#34;https://docs.influxdata.com/influxdb/v0.11/administration/backup_and_restore/&#34;&gt;système de backup&lt;/a&gt; sur les data influxdb&amp;hellip;), j&amp;rsquo;ai décidé d&amp;rsquo;installer un système de monitoring simple des processus avec &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;. est un agent qui vérifie régulièrement les processus (Existence, Consommation, Code erreur), et envoie des alertes en cas de problèmes&amp;hellip;bref rien de plus que Nagios ou &lt;a href=&#34;http://newrelic.com&#34;&gt;New Relic&lt;/a&gt;, sauf que &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;. peut aussi lancer des actions comme relancer les processus en cas de problèmes ou de dépassement de seuil. Dans le cas d&amp;rsquo;une infrastructure peu administrée/monitorée comme la mienne cela devient très intéressant pour automatiser et se faciliter la vie.&lt;/p&gt;
-
-&lt;p&gt;Toutefois, &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt; a un inconvénient majeur: pour avoir une vision globale de l&amp;rsquo;état de l&amp;rsquo;ensemble des serveurs il faut utiliser &lt;a href=&#34;https://mmonit.com/&#34;&gt;M/Monit&lt;/a&gt; qui est payant.&lt;/p&gt;
-
-&lt;p&gt;Aussi, j&amp;rsquo;ai développé en langage &lt;a href=&#34;http://golang.org&#34;&gt;Go&lt;/a&gt; une mini application appelée &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Godillot&lt;/a&gt; qui récupère les informations Monit de chaque serveur et les agrège dans un fichier html simple à lire comme vous pourrez le voir &lt;a href=&#34;http://godillot.zeneffy.fr&#34;&gt;en exemple&lt;/a&gt;. &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Godillot&lt;/a&gt; n&amp;rsquo;a pas vocation à remplacer M/Monit qui est très complet mais permet d&amp;rsquo;assurer un minimum de surveillance via u tableau de bord.&lt;/p&gt;
-
-&lt;p&gt;Godillot est bien entendu disponible en open-source (Licence Apache), directement sur &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Github&lt;/a&gt;, pour utilisation, modification (je ne suis pas fier du template html) et commentaires à votre convenance !&lt;/p&gt;
-</description>
+      <description>Suite à une coupure de courant le mois dernier, suffisamment longue pour vider la batterie de l&amp;rsquo;UPS, mes systèmes ont tous redémarrés automatiquement - ou du moins je le croyais jusqu&amp;rsquo;à ce que je me rende compte quelques jours plus tard que la base influxDB ne tournait plus, plantée suite à la coupure.
+Après avoir réparé cette base de donnée (et avoir mis en oeuvre un vrai système de backup sur les data influxdb&amp;hellip;), j&amp;rsquo;ai décidé d&amp;rsquo;installer un système de monitoring simple des processus avec Monit.</description>
     </item>
     
     <item>
@@ -136,86 +42,8 @@ docker run --restart=always --name goule -it -d goule goule
       <pubDate>Sat, 20 Jun 2015 21:31:23 +0200</pubDate>
       
       <guid>http://www.zeneffy.fr/2015/06/premiers-pas-en-domotique/</guid>
-      <description>
-
-&lt;p&gt;J&amp;rsquo;ai décidé l&amp;rsquo;année dernière de me lancer dans l&amp;rsquo;aventure de la &lt;a href=&#34;http://www.zeneffy.fr/tags/domotique&#34;&gt;domotique&lt;/a&gt;, avec pleins d&amp;rsquo;idées en tête sur la sécurité et la détection, les mesures de température, l&amp;rsquo;optimisation de la consommation de l&amp;rsquo;énergie, le contrôle des lampes et autres, et plus globalement l’automatisation.&lt;/p&gt;
-
-&lt;h4 id=&#34;étude-préalable&#34;&gt;Étude préalable&lt;/h4&gt;
-
-&lt;p&gt;En m&amp;rsquo;intéressant à ce domaine, j&amp;rsquo;ai découvert d&amp;rsquo;une part sa richesse et d&amp;rsquo;autre part le nombre très important de protocoles, les différentes box domotiques plus ou moins compatibles, les prix (élevés) des différents composants.&lt;/p&gt;
-
-&lt;p&gt;Par ailleurs, ce domaine est à la fois très récent et assez ancien et nécessite des connaissances en électronique, électricité, informatique avec une notion forte d&amp;rsquo;intégration de composants et systèmes entre eux… ce qui rend le sujet d&amp;rsquo;autant plus intéressant.&lt;/p&gt;
-
-&lt;p&gt;J&amp;rsquo;en ai tiré plusieurs postulats et décisions sur la suite des événements.&lt;/p&gt;
-
-&lt;h4 id=&#34;postulats-choix&#34;&gt;Postulats / Choix&lt;/h4&gt;
-
-&lt;p&gt;Le matériel de contrôle de la bureautique pouvant être envahissant, j&amp;rsquo;ai décidé en premier lieu de me créer &lt;a href=&#34;http://www.zeneffy.fr/2015/04/mon-datacenter/&#34;&gt;mon propre espace&lt;/a&gt; pour le matériel.&lt;/p&gt;
-
-&lt;p&gt;Utilisateur heureux de l’open-source depuis plusieurs années, j&amp;rsquo;ai choisi de faire ma propre box domotique
-open-source en me basant sur l&amp;rsquo;application &lt;a href=&#34;http://domoticz.com/&#34;&gt;domoticz&lt;/a&gt; pour le cœur du système et en rajoutant au fur et à mesure des applications dédiées par fonction (Surveillance, Graph, Ordonnancement).&lt;/p&gt;
-
-&lt;p&gt;Toutes ces applications sont installées sur des machines virtuelles Ubuntu/Linux sur un ESX VMware.
-L&amp;rsquo;ESX est le seul élément non open-source, choisi par rapport à mes expériences professionnelles, mais j&amp;rsquo;aurai pu (dû?) choisir à la place &lt;a href=&#34;http://www.xenproject.org/&#34;&gt;XEN&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Le dernier choix important a été pour moi d&amp;rsquo;isoler complètement la maison: aucun des systèmes domestiques n&amp;rsquo;est accessible de l&amp;rsquo;extérieur afin d&amp;rsquo;éviter tout piratage qui pourrait être particulièrement grave.&lt;/p&gt;
-
-&lt;h4 id=&#34;mesurer-pour-contrôler&#34;&gt;Mesurer pour contrôler&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;Measurement is the first step that leads to control and eventually to improvement. If you can’t measure something, you can’t understand it. If you can’t understand it, you can’t control it. If you can’t control it, you can’t improve it — Dr. H. James Harrington&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Un premier point important de la domotique est la mesure, selon l&amp;rsquo;adage &lt;em&gt;On ne contrôle que ce qu&amp;rsquo;on peut mesurer&lt;/em&gt;. Il faut donc prévoir les capteurs (avec par exemple les mesures de température via des Oregon Scientific THN 132) et surtout l&amp;rsquo;infrastructure de collecte des données.&lt;/p&gt;
-
-&lt;p&gt;Dans mon cas, j&amp;rsquo;ai choisi de mettre en œuvre &lt;a href=&#34;http://emoncms.org/&#34;&gt;emoncms&lt;/a&gt;, qui me permet d&amp;rsquo;agréger l&amp;rsquo;ensemble des données et d&amp;rsquo;en tirer des tableaux de bord très lisibles.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://c1.staticflickr.com/1/461/18397964043_7c43f8dea1.jpg&#34; width=&#34;500&#34; height=&#34;207&#34; alt=&#34;conso Electrique&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Évidemment, ces tableaux de bord ne sont pas accessibles de l&amp;rsquo;extérieur comme définit précédemment: j&amp;rsquo;ai donc mis en œuvre une copie des données temps réel vers l&amp;rsquo;extérieur, via un simple push vers un tableau de bord type &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt; hébergé chez &lt;a href=&#34;http://www.heroku.co&#34;&gt;Heroku&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://c1.staticflickr.com/1/537/18397961713_b644294b27.jpg&#34; width=&#34;500&#34; height=&#34;276&#34; alt=&#34;temperature&#34;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;intégration-des-systèmes&#34;&gt;Intégration des systèmes&lt;/h4&gt;
-
-&lt;p&gt;Pour bien gérer &amp;ldquo;l&amp;rsquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/Internet_of_Things&#34;&gt;internet of things&lt;/a&gt;&amp;rdquo; et mixer les services logiciels, les objets connectés, et les différents capteurs, j&amp;rsquo;ai par ailleurs installé &lt;a href=&#34;http://nodered.org/&#34;&gt;node-red&lt;/a&gt;, qui est développé par IBM.&lt;/p&gt;
-
-&lt;p&gt;Node-red permet de créer des workflows entre objet pour les faire interagir entre eux simple, le tout via une IHM web. Ces workflows permettent via un peu de développement très simple en javascript d&amp;rsquo;analyser des flux de données venant de sondes ou de services, de les transformer avant de les renvoyer vers d&amp;rsquo;autres sondes ou services.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://nodered.org/images/node-red-screenshot-sm.png&#34; alt=&#34;nodered&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Ainsi, j&amp;rsquo;ai pu créer des flux pour récupérer les données de la box domotique avant de les envoyer vers emoncms et d&amp;rsquo;en faire des graphiques et des premières analyses.&lt;/p&gt;
-
-&lt;h4 id=&#34;réalisations-actuelles-plutôt-orientées-mesures&#34;&gt;Réalisations actuelles - plutôt orientées mesures&lt;/h4&gt;
-
-&lt;p&gt;Ces derniers mois, je me suis attaché à mettre en œuvre les différents points de mesure, avec notamment:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Mesures de la température dans toutes les pièces de vie (Chambres, Salon) via des sondes &lt;a href=&#34;http://www.amazon.fr/Oregon-Scientific-THN-D%C3%A9tecteur-temp%C3%A9rature/dp/B000PEDJVI&#34;&gt;Oregon Scientific&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Récupération de la consommation électrique directement sur le compteur avec une pince ampérométrique de chez &lt;a href=&#34;http://www.amazon.fr/dp/B006R7E8MG/ref=pe_386181_37038081_TE_3p_dp_1&#34;&gt;OWL&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;J&amp;rsquo;ai par ailleurs commencé à installer des caméras intérieures pour la vidéosurveillance, avec &lt;a href=&#34;http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome&#34;&gt;motion&lt;/a&gt; et &lt;a href=&#34;https://github.com/ccrisan/motioneye&#34;&gt;motioneye&lt;/a&gt; pour gérer les détections et l&amp;rsquo;enregistrement des films. Ces films sont enregistrés à la fois en local et sur une DropBox dédiée en cas de coupure (ou disparition du disque dur&amp;hellip;)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://github.com/ccrisan/motioneye/wiki/images/desktop-view.png&#34; width=&#34;500&#34; height=&#34;276&#34; alt=&#34;motioneye&#34;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;réalisations-à-venir-ou-qui-reste-à-étudier&#34;&gt;Réalisations à venir ou qui reste à étudier&lt;/h4&gt;
-
-&lt;p&gt;Le champ des possibles de la domotique est impressionnant et j&amp;rsquo;imagine par exemple mettre en œuvre d&amp;rsquo;autres activités comme:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Contrôle automatique des lumières du jardin selon l&amp;rsquo;heure de la journée.&lt;/li&gt;
-&lt;li&gt;Mise en œuvre d&amp;rsquo;un contrôle vocal type &lt;a href=&#34;http://blog.encausse.net/s-a-r-a-h/&#34;&gt;S.A.R.A.H&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Extension de la vidéo surveillance à l&amp;rsquo;extérieure, avec déclenchement d&amp;rsquo;actions suite à des événements&lt;/li&gt;
-&lt;li&gt;Mesure de l&amp;rsquo;humidité dans la salle de douche pour allumer/éteindre la VMC&lt;/li&gt;
-&lt;li&gt;Contrôle des radiateurs via boutons électroniques&lt;/li&gt;
-&lt;li&gt;Détection des lumières laissées allumées par les enfants&lt;/li&gt;
-&lt;li&gt;Automatisation des fermetures de volets&lt;/li&gt;
-&lt;li&gt;envoi d&amp;rsquo;information via SMS&lt;/li&gt;
-&lt;li&gt;&amp;hellip;.
-Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>J&amp;rsquo;ai décidé l&amp;rsquo;année dernière de me lancer dans l&amp;rsquo;aventure de la domotique, avec pleins d&amp;rsquo;idées en tête sur la sécurité et la détection, les mesures de température, l&amp;rsquo;optimisation de la consommation de l&amp;rsquo;énergie, le contrôle des lampes et autres, et plus globalement l’automatisation.
+Étude préalable En m&amp;rsquo;intéressant à ce domaine, j&amp;rsquo;ai découvert d&amp;rsquo;une part sa richesse et d&amp;rsquo;autre part le nombre très important de protocoles, les différentes box domotiques plus ou moins compatibles, les prix (élevés) des différents composants.</description>
     </item>
     
     <item>
@@ -224,82 +52,8 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <pubDate>Thu, 16 Apr 2015 22:06:42 +0200</pubDate>
       
       <guid>http://www.zeneffy.fr/2015/04/mon-datacenter/</guid>
-      <description>
-
-&lt;h4 id=&#34;le-datacenter-à-la-maison-un-rêve-de-geek&#34;&gt;le datacenter à la maison : un rêve de geek&lt;/h4&gt;
-
-&lt;p&gt;Ayant acheté une maison l’année dernière avec beaucoup d’espace et surtout un grand garage, j’en ai profité pour réaliser un vieux fantasme de geek : Avoir un endroit dédié pour mon matériel informatique, bref mon propre mini datacenter.&lt;/p&gt;
-
-&lt;p&gt;Derrière ce fantasme, un besoin simple: créer un espace protégé, ventilé et &lt;a href=&#34;http://fr.wikipedia.org/wiki/Facteur_d%27acceptation_f%C3%A9minine&#34;&gt;présentable&lt;/a&gt; pour héberger un NAS Synology, un  mini-serveur NUC, un antenne RFXCom pour la domotique, un hub NetGear et un UPS APC - le tout avec des capacités d’évolution et en respectant certaines règles d’urbanisation. En bonus, un vieux PC avec hauts-parleurs est installé pour me permettre d’écouter de la musique en bricolant ou pour consulter rapidement des infos domotiques.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8708/16972064590_a4f1719aec_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;datacenter1&#34; align=&#34;middle&#34;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;de-la-récup-et-de-l-huile-de-coude&#34;&gt;De la « récup » et de l’huile de coude&lt;/h4&gt;
-
-&lt;p&gt;Après quelques recherches sur internet sur le sujet, j’ai trouvé de nombreux exemples de bricoleurs geek qui ont transformé (ou même créé) des meubles pour cette usage: j’ai donc décidé de me lancer moi aussi en partant d’un petit meuble existant.&lt;/p&gt;
-
-&lt;p&gt;Quatre étapes majeures ont composé la création de ce meuble datacenter:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Créer les aérations et prévoir les circulations d’air&lt;/li&gt;
-&lt;li&gt;Structurer le câblage des courants forts (électricité) et faibles (réseau)&lt;/li&gt;
-&lt;li&gt;Mettre en place le matériel&lt;/li&gt;
-&lt;li&gt;Installer le PC « domotique »&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;une-aération-intelligente&#34;&gt;Une aération intelligente&lt;/h4&gt;
-
-&lt;p&gt;Tout d’abord, j’ai percé des ouvertures sur la porte avant, sur l’arrière pour le passage des câbles.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8732/16539846743_53e48f0cb9_n.jpg&#34; width=&#34;320&#34; height=&#34;239&#34; alt=&#34;IMG_0786&#34;&gt;
-&lt;img src=&#34;https://farm8.staticflickr.com/7710/17159850705_0d20c08d1b_n.jpg&#34; width=&#34;239&#34; height=&#34;320&#34; alt=&#34;IMG_0812&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Puis j’ai rajouté une VMC de salle de bain pour assurer extraction d’air optimale, avec un allumage automatique via un &lt;a href=&#34;http://www.amazon.fr/Myfox-TA3010-62592-Module-1000/dp/B0033ZREXU/ref=pd_sim_hi_1?ie=UTF8&amp;amp;refRID=1R4NH6AP9KE53T4K6F7K&#34;&gt;micro-module Chacon&lt;/a&gt; commandé par la box domotique open-source &lt;a href=&#34;http://domoticz.com/&#34;&gt;Domoticz&lt;/a&gt; et basé sur un capteur de température &lt;a href=&#34;http://www.amazon.fr/Oregon-Scientific-THN-D%C3%A9tecteur-temp%C3%A9rature/dp/B000PEDJVI&#34;&gt;Oregon Scientific&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7637/16972282098_f363ed97bb_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;IMG_0818&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Grâce à ce montage, la VMC ne se déclenche que si la température à l’intérieur du DC dépasse les 30°C et s’éteint une fois la température revenue sous les 27°C, tout en m’envoyant des alertes.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8701/16539781163_9c69f57da3_c.jpg&#34; width=&#34;800&#34; height=&#34;221&#34; alt=&#34;Domoticz&#34;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;l-importance-d-optimiser-son-câblage&#34;&gt;L’importance d’optimiser son câblage&lt;/h4&gt;
-
-&lt;p&gt;Qui n’a jamais eu de problème de câble qui se mélangent, s’entortillent et se croisent (regardez donc les câbles entre votre télévision, votre box tv et votre lecteur de DVD par exemple)? Sur un environnement confiné avec à la fois des câbles électriques et des câbles réseau, cela peut devenir l’enfer en cas de modification ou de dépannage.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8765/17159460861_efc4b76ef2_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;IMG_0817&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Aussi j’ai utilisé des accroches de tuyaux de plomberie pour définir des chemins de câbles, en séparant courant faible et courant fort - ce qui m’a permis notamment de changer plusieurs fois des éléments dans le datacenter sans coup férir.&lt;/p&gt;
-
-&lt;h4 id=&#34;organisation-et-remplissage-du-datacenter&#34;&gt;Organisation et remplissage du datacenter&lt;/h4&gt;
-
-&lt;p&gt;Avant de remplir, j’ai rajouté des roulettes pour faciliter les manipulations.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7612/17160121785_315be2a776_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;IMG_0785&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Puis, J&amp;rsquo;ai positionné l&amp;rsquo;UPS en bas, le NUC au milieu avec le NAS et pour l&amp;rsquo;instant juste le switch réseau en haut: l&amp;rsquo;idée étant de garder de la place à côté du NUC et du switch pour des évolutions.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7703/16550162503_48d1435116_z.jpg&#34; width=&#34;478&#34; height=&#34;640&#34; alt=&#34;IMG_0001&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Vous noterez le capteur de température pour le déclenchement de la VMC juste au dessus du NUC.&lt;/p&gt;
-
-&lt;h4 id=&#34;un-pc-facile-d-accès&#34;&gt;Un PC facile d’accès&lt;/h4&gt;
-
-&lt;p&gt;Avoir un PC dans le garage/atelier peut être pratique pour accéder rapidement à un terminal, vérifier des points sur internet lors du bricolage ou simplement écouter de la musique.&lt;/p&gt;
-
-&lt;p&gt;Pour cela, un peu de récupération avec une planche pour le moniteur et une plaque de métal pour le clavier, le tout fixé au mur au dessus du datacenter pour avoir le réseau et le tour est joué !&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7701/16547925704_5a723568a9_z.jpg&#34; width=&#34;478&#34; height=&#34;640&#34; alt=&#34;IMG_0002&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Ce système permet aussi de positionner le boîtier radio RFXcom en dehors du meuble pour éviter les interférences.&lt;/p&gt;
-
-&lt;h4 id=&#34;résultats&#34;&gt;Résultats&lt;/h4&gt;
-
-&lt;p&gt;Les objectifs sont tous atteints, avec finalement peu de moyens engagés (moins de 80€ de matériel) et un résultat très correct.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7613/16984219739_fbf422e7f9_z.jpg&#34; width=&#34;478&#34; height=&#34;640&#34; alt=&#34;IMG_0003&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Je réfléchis maintenant à acheter un mini-PC pas cher pour remplacer le vieux Celeron 1Go qui peine même sous linux.&lt;/p&gt;
-</description>
+      <description>le datacenter à la maison : un rêve de geek Ayant acheté une maison l’année dernière avec beaucoup d’espace et surtout un grand garage, j’en ai profité pour réaliser un vieux fantasme de geek : Avoir un endroit dédié pour mon matériel informatique, bref mon propre mini datacenter.
+Derrière ce fantasme, un besoin simple: créer un espace protégé, ventilé et présentable pour héberger un NAS Synology, un mini-serveur NUC, un antenne RFXCom pour la domotique, un hub NetGear et un UPS APC - le tout avec des capacités d’évolution et en respectant certaines règles d’urbanisation.</description>
     </item>
     
     <item>
@@ -308,21 +62,9 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <pubDate>Sat, 04 Apr 2015 20:17:05 +0100</pubDate>
       
       <guid>http://www.zeneffy.fr/2015/04/obiran-vs-synology/</guid>
-      <description>&lt;p&gt;Depuis quelques mois, j’ai mis en oeuvre une nouvelle infrastructure chez moi de type &lt;a href=&#34;http://techhead.co/vmware-esxi-home-lab-why-what-and-how-considerations-when-building-your-own-home-lab/&#34;&gt;homelab&lt;/a&gt;, basée sur un petit serveur intel NUC, ESXi et Ubuntu.&lt;/p&gt;
-
-&lt;p&gt;Comme tout bon exploitant avec des tendances &lt;a href=&#34;http://www.zeneffy.fr/tags/devops&#34;&gt;devops&lt;/a&gt;, j’ai rajouté de la supervision avec &lt;a href=&#34;http://newrelic.com/server-monitoring&#34;&gt;NewRelic&lt;/a&gt;, divers scripts de contrôle, un dashboard basé sur &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt;, l’installation automatisée de VM via &lt;a href=&#34;http://www.ansible.com/home&#34;&gt;ansible&lt;/a&gt; et évidemment je me suis ensuite attaqué à la problématique des sauvegardes.&lt;/p&gt;
-
-&lt;p&gt;De nombreuses solutions opensource existent déjà (&lt;a href=&#34;http://www.amanda.org/&#34;&gt;amanda&lt;/a&gt;, &lt;a href=&#34;http://www.baculasystems.com/&#34;&gt;bacula&lt;/a&gt; …) permettant entre autre d’avoir une architecture de type client-serveur. Toutefois, la sauvegarde étant un sujet qui me tient à &lt;a href=&#34;http://www.zeneffy.fr/tags/backup/&#34;&gt;coeur&lt;/a&gt;, j’ai décidé de réutiliser un de mes scripts assez ancien « &lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;obiran&lt;/a&gt; » pour sauvegarder les fichiers importants directement sur mon NAS Synology.&lt;/p&gt;
-
-&lt;p&gt;Mais la mauvaise fée de l’informatique est intervenu d’un coup de baguette numérique rendant impossible de faire fonctionner &lt;code&gt;rsync&lt;/code&gt; entre mes VM et le NAS, avec un message d’erreur peu parlant du type &lt;code&gt;Permission denied, please try again.&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Après quelques recherches, la solution semble être d’expliciter le chemin du binaire &lt;code&gt;rsync&lt;/code&gt; côté synology, avec le paramètre &lt;code&gt;—rsync-path=/usr/syno/bin/rsync&lt;/code&gt;. La commande à lancer devient donc:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;rsync -azv —rsync-path=/usr/syno/bin/rsync REPERTOIRE_A_SAUVEGARDER -e « ssh -p PORT -i FICHIER-CLEF » USER@SYNOLOGY:REPERTOIRE_DESTINATION
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;J’ai donc mis à jour Obiran avec un nouveau paramètre pour prendre en compte cette spécificité: Obiran est donc passé en version 0.6, sept ans avec la version 0.5 !&lt;/p&gt;
-</description>
+      <description>Depuis quelques mois, j’ai mis en oeuvre une nouvelle infrastructure chez moi de type homelab, basée sur un petit serveur intel NUC, ESXi et Ubuntu.
+Comme tout bon exploitant avec des tendances devops, j’ai rajouté de la supervision avec NewRelic, divers scripts de contrôle, un dashboard basé sur dashing, l’installation automatisée de VM via ansible et évidemment je me suis ensuite attaqué à la problématique des sauvegardes.
+De nombreuses solutions opensource existent déjà (amanda, bacula …) permettant entre autre d’avoir une architecture de type client-serveur.</description>
     </item>
     
     <item>
@@ -335,8 +77,8 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
 
 &lt;p&gt;Finalement, j&amp;rsquo;ai simplifié à l&amp;rsquo;extrème en utilisant &lt;a href=&#34;http://pages.github.com/&#34;&gt;github pages&lt;/a&gt; avec un site complètement statique et se résumant à une page.&lt;/p&gt;
 
-&lt;p&gt;Comme quoi les CMS et les bases de données ne sont pas la solution à tous les problèmes !&lt;/p&gt;
-</description>
+&lt;p&gt;Comme quoi les CMS et les bases de données ne sont pas la solution à tous les problèmes !
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -347,16 +89,7 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <guid>http://www.zeneffy.fr/2012/07/dans-combien-de-jours/</guid>
       <description>&lt;p&gt;Mon fils compte très souvent les jours restants avant chaque événement (Mariages, entrée au CP, Vacances…) et chaque jour demande donc &lt;em&gt;&amp;ldquo;Dans combien de jours c&amp;rsquo;est xxx&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;Autant compter sur 2 à 3 semaines reste faisable, autant quand il s&amp;rsquo;agit de compter les jours avant un événement dans 6 mois les choses se compliquent.&lt;/p&gt;
-
-&lt;p&gt;Aussi en bon geek que je suis, j&amp;rsquo;ai rapidement prototypé une application sobrement intitulée &lt;a href=&#34;https://github.com/jraigneau/dcdj&#34;&gt;dcdj&lt;/a&gt; qui permet de rentrer un événement et d&amp;rsquo;avoir le nombre de jours restants.&lt;/p&gt;
-
-&lt;p&gt;L&amp;rsquo;objectif étant d&amp;rsquo;avoir toujours sous la main l&amp;rsquo;application, l&amp;rsquo;utilisation des technologies mobiles était une évidence. Une petite revue rapide d&amp;rsquo;objective-C (ainsi que le prix de la licence AppStore!) m&amp;rsquo;ayant convaincue que finalement les technologies web restaient les plus adaptées, j&amp;rsquo;ai développé &lt;a href=&#34;https://github.com/jraigneau/dcdj&#34;&gt;dcdj&lt;/a&gt; avec le classique &lt;a href=&#34;http://rubyonrails.org&#34;&gt;Ruby on Rails&lt;/a&gt; et surtout &lt;a href=&#34;http://jquerymobile.com&#34;&gt;jQuery Mobile&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Retrouver Rails après quelques mois de &lt;a href=&#34;http://nodejs.org&#34;&gt;node.js&lt;/a&gt; a été un vrai plaisir et j&amp;rsquo;ai surtout découvert que jQuery Mobile était une librairie très intéressante à utiliser pour créer rapidement des applications web lisibles sur des mobiles et tablettes.&lt;/p&gt;
-
-&lt;p&gt;Le résultat peut-être testé sur &lt;a href=&#34;http://dcdj-test.herokuapp.com/&#34;&gt;dcdj-test&lt;/a&gt; et le code source est bien évidemment libre et disponible sur &lt;a href=&#34;https://github.com/jraigneau/dcdj&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
-</description>
+&lt;p&gt;Autant compter sur 2 à 3 semaines reste faisable, autant quand il s&amp;rsquo;agit de compter les jours avant un événement dans 6 mois les choses se compliquent.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -367,12 +100,9 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <guid>http://www.zeneffy.fr/2011/12/instant-de-bonheur-une-application-complete-node-js/</guid>
       <description>&lt;p&gt;M&amp;rsquo;intéressant depuis quelques temps à &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; (framework web basé sur le moteur javascript V8 de chrome), j&amp;rsquo;avais décidé de réaliser une petite application pour tester et me faire une opinion sur l&amp;rsquo;utilisation du javascript côté serveur - par un hasard extraordinaire j&amp;rsquo;ai eu l&amp;rsquo;occasion de trouver une idée et de la réaliser lors d&amp;rsquo;une formation, par ailleurs sans aucun rapport.&lt;/p&gt;
 
-&lt;p&gt;Cela donne l&amp;rsquo;application web &lt;a href=&#34;http://mon.instant-de-bonheur.fr&#34;&gt;mon.instant-de-bonheur.fr&lt;/a&gt; qui permet de partager les petits (et grands!) moments de bonheur (sans aucun lien avec l&amp;rsquo;&lt;a href=&#34;http://programmes.france2.fr/leurs-secrets-du-bonheur/index.php?page=article&amp;amp;numsite=7085&amp;amp;id_article=24314&amp;amp;id_rubrique=7088&#34;&gt;émission de France2&lt;/a&gt;, quoique&amp;hellip;) et qui a été mise en ligne depuis quelques jours.&lt;/p&gt;
-
-&lt;p&gt;Pour les geeks, j&amp;rsquo;ai pris soin (ou du moins essayé) de documenter mon code, évidemment publié en opensource (license Apache 2.0) afin que d&amp;rsquo;autres puissent peut-être en profiter pour monter en compétence sur les technologies javascript (node.js, jade, expressjs) et noSQL (à travers mongodb).&lt;/p&gt;
-
-&lt;p&gt;Le code complet est disponible sur github via &lt;a href=&#34;https://github.com/jraigneau/instant&#34;&gt;github.com/jraigneau/instant&lt;/a&gt;, et la version commentée et mise en forme peut-être revue sur le site même de l&amp;rsquo;application via &lt;a href=&#34;http://mon.instant-de-bonheur.fr/about&#34;&gt;mon.instant-de-bonheur.fr/about&lt;/a&gt;. Le code est améliorable, modifiable et ne respecte probablement pas les standards mais &amp;ldquo;It works !&amp;rdquo; -  au passage je suis convaincu par l&amp;rsquo;utilisation de node.js: rapide, fiable et surtout très facile à utiliser pour un développeur même moyen.&lt;/p&gt;
-</description>
+&lt;p&gt;Cela donne l&amp;rsquo;application web &lt;a href=&#34;http://mon.instant-de-bonheur.fr&#34;&gt;mon.instant-de-bonheur.fr&lt;/a&gt; qui permet de partager les petits (et grands!) moments de bonheur (sans aucun lien avec l&amp;rsquo;&lt;a href=&#34;http://programmes.france2.fr/leurs-secrets-du-bonheur/index.php?page=article&amp;amp;numsite=7085&amp;amp;id_article=24314&amp;amp;id_rubrique=7088&#34;&gt;émission de France2&lt;/a&gt;, quoique&amp;hellip;) et qui a été mise en ligne depuis quelques jours.
+&lt;br /&gt;
+Pour les geeks, j&amp;rsquo;ai pris soin (ou du moins essayé) de documenter mon code, évidemment publié en opensource (license Apache 2.0) afin que d&amp;rsquo;autres puissent peut-être en profiter pour monter en compétence sur les technologies javascript (node.js, jade, expressjs) et noSQL (à travers mongodb).&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -385,16 +115,9 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
 
 &lt;p&gt;Bricoleur numérique dans l&amp;rsquo;âme , j&amp;rsquo;ai donc développé le site &lt;a href=&#34;http://zenrunn.in&#34;&gt;Zenrunnin’&lt;/a&gt;, une application simple de suivi de vos courses, utilisant les comptes facebook pour partager ses performances avec ses amis et connaître les leurs.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://zenrunn.in&#34;&gt;Zenrunnin’&lt;/a&gt; m&amp;rsquo;a permis de me familiariser avec les différentes &lt;a href=&#34;http://developers.facebook.com/&#34;&gt;API Facebook&lt;/a&gt; et m&amp;rsquo;a fait découvrir &lt;a href=&#34;http://oauth.net/&#34;&gt;OAuth&lt;/a&gt; qui permet d&amp;rsquo;interagir et de publier facilement des données sécurisées à travers un système simple et unifié d&amp;rsquo;autorisation.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://zenrunn.in&#34;&gt;Zenrunnin’&lt;/a&gt; m&amp;rsquo;a permis de me familiariser avec les différentes &lt;a href=&#34;http://developers.facebook.com/&#34;&gt;API Facebook&lt;/a&gt; et m&amp;rsquo;a fait découvrir &lt;a href=&#34;http://oauth.net/&#34;&gt;OAuth&lt;/a&gt; qui permet d&amp;rsquo;interagir et de publier facilement des données sécurisées à travers un système simple et unifié d&amp;rsquo;autorisation.
 
-&lt;p&gt;Pour en savoir plus:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Le site ZenRunnin&amp;rsquo;: &lt;a href=&#34;http://zenrunn.in&#34;&gt;zenrunn.in&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Le site de développement sur &lt;a href=&#34;https://github.com/jraigneau/zen-running&#34;&gt;Github&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Le site communautaire de l&amp;rsquo;application sur facebook: &lt;a href=&#34;http://www.facebook.com/apps/application.php?id=216410101715370&#34;&gt;www.facebook.com/apps/application.php?id=216410101715370&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+Pour en savoir plus:&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -407,8 +130,8 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
 
 &lt;p&gt;En regardant de près la documentation de &lt;a href=&#34;http://datamapper.org/&#34;&gt;datamapper&lt;/a&gt;, l&amp;rsquo;ORM utilisé pour &lt;a href=&#34;https://github.com/jraigneau/veilleur&#34;&gt;Veilleur&lt;/a&gt;, je me suis rendu que je n&amp;rsquo;utilisais pas correctement les requêtes avec les associations 1-n. En simplifiant, l&amp;rsquo;application récupérait la liste de toutes les valeurs des tests dans la base (1 toute les 10 minutes depuis 15 jours, faites le calcul&amp;hellip;) avant d&amp;rsquo;écrire la nouvelle valeur - ce qui était inutile et surtout gourmant (15secondes !)&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Morale&lt;/strong&gt;: il faut bien lire les manuels et la documentation des frameworks, librairies&amp;hellip;utilisés dans son code.&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;strong&gt;Morale&lt;/strong&gt;: il faut bien lire les manuels et la documentation des frameworks, librairies&amp;hellip;utilisés dans son code.
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -417,16 +140,7 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <pubDate>Fri, 25 Feb 2011 22:47:37 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</guid>
-      <description>&lt;p&gt;Dans le cadre de ma petite application de surveillance de site web, &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;veilleur&lt;/a&gt;, j&amp;rsquo;ai &lt;a href=&#34;http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/&#34;&gt;utilisé l&amp;rsquo;infrastructure Google App Engine&lt;/a&gt; pour héberger code &amp;amp; base de donnée. Le résultat au bout de 2 semaines est assez peu concluant- du moins pour la version &amp;ldquo;Free&amp;rdquo;:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Le système de quotas est contraignant, et atteint vite ses limites (pour moi de temps machine à cause des requêtes nécessaires pour vérifier l&amp;rsquo;état de santé des sites)&lt;/li&gt;
-&lt;li&gt;L&amp;rsquo;applicatif se lance de façon dynamique par défaut pour l&amp;rsquo;offre &amp;ldquo;free&amp;rdquo;, i.e. il y a un temps d&amp;rsquo;initialisation lors des requêtes web, surtout sur un site de faible trafic comme celui ci - l&amp;rsquo;option &amp;ldquo;Always On&amp;rdquo; évitant ce problème étant payante.&lt;/li&gt;
-&lt;li&gt;En deux semaines d&amp;rsquo;utilisation, l&amp;rsquo;infrastructure m&amp;rsquo;a semblé peu fiable, avec des erreurs étranges non reproductible - causées manifestement par Google App Engine lui même.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Mes prochaines applications ne seront donc pas hébergées sur GAE - mais plutôt chez Heroku comme &lt;a href=&#34;http://vauban.heroku.com&#34;&gt;vauban&lt;/a&gt; qui reste pour moi une référence de l&amp;rsquo;hébergement Rails / Sinatra.&lt;/p&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
@@ -435,16 +149,7 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <pubDate>Sun, 13 Feb 2011 19:20:45 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/</guid>
-      <description>&lt;p&gt;Abonné depuis plusieurs mois à plusieurs services de monitoring de sites web (notamment &lt;a href=&#34;http://www.pingdom.com&#34;&gt;pingdom&lt;/a&gt;), j&amp;rsquo;ai décidé de me faire mon propre service en profitant de l&amp;rsquo;architecture de &lt;a href=&#34;http://code.google.com/intl/fr-FR/appengine/&#34;&gt;Google App Engine&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Bien évidemment, l&amp;rsquo;application est en Ruby avec le framework &lt;a href=&#34;http://www.sinatrarb.com&#34;&gt;Sinatra&lt;/a&gt; et se base sur &lt;a href=&#34;http://code.google.com/p/appengine-jruby/&#34;&gt;appengine-jruby&lt;/a&gt;, qui permet d&amp;rsquo;utiliser Ruby via &lt;a href=&#34;http://jruby.org/&#34;&gt;JRuby&lt;/a&gt; (Implémentation de Ruby en Java).&lt;/p&gt;
-
-&lt;p&gt;En utilisant Google App Engine, je m&amp;rsquo;affranchis de la gestion de l&amp;rsquo;authentification (comptes google), de la base de donnée et surtout je peux utiliser un système &lt;a href=&#34;http://fr.wikipedia.org/wiki/Cron&#34;&gt;CRON&lt;/a&gt; intégré dans le service Google. Ce système me permet de lancer automatiquement et périodiquement les tests d&amp;rsquo;URL pour me donner le temps d&amp;rsquo;accès et calculer la disponibilité du site web.&lt;/p&gt;
-
-&lt;p&gt;Après une petite semaine de travail, le premier résultat est très intéressant et peut-être utilisé par tous.&lt;/p&gt;
-
-&lt;p&gt;Le projet en lui même est géré via &lt;a href=&#34;https://github.com/jraigneau/veilleur&#34;&gt;GitHub&lt;/a&gt; + &lt;a href=&#34;http://zeneffy.lighthouseapp.com/projects/69787-veilleur/overview&#34;&gt;Lighthouse&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;Abonné depuis plusieurs mois à plusieurs services de monitoring de sites web (notamment &lt;a href=&#34;http://www.pingdom.com&#34;&gt;pingdom&lt;/a&gt;), j&amp;rsquo;ai décidé de me faire mon propre service en profitant de l&amp;rsquo;architecture de &lt;a href=&#34;http://code.google.com/intl/fr-FR/appengine/&#34;&gt;Google App Engine&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -455,58 +160,9 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <guid>http://www.zeneffy.fr/2011/02/application-sinatra-pour-heroku/</guid>
       <description>&lt;p&gt;Dernièrement je m&amp;rsquo;intéresse au framework de développement  &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; qui est basé sur le langage Ruby (comme Ruby on Rails donc). Sinatra est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Domain-specific_programming_language&#34;&gt;DSL&lt;/a&gt; permettant de développer rapidement et simplement des applications web (un peu comme &lt;a href=&#34;http://webpy.org/&#34;&gt;webpy&lt;/a&gt; que j&amp;rsquo;avais utilisé sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Harpagon&lt;/a&gt;).&lt;/p&gt;
 
-&lt;p&gt;Pour déployer des applications sinatra, j&amp;rsquo;ai décidé de continuer à m&amp;rsquo;appuyer sur la plate-forme d&amp;rsquo;hébergement &lt;a href=&#34;http://heroku.com/&#34;&gt;Heroku&lt;/a&gt; - voila les quelques fichiers à mettre en oeuvre pour une application minimale - en activant la supervision &lt;a href=&#34;http://newrelic.com/&#34;&gt;newrelic_rpm&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Pour déployer des applications sinatra, j&amp;rsquo;ai décidé de continuer à m&amp;rsquo;appuyer sur la plate-forme d&amp;rsquo;hébergement &lt;a href=&#34;http://heroku.com/&#34;&gt;Heroku&lt;/a&gt; - voila les quelques fichiers à mettre en oeuvre pour une application minimale - en activant la supervision &lt;a href=&#34;http://newrelic.com/&#34;&gt;newrelic_rpm&lt;/a&gt;:
 
-&lt;p&gt;&lt;em&gt;heroku-sinatra-app.rb&lt;/em&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;require &#39;rubygems&#39;
-require &#39;sinatra&#39;
-
-configure :production do
-require &#39;newrelic_rpm&#39;
-end
-
-# Quick test
-get &#39;/&#39; do
-&amp;quot;Hello from the ratpack!&amp;quot;
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;config.ru&lt;/em&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;require &#39;heroku-sinatra-app&#39;
-run Sinatra::Application
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;.gems&lt;/em&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sinatra
-newrelic_rpm version
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;newrelic.yml&lt;/em&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# here are the settings that are common to all environments
-common: &amp;amp;default_settings
-  license_key: &amp;quot;&amp;lt;%= ENV[&#39;NEW_RELIC_LICENSE_KEY&#39;] %&amp;gt;&amp;quot;
-  app_name: &amp;quot;&amp;lt;%= ENV[&#39;NEW_RELIC_APPNAME&#39;] %&amp;gt;&amp;quot;
-  monitor_mode: false
-  developer_mode: false
-  log_level: info
-  apdex_t: 0.5
-  capture_params: false
-  transaction_tracer:
-    enabled: false
-  error_collector:
-    enabled: false
-
-production:
-  &amp;lt;&amp;lt;: *default_settings
-  monitor_mode: true
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Il suffit ensuite de pousser ces fichiers via Git sur Heroku et de visiter l&amp;rsquo;url de votre application!&lt;/p&gt;
-</description>
+&lt;em&gt;heroku-sinatra-app.rb&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -515,38 +171,9 @@ production:
       <pubDate>Thu, 21 Oct 2010 13:48:55 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/10/google-analytics-dans-une-application-ruby-on-rails/</guid>
-      <description>&lt;p&gt;Dans le cadre de l&amp;rsquo;application &lt;a href=&#34;http://labs.zeneffy.fr/projets/vauban/&#34;&gt;vauban&lt;/a&gt; développée via le framework &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;RubyOnRails&lt;/a&gt;, j&amp;rsquo;ai été amené à intégrer &lt;a href=&#34;http://www.google.com/analytics/&#34;&gt;Google Analytics&lt;/a&gt; en 3 étapes très simples:&lt;/p&gt;
-
-&lt;p&gt;Créer le compte dans Google Analytics pour obtenir un code javascript du type&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
-
-      var _gaq = _gaq || [];
-      _gaq.push([&#39;_setAccount&#39;, &#39;UA-12194039-4&#39;]);
-      _gaq.push([&#39;_trackPageview&#39;]);
-
-      (function() {
-        var ga = document.createElement(&#39;script&#39;); ga.type = &#39;text/javascript&#39;; ga.async = true;
-        ga.src = (&#39;https:&#39; == document.location.protocol ? &#39;https://ssl&#39; : &#39;http://www&#39;) + &#39;.google-analytics.com/ga.js&#39;;
-        var s = document.getElementsByTagName(&#39;script&#39;)[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
-    &amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Créer un &amp;ldquo;partial&amp;rdquo; dans &lt;code&gt;app/views/layouts_ appelé __ga.html.rb&lt;/code&gt; et y copier le javascript&lt;/p&gt;
-
-&lt;p&gt;Insérer le code dans la balise &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; du fichier &lt;code&gt;app/view/layouts/application.html.erb&lt;/code&gt; (pour l&amp;rsquo;avoir sur tout le site - à modifier éventuellement)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    &amp;lt;%= render :partial =&amp;gt; &amp;quot;layouts/ga&amp;quot; if Rails.env.production? %&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;A noter que la condition &lt;code&gt;if Rails.env.production&lt;/code&gt; permet de n&amp;rsquo;afficher le code que lorsque l&amp;rsquo;application est en production, ceci afin de ne pas pertuber les statistiques lors du développement.&lt;/p&gt;
-
-&lt;p&gt;et voilà, &lt;a href=&#34;http://rubyonrails.org&#34;&gt;Ruby On Rail&lt;/a&gt;s a encore une fois démontré sa simplicité!&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://aihuiong.com/post/452550136/google-analytics-and-rails-in-3-steps-and-less-than-5&#34;&gt;Source&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Dans le cadre de l&amp;rsquo;application vauban développée via le framework RubyOnRails, j&amp;rsquo;ai été amené à intégrer Google Analytics en 3 étapes très simples:
+Créer le compte dans Google Analytics pour obtenir un code javascript du type
+ &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; var _gaq = _gaq || []; _gaq.push([&#39;_setAccount&#39;, &#39;UA-12194039-4&#39;]); _gaq.push([&#39;_trackPageview&#39;]); (function() { var ga = document.createElement(&#39;script&#39;); ga.type = &#39;text/javascript&#39;; ga.async = true; ga.src = (&#39;https:&#39; == document.location.protocol ? &#39;https://ssl&#39; : &#39;http://www&#39;) + &#39;.</description>
     </item>
     
     <item>
@@ -555,14 +182,156 @@ production:
       <pubDate>Sat, 24 Apr 2010 13:36:29 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/04/migration-de-zeneffy-labs/</guid>
-      <description>&lt;p&gt;Hier, j&amp;rsquo;ai migré &lt;a href=&#34;http://labs.zeneffy.fr/&#34;&gt;Zeneffy Labs&lt;/a&gt; de &lt;a href=&#34;http://www.redmine.org/&#34;&gt;Redmine&lt;/a&gt; vers le couple&lt;a href=&#34;http://radiantcms.org/&#34;&gt; Radiant CMS&lt;/a&gt; / &lt;a href=&#34;github.com/jraigneau&#34;&gt;GitHub&lt;/a&gt;. En effet Redmine était un peu trop conséquent pour mes besoins et prenait trop de ressources sur mon serveur.  Mon choix s&amp;rsquo;est alors porté d&amp;rsquo;une part sur Radiant CMS pour servir de mini wiki  et d&amp;rsquo;autre part sur GitHub pour les dépôts de code.&lt;/p&gt;
-
-&lt;p&gt;L&amp;rsquo;inscription et l&amp;rsquo;utilisation de GitHut sont rapides et faciles (car liées aussi intrinsèquement à la simplicité de &lt;a href=&#34;http://git-scm.com/&#34;&gt;Git&lt;/a&gt; - gestion de configuration décentralisée) et il m&amp;rsquo;a suffit de pousser les anciens dépôts de code vers le nouveau système.&lt;/p&gt;
-
-&lt;p&gt;En ce qui concerne Radiant CMS, j&amp;rsquo;ai décidé de l&amp;rsquo;héberger sur &lt;a href=&#34;http://heroku.com/&#34;&gt;Heroku&lt;/a&gt;, hébergeur dédié Ruby (donc parfait pour Ruby on Rails, sinatra&amp;hellip;) qui offre par ailleurs de nombreux avantages (plugins de supervision gratuit, déploiement rapide, et coût zéro pour un hébergement simple).&lt;/p&gt;
-
-&lt;p&gt;En moins de 3h, y compris la création du nouveau thème et le temps de jeter un oeil sur la documentation, tout était terminé - le résultat sur &lt;a href=&#34;http://labs.zeneffy.fr/&#34;&gt;Zeneffy Labs&lt;/a&gt; !&lt;/p&gt;
-</description>
+      <description>Hier, j&amp;rsquo;ai migré Zeneffy Labs de Redmine vers le coupleRadiant CMS / GitHub. En effet Redmine était un peu trop conséquent pour mes besoins et prenait trop de ressources sur mon serveur. Mon choix s&amp;rsquo;est alors porté d&amp;rsquo;une part sur Radiant CMS pour servir de mini wiki et d&amp;rsquo;autre part sur GitHub pour les dépôts de code.
+L&amp;rsquo;inscription et l&amp;rsquo;utilisation de GitHut sont rapides et faciles (car liées aussi intrinsèquement à la simplicité de Git - gestion de configuration décentralisée) et il m&amp;rsquo;a suffit de pousser les anciens dépôts de code vers le nouveau système.</description>
+    </item>
+    
+    <item>
+      <title>Redécouverte de Ruby On Rails</title>
+      <link>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</link>
+      <pubDate>Wed, 14 Apr 2010 14:00:33 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</guid>
+      <description>Suite à des recherches sur les frameworks web du moment (python: Django, Turbogears, web.py, scala: lift, java: play!), je me suis réintéressé à l&amp;rsquo;un des premiers frameworks que j&amp;rsquo;avais utilisé (2003 / 2004 &amp;hellip;): Ruby on Rails.
+J&amp;rsquo;ai redécouvert l&amp;rsquo;élégance et la simplicité de Ruby et la puissance de Rails.
+Du coup, je me suis lancé un nouveau défi: créer une application de gestion des identités web - afin de ne plus oublier identifiant/mots de passe des sites où je suis inscrit (et il y en a!</description>
+    </item>
+    
+    <item>
+      <title>Harpagon: la version 1.1 &#34;Pingre&#34; est enfin sortie</title>
+      <link>http://www.zeneffy.fr/2010/03/harpagon-la-version-1-1-pingre-est-enfin-sortie/</link>
+      <pubDate>Sun, 07 Mar 2010 15:19:56 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/03/harpagon-la-version-1-1-pingre-est-enfin-sortie/</guid>
+      <description>Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework web.py et sur Google Chart API.
+Nouveautés
+ Contrôle des fichiers avant validation et traitement Mise en avant ce qui a été déjà dépensé par rapport à la moyenne mensuelle Simulation de ce qu&amp;rsquo;il reste à payer dans le mois au prorata des jours écoulés Meilleure gestion des chèques, notamment en mettant les numéros Constance du tri sur la liste de transaction lors des modifications de transaction Spinner sur le chargement de nouvelles données Listes déroulantes de catégorie trié alphabétiquement Couleurs des camenberts pour les catégories Tri sur listes Spinner lors du rejoue des règles Confirmation des suppressions de catégorie et règles  Où trouver Harpagon ?</description>
+    </item>
+    
+    <item>
+      <title>Ma petite histoire du web</title>
+      <link>http://www.zeneffy.fr/2010/03/ma-petite-histoire-du-web/</link>
+      <pubDate>Mon, 01 Mar 2010 13:43:15 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/03/ma-petite-histoire-du-web/</guid>
+      <description>10 ans de web déjà - avec presque autant de sites web, de concept et de technologie !
+ 1999-2001: Pages statiques et javascript hébergées en école d&amp;rsquo;ingénieur  
+ 2001-2002: La troisième version, hébergée chez free: une interface avec des CSS et encore du javascript (la V2 semble avoir disparu!) sur l&amp;rsquo;url julien.ht.st   2002-2003: Première version dynamique, mélangeant XML et PHP   2003-2005: Première version de blog, basée sur mon propre moteur &amp;ldquo;tiwelo&amp;rdquo; avec l&amp;rsquo;url tifauve.</description>
+    </item>
+    
+    <item>
+      <title>Harpagon V1.0</title>
+      <link>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</link>
+      <pubDate>Sun, 17 Jan 2010 22:44:21 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</guid>
+      <description>Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework web.py et sur Google Chart API.
+Fonctionnalités de la 1.0
+ Import de données de la BRED Tableau de bord fonctionnel avec stats sur 30j/3mois/Toutes dates Gestion des catégories et des règles de catégorisation Rejoue des règles possibles à tout moment Gestion des transactions  Captures d&amp;rsquo;écran
+ 
+Où trouver Harpagon ?</description>
+    </item>
+    
+    <item>
+      <title>SaveMyPrecious - Sauvegardes de fichier</title>
+      <link>http://www.zeneffy.fr/2009/07/savemyprecious-sauvegardes-de-fichier/</link>
+      <pubDate>Sat, 04 Jul 2009 14:45:05 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2009/07/savemyprecious-sauvegardes-de-fichier/</guid>
+      <description>SaveMyPrecious remplace Saise et permet donc une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, le premier script de sauvegarde que j&amp;rsquo;ai écrit.
+A l&amp;rsquo;inverse de Saise, SaveMyPrecious ne crypte pas les données, mais subit une nette amélioration de l&amp;rsquo;interface graphique.
+Dépendances
+Pour faire fonctionner SaveMyPrecious, il vous faut:</description>
+    </item>
+    
+    <item>
+      <title>iPieuvre - Aggrégateur de contenus multimédia</title>
+      <link>http://www.zeneffy.fr/2009/06/ipieuvre-aggregateur-de-contenus-multimedia/</link>
+      <pubDate>Tue, 09 Jun 2009 09:40:36 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2009/06/ipieuvre-aggregateur-de-contenus-multimedia/</guid>
+      <description>iPieuvre permet d&amp;rsquo;aggréger des contenus personnels hébergés sur PicasaWeb et sur YouTube (prochainement) via l&amp;rsquo;API Google Data.
+iPieuvre se connecte sur tous les comptes fournis et récupère les url des images/vidéos via les flux ATOM pour créer ensuite des pages statiques html en utilisant le moteur de template Cheetah. Ce système permet de s&amp;rsquo;arranger de la limitation à 1Go de photos sur PicasaWeb.
+iPieuvre fait actuellement tourner mon propre site de photo/multimédia:Instants de Vie (accès restreint).</description>
+    </item>
+    
+    <item>
+      <title>Catanyste</title>
+      <link>http://www.zeneffy.fr/2009/02/catanyste/</link>
+      <pubDate>Sun, 01 Feb 2009 09:33:18 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2009/02/catanyste/</guid>
+      <description>Stratégies, Optimisations et IA pour le jeu de plateau les Colons de Catane
+Le jeu de plateau les Colons de Catane a une dimension tactique et stratégique intéressante, l&amp;rsquo;optimisation d&amp;rsquo;acquisition des ressources étant primordiale pour contrebalancer les hasards des jets de dés.
+L&amp;rsquo;objectif de Catanyste est de s&amp;rsquo;intéresser à la dimension statistique du jeu et finalement de créer une IA capable d&amp;rsquo;aider les joueurs, voire de les battre.
+Le site du projet: http://code.</description>
+    </item>
+    
+    <item>
+      <title>SAISE - Sauvegarde Incrémentale Sécurisée</title>
+      <link>http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/</link>
+      <pubDate>Sat, 27 Sep 2008 09:23:21 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/</guid>
+      <description>SAISE est le digne successeur d&amp;rsquo;Obiran dont il reprend toutes les fonctionnalités, soit une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, lui-même disponible sur https://github.com/jraigneau/obiran.
+SAISE apporte toutefois des différences importantes:
+ SAISE est écrit en Python (contrairement à Obiran, en Ruby) SAISE utilise la librairie libnotify pour faire apparaître des notifications graphiques lors des backups (en option) SAISE a un système de log plus abouti Last but not least - SAISE permet de sécuriser les sauvegardes en cryptant à la volée les fichiers (à la demande de l&amp;rsquo;utilisateur)  Le système cryptage de SAISE</description>
+    </item>
+    
+    <item>
+      <title>Photo2Web</title>
+      <link>http://www.zeneffy.fr/2008/05/photo2web/</link>
+      <pubDate>Mon, 26 May 2008 20:19:39 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/photo2web/</guid>
+      <description>Ce script écrit Python permet d&amp;rsquo;envoyer des photos extraites via Picasa sur un site FTP, le tout avec une interface graphique GTK2.
+C&amp;rsquo;est mon premier développement &amp;ldquo;important&amp;rdquo; en Python - il m&amp;rsquo;a permis notamment de voir:
+ Interface graphique et GTK2 et utilisation de Glade. Utilisation de la librairie ftplib. Mécanique des threads dans une IHM.  Il reste fortement améliorable, notamment en ce qui concerne la gestion des exceptions (try&amp;hellip;except).</description>
+    </item>
+    
+    <item>
+      <title>CheckMyFTP</title>
+      <link>http://www.zeneffy.fr/2008/05/checkmyftp/</link>
+      <pubDate>Mon, 19 May 2008 19:41:51 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/checkmyftp/</guid>
+      <description>Ce script simple vérifie s&amp;rsquo;il y a du contenu sur un site FTP et dans ce cas affiche une image. Ce script est le préambule à Photo2Web avec GUI et utilisation de ftplib.
+#!/usr/bin/python # -*- coding: utf8 -*- &amp;quot;&amp;quot;&amp;quot; Vérifie si du nouveau contenu a été rajouté sur le FTP &amp;quot;&amp;quot;&amp;quot; import ftplib import pygtk,gtk pygtk.require(&#39;2.0&#39;) import os,sys try: session = ftplib.FTP(&#39;XXX&#39;,&#39;XXX&#39;,&#39;XXX&#39;) # On se connecte au serveur fileList = [] # La liste des fichiers sera dedans session.</description>
+    </item>
+    
+    <item>
+      <title>Obiran - Outil de backup incrémental en Ruby</title>
+      <link>http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/</link>
+      <pubDate>Mon, 12 May 2008 09:19:09 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/</guid>
+      <description>A propos
+Sauvegarder régulièrement les données est un réflexe à avoir car le monde numérique peut être impitoyable: imaginez toutes vos photos depuis 5 ans disparaissant suite à un disque dur cassé !
+Le mieux est d&amp;rsquo;automatiser cette tâche, aussi j&amp;rsquo;ai développé OBIRAN - Outil de Backup Incrémental en Ruby (&amp;lsquo;Obiran Kenobi, vous êtes notre seul espoir&amp;rsquo; (Princesse Leila, Starwars IV) ).
+Ce script en langage Ruby permet d&amp;rsquo;effectuer des sauvegardes incrémentales en utilisant rsync, ssh et cp.</description>
+    </item>
+    
+    <item>
+      <title>Pessac</title>
+      <link>http://www.zeneffy.fr/2008/05/pessac/</link>
+      <pubDate>Mon, 12 May 2008 08:22:40 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/pessac/</guid>
+      <description>Pessac est une application écrite en C# (compilable/utilisable via le framework Open Source mono) permet de sortir un reporting &amp;ldquo;projet&amp;rdquo; à partir de l&amp;rsquo;analyse de répertoires du système de fichier.
+Ce reporting est basé non sur l&amp;rsquo;avancement planning du projet mais sur la présence des livrables/Jalons d&amp;rsquo;un projet.
+Il permet par ailleurs de suivre de manière centralisé l&amp;rsquo;avancement de plusieurs projets et gère le concept d&amp;rsquo;archivage.
+Ce projet est entièrement géré via Google Code</description>
+    </item>
+    
+    <item>
+      <title>Qu&#39;est ce que Zeneffy?</title>
+      <link>http://www.zeneffy.fr/2008/05/quest-ce-que-zeneffy/</link>
+      <pubDate>Sun, 04 May 2008 12:56:57 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/quest-ce-que-zeneffy/</guid>
+      <description>Zeneffy.fr est un petit aggrégat de sites web pour exposer quelques projets, servir d&amp;rsquo;incubateur à idées et garder dans un coin des &amp;ldquo;Trucs&amp;amp;Machins&amp;rdquo; intéressants liés aux nouvelles technologies pour plus tard. Vous y trouverez aussi quelques snippets de code divers et variés.
+A noter que contrairement à un blog &amp;ldquo;journal intime&amp;rdquo;, blog.zeneffy.fr n&amp;rsquo;a pas vocation à exposer ma vie ou à être mis à jour régulièrement.
+Il remplace10 ans de blogs et wikis dont les versions sont encore consultables (pour la postérité!</description>
     </item>
     
   </channel>

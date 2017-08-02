@@ -45,21 +45,17 @@
 		<div class="twelve columns"  align="justify">
 			<p>J&rsquo;ai découvert dernièrement le serveur de développement <a href="http://pow.cx/">Pow</a> qui permet très simplement de mettre en place un serveur Rack (pour les applications Ruby comme <a href="http://www.sinatrarb.com/">sinatra</a> ou <a href="http://rubyonrails.org/">Rails</a>) sur un Mac sans aucune configuration.</p>
 
-<p>Par contre il peut réserver quelques surprises de configuration, notamment avec <a href="http://radiantcms.org/">Radiant</a>. Deux points à retenir (en tout cas jusqu&rsquo;à présent:</p>
+<p>Par contre il peut réserver quelques surprises de configuration, notamment avec <a href="http://radiantcms.org/">Radiant</a>. Deux points à retenir (en tout cas jusqu&rsquo;à présent:
+<br />
+  1. Il faut désactiver le cache en développement sinon cela provoque des erreurs aléatoires de chargement des pages - dans <code>config/environements/development.rb</code> mettre <code>config.cache_classes = true</code>
+  2. Il est nécessaire d&rsquo;ajouter un fichier config.ru juste pour le développement et surtout ne pas le copier en production, sinon cela empèche les contenus statiques de s&rsquo;afficher (images, css et javascripts donc!) avec un fichier <code>config.ru</code></p>
 
-<ol>
-<li>Il faut désactiver le cache en développement sinon cela provoque des erreurs aléatoires de chargement des pages - dans <code>config/environements/development.rb</code> mettre <code>config.cache_classes = true</code></li>
-
-<li><p>Il est nécessaire d&rsquo;ajouter un fichier config.ru juste pour le développement et surtout ne pas le copier en production, sinon cela empèche les contenus statiques de s&rsquo;afficher (images, css et javascripts donc!) avec un fichier <code>config.ru</code></p>
-
-<pre><code># Rails.root/config.ru
-require &quot;./config/environment&quot;
-run ActionController::Dispatcher.new
-</code></pre></li>
-</ol>
+<pre><code>    # Rails.root/config.ru
+    require &quot;./config/environment&quot;
+    run ActionController::Dispatcher.new
+</code></pre>
 
 <p>Sinon, basé sur <a href="http://nodejs.org/">node.js</a>, Pow est efficace et permet d&rsquo;accéder à l&rsquo;ensemble des applications en même temps via des url du type <a href="http://monappli.dev:">http://monappli.dev:</a> je le recommande donc vivement pour se faciliter la vie de développeur Ruby.</p>
-
 		</div>
 	</div>
 	
@@ -108,7 +104,7 @@ run ActionController::Dispatcher.new
   			<div class="row">
 		    	<div class="twelve columns"  style="border-top: 5px solid #eee;">
 					<center>
-						<span style="font-family: 'Roboto Slab', serif;" >&#0169; 2008 - 2016, Julien Raigneau &nbsp;&nbsp;  | &nbsp;&nbsp;  Zeneffy >> Zen &amp; Efficace</pan>
+						<span style="font-family: 'Roboto Slab', serif;" >&#0169; 2008 - 2017, Julien Raigneau &nbsp;&nbsp;  | &nbsp;&nbsp;  Zeneffy >> Zen &amp; Efficace</pan>
 					</center>
 				</div>
 				<div style="line-height: 1;">
@@ -127,6 +123,8 @@ run ActionController::Dispatcher.new
 			  	  	    <a href="/tags/domotique" class="tags-link-footer">#domotique</a>
 			  	  	  	  
 			  	  	    <a href="/tags/formation" class="tags-link-footer">#formation</a>
+			  	  	  	  
+			  	  	    <a href="/tags/fun" class="tags-link-footer">#fun</a>
 			  	  	  	  
 			  	  	    <a href="/tags/go" class="tags-link-footer">#go</a>
 			  	  	  	  

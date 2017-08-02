@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://www.zeneffy.fr/</loc>
-    <lastmod>2016-10-11T07:48:54+02:00</lastmod>
+    <loc>http://www.zeneffy.fr/2017/07/the-dollhouse-challenge/</loc>
+    <lastmod>2017-07-10T12:34:55+02:00</lastmod>
   </url>
   
   <url>
@@ -349,6 +350,221 @@
   <url>
     <loc>http://www.zeneffy.fr/about/</loc>
     <lastmod>2000-02-26T19:34:13+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/backup/</loc>
+    <lastmod>2015-04-04T20:17:05+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/bash/</loc>
+    <lastmod>2011-04-14T14:34:01+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/bdd/</loc>
+    <lastmod>2011-12-27T12:08:26+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/clojure/</loc>
+    <lastmod>2011-10-02T10:31:59+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/devops/</loc>
+    <lastmod>2015-04-04T20:17:05+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/domotique/</loc>
+    <lastmod>2016-10-11T07:48:54+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/formation/</loc>
+    <lastmod>2009-05-07T13:31:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/fun/</loc>
+    <lastmod>2017-07-10T12:34:55+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/go/</loc>
+    <lastmod>2016-10-11T07:48:54+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/google/</loc>
+    <lastmod>2011-03-06T21:09:06+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/hardware/</loc>
+    <lastmod>2017-07-10T12:34:55+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/java/</loc>
+    <lastmod>2011-02-13T19:20:45+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/lecture/</loc>
+    <lastmod>2010-06-13T07:39:21+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/macos/</loc>
+    <lastmod>2011-09-04T18:55:28+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/management/</loc>
+    <lastmod>2012-09-02T12:56:19+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/mono/</loc>
+    <lastmod>2010-07-15T18:31:06+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/node.js/</loc>
+    <lastmod>2012-01-22T15:41:38+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/outils/</loc>
+    <lastmod>2016-10-11T07:48:54+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/post/</loc>
+    <lastmod>2017-07-10T12:34:55+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/productivit%C3%A9/</loc>
+    <lastmod>2010-08-15T16:55:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/projets/</loc>
+    <lastmod>2016-10-11T07:48:54+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/python/</loc>
+    <lastmod>2011-03-11T17:10:17+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/ruby/</loc>
+    <lastmod>2011-06-11T12:40:09+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/rubyonrails/</loc>
+    <lastmod>2012-07-03T13:07:41+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/r%C3%A9seau/</loc>
+    <lastmod>2010-09-27T21:01:30+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/scala/</loc>
+    <lastmod>2011-10-30T09:37:51+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/sinatra/</loc>
+    <lastmod>2011-10-15T08:21:18+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/snippets/</loc>
+    <lastmod>2011-02-05T13:31:25+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/</loc>
+    <lastmod>2015-04-04T20:17:05+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/ubuntu/</loc>
+    <lastmod>2010-12-19T10:26:48+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/vim/</loc>
+    <lastmod>2011-10-02T10:31:59+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/virtualisation/</loc>
+    <lastmod>2010-10-29T17:11:35+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/web.py/</loc>
+    <lastmod>2010-04-14T14:00:33+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/tags/windows/</loc>
+    <lastmod>2010-06-06T06:28:49+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.zeneffy.fr/</loc>
+    <lastmod>2017-07-10T12:34:55+02:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

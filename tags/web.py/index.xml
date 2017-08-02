@@ -2,12 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web.Py on Zeneffy : journal de bord</title>
-    <link>http://www.zeneffy.fr/tags/web/index.py/</link>
+    <link>http://www.zeneffy.fr/tags/web.py/</link>
     <description>Recent content in Web.Py on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
+    <copyright>&amp;#0169; 2008 - 2017, Julien Raigneau &amp;nbsp;&amp;nbsp;  | &amp;nbsp;&amp;nbsp;  Zeneffy &gt;&gt; Zen &amp;amp; Efficace</copyright>
     <lastBuildDate>Wed, 14 Apr 2010 14:00:33 +0000</lastBuildDate>
-    <atom:link href="http://www.zeneffy.fr/tags/web.py/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.zeneffy.fr/tags/web.py/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Redécouverte de Ruby On Rails</title>
@@ -15,12 +18,9 @@
       <pubDate>Wed, 14 Apr 2010 14:00:33 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</guid>
-      <description>&lt;p&gt;Suite à des recherches sur les frameworks web du moment (python: &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt;, &lt;a href=&#34;http://turbogears.org/&#34;&gt;Turbogears&lt;/a&gt;, &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt;, scala: &lt;a href=&#34;http://liftweb.net/&#34;&gt;lift&lt;/a&gt;, java: &lt;a href=&#34;http://www.playframework.org/&#34;&gt;play!&lt;/a&gt;), je me suis réintéressé à l&amp;rsquo;un des premiers frameworks que j&amp;rsquo;avais utilisé (2003 / 2004 &amp;hellip;): &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;J&amp;rsquo;ai redécouvert l&amp;rsquo;élégance et la simplicité de &lt;a href=&#34;http://www.ruby-lang.org/fr/&#34;&gt;Ruby&lt;/a&gt; et la puissance de Rails.&lt;/p&gt;
-
-&lt;p&gt;Du coup, je me suis lancé un nouveau défi: créer une application de gestion des identités web - afin de ne plus oublier identifiant/mots de passe des sites où je suis inscrit (et il y en a!) - avec Ruby on Rails évidemment: &lt;a href=&#34;https://github.com/jraigneau/vauban/&#34;&gt;Vauban&lt;/a&gt; est donc en cours de développement. La suite prochainement&amp;hellip;&lt;/p&gt;
-</description>
+      <description>Suite à des recherches sur les frameworks web du moment (python: Django, Turbogears, web.py, scala: lift, java: play!), je me suis réintéressé à l&amp;rsquo;un des premiers frameworks que j&amp;rsquo;avais utilisé (2003 / 2004 &amp;hellip;): Ruby on Rails.
+J&amp;rsquo;ai redécouvert l&amp;rsquo;élégance et la simplicité de Ruby et la puissance de Rails.
+Du coup, je me suis lancé un nouveau défi: créer une application de gestion des identités web - afin de ne plus oublier identifiant/mots de passe des sites où je suis inscrit (et il y en a!</description>
     </item>
     
     <item>
@@ -29,30 +29,9 @@
       <pubDate>Sun, 07 Mar 2010 15:19:56 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/03/harpagon-la-version-1-1-pingre-est-enfin-sortie/</guid>
-      <description>&lt;p&gt;Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt; et sur &lt;a href=&#34;http://code.google.com/intl/fr/apis/chart/&#34;&gt;Google Chart API&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Nouveautés&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Contrôle des fichiers avant validation et traitement&lt;/li&gt;
-&lt;li&gt;Mise en avant ce qui a été déjà dépensé par rapport à la moyenne mensuelle&lt;/li&gt;
-&lt;li&gt;Simulation de ce qu&amp;rsquo;il reste à payer dans le mois au prorata des jours écoulés&lt;/li&gt;
-&lt;li&gt;Meilleure gestion des chèques, notamment en mettant les numéros&lt;/li&gt;
-&lt;li&gt;Constance du tri sur la liste de transaction lors des modifications de transaction&lt;/li&gt;
-&lt;li&gt;Spinner sur le chargement de nouvelles données&lt;/li&gt;
-&lt;li&gt;Listes déroulantes de catégorie trié alphabétiquement&lt;/li&gt;
-&lt;li&gt;Couleurs des camenberts pour les catégories&lt;/li&gt;
-&lt;li&gt;Tri sur listes&lt;/li&gt;
-&lt;li&gt;Spinner lors du rejoue des règles&lt;/li&gt;
-&lt;li&gt;Confirmation des suppressions de catégorie et règles&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Où trouver Harpagon ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Le code est disponible en open source sous &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
-</description>
+      <description>Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework web.py et sur Google Chart API.
+Nouveautés
+ Contrôle des fichiers avant validation et traitement Mise en avant ce qui a été déjà dépensé par rapport à la moyenne mensuelle Simulation de ce qu&amp;rsquo;il reste à payer dans le mois au prorata des jours écoulés Meilleure gestion des chèques, notamment en mettant les numéros Constance du tri sur la liste de transaction lors des modifications de transaction Spinner sur le chargement de nouvelles données Listes déroulantes de catégorie trié alphabétiquement Couleurs des camenberts pour les catégories Tri sur listes Spinner lors du rejoue des règles Confirmation des suppressions de catégorie et règles  Où trouver Harpagon ?</description>
     </item>
     
     <item>
@@ -61,29 +40,11 @@
       <pubDate>Sun, 17 Jan 2010 22:44:21 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</guid>
-      <description>&lt;p&gt;Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt; et sur &lt;a href=&#34;http://code.google.com/intl/fr/apis/chart/&#34;&gt;Google Chart API&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Fonctionnalités de la 1.0&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Import de données de la BRED&lt;/li&gt;
-&lt;li&gt;Tableau de bord fonctionnel avec stats sur 30j/3mois/Toutes dates&lt;/li&gt;
-&lt;li&gt;Gestion des catégories et des règles de catégorisation&lt;/li&gt;
-&lt;li&gt;Rejoue des règles possibles à tout moment&lt;/li&gt;
-&lt;li&gt;Gestion des transactions&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Captures d&amp;rsquo;écran&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://lh5.ggpht.com/_RTJjPWCgPV8/S4xEfX9PBeI/AAAAAAAAGTo/-bLQndZOZTY/s800/harpagon1.png&#34;&gt;&lt;img src=&#34;http://lh5.ggpht.com/_RTJjPWCgPV8/S4xEfX9PBeI/AAAAAAAAGTo/-bLQndZOZTY/s400/harpagon1.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;http://lh3.ggpht.com/_RTJjPWCgPV8/S4xEfthQ4vI/AAAAAAAAGTs/w1tgq61g684/s800/harpagon2.png&#34;&gt;&lt;img src=&#34;http://lh3.ggpht.com/_RTJjPWCgPV8/S4xEfthQ4vI/AAAAAAAAGTs/w1tgq61g684/s400/harpagon2.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Où trouver Harpagon ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Le code est disponible en open source &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;sous license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
-</description>
+      <description>Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework web.py et sur Google Chart API.
+Fonctionnalités de la 1.0
+ Import de données de la BRED Tableau de bord fonctionnel avec stats sur 30j/3mois/Toutes dates Gestion des catégories et des règles de catégorisation Rejoue des règles possibles à tout moment Gestion des transactions  Captures d&amp;rsquo;écran
+ 
+Où trouver Harpagon ?</description>
     </item>
     
   </channel>

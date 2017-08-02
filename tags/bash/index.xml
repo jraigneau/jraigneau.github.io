@@ -6,8 +6,11 @@
     <description>Recent content in Bash on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
+    <copyright>&amp;#0169; 2008 - 2017, Julien Raigneau &amp;nbsp;&amp;nbsp;  | &amp;nbsp;&amp;nbsp;  Zeneffy &gt;&gt; Zen &amp;amp; Efficace</copyright>
     <lastBuildDate>Thu, 14 Apr 2011 14:34:01 +0000</lastBuildDate>
-    <atom:link href="http://www.zeneffy.fr/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.zeneffy.fr/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Extensions Radiant sur Heroku via les sous-modules Git</title>
@@ -33,8 +36,8 @@ $ git config -l | grep &#39;^submodule&#39; | cut -d&#39;=&#39; -f1 | xargs -n1 
 $ git commit -m &amp;quot;récupération des sousmodules git&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;source: &lt;a href=&#34;http://stackoverflow.com/questions/894647/radiant-extensions-on-heroku&#34;&gt;http://stackoverflow.com/questions/894647/radiant-extensions-on-heroku&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;source: &lt;a href=&#34;http://stackoverflow.com/questions/894647/radiant-extensions-on-heroku&#34;&gt;http://stackoverflow.com/questions/894647/radiant-extensions-on-heroku&lt;/a&gt;
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -51,8 +54,8 @@ $ git commit -m &amp;quot;récupération des sousmodules git&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Il suffit ensuite de créer un script bash contenant les commandes&amp;hellip;et d&amp;rsquo;attendre la fin de convertion!
-A noter que l&amp;rsquo;application &lt;a href=&#34;http://winff.org/html_new/&#34;&gt;WinFF&lt;/a&gt; permet entre autres de créer ces lignes de commandes.&lt;/p&gt;
-</description>
+A noter que l&amp;rsquo;application &lt;a href=&#34;http://winff.org/html_new/&#34;&gt;WinFF&lt;/a&gt; permet entre autres de créer ces lignes de commandes.
+&lt;/p&gt;</description>
     </item>
     
   </channel>

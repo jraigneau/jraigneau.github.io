@@ -6,8 +6,11 @@
     <description>Recent content in Clojure on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
+    <copyright>&amp;#0169; 2008 - 2017, Julien Raigneau &amp;nbsp;&amp;nbsp;  | &amp;nbsp;&amp;nbsp;  Zeneffy &gt;&gt; Zen &amp;amp; Efficace</copyright>
     <lastBuildDate>Sun, 02 Oct 2011 10:31:59 +0000</lastBuildDate>
-    <atom:link href="http://www.zeneffy.fr/tags/clojure/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.zeneffy.fr/tags/clojure/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>En avant pour Scala avec Vim</title>
@@ -15,85 +18,9 @@
       <pubDate>Sun, 02 Oct 2011 10:31:59 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/10/en-avant-pour-scala-avec-vim/</guid>
-      <description>&lt;p&gt;Après quelques années de développement avec mes deux langages favoris &lt;a href=&#34;http://blog.zeneffy.fr/tag/python/&#34;&gt;Python&lt;/a&gt; et de &lt;a href=&#34;http://blog.zeneffy.fr/tag/ruby/&#34;&gt;Ruby&lt;/a&gt;, j&amp;rsquo;ai décidé de me lancer dans un nouveau langage basé sur la &lt;a href=&#34;http://fr.wikipedia.org/wiki/JVM_(informatique)&#34;&gt;JVM&lt;/a&gt; (donc pas de Java pur, j&amp;rsquo;ai déjà donné!). Après avoir étudié &lt;a href=&#34;http://clojure.org/&#34;&gt;Clojure&lt;/a&gt; et &lt;a href=&#34;http://www.scala-lang.org/&#34;&gt;Scala&lt;/a&gt;, j&amp;rsquo;ai décidé de me concentrer sur Scala qui me semble plus naturel et qui mélange les paradigmes &amp;ldquo;Orienté-Objet&amp;rdquo; et &amp;ldquo;programmation fonctionnelle&amp;rdquo; - Clojure pour sa part est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Lisp&#34;&gt;lisp&lt;/a&gt; qui semble très puissant mais moins accessible pour un développeur moyen et dilettante comme moi.&lt;/p&gt;
+      <description>&lt;p&gt;Après quelques années de développement avec mes deux langages favoris &lt;a href=&#34;http://blog.zeneffy.fr/tag/python/&#34;&gt;Python&lt;/a&gt; et de &lt;a href=&#34;http://blog.zeneffy.fr/tag/ruby/&#34;&gt;Ruby&lt;/a&gt;, j&amp;rsquo;ai décidé de me lancer dans un nouveau langage basé sur la &lt;a href=&#34;http://fr.wikipedia.org/wiki/JVM_(informatique)&#34;&gt;JVM&lt;/a&gt; (donc pas de Java pur, j&amp;rsquo;ai déjà donné!). Après avoir étudié &lt;a href=&#34;http://clojure.org/&#34;&gt;Clojure&lt;/a&gt; et &lt;a href=&#34;http://www.scala-lang.org/&#34;&gt;Scala&lt;/a&gt;, j&amp;rsquo;ai décidé de me concentrer sur Scala qui me semble plus naturel et qui mélange les paradigmes &amp;ldquo;Orienté-Objet&amp;rdquo; et &amp;ldquo;programmation fonctionnelle&amp;rdquo; - Clojure pour sa part est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Lisp&#34;&gt;lisp&lt;/a&gt; qui semble très puissant mais moins accessible pour un développeur moyen et dilettante comme moi.
 
-&lt;p&gt;Mon premier réflexe a été bien évidemment de m&amp;rsquo;assurer que macVim me permettrait de facilement commencer quelques développement en Scala. En cherchant rapidement sur le web, j&amp;rsquo;ai pu trouvé quelques astuces pour la coloration, la navigation à travers les méthodes&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;En premier lieu, il faut installer le plugin Scala pour vim:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;svn export --force http://lampsvn.epfl.ch/svn-repos/scala/scala-tool-support/trunk/src/vim
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;puis copier les fichiers obtenus dans votre répertoire .vim&lt;/p&gt;
-
-&lt;p&gt;Deuxième étape, l&amp;rsquo;installation du plugin &lt;a href=&#34;http://www.vim.org/scripts/script.php?script_id=3465&#34;&gt;Tagbar&lt;/a&gt; (téléchargement du fichier .vba puis méthode d&amp;rsquo;installation normale vim)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;vim tagbar.vba
-  :so %
-  :q
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;TagBar ne prenant pas en compte Scala, il faut légèrement modifier certains fichiers
-Tout d&amp;rsquo;abord, création dans votre $HOME du fichier .ctags suivant&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;--langdef=Scala
---langmap=Scala:.scala
---regex-Scala=/^[ \t]*class[ \t]*([a-zA-Z0-9_]+)/\1/c,classes/
---regex-Scala=/^[ \t]*object[ \t]*([a-zA-Z0-9_]+)/\1/o,objects/
---regex-Scala=/^[ \t]*trait[ \t]*([a-zA-Z0-9_]+)/\1/t,traits/
---regex-Scala=/^[ \t]*case[ \t]*class[ \t]*([a-zA-Z0-9_]+)/\1/r,cclasses/
---regex-Scala=/^[ \t]*abstract[ \t]*class[ \t]*([a-zA-Z0-9_]+)/\1/a,aclasses/
---regex-Scala=/^[ \t]*def[ \t]*([a-zA-Z0-9_=]+)[ \t]*.*[:=]/\1/m,methods/
---regex-Scala=/[ \t]*val[ \t]*([a-zA-Z0-9_]+)[ \t]*[:=]/\1/V,values/
---regex-Scala=/[ \t]*var[ \t]*([a-zA-Z0-9_]+)[ \t]*[:=]/\1/v,variables/
---regex-Scala=/^[ \t]*type[ \t]*([a-zA-Z0-9_]+)[ \t]*[\[&amp;lt;&amp;gt;=]/\1/T,types/
---regex-Scala=/^[ \t]*import[ \t]*([a-zA-Z0-9_{}., \t=&amp;gt;]+$)/\1/i,includes/
---regex-Scala=/^[ \t]*package[ \t]*([a-zA-Z0-9_.]+$)/\1/p,packages/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Puis on va modifier le code du plugin TagBar (à priori dans &lt;code&gt;~/.vim/plugin/tagbar.vim&lt;/code&gt;), en rajoutant les lignes suivantes&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;quot; Scala {{{3
-let type_scala = {}
-let type_scala.ctagstype = &#39;Scala&#39;
-let type_scala.kinds     = [
-  \ {&#39;short&#39; : &#39;p&#39;, &#39;long&#39; : &#39;packages&#39;,  &#39;fold&#39; : 1 },
-  \ {&#39;short&#39; : &#39;V&#39;, &#39;long&#39; : &#39;values&#39;,    &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;v&#39;, &#39;long&#39; : &#39;variables&#39;, &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;T&#39;, &#39;long&#39; : &#39;types&#39;,     &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;t&#39;, &#39;long&#39; : &#39;traits&#39;,    &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;o&#39;, &#39;long&#39; : &#39;objects&#39;,   &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;a&#39;, &#39;long&#39; : &#39;aclasses&#39;,  &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;c&#39;, &#39;long&#39; : &#39;classes&#39;,   &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;r&#39;, &#39;long&#39; : &#39;cclasses&#39;,  &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;m&#39;, &#39;long&#39; : &#39;methods&#39;,   &#39;fold&#39; : 0 }
-\ ]
-let type_scala.sro        = &#39;.&#39;
-let type_scala.kind2scope = {
-  \ &#39;T&#39; : &#39;type&#39;,
-  \ &#39;t&#39; : &#39;trait&#39;,
-  \ &#39;o&#39; : &#39;object&#39;,
-  \ &#39;a&#39; : &#39;abstract class&#39;,
-  \ &#39;c&#39; : &#39;class&#39;,
-  \ &#39;r&#39; : &#39;case class&#39;
-\ }
-let type_scala.scope2kind = {
-  \ &#39;type&#39;           : &#39;T&#39;,
-  \ &#39;trait&#39;          : &#39;t&#39;,
-  \ &#39;object&#39;         : &#39;o&#39;,
-  \ &#39;abstract class&#39; : &#39;a&#39;,
-  \ &#39;class&#39;          : &#39;c&#39;,
-  \ &#39;case class&#39;     : &#39;r&#39;
-\ }
-let s:known_types.scala = type_scala
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Attention, ces lignes doivent être rajoutées dans la fonction &lt;code&gt;_function! s:InitTypes()_&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Et voilà - Vim est prêt pour Scala !&lt;/p&gt;
-
-&lt;p&gt;Tiré/traduit de &lt;a href=&#34;http://latestbuild.net/scala-ctags-and-vim-tagbar&#34;&gt;latestbuild.net/scala-ctags-and-vim-tagbar &lt;/a&gt;&lt;/p&gt;
-</description>
+Mon premier réflexe a été bien évidemment de m&amp;rsquo;assurer que macVim me permettrait de facilement commencer quelques développement en Scala. En cherchant rapidement sur le web, j&amp;rsquo;ai pu trouvé quelques astuces pour la coloration, la navigation à travers les méthodes&amp;hellip;&lt;/p&gt;</description>
     </item>
     
   </channel>

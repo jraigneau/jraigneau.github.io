@@ -6,8 +6,11 @@
     <description>Recent content in Devops on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
+    <copyright>&amp;#0169; 2008 - 2017, Julien Raigneau &amp;nbsp;&amp;nbsp;  | &amp;nbsp;&amp;nbsp;  Zeneffy &gt;&gt; Zen &amp;amp; Efficace</copyright>
     <lastBuildDate>Sat, 04 Apr 2015 20:17:05 +0100</lastBuildDate>
-    <atom:link href="http://www.zeneffy.fr/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.zeneffy.fr/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Obiran versus synology</title>
@@ -15,21 +18,9 @@
       <pubDate>Sat, 04 Apr 2015 20:17:05 +0100</pubDate>
       
       <guid>http://www.zeneffy.fr/2015/04/obiran-vs-synology/</guid>
-      <description>&lt;p&gt;Depuis quelques mois, j’ai mis en oeuvre une nouvelle infrastructure chez moi de type &lt;a href=&#34;http://techhead.co/vmware-esxi-home-lab-why-what-and-how-considerations-when-building-your-own-home-lab/&#34;&gt;homelab&lt;/a&gt;, basée sur un petit serveur intel NUC, ESXi et Ubuntu.&lt;/p&gt;
-
-&lt;p&gt;Comme tout bon exploitant avec des tendances &lt;a href=&#34;http://www.zeneffy.fr/tags/devops&#34;&gt;devops&lt;/a&gt;, j’ai rajouté de la supervision avec &lt;a href=&#34;http://newrelic.com/server-monitoring&#34;&gt;NewRelic&lt;/a&gt;, divers scripts de contrôle, un dashboard basé sur &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt;, l’installation automatisée de VM via &lt;a href=&#34;http://www.ansible.com/home&#34;&gt;ansible&lt;/a&gt; et évidemment je me suis ensuite attaqué à la problématique des sauvegardes.&lt;/p&gt;
-
-&lt;p&gt;De nombreuses solutions opensource existent déjà (&lt;a href=&#34;http://www.amanda.org/&#34;&gt;amanda&lt;/a&gt;, &lt;a href=&#34;http://www.baculasystems.com/&#34;&gt;bacula&lt;/a&gt; …) permettant entre autre d’avoir une architecture de type client-serveur. Toutefois, la sauvegarde étant un sujet qui me tient à &lt;a href=&#34;http://www.zeneffy.fr/tags/backup/&#34;&gt;coeur&lt;/a&gt;, j’ai décidé de réutiliser un de mes scripts assez ancien « &lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;obiran&lt;/a&gt; » pour sauvegarder les fichiers importants directement sur mon NAS Synology.&lt;/p&gt;
-
-&lt;p&gt;Mais la mauvaise fée de l’informatique est intervenu d’un coup de baguette numérique rendant impossible de faire fonctionner &lt;code&gt;rsync&lt;/code&gt; entre mes VM et le NAS, avec un message d’erreur peu parlant du type &lt;code&gt;Permission denied, please try again.&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Après quelques recherches, la solution semble être d’expliciter le chemin du binaire &lt;code&gt;rsync&lt;/code&gt; côté synology, avec le paramètre &lt;code&gt;—rsync-path=/usr/syno/bin/rsync&lt;/code&gt;. La commande à lancer devient donc:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;rsync -azv —rsync-path=/usr/syno/bin/rsync REPERTOIRE_A_SAUVEGARDER -e « ssh -p PORT -i FICHIER-CLEF » USER@SYNOLOGY:REPERTOIRE_DESTINATION
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;J’ai donc mis à jour Obiran avec un nouveau paramètre pour prendre en compte cette spécificité: Obiran est donc passé en version 0.6, sept ans avec la version 0.5 !&lt;/p&gt;
-</description>
+      <description>Depuis quelques mois, j’ai mis en oeuvre une nouvelle infrastructure chez moi de type homelab, basée sur un petit serveur intel NUC, ESXi et Ubuntu.
+Comme tout bon exploitant avec des tendances devops, j’ai rajouté de la supervision avec NewRelic, divers scripts de contrôle, un dashboard basé sur dashing, l’installation automatisée de VM via ansible et évidemment je me suis ensuite attaqué à la problématique des sauvegardes.
+De nombreuses solutions opensource existent déjà (amanda, bacula …) permettant entre autre d’avoir une architecture de type client-serveur.</description>
     </item>
     
     <item>
@@ -38,35 +29,7 @@
       <pubDate>Sun, 02 Sep 2012 12:56:19 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2012/09/le-motto-de-lexploitant/</guid>
-      <description>&lt;p&gt;En lisant le très bon article &lt;a href=&#34;http://agiletesting.blogspot.co.uk/2012/08/10-things-to-know-when-starting-out-as.html&#34;&gt;10 things to know when starting out as a sysadmin&lt;/a&gt;, j&amp;rsquo;ai retrouvé des points importants que tout exploitant doit connaître sur le bout des doigts à mon humble avis et d&amp;rsquo;après mes diverses (et parfois malheureuses) expériences:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Sauvegarder est important, tester la restauration l&amp;rsquo;est tout autant.&lt;/li&gt;
-&lt;li&gt;Tous les systèmes et applications en production doivent être supervisés, en adaptant le niveau de supervision à la criticité du système.&lt;/li&gt;
-&lt;li&gt;L&amp;rsquo;exploitant doit être techniquement très compétent, notamment sur les protocoles réseau (http, DNS, routages&amp;hellip;) qui sont à la base du troubleshooting.&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;L&amp;rsquo;exploitant est avant tout un expert de la gestion des problèmes qui sait analyser les anomalies en identifiant et éliminant les variables une à une jusqu&amp;rsquo;à trouver la rootcause.&lt;/li&gt;
-&lt;li&gt;Redondance et résilience sont les amies de l&amp;rsquo;exploitant, qui n&amp;rsquo;oublie pas de les tester régulièrement&amp;hellip;il est toujours dommage de se rendre compte en plein incident que le backup ne fonctionne pas alors que le master est tombé&lt;/li&gt;
-&lt;li&gt;Exploiter des machines, c&amp;rsquo;est maintenir la disponibilité &lt;strong&gt;et&lt;/strong&gt; la sécurité des applications: vos clients ne vous pardonneront jamais d&amp;rsquo;avoir égarer leurs données personnelles.&lt;/li&gt;
-&lt;li&gt;Les logs sont et resteront l&amp;rsquo;outil de diagnostic principal de l&amp;rsquo;exploitant: cela nécessite d&amp;rsquo;une part une infrastructure pour les gérer correctement mais aussi un travail en amont avec les développeurs pour savoir ce qui doit être dans des logs ou pas!&lt;/li&gt;
-&lt;li&gt;Savoir développer des outils est important pour industrialiser des actions de production ou pour trouver un &amp;ldquo;quick hack&amp;rdquo; afin de rétablir le service&amp;hellip;et ces outils sont presque toujours écrit en langage de script (python, ruby, bash, lua - choisissez votre préféré) que devra connaître voire masteriser l&amp;rsquo;exploitant.&lt;/li&gt;
-&lt;li&gt;La documentation sauve la journée de l&amp;rsquo;exploitant (et permet accessoirement de rétablir le service): manuels d&amp;rsquo;exploitation, guides de troubleshooting, schémas de flux&amp;hellip;sont à construire, collecter et surtout stocker dans des bases de connaissance efficientes - les wikis sont souvent de parfaits candidats pour cela en rajoutant une dimension collaborative entre exploitants et développeurs.&lt;/li&gt;
-&lt;li&gt;Bien que la réactivité soit la première qualité de l&amp;rsquo;exploitant, la proactivité est tout aussi importante, d&amp;rsquo;une part en amont des projets pour préparer l&amp;rsquo;exploitabilité des solutions avec architectes et développeurs et d&amp;rsquo;autre part en aval en analysant quotidiennement la performance des applications afin d&amp;rsquo;anticiper les dégradations.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Dernier point et non des moindres: l&amp;rsquo;opensource permet à l&amp;rsquo;exploitant d&amp;rsquo;avoir une boîte à outils efficace et à moindre frais:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Déploiement (Puppet/Chef/Vagrant)&lt;/li&gt;
-&lt;li&gt;Intégration et les tests (Selenium, Cucumber &amp;amp; Co)&lt;/li&gt;
-&lt;li&gt;Sauvegarde (Amanda/Bacula)&lt;/li&gt;
-&lt;li&gt;Supervision (Nagios, Centreon, Zabbix)&lt;/li&gt;
-&lt;li&gt;Analyse de la performance (Cacti, Smokeping)&lt;/li&gt;
-&lt;li&gt;Gestion des problèmes et des incidents (Bugzilla, Mantis, Trac)&lt;/li&gt;
-&lt;li&gt;Documentation (MoinMoinwiki, MediaWiki).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ainsi pour chaque usage plusieurs alternatives libres existent et sont par ailleurs largement utilisées dans le monde de la production pour faciliter la vie de l&amp;rsquo;exploitant.&lt;/p&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
@@ -84,8 +47,8 @@
 &lt;li&gt;Pour les applications web, utiliser un socle de feuilles de style css et de morceaux de code ou librairies javascript réutilisables&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Ces quatre règles me permettent en ce moment de sortir une application tous les deux mois.&lt;/p&gt;
-</description>
+&lt;p&gt;Ces quatre règles me permettent en ce moment de sortir une application tous les deux mois.
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -109,27 +72,7 @@
 &lt;p&gt;Visualisation de Meilleures logs&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;heroku addons:add logging:expanded
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Supervision applicative&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;heroku addons:add newrelic:bronze
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Envoi de mail&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;heroku addons:add sendgrid:free
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;D&amp;rsquo;autres extension en béta, à étudier de près:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Release Management (gestion de version comme sur GAE): &lt;code&gt;heroku addons:add releases:basic&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;CloudMailin (Réception de mail): &lt;code&gt;heroku addons:add cloudmailin:test&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Custom Error Pages (Gestion de pages de maintenance): &lt;code&gt;heroku addons:add custom_error_pages&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;PG Backups (Sauvegardes de la base de donnée): &lt;code&gt;heroku addons:add pgbackups:basic&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
   </channel>

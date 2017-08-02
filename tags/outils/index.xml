@@ -6,8 +6,11 @@
     <description>Recent content in Outils on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
+    <copyright>&amp;#0169; 2008 - 2017, Julien Raigneau &amp;nbsp;&amp;nbsp;  | &amp;nbsp;&amp;nbsp;  Zeneffy &gt;&gt; Zen &amp;amp; Efficace</copyright>
     <lastBuildDate>Tue, 11 Oct 2016 07:48:54 +0200</lastBuildDate>
-    <atom:link href="http://www.zeneffy.fr/tags/outils/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.zeneffy.fr/tags/outils/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>A bot to rule them all</title>
@@ -15,99 +18,12 @@
       <pubDate>Tue, 11 Oct 2016 07:48:54 +0200</pubDate>
       
       <guid>http://www.zeneffy.fr/2016/10/go-bot-domotique/</guid>
-      <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;Un Anneau pour les gouverner tous&lt;/p&gt;
-
-&lt;p&gt;Un Anneau pour les trouver&lt;/p&gt;
-
-&lt;p&gt;Un Anneau pour les amener tous [&amp;hellip;]&lt;/p&gt;
-
-&lt;p&gt;&amp;ndash; J. R. R. Tolkien, Le seigneurs des anneaux&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Pour des raisons de sécurité, j&amp;rsquo;ai décidé de n&amp;rsquo;avoir aucun accès de l&amp;rsquo;extérieur vers mes éléments de domotique, avec toutefois un inconvénient majeur: aucun moyen de consulter les diverses données ou de lancer des actions.&lt;/p&gt;
-
-&lt;p&gt;Pour résoudre ce problème j&amp;rsquo;ai tenté plusieurs approches à base de tableaux de bord &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt; ou de solutions maison comme &lt;a href=&#34;https://github.com/jraigneau/proxana&#34;&gt;proxana&lt;/a&gt; mais qui ne m&amp;rsquo;ont jamais vraiment convaincues pour mon cas d&amp;rsquo;usage.&lt;/p&gt;
-
-&lt;h4 id=&#34;de-l-usage-d-un-bot-pour-la-domotique&#34;&gt;De l&amp;rsquo;usage d&amp;rsquo;un bot pour la domotique&lt;/h4&gt;
-
-&lt;p&gt;Et j&amp;rsquo;ai commencé à m&amp;rsquo;intéresser aux bots de type &lt;a href=&#34;https://hubot.github.com/&#34;&gt;Hubot&lt;/a&gt; et à leur utilité pour finalement créer mon propre bot nommé&lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt; est un service écrit en langage Go, basé sur mon système domotique déjà en place (&lt;a href=&#34;https://www.influxdata.com/&#34;&gt;InfluxDB&lt;/a&gt; et &lt;a href=&#34;http://nodered.org/&#34;&gt;NodeRed&lt;/a&gt;) et utilisant l&amp;rsquo;infrastructure de &lt;a href=&#34;https://telegram.org/&#34;&gt;Telegram&lt;/a&gt; pour me permettre de lancer des actions domotiques, du type &amp;ldquo;quelle est la température chez moi?&amp;rdquo;, sans risque sur la sécurité de mon système.&lt;/p&gt;
-
-&lt;p&gt;Une capture d&amp;rsquo;écran étant toujours plus simple que des mots, cela donne donc:
-   &lt;center&gt;&lt;img src=&#34;https://c3.staticflickr.com/9/8268/30137861482_00e066e485.jpg&#34; width=&#34;500&#34; height=&#34;363&#34; alt=&#34;graphana-elec&#34;&gt;&lt;/center&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;dans-les-coulisses-de-goule&#34;&gt;Dans les coulisses de Goule&lt;/h4&gt;
-
-&lt;p&gt;Pour développer &lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt; en langage Go (décidemment j&amp;rsquo;aime beaucoup ce langage), je me suis appuyé de façon classique sur des librairies existantes notamment &lt;a href=&#34;https://gopkg.in/telegram-bot-api.v4&#34;&gt;telegram-bot-api&lt;/a&gt; pour se connecter à &lt;a href=&#34;https://telegram.org/&#34;&gt;Telegram&lt;/a&gt; ainsi que la &lt;a href=&#34;https://github.com/influxdata/influxdb/tree/master/client&#34;&gt;librairie native pour influxdb&lt;/a&gt;. La seule difficulté rencontrée a été le formatage des données renvoyées par influxdb, qui nécessite de fouiller un peu dans les &lt;a href=&#34;https://golang.org/pkg/encoding/json/#Number&#34;&gt;API&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;const (
-    username = &amp;quot;grafana&amp;quot;
-    password = &amp;quot;paint&amp;quot;
-    addr = &amp;quot;http://obelix:8086&amp;quot;
-)
-# Crée la requete et l&#39;envoie à InfluxDB, renvoie le résultat
-func queryDB(cmd string, MyDB string) (res []client.Result, err error) {
-
-    log.Printf(&amp;quot;Connection à influxDB&amp;quot;)
-    clnt, err := client.NewHTTPClient(client.HTTPConfig{
-        Addr: addr,
-        Username: username,
-        Password: password,
-    })
-    if err != nil {
-        log.Fatalln(&amp;quot;Error: &amp;quot;, err)
-    }
-    q := client.Query{
-        Command:  cmd,
-        Database: MyDB,
-    }
-    response, err := clnt.Query(q)
-    if err != nil {
-        log.Fatalln(&amp;quot;Error: &amp;quot;, err)
-    }
-    if response.Error() != nil {
-        log.Fatalln(&amp;quot;Error: &amp;quot;, response.Error())
-    }
-    res = response.Results
-    log.Println(response.Results)
-    return res, nil
-}
-# Récupère la consommation électrique dans influxDB
-func getConsoElectrique() string {
-    q := fmt.Sprintf(&amp;quot;SELECT * FROM energy ORDER BY time DESC LIMIT 1&amp;quot;)
-    res, err := queryDB(q,&amp;quot;electricity&amp;quot;)
-    if err != nil {
-        log.Fatal(&amp;quot;Error: &amp;quot;,err)
-    }
-    day_energy := res[0].Series[0].Values[0][1].(json.Number).String()
-    instant_energy := res[0].Series[0].Values[0][2].(json.Number).String()
-
-    return fmt.Sprintf(&amp;quot;Actuellement la consommation instantanée est de *%sW* et le cumul est de *%skW*.&amp;quot;,instant_energy,day_energy)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Le point d&amp;rsquo;attention étant sur la manipulation des résultats, avec des tableaux dans tous les sens, et des transformations JSON à faire comme pour récupérer la consommation quotidienne:  &lt;code&gt;day_energy := res[0].Series[0].Values[0][1].(json.Number).String()&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;containers-are-the-new-black&#34;&gt;Containers are the new black&lt;/h4&gt;
-
-&lt;p&gt;Finalement pour faire tourner tout cela simplement (et tenter quelque chose de différent), j&amp;rsquo;ai utilisé un container &lt;a href=&#34;https://www.docker.com/&#34;&gt;docker&lt;/a&gt; construit directement à partir du container &lt;a href=&#34;https://hub.docker.com/_/golang/&#34;&gt;Golang officiel&lt;/a&gt; et en m&amp;rsquo;appuyant sur &lt;a href=&#34;https://blog.docker.com/2016/09/docker-golang/&#34;&gt;l&amp;rsquo;article de Jérôme Petazzoni&lt;/a&gt;, avec les commandes suivantes:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# téléchargement de l&#39;image et des librairies + compilation de goule
-docker run golang go get -v github.com/jraigneau/goule
-# Transformation en image docker nommé goule
-docker commit $(docker ps -lq) goule
-# Lancement du programme goule dans l&#39;image goule en mode &amp;quot;daemon&amp;quot; à partir du containter goule
-docker run --restart=always --name goule -it -d goule goule
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Cela me permet d&amp;rsquo;avoir un &amp;ldquo;service&amp;rdquo; qui tourne sur ma VM principale dédiée aux containers, isolée des autres containers, avec une relance automatique en cas de problème (notamment coupure intempestive de ma ligne internet, ce qui est arrivé).&lt;/p&gt;
-
-&lt;p&gt;J&amp;rsquo;utilise ce système depuis un mois environ, et étant donné sa fiabilité je vais surement l&amp;rsquo;étendre à d&amp;rsquo;autres fonctions de ma domotique dans le futur.&lt;/p&gt;
-</description>
+      <description>Un Anneau pour les gouverner tous
+Un Anneau pour les trouver
+Un Anneau pour les amener tous [&amp;hellip;]
+&amp;ndash; J. R. R. Tolkien, Le seigneurs des anneaux
+ Pour des raisons de sécurité, j&amp;rsquo;ai décidé de n&amp;rsquo;avoir aucun accès de l&amp;rsquo;extérieur vers mes éléments de domotique, avec toutefois un inconvénient majeur: aucun moyen de consulter les diverses données ou de lancer des actions.
+Pour résoudre ce problème j&amp;rsquo;ai tenté plusieurs approches à base de tableaux de bord dashing ou de solutions maison comme proxana mais qui ne m&amp;rsquo;ont jamais vraiment convaincues pour mon cas d&amp;rsquo;usage.</description>
     </item>
     
     <item>
@@ -116,18 +32,8 @@ docker run --restart=always --name goule -it -d goule goule
       <pubDate>Sat, 02 Apr 2016 14:17:38 +0200</pubDate>
       
       <guid>http://www.zeneffy.fr/2016/04/godillot/</guid>
-      <description>&lt;p&gt;Suite à une coupure de courant le mois dernier, suffisamment longue pour vider la batterie de l&amp;rsquo;UPS, mes systèmes ont tous redémarrés automatiquement - ou du moins je le croyais jusqu&amp;rsquo;à ce que je me rende compte quelques jours plus tard que la base &lt;a href=&#34;http://influxdb.com/&#34;&gt;influxDB&lt;/a&gt; ne tournait plus, plantée suite à la coupure.&lt;/p&gt;
-
-&lt;p&gt;Après avoir réparé cette base de donnée (et avoir mis en oeuvre un vrai &lt;a href=&#34;https://docs.influxdata.com/influxdb/v0.11/administration/backup_and_restore/&#34;&gt;système de backup&lt;/a&gt; sur les data influxdb&amp;hellip;), j&amp;rsquo;ai décidé d&amp;rsquo;installer un système de monitoring simple des processus avec &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;. est un agent qui vérifie régulièrement les processus (Existence, Consommation, Code erreur), et envoie des alertes en cas de problèmes&amp;hellip;bref rien de plus que Nagios ou &lt;a href=&#34;http://newrelic.com&#34;&gt;New Relic&lt;/a&gt;, sauf que &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;. peut aussi lancer des actions comme relancer les processus en cas de problèmes ou de dépassement de seuil. Dans le cas d&amp;rsquo;une infrastructure peu administrée/monitorée comme la mienne cela devient très intéressant pour automatiser et se faciliter la vie.&lt;/p&gt;
-
-&lt;p&gt;Toutefois, &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt; a un inconvénient majeur: pour avoir une vision globale de l&amp;rsquo;état de l&amp;rsquo;ensemble des serveurs il faut utiliser &lt;a href=&#34;https://mmonit.com/&#34;&gt;M/Monit&lt;/a&gt; qui est payant.&lt;/p&gt;
-
-&lt;p&gt;Aussi, j&amp;rsquo;ai développé en langage &lt;a href=&#34;http://golang.org&#34;&gt;Go&lt;/a&gt; une mini application appelée &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Godillot&lt;/a&gt; qui récupère les informations Monit de chaque serveur et les agrège dans un fichier html simple à lire comme vous pourrez le voir &lt;a href=&#34;http://godillot.zeneffy.fr&#34;&gt;en exemple&lt;/a&gt;. &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Godillot&lt;/a&gt; n&amp;rsquo;a pas vocation à remplacer M/Monit qui est très complet mais permet d&amp;rsquo;assurer un minimum de surveillance via u tableau de bord.&lt;/p&gt;
-
-&lt;p&gt;Godillot est bien entendu disponible en open-source (Licence Apache), directement sur &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Github&lt;/a&gt;, pour utilisation, modification (je ne suis pas fier du template html) et commentaires à votre convenance !&lt;/p&gt;
-</description>
+      <description>Suite à une coupure de courant le mois dernier, suffisamment longue pour vider la batterie de l&amp;rsquo;UPS, mes systèmes ont tous redémarrés automatiquement - ou du moins je le croyais jusqu&amp;rsquo;à ce que je me rende compte quelques jours plus tard que la base influxDB ne tournait plus, plantée suite à la coupure.
+Après avoir réparé cette base de donnée (et avoir mis en oeuvre un vrai système de backup sur les data influxdb&amp;hellip;), j&amp;rsquo;ai décidé d&amp;rsquo;installer un système de monitoring simple des processus avec Monit.</description>
     </item>
     
     <item>
@@ -140,8 +46,8 @@ docker run --restart=always --name goule -it -d goule goule
 
 &lt;p&gt;Finalement, j&amp;rsquo;ai simplifié à l&amp;rsquo;extrème en utilisant &lt;a href=&#34;http://pages.github.com/&#34;&gt;github pages&lt;/a&gt; avec un site complètement statique et se résumant à une page.&lt;/p&gt;
 
-&lt;p&gt;Comme quoi les CMS et les bases de données ne sont pas la solution à tous les problèmes !&lt;/p&gt;
-</description>
+&lt;p&gt;Comme quoi les CMS et les bases de données ne sont pas la solution à tous les problèmes !
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -155,45 +61,7 @@ docker run --restart=always --name goule -it -d goule goule
 &lt;p&gt;Heureusement, il est possible très facilement de forcer la version - pour cela il suffit d&amp;rsquo;une part de rajouter un &amp;ldquo;buildpack&amp;rdquo; dans les variables d&amp;rsquo;environnement de votre application:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;heroku config:add BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-nodejs.git#versions
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;puis de modifier le fichier &lt;em&gt;packages.json&lt;/em&gt; pour rajouter une entrée &amp;ldquo;engines&amp;rdquo;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-    &amp;quot;name&amp;quot;: &amp;quot;monAppli&amp;quot;
-  , &amp;quot;version&amp;quot;: &amp;quot;0.1.0&amp;quot;
-  , &amp;quot;private&amp;quot;: true
-  , &amp;quot;dependencies&amp;quot;: {
-      &amp;quot;express&amp;quot;: &amp;quot;2.5.6&amp;quot;
-    , &amp;quot;jade&amp;quot;: &amp;quot;0.20.0&amp;quot;
-  },
-  &amp;quot;engines&amp;quot;: {
-    &amp;quot;node&amp;quot;: &amp;quot;0.6.x&amp;quot;,
-    &amp;quot;npm&amp;quot;: &amp;quot;1.0.x&amp;quot;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Puis les classiques&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git add .
-git commit -m &amp;quot;passage en en 0.6&amp;quot;
-git push heroku master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Normalement vous devriez voir les lignes:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;-----&amp;gt; Heroku receiving push
------&amp;gt; Fetching custom buildpack... done
------&amp;gt; Node.js app detected
------&amp;gt; Resolving engine versions
-       Using Node.js version: 0.6.8
-       Using npm version: 1.0.106
------&amp;gt; Fetching Node.js binaries
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Et voilà, votre application tourne en 0.6.&lt;/p&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -211,132 +79,7 @@ git push heroku master
 &lt;li&gt;Testez que tout s&amp;rsquo;est bien passé: &lt;code&gt;play run&lt;/code&gt; puis ouvrez votre navigateur sur &lt;code&gt;http//localhost:9000&lt;/code&gt;. Normalement vous devez avoir une belle fenêtre résumant le fonctionnement de Play!. Passons maintenant au choses sérieuses.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Modifiez les dépendances du projet pour ajouter &lt;a href=&#34;http://api.mongodb.org/scala/casbah/2.1.5.0/index.html&#34;&gt;Casbah&lt;/a&gt;, la librairie Scala permettant de manipuler &lt;a href=&#34;mongodb&#34;&gt;MongoDB&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Application dependencies
-require:
-    - play
-    - play -&amp;gt; scala 0.9.1
-    - com.mongodb.casbah -&amp;gt; casbah_2.8.1 2.1.5-1
-
-repositories:
-  - scalatools:
-     type: iBiblio
-     root: http://scala-tools.org/repo-releases/
-     contains:
-       - com.mongodb.casbah -&amp;gt; *
-       - org.scalaj -&amp;gt; *
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Attention de bien utiliser la version 2.8.1 qui est la seule compatible avec Play! 1.2.3 à l&amp;rsquo;heure actuelle.&lt;/p&gt;
-
-&lt;p&gt;Forcez Play! à charger toutes les dépendances (qui seront stockées dans le répertoire /lib):
-    play dependencies&lt;/p&gt;
-
-&lt;p&gt;Préparez l&amp;rsquo;application pour le déploiement sur heroku: pour des raisons de simplicité nous allons utiliser la base MongoDB de heroku directement (pas de base de développement&amp;hellip;c&amp;rsquo;est mal mais c&amp;rsquo;est une démo !).
-Avant toute chose, créez un fichier &lt;code&gt;.gitignore&lt;/code&gt; contenant:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;/modules
-/tmp
-/lib
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Puis la magie git habituelle&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git init
-git add .
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;et enfin la déclaration sous heroku (je ne donne pas de nom à l&amp;rsquo;application, Heroku m&amp;rsquo;en choisira un tout seul) et l&amp;rsquo;installation de l&amp;rsquo;addon mongodb (ici via mongolab mais mongoHQ ferait aussi l&amp;rsquo;affaire)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;heroku create --stack cedar
-heroku addons:add mongolab:starter
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Point important: la commande heroku config vous permettra de récupérer l&amp;rsquo;url et le port de la base mongoDB automatiquement créée. Exemple:
-    &lt;code&gt;MONGOLAB_URI =&amp;gt; mongodb://nombase:motdepasse@urlmongolab:portmongolab/nombase&lt;/code&gt;
-Ces données sont à intégrer dans la prochaine étape.&lt;/p&gt;
-
-&lt;p&gt;Créez un nouveau controleur dans /app/controllers/Messages.scala avec le code suivant:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;package controllers;
-
-import play.mvc._;
-import com.mongodb.casbah.Imports._
-import scala.collection.JavaConverters._
-
-object Messages extends Controller {
-
-//Création de la connexion et authentification
-  val _mongoConn = MongoConnection(&amp;quot;urlmongolab&amp;quot;, portmongolab)
-  _mongoConn(&amp;quot;nombase&amp;quot;).authenticate(&amp;quot;nombase&amp;quot;,&amp;quot;motdepasse&amp;quot;)
-
-
-  def index = {
-    val msgs = _mongoConn(&amp;quot;nombase&amp;quot;)(&amp;quot;test_data&amp;quot;).find( &amp;quot;msg&amp;quot; $exists true $ne &amp;quot;&amp;quot; )
-    val msgStrings = msgs.map( (obj: DBObject) =&amp;gt; obj.getOrElse(&amp;quot;msg&amp;quot;,&amp;quot;&amp;quot;) )
-    Template( &#39;msgStrings -&amp;gt; msgStrings.asJava )
-  }
-
-  def save(msg:String) = {
-    val doc = MongoDBObject(&amp;quot;msg&amp;quot; -&amp;gt; msg)
-    _mongoConn(&amp;quot;nombase&amp;quot;)(&amp;quot;test_data&amp;quot;).save( doc )
-    Redirect(&amp;quot;/&amp;quot;)
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Vous noterez les transformations des méthodes &amp;ldquo;.asJava&amp;rdquo; qui permettent à Groovy (le langage de scripting intégré dans Play) de gérer les listes typique de Scala.&lt;/p&gt;
-
-&lt;p&gt;Ajoutez une vue pour gérer le controleur avec un fichier dans /app/views/Messages/index.html&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;form action=&amp;quot;@{Messages.save()}&amp;quot; method=&amp;quot;POST&amp;quot;/&amp;gt;
-  &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;msg&amp;quot;/&amp;gt;
-  &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;Add message&amp;quot; /&amp;gt;
-&amp;lt;/form&amp;gt;
-
-&amp;lt;ul&amp;gt;
-  #{list items:msgStrings, as:&#39;mess&#39; }
-  &amp;lt;li&amp;gt;${ mess }&amp;lt;/li&amp;gt;
-  #{/list}
-&amp;lt;/ul&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Modifiez les routes dans /config/routes&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
-
-# Home page
-GET     /                                       Messages.index
-POST    /                                       Messages.save
-
-
-# Ignore favicon requests
-GET     /favicon.ico                            404
-
-# Map static resources from the /app/public folder to the /public path
-GET     /public/                                staticDir:public
-
-# Catch all
-*       /{controller}/{action}                  {controller}.{action}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Testez votre application en lançant la commande play run - normalement vous devriez être capable d&amp;rsquo;enregistrer des petites messages et de les voir apparaître à l&amp;rsquo;écran.&lt;/p&gt;
-
-&lt;p&gt;Déployez votre application sur heroku et admirez la !&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git add .
-git commit -m &amp;quot;Premier commit&amp;quot;
-git push heroku master
-heroku open
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ce petit tutoriel peut (doit) être complété avec le &lt;a href=&#34;http://scala.playframework.org/documentation/scala-0.9.1/home&#34;&gt;tutoriel officiel disponible sur le site de Play&lt;/a&gt;, en attendant vous pourrez jouer avec mon application sur &lt;a href=&#34;http://glowing-fog-2793.herokuapp.com/&#34;&gt;http://glowing-fog-2793.herokuapp.com/&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Tutoriel basé en partie sur &lt;a href=&#34;http://jaredrosoff.com/2011/05/getting-started-with-play-framework-scala-and-casbah/&#34;&gt;http://jaredrosoff.com/2011/05/getting-started-with-play-framework-scala-and-casbah/&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Modifiez les dépendances du projet pour ajouter &lt;a href=&#34;http://api.mongodb.org/scala/casbah/2.1.5.0/index.html&#34;&gt;Casbah&lt;/a&gt;, la librairie Scala permettant de manipuler &lt;a href=&#34;mongodb&#34;&gt;MongoDB&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -345,24 +88,9 @@ heroku open
       <pubDate>Sat, 15 Oct 2011 08:21:18 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/10/scala-sur-heroku/</guid>
-      <description>&lt;p&gt;En plein apprentissage de scala, j&amp;rsquo;ai décidé de m&amp;rsquo;intéresser au framework web &lt;a href=&#34;http://www.scalatra.org/&#34;&gt;Scalatra&lt;/a&gt; qui ressemble à &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;Sinatra&lt;/a&gt;, mon environnement favori en Ruby. Evidemment, je souhaite pouvoir partager rapidement mes &amp;lsquo;créations&amp;rsquo; en les hébergeant sur la plate-forme &lt;a href=&#34;http://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;, devenue &lt;a href=&#34;http://blog.heroku.com/archives/2011/8/3/polyglot_platform/&#34;&gt;polyglotte&lt;/a&gt; depuis quelques semaines en supportant d&amp;rsquo;autres langages que Ruby (notamment node.js, Java, Clojure, Scala et Python).&lt;/p&gt;
+      <description>&lt;p&gt;En plein apprentissage de scala, j&amp;rsquo;ai décidé de m&amp;rsquo;intéresser au framework web &lt;a href=&#34;http://www.scalatra.org/&#34;&gt;Scalatra&lt;/a&gt; qui ressemble à &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;Sinatra&lt;/a&gt;, mon environnement favori en Ruby. Evidemment, je souhaite pouvoir partager rapidement mes &amp;lsquo;créations&amp;rsquo; en les hébergeant sur la plate-forme &lt;a href=&#34;http://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;, devenue &lt;a href=&#34;http://blog.heroku.com/archives/2011/8/3/polyglot_platform/&#34;&gt;polyglotte&lt;/a&gt; depuis quelques semaines en supportant d&amp;rsquo;autres langages que Ruby (notamment node.js, Java, Clojure, Scala et Python).
 
-&lt;p&gt;Après quelques recherches sur internet, j&amp;rsquo;ai trouvé mon bonheur sur github &lt;a href=&#34;https://gist.github.com/1209277&#34;&gt;ici&lt;/a&gt; et &lt;a href=&#34;https://github.com/mikkelbd/scalatra-hello-heroku&#34;&gt;là&lt;/a&gt;. Pour gagner du temps dans mes futurs projets, j&amp;rsquo;ai alors transformé ces informations en un template &lt;a href=&#34;https://github.com/n8han/giter8&#34;&gt;giter8&lt;/a&gt;. Giter8 est un simple outil basé sur scala et &lt;a href=&#34;https://github.com/harrah/xsbt/wiki&#34;&gt;SBT&lt;/a&gt; qui installe des templates stockés sur Github.&lt;/p&gt;
-
-&lt;p&gt;Une fois &lt;a href=&#34;https://github.com/n8han/giter8&#34;&gt;g8&lt;/a&gt; et le &lt;a href=&#34;http://devcenter.heroku.com/articles/git&#34;&gt;gem heroku&lt;/a&gt; installés, mettre en ligne un projet scalatra devient alors très simple:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;g8 jraigneau/scalatra-sbt-heroku.g8
-cd monProjet
-git init
-git add . (conseil: pensez à mettre les répertoires de compilation (target) dans votre fichier .gitignore avant...)
-git commit -m &amp;quot;Premier commit&amp;quot;
-heroku create monProjet --stack cedar
-git push heroku master
-heroku open
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Et voilà, votre navigateur s&amp;rsquo;ouvre sur la nouvelle application !&lt;/p&gt;
-</description>
+Après quelques recherches sur internet, j&amp;rsquo;ai trouvé mon bonheur sur github &lt;a href=&#34;https://gist.github.com/1209277&#34;&gt;ici&lt;/a&gt; et &lt;a href=&#34;https://github.com/mikkelbd/scalatra-hello-heroku&#34;&gt;là&lt;/a&gt;. Pour gagner du temps dans mes futurs projets, j&amp;rsquo;ai alors transformé ces informations en un template &lt;a href=&#34;https://github.com/n8han/giter8&#34;&gt;giter8&lt;/a&gt;. Giter8 est un simple outil basé sur scala et &lt;a href=&#34;https://github.com/harrah/xsbt/wiki&#34;&gt;SBT&lt;/a&gt; qui installe des templates stockés sur Github.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -383,26 +111,7 @@ heroku open
 &lt;pre&gt;&lt;code&gt;heroku pgbackups:capture
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Une petite vérification s&amp;rsquo;impose:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;heroku pgbackups
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;qui renvoie normalement:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;D   | Backup Time         | Size   | Database
------+---------------------+--------+----------------
-b001 | 2011/08/18 11:08.22 | 39.2KB | SHARED_DATABASE
-b002 | 2011/09/19 10:24.04 | 40.2KB | SHARED_DATABASE
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Et finalement pour restaurer (avec b001 la base):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;heroku pgbackups:restore DATABASE b001
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Rappelez vous que la sauvegarde reste l&amp;rsquo;un des meilleurs moyens de sécuriser vos données.&lt;/p&gt;
-</description>
+&lt;p&gt;Une petite vérification s&amp;rsquo;impose:&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -413,37 +122,7 @@ b002 | 2011/09/19 10:24.04 | 40.2KB | SHARED_DATABASE
       <guid>http://www.zeneffy.fr/2011/09/macvim-command-t-et-rvm/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/macvim/&#34;&gt;MacVim&lt;/a&gt; (une forme de l&amp;rsquo;éditeur VIM adaptée à MacOS) est mon éditeur de prédilection actuellement malgré de nombreux autres essais (entre autres: &lt;a href=&#34;http://macromates.com/&#34;&gt;Textmate&lt;/a&gt;, &lt;a href=&#34;http://kodapp.com/&#34;&gt;Kod&lt;/a&gt;, &lt;a href=&#34;http://www.sublimetext.com/&#34;&gt;Sublime Text&lt;/a&gt;).&lt;/p&gt;
 
-&lt;p&gt;Il est très configurable et permet de rajouter de nombreuses fonctionnalités utiles: ici je vous parlerai du module &lt;a href=&#34;https://wincent.com/products/command-t&#34;&gt;Command-T&lt;/a&gt; qui permet de faire des recherches très fines et surtout pertinentes à travers les répertoires et fichiers d&amp;rsquo;un projet - un screencast est disponible &lt;a href=&#34;https://s3.amazonaws.com/s3.wincent.com/command-t/screencasts/command-t-demo.mov?width=640&amp;amp;height=480&#34;&gt;sur le site de l&amp;rsquo;auteur&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Pour l&amp;rsquo;installer sur un mac avec RVM, il faut être vigilant sur la version de Ruby employée car MacVim ne compilant pas avec ruby 1.9.&lt;/p&gt;
-
-&lt;p&gt;Installation de MacVim via &lt;a href=&#34;http://mxcl.github.com/homebrew/&#34;&gt;homebrew&lt;/a&gt; avec ruby 1.8.7:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;rvm use system
-/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.github.com/gist/323731)&amp;quot;
-brew install wget macvim
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Installation de CommandT à partir de vim.org:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;wget http://www.vim.org/scripts/download_script.php?src_id=15560
-mvim command-t-1.2.1.vba
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Puis une fois MacVim ouvert:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;:so %
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;En sortant de MacVim:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cd /$HOME/.vim/ruby/command-t
-ruby extconf.rb
-make
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Et voilà normalement tout fonctionne, vous pouvez utiliser la version de ruby que vous souhaitez sans problème.&lt;/p&gt;
-</description>
+&lt;p&gt;Il est très configurable et permet de rajouter de nombreuses fonctionnalités utiles: ici je vous parlerai du module &lt;a href=&#34;https://wincent.com/products/command-t&#34;&gt;Command-T&lt;/a&gt; qui permet de faire des recherches très fines et surtout pertinentes à travers les répertoires et fichiers d&amp;rsquo;un projet - un screencast est disponible &lt;a href=&#34;https://s3.amazonaws.com/s3.wincent.com/command-t/screencasts/command-t-demo.mov?width=640&amp;amp;height=480&#34;&gt;sur le site de l&amp;rsquo;auteur&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -457,31 +136,7 @@ make
 &lt;p&gt;En effet, pour créer mon squelette d&amp;rsquo;application &amp;ldquo;zen-hw&amp;rdquo;, j&amp;rsquo;ai utilisé la commande&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;[julien.newton: zen-hw]$ express
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;qui crée par défaut une arborescence d&amp;rsquo;application Express - or par défaut le fichier app.js lancera la webapp via la commande&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;app.listen(3000);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;qui fonctionne parfaitement en local (sauf si &lt;a href=&#34;http://pow.cx/&#34;&gt;pow&lt;/a&gt; est installé, mais c&amp;rsquo;est une autre histoire) mais pas sur heroku, avec un beau crash de l&amp;rsquo;application visible via:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[julien.newton: zen-hw]$ heroku ps
-Process       State               Command
-------------  ------------------  ------------------------------
-web.1         crashed for 8s      node app.js 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Pour éviter ce point, il suffit de modifier app.js pour chaque application Express créée via la commande &lt;code&gt;_express_&lt;/code&gt; pour utiliser &lt;code&gt;_process.env.PORT_&lt;/code&gt;, ce qui donne à la fin du fichier:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var port = process.env.PORT || 3210;
-app.listen(port, function(){
-  console.log(&amp;quot;Listening on &amp;quot; + port);
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;et voilà l&amp;rsquo;application fonctionne sous heroku !&lt;/p&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -499,8 +154,8 @@ app.listen(port, function(){
 &lt;li&gt;Pour les applications web, utiliser un socle de feuilles de style css et de morceaux de code ou librairies javascript réutilisables&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Ces quatre règles me permettent en ce moment de sortir une application tous les deux mois.&lt;/p&gt;
-</description>
+&lt;p&gt;Ces quatre règles me permettent en ce moment de sortir une application tous les deux mois.
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -527,7 +182,8 @@ app.listen(port, function(){
 heroku rake db:migrate --app myapp-preprod
 heroku db:push --app myapp-preprod
 &lt;/code&gt;&lt;/pre&gt;
-</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -554,8 +210,8 @@ $ git config -l | grep &#39;^submodule&#39; | cut -d&#39;=&#39; -f1 | xargs -n1 
 $ git commit -m &amp;quot;récupération des sousmodules git&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;source: &lt;a href=&#34;http://stackoverflow.com/questions/894647/radiant-extensions-on-heroku&#34;&gt;http://stackoverflow.com/questions/894647/radiant-extensions-on-heroku&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;source: &lt;a href=&#34;http://stackoverflow.com/questions/894647/radiant-extensions-on-heroku&#34;&gt;http://stackoverflow.com/questions/894647/radiant-extensions-on-heroku&lt;/a&gt;
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -578,55 +234,7 @@ $ git commit -m &amp;quot;récupération des sousmodules git&amp;quot;
 &lt;pre&gt;&lt;code&gt;mkdir myapp
 cd myapp
 radiant --database=sqlite3  .
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Création de la base de donnée:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;rake db:bootstrap
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ajout du fichier Gemfile:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;source :gemcutter
-gem &#39;rails&#39;, &#39;2.3.8&#39;
-gem &#39;RedCloth&#39;
-gem &#39;will_paginate&#39;,&#39;2.3.11&#39;
-gem &#39;radiant&#39; , &#39;0.9.1&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Important: une modification de &lt;code&gt;radiant-0.9.1/vendor/rails/activesupport/lib/active_support.rb&lt;/code&gt; pour ajouter &lt;code&gt;require ‘thread’&lt;/code&gt; avant &lt;code&gt;module ActiveSupport&lt;/code&gt; est nécessaire pour éviter une erreur du type: &lt;code&gt;gems/radiant-0.9.1/vendor/rails/activesupport/lib/active_support/dependencies.rb:55: uninitialized constant ActiveSupport::Dependencies::Mutex (NameError)&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Lancer l&amp;rsquo;application en mode préprod puis en mode prod en visitant &lt;a href=&#34;http://localhost:3000/admin&#34;&gt;http://localhost:3000/admin&lt;/a&gt; pour créer les fichiers .js nécessaires (il n&amp;rsquo;est pas possible d&amp;rsquo;écrire dans le filesystem d&amp;rsquo;Heroku)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;./script/server
-./script/server -e production
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Création du référentiel git:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git init
-git add .
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Création du fichier &lt;code&gt;.gitignore&lt;/code&gt;, contenant:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;db/*.sqlite3.db
-log
-tmp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Premier commit:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git commit -m &amp;quot;First commit&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Hébergement sur heroku (pour l&amp;rsquo;instant sur ruby 1.8.7):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;heroku create myapp --stack bamboo-ree-1.8.7
-heroku db:push
-git push heroku master
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -650,27 +258,7 @@ git push heroku master
 &lt;p&gt;Visualisation de Meilleures logs&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;heroku addons:add logging:expanded
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Supervision applicative&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;heroku addons:add newrelic:bronze
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Envoi de mail&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;heroku addons:add sendgrid:free
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;D&amp;rsquo;autres extension en béta, à étudier de près:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Release Management (gestion de version comme sur GAE): &lt;code&gt;heroku addons:add releases:basic&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;CloudMailin (Réception de mail): &lt;code&gt;heroku addons:add cloudmailin:test&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Custom Error Pages (Gestion de pages de maintenance): &lt;code&gt;heroku addons:add custom_error_pages&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;PG Backups (Sauvegardes de la base de donnée): &lt;code&gt;heroku addons:add pgbackups:basic&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -679,76 +267,89 @@ git push heroku master
       <pubDate>Fri, 11 Mar 2011 17:10:17 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/03/scripter-macos/</guid>
-      <description>&lt;p&gt;Dans ma très récente période Ubuntu/Linux, j&amp;rsquo;avais rédigé un petit script en python qui vérifiait régulièrement la présence de nouveaux fichiers dans un répertoire FTP - ce script étant basé sur GTK, il était nécessaire de le changer pour notamment utiliser &lt;a href=&#34;http://growl.info/&#34;&gt;Growl&lt;/a&gt;, le système de notification disponible dans MacOS.&lt;/p&gt;
+      <description>&lt;p&gt;Dans ma très récente période Ubuntu/Linux, j&amp;rsquo;avais rédigé un petit script en python qui vérifiait régulièrement la présence de nouveaux fichiers dans un répertoire FTP - ce script étant basé sur GTK, il était nécessaire de le changer pour notamment utiliser &lt;a href=&#34;http://growl.info/&#34;&gt;Growl&lt;/a&gt;, le système de notification disponible dans MacOS.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Google App Engine: une demie déception</title>
+      <link>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</link>
+      <pubDate>Fri, 25 Feb 2011 22:47:37 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Créer une nouvelle application sous heroku</title>
+      <link>http://www.zeneffy.fr/2011/02/creer-une-nouvelle-application-sous-heroku/</link>
+      <pubDate>Sat, 05 Feb 2011 13:31:25 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/02/creer-une-nouvelle-application-sous-heroku/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Aide-Mémoire&lt;/strong&gt;: Pour créer rapidement une nouvelle application sur heroku&lt;/p&gt;
 
-&lt;p&gt;Ainsi le code en python donne&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
-# -*- coding: utf8 -*-
-&amp;quot;&amp;quot;&amp;quot;
-Vérifie si du nouveau contenu a été rajouté sur le FTP
-&amp;quot;&amp;quot;&amp;quot;
-import ftplib
-import os,sys
-import Growl
-
-try:
-    session = ftplib.FTP(&#39;xxServeur&#39;,&#39;xxLogin&#39;,&#39;xxMdP&#39;) # On se connecte au serveur
-    fileList = [] # La liste des fichiers sera dedans
-    session.retrlines(&#39;LIST&#39;,fileList.append)
-    session.quit() #On se déconnecte
-    for txt in fileList:
-        if txt.find(&amp;quot;.DS_Store&amp;quot;) &amp;gt; -1: #macOS a parfois de drole de spécificité
-            fileList.remove(txt)
-    if len(fileList) == 0:
-        print &amp;quot;Vide&amp;quot;
-    else: 
-        gn = Growl.GrowlNotifier( &amp;quot;CheckMyFTP&amp;quot;, [&amp;quot;Nouveau contenu&amp;quot;] )
-        gn.register()
-        image = Growl.Image.imageFromPath(os.path.join(os.path.dirname(__file__), &amp;quot;kfind.png&amp;quot;))
-        gn.notify( &amp;quot;Nouveau contenu&amp;quot;, &amp;quot;Nouveau contenu disponible&amp;quot;, &amp;quot;Un nouveau contenu a été ajouté sur le FTP de papa&amp;quot;,icon=image )
-except:
-    print &amp;quot;Impossible de se connecter&amp;quot;
+&lt;pre&gt;&lt;code&gt;git init
+git add .
+git commit -m &amp;quot;nouvelle application&amp;quot;
+heroku create nomapplication
+git push heroku master
+heroku addons:add newrelic:bronze
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Puis, il s&amp;rsquo;agit de faire jouer ce script régulièrement (toutes les heures par exemple). Dans le cas de MacOS 10.5+, il faut utiliser launchd à la place de crontab: dans le répertoire ``&lt;code&gt;$HOME/Library/LaunchAgents&lt;/code&gt;, il suffit alors de créer un fichier fr.zeneffy.checkftp.plist qui contiendra:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
-&amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot; &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt;
-&amp;lt;plist version=&amp;quot;1.0&amp;quot;&amp;gt;
-&amp;lt;dict&amp;gt;
-        &amp;lt;key&amp;gt;label&amp;lt;/key&amp;gt;
-        &amp;lt;string&amp;gt;fr.zeneffy.checkftp.plist&amp;lt;/string&amp;gt;
-
-        &amp;lt;key&amp;gt;ProgramArguments&amp;lt;/key&amp;gt;
-        &amp;lt;array&amp;gt;
-                &amp;lt;string&amp;gt;/Users/julien/Code/scripts/CheckMyFTP/CheckMyFTP.py&amp;lt;/string&amp;gt;
-        &amp;lt;/array&amp;gt;
-
-        &amp;lt;key&amp;gt;Nice&amp;lt;/key&amp;gt;
-        &amp;lt;integer&amp;gt;1&amp;lt;/integer&amp;gt;
-
-        &amp;lt;key&amp;gt;StartInterval&amp;lt;/key&amp;gt;
-        &amp;lt;integer&amp;gt;3600&amp;lt;/integer&amp;gt;
-
-        &amp;lt;key&amp;gt;StandardErrorPath&amp;lt;/key&amp;gt;
-        &amp;lt;string&amp;gt;/tmp/checkftp.err&amp;lt;/string&amp;gt;
-
-        &amp;lt;key&amp;gt;StandardOutPath&amp;lt;/key&amp;gt;
-        &amp;lt;string&amp;gt;/tmp/checkftp.out&amp;lt;/string&amp;gt;
-&amp;lt;/dict&amp;gt;
-&amp;lt;/plist&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;puis de charger ce fichier de configuration&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;launchctl load fr.zeneffy.checkftp.plist
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;et voilà, toutes les heures CheckMyFTP.py sera lancé et il m&amp;rsquo;affichera une notification en cas de nouveaux fichiers disponibles sur le répertoire FTP.&lt;/p&gt;
-
-&lt;p&gt;Ressources: &lt;a href=&#34;http://www.devdaily.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs&#34;&gt;http://www.devdaily.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>homebank - la compta facile</title>
+      <link>http://www.zeneffy.fr/2010/10/homebank-la-compta-facile/</link>
+      <pubDate>Fri, 29 Oct 2010 13:21:57 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/10/homebank-la-compta-facile/</guid>
+      <description>J&amp;rsquo;utilisais jusqu&amp;rsquo;à quelques mois ma propre application web de comptabilité Harpagon pour gérer mon budget personnel. Ayant décidé de me débarrasser du serveur qui l&amp;rsquo;hébergeait, j&amp;rsquo;ai donc cherché un remplaçant avec des spécifications bien particulières:
+ Possibilité d&amp;rsquo;assigner automatiquement des catégories via des règles (type expression régulière) Notion de budget (prévision/consommé) Statistiques en mode desktop (et non plus web) Simplicité  je suis tombé sur HomeBank trouvé via Framasoft, application opensource existant depuis fort longtemps (déjà sur l&amp;rsquo;amiga!</description>
+    </item>
+    
+    <item>
+      <title>Lier Github &amp; Lighthouse</title>
+      <link>http://www.zeneffy.fr/2010/06/lier-github-lighthouse/</link>
+      <pubDate>Tue, 01 Jun 2010 16:51:26 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/06/lier-github-lighthouse/</guid>
+      <description>Utilisant Github (comme dépôt de code) et lighthouse (comme gestionnaire d&amp;rsquo;anomalies et évolutions), je viens de découvrir qu&amp;rsquo;il était très simple de lier les deux. Cela permet de faire apparaître directement dans lighthouse les changements de code et les nouvelles versions et donc de les lier facilement aux anomalies.
+Côté lighthouse:
+sur votre page de profil, il faut créer un &amp;ldquo;API token&amp;rdquo; correspondant au projet que vous souhaitez (on obtient un code du type 432f1b2c1a[&amp;hellip;]35bb1ba1d)</description>
+    </item>
+    
+    <item>
+      <title>Personnaliser l&#39;installation de Ubuntu 10.04</title>
+      <link>http://www.zeneffy.fr/2010/05/personnaliser-linstallation-de-ubuntu-10-04/</link>
+      <pubDate>Sun, 16 May 2010 12:04:00 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/05/personnaliser-linstallation-de-ubuntu-10-04/</guid>
+      <description>Suite à la sortie de Ubuntu 10.04, je me suis décidé à l&amp;rsquo;installer en machine virtuelle (VirtualBox) sur mon portable pro, tout s&amp;rsquo;est très bien passé et voici quelques tuning complémentaires:
+En premier lieu, on effectue une petite mise à jour post-installation
+sudo apt-get update sudo apt-get upgrade  Puis j&amp;rsquo;installe mon logiciel de versionnage favori (à l&amp;rsquo;heure actuelle), i.e. Git
+sudo apt-get install git-core  Ensuite on installe l&amp;rsquo;éditeur Vim avec ma configuration (stockée sur GitHub)</description>
+    </item>
+    
+    <item>
+      <title>Migration de Zeneffy Labs</title>
+      <link>http://www.zeneffy.fr/2010/04/migration-de-zeneffy-labs/</link>
+      <pubDate>Sat, 24 Apr 2010 13:36:29 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/04/migration-de-zeneffy-labs/</guid>
+      <description>Hier, j&amp;rsquo;ai migré Zeneffy Labs de Redmine vers le coupleRadiant CMS / GitHub. En effet Redmine était un peu trop conséquent pour mes besoins et prenait trop de ressources sur mon serveur. Mon choix s&amp;rsquo;est alors porté d&amp;rsquo;une part sur Radiant CMS pour servir de mini wiki et d&amp;rsquo;autre part sur GitHub pour les dépôts de code.
+L&amp;rsquo;inscription et l&amp;rsquo;utilisation de GitHut sont rapides et faciles (car liées aussi intrinsèquement à la simplicité de Git - gestion de configuration décentralisée) et il m&amp;rsquo;a suffit de pousser les anciens dépôts de code vers le nouveau système.</description>
+    </item>
+    
+    <item>
+      <title>Ma configuration de Vim</title>
+      <link>http://www.zeneffy.fr/2010/03/ma-configuration-de-vim/</link>
+      <pubDate>Sun, 21 Mar 2010 18:11:55 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/03/ma-configuration-de-vim/</guid>
+      <description>Quelques liens utiles
+ python-and-vim-make-your-own-ide code-navigation-completion-snippets-in-vim light-at-the-end-of-the-carpal-tunnel-snippets-in-vim-with-snipmate rails-on-vim-in-english vim.runpaint.org/toc FuzzyFinder (utiliser 2.16!!)  Quelques raccourcis à connaître:
+python_fn.vim &amp;quot; ]t -- Jump to beginning of block &amp;quot; ]e -- Jump to end of block &amp;quot; ]v -- Select (Visual Line Mode) block &amp;quot; ]&amp;lt; -- Shift block to left &amp;quot; ]&amp;gt; -- Shift block to right &amp;quot; ]# -- Comment selection &amp;quot; ]u -- Uncomment selection &amp;quot; ]c -- Select current/previous class &amp;quot; ]d -- Select current/previous function &amp;quot; ]&amp;lt;up&amp;gt; -- Jump to previous line with the same/lower indentation &amp;quot; ]&amp;lt;down&amp;gt; -- Jump to next line with the same/lower indentation python.</description>
     </item>
     
   </channel>

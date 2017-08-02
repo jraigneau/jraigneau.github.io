@@ -6,8 +6,11 @@
     <description>Recent content in Domotique on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
+    <copyright>&amp;#0169; 2008 - 2017, Julien Raigneau &amp;nbsp;&amp;nbsp;  | &amp;nbsp;&amp;nbsp;  Zeneffy &gt;&gt; Zen &amp;amp; Efficace</copyright>
     <lastBuildDate>Tue, 11 Oct 2016 07:48:54 +0200</lastBuildDate>
-    <atom:link href="http://www.zeneffy.fr/tags/domotique/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.zeneffy.fr/tags/domotique/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>A bot to rule them all</title>
@@ -15,99 +18,12 @@
       <pubDate>Tue, 11 Oct 2016 07:48:54 +0200</pubDate>
       
       <guid>http://www.zeneffy.fr/2016/10/go-bot-domotique/</guid>
-      <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;Un Anneau pour les gouverner tous&lt;/p&gt;
-
-&lt;p&gt;Un Anneau pour les trouver&lt;/p&gt;
-
-&lt;p&gt;Un Anneau pour les amener tous [&amp;hellip;]&lt;/p&gt;
-
-&lt;p&gt;&amp;ndash; J. R. R. Tolkien, Le seigneurs des anneaux&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Pour des raisons de sécurité, j&amp;rsquo;ai décidé de n&amp;rsquo;avoir aucun accès de l&amp;rsquo;extérieur vers mes éléments de domotique, avec toutefois un inconvénient majeur: aucun moyen de consulter les diverses données ou de lancer des actions.&lt;/p&gt;
-
-&lt;p&gt;Pour résoudre ce problème j&amp;rsquo;ai tenté plusieurs approches à base de tableaux de bord &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt; ou de solutions maison comme &lt;a href=&#34;https://github.com/jraigneau/proxana&#34;&gt;proxana&lt;/a&gt; mais qui ne m&amp;rsquo;ont jamais vraiment convaincues pour mon cas d&amp;rsquo;usage.&lt;/p&gt;
-
-&lt;h4 id=&#34;de-l-usage-d-un-bot-pour-la-domotique&#34;&gt;De l&amp;rsquo;usage d&amp;rsquo;un bot pour la domotique&lt;/h4&gt;
-
-&lt;p&gt;Et j&amp;rsquo;ai commencé à m&amp;rsquo;intéresser aux bots de type &lt;a href=&#34;https://hubot.github.com/&#34;&gt;Hubot&lt;/a&gt; et à leur utilité pour finalement créer mon propre bot nommé&lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt; est un service écrit en langage Go, basé sur mon système domotique déjà en place (&lt;a href=&#34;https://www.influxdata.com/&#34;&gt;InfluxDB&lt;/a&gt; et &lt;a href=&#34;http://nodered.org/&#34;&gt;NodeRed&lt;/a&gt;) et utilisant l&amp;rsquo;infrastructure de &lt;a href=&#34;https://telegram.org/&#34;&gt;Telegram&lt;/a&gt; pour me permettre de lancer des actions domotiques, du type &amp;ldquo;quelle est la température chez moi?&amp;rdquo;, sans risque sur la sécurité de mon système.&lt;/p&gt;
-
-&lt;p&gt;Une capture d&amp;rsquo;écran étant toujours plus simple que des mots, cela donne donc:
-   &lt;center&gt;&lt;img src=&#34;https://c3.staticflickr.com/9/8268/30137861482_00e066e485.jpg&#34; width=&#34;500&#34; height=&#34;363&#34; alt=&#34;graphana-elec&#34;&gt;&lt;/center&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;dans-les-coulisses-de-goule&#34;&gt;Dans les coulisses de Goule&lt;/h4&gt;
-
-&lt;p&gt;Pour développer &lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt; en langage Go (décidemment j&amp;rsquo;aime beaucoup ce langage), je me suis appuyé de façon classique sur des librairies existantes notamment &lt;a href=&#34;https://gopkg.in/telegram-bot-api.v4&#34;&gt;telegram-bot-api&lt;/a&gt; pour se connecter à &lt;a href=&#34;https://telegram.org/&#34;&gt;Telegram&lt;/a&gt; ainsi que la &lt;a href=&#34;https://github.com/influxdata/influxdb/tree/master/client&#34;&gt;librairie native pour influxdb&lt;/a&gt;. La seule difficulté rencontrée a été le formatage des données renvoyées par influxdb, qui nécessite de fouiller un peu dans les &lt;a href=&#34;https://golang.org/pkg/encoding/json/#Number&#34;&gt;API&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;const (
-    username = &amp;quot;grafana&amp;quot;
-    password = &amp;quot;paint&amp;quot;
-    addr = &amp;quot;http://obelix:8086&amp;quot;
-)
-# Crée la requete et l&#39;envoie à InfluxDB, renvoie le résultat
-func queryDB(cmd string, MyDB string) (res []client.Result, err error) {
-
-    log.Printf(&amp;quot;Connection à influxDB&amp;quot;)
-    clnt, err := client.NewHTTPClient(client.HTTPConfig{
-        Addr: addr,
-        Username: username,
-        Password: password,
-    })
-    if err != nil {
-        log.Fatalln(&amp;quot;Error: &amp;quot;, err)
-    }
-    q := client.Query{
-        Command:  cmd,
-        Database: MyDB,
-    }
-    response, err := clnt.Query(q)
-    if err != nil {
-        log.Fatalln(&amp;quot;Error: &amp;quot;, err)
-    }
-    if response.Error() != nil {
-        log.Fatalln(&amp;quot;Error: &amp;quot;, response.Error())
-    }
-    res = response.Results
-    log.Println(response.Results)
-    return res, nil
-}
-# Récupère la consommation électrique dans influxDB
-func getConsoElectrique() string {
-    q := fmt.Sprintf(&amp;quot;SELECT * FROM energy ORDER BY time DESC LIMIT 1&amp;quot;)
-    res, err := queryDB(q,&amp;quot;electricity&amp;quot;)
-    if err != nil {
-        log.Fatal(&amp;quot;Error: &amp;quot;,err)
-    }
-    day_energy := res[0].Series[0].Values[0][1].(json.Number).String()
-    instant_energy := res[0].Series[0].Values[0][2].(json.Number).String()
-
-    return fmt.Sprintf(&amp;quot;Actuellement la consommation instantanée est de *%sW* et le cumul est de *%skW*.&amp;quot;,instant_energy,day_energy)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Le point d&amp;rsquo;attention étant sur la manipulation des résultats, avec des tableaux dans tous les sens, et des transformations JSON à faire comme pour récupérer la consommation quotidienne:  &lt;code&gt;day_energy := res[0].Series[0].Values[0][1].(json.Number).String()&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;containers-are-the-new-black&#34;&gt;Containers are the new black&lt;/h4&gt;
-
-&lt;p&gt;Finalement pour faire tourner tout cela simplement (et tenter quelque chose de différent), j&amp;rsquo;ai utilisé un container &lt;a href=&#34;https://www.docker.com/&#34;&gt;docker&lt;/a&gt; construit directement à partir du container &lt;a href=&#34;https://hub.docker.com/_/golang/&#34;&gt;Golang officiel&lt;/a&gt; et en m&amp;rsquo;appuyant sur &lt;a href=&#34;https://blog.docker.com/2016/09/docker-golang/&#34;&gt;l&amp;rsquo;article de Jérôme Petazzoni&lt;/a&gt;, avec les commandes suivantes:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# téléchargement de l&#39;image et des librairies + compilation de goule
-docker run golang go get -v github.com/jraigneau/goule
-# Transformation en image docker nommé goule
-docker commit $(docker ps -lq) goule
-# Lancement du programme goule dans l&#39;image goule en mode &amp;quot;daemon&amp;quot; à partir du containter goule
-docker run --restart=always --name goule -it -d goule goule
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Cela me permet d&amp;rsquo;avoir un &amp;ldquo;service&amp;rdquo; qui tourne sur ma VM principale dédiée aux containers, isolée des autres containers, avec une relance automatique en cas de problème (notamment coupure intempestive de ma ligne internet, ce qui est arrivé).&lt;/p&gt;
-
-&lt;p&gt;J&amp;rsquo;utilise ce système depuis un mois environ, et étant donné sa fiabilité je vais surement l&amp;rsquo;étendre à d&amp;rsquo;autres fonctions de ma domotique dans le futur.&lt;/p&gt;
-</description>
+      <description>Un Anneau pour les gouverner tous
+Un Anneau pour les trouver
+Un Anneau pour les amener tous [&amp;hellip;]
+&amp;ndash; J. R. R. Tolkien, Le seigneurs des anneaux
+ Pour des raisons de sécurité, j&amp;rsquo;ai décidé de n&amp;rsquo;avoir aucun accès de l&amp;rsquo;extérieur vers mes éléments de domotique, avec toutefois un inconvénient majeur: aucun moyen de consulter les diverses données ou de lancer des actions.
+Pour résoudre ce problème j&amp;rsquo;ai tenté plusieurs approches à base de tableaux de bord dashing ou de solutions maison comme proxana mais qui ne m&amp;rsquo;ont jamais vraiment convaincues pour mon cas d&amp;rsquo;usage.</description>
     </item>
     
     <item>
@@ -116,26 +32,8 @@ docker run --restart=always --name goule -it -d goule goule
       <pubDate>Wed, 02 Dec 2015 07:39:21 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2015/12/remplacement-emoncms/</guid>
-      <description>&lt;p&gt;Utilisateur de &lt;a href=&#34;http://emoncms.org/&#34;&gt;emoncms&lt;/a&gt; comme solution de métrologie de mon installation domotique depuis quelques mois, j&amp;rsquo;ai décidé dernièrement de basculer sur une solution moins spécialisée et beaucoup plus ouverte, basée sur &lt;a href=&#34;https://influxdb.com/&#34;&gt;influxDB&lt;/a&gt; pour la partie stockage des données et sur le superbe &lt;a href=&#34;http://grafana.org/&#34;&gt;Grafana&lt;/a&gt; pour la partie affichage des indicateurs.&lt;/p&gt;
-
-&lt;p&gt;InfluxDB est une base de donnée permettant de stocker des données chronologiques (Time series en anglais), avec intégration de fonctions mathématiques simples (min/max, moyenne&amp;hellip;), et un langage de requêtage proche du SQL et simple à utiliser.&lt;/p&gt;
-
-&lt;p&gt;Grafana est, quant à lui, un visualiseur de données, pouvant se connecter à Graphite, influxDB, openTSDB&amp;hellip;afin de créer des tableaux de bord composés de graphiques ou de données brutes avec des possibilités avancées de corrélation.&lt;/p&gt;
-
-&lt;p&gt;L&amp;rsquo;installation de ces deux outils se fait très facilement (le classique `sudo apt-get sur ubuntu) et le paramétrage est aussi simple (du moins pour une installation comme la mienne) - aussi je ne n&amp;rsquo;épiloguerai pas dessus (en bref utilisation de &lt;a href=&#34;http://nodered.org/&#34;&gt;nodered&lt;/a&gt; ou de scripts bash pour récupérer les données puis envoi en POST via l&amp;rsquo;API influxDB, rien d&amp;rsquo;exotique).&lt;/p&gt;
-
-&lt;p&gt;Ainsi en quelques minutes, j&amp;rsquo;ai pu obtenir des tableaux de bord sur différents types de données, tant domotique qu&amp;rsquo;informatique, eg:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Consommation électrique&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm1.staticflickr.com/602/23106880869_9878c217b9.jpg&#34; width=&#34;500&#34; height=&#34;297&#34; alt=&#34;graphana-elec&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Traffic internet sur ma box&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm1.staticflickr.com/683/23366332332_caa0a653e9.jpg&#34; width=&#34;500&#34; height=&#34;297&#34; alt=&#34;grafana-traffic&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Pour conclure, ce qui me satisfait le plus dans cette solution c&amp;rsquo;est la possibilité de mettre n&amp;rsquo;importe quelle donnée en très peu de temps: utile parfois pour du troubleshooting.&lt;/p&gt;
-</description>
+      <description>Utilisateur de emoncms comme solution de métrologie de mon installation domotique depuis quelques mois, j&amp;rsquo;ai décidé dernièrement de basculer sur une solution moins spécialisée et beaucoup plus ouverte, basée sur influxDB pour la partie stockage des données et sur le superbe Grafana pour la partie affichage des indicateurs.
+InfluxDB est une base de donnée permettant de stocker des données chronologiques (Time series en anglais), avec intégration de fonctions mathématiques simples (min/max, moyenne&amp;hellip;), et un langage de requêtage proche du SQL et simple à utiliser.</description>
     </item>
     
     <item>
@@ -144,86 +42,8 @@ docker run --restart=always --name goule -it -d goule goule
       <pubDate>Sat, 20 Jun 2015 21:31:23 +0200</pubDate>
       
       <guid>http://www.zeneffy.fr/2015/06/premiers-pas-en-domotique/</guid>
-      <description>
-
-&lt;p&gt;J&amp;rsquo;ai décidé l&amp;rsquo;année dernière de me lancer dans l&amp;rsquo;aventure de la &lt;a href=&#34;http://www.zeneffy.fr/tags/domotique&#34;&gt;domotique&lt;/a&gt;, avec pleins d&amp;rsquo;idées en tête sur la sécurité et la détection, les mesures de température, l&amp;rsquo;optimisation de la consommation de l&amp;rsquo;énergie, le contrôle des lampes et autres, et plus globalement l’automatisation.&lt;/p&gt;
-
-&lt;h4 id=&#34;étude-préalable&#34;&gt;Étude préalable&lt;/h4&gt;
-
-&lt;p&gt;En m&amp;rsquo;intéressant à ce domaine, j&amp;rsquo;ai découvert d&amp;rsquo;une part sa richesse et d&amp;rsquo;autre part le nombre très important de protocoles, les différentes box domotiques plus ou moins compatibles, les prix (élevés) des différents composants.&lt;/p&gt;
-
-&lt;p&gt;Par ailleurs, ce domaine est à la fois très récent et assez ancien et nécessite des connaissances en électronique, électricité, informatique avec une notion forte d&amp;rsquo;intégration de composants et systèmes entre eux… ce qui rend le sujet d&amp;rsquo;autant plus intéressant.&lt;/p&gt;
-
-&lt;p&gt;J&amp;rsquo;en ai tiré plusieurs postulats et décisions sur la suite des événements.&lt;/p&gt;
-
-&lt;h4 id=&#34;postulats-choix&#34;&gt;Postulats / Choix&lt;/h4&gt;
-
-&lt;p&gt;Le matériel de contrôle de la bureautique pouvant être envahissant, j&amp;rsquo;ai décidé en premier lieu de me créer &lt;a href=&#34;http://www.zeneffy.fr/2015/04/mon-datacenter/&#34;&gt;mon propre espace&lt;/a&gt; pour le matériel.&lt;/p&gt;
-
-&lt;p&gt;Utilisateur heureux de l’open-source depuis plusieurs années, j&amp;rsquo;ai choisi de faire ma propre box domotique
-open-source en me basant sur l&amp;rsquo;application &lt;a href=&#34;http://domoticz.com/&#34;&gt;domoticz&lt;/a&gt; pour le cœur du système et en rajoutant au fur et à mesure des applications dédiées par fonction (Surveillance, Graph, Ordonnancement).&lt;/p&gt;
-
-&lt;p&gt;Toutes ces applications sont installées sur des machines virtuelles Ubuntu/Linux sur un ESX VMware.
-L&amp;rsquo;ESX est le seul élément non open-source, choisi par rapport à mes expériences professionnelles, mais j&amp;rsquo;aurai pu (dû?) choisir à la place &lt;a href=&#34;http://www.xenproject.org/&#34;&gt;XEN&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Le dernier choix important a été pour moi d&amp;rsquo;isoler complètement la maison: aucun des systèmes domestiques n&amp;rsquo;est accessible de l&amp;rsquo;extérieur afin d&amp;rsquo;éviter tout piratage qui pourrait être particulièrement grave.&lt;/p&gt;
-
-&lt;h4 id=&#34;mesurer-pour-contrôler&#34;&gt;Mesurer pour contrôler&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;Measurement is the first step that leads to control and eventually to improvement. If you can’t measure something, you can’t understand it. If you can’t understand it, you can’t control it. If you can’t control it, you can’t improve it — Dr. H. James Harrington&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Un premier point important de la domotique est la mesure, selon l&amp;rsquo;adage &lt;em&gt;On ne contrôle que ce qu&amp;rsquo;on peut mesurer&lt;/em&gt;. Il faut donc prévoir les capteurs (avec par exemple les mesures de température via des Oregon Scientific THN 132) et surtout l&amp;rsquo;infrastructure de collecte des données.&lt;/p&gt;
-
-&lt;p&gt;Dans mon cas, j&amp;rsquo;ai choisi de mettre en œuvre &lt;a href=&#34;http://emoncms.org/&#34;&gt;emoncms&lt;/a&gt;, qui me permet d&amp;rsquo;agréger l&amp;rsquo;ensemble des données et d&amp;rsquo;en tirer des tableaux de bord très lisibles.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://c1.staticflickr.com/1/461/18397964043_7c43f8dea1.jpg&#34; width=&#34;500&#34; height=&#34;207&#34; alt=&#34;conso Electrique&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Évidemment, ces tableaux de bord ne sont pas accessibles de l&amp;rsquo;extérieur comme définit précédemment: j&amp;rsquo;ai donc mis en œuvre une copie des données temps réel vers l&amp;rsquo;extérieur, via un simple push vers un tableau de bord type &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt; hébergé chez &lt;a href=&#34;http://www.heroku.co&#34;&gt;Heroku&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://c1.staticflickr.com/1/537/18397961713_b644294b27.jpg&#34; width=&#34;500&#34; height=&#34;276&#34; alt=&#34;temperature&#34;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;intégration-des-systèmes&#34;&gt;Intégration des systèmes&lt;/h4&gt;
-
-&lt;p&gt;Pour bien gérer &amp;ldquo;l&amp;rsquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/Internet_of_Things&#34;&gt;internet of things&lt;/a&gt;&amp;rdquo; et mixer les services logiciels, les objets connectés, et les différents capteurs, j&amp;rsquo;ai par ailleurs installé &lt;a href=&#34;http://nodered.org/&#34;&gt;node-red&lt;/a&gt;, qui est développé par IBM.&lt;/p&gt;
-
-&lt;p&gt;Node-red permet de créer des workflows entre objet pour les faire interagir entre eux simple, le tout via une IHM web. Ces workflows permettent via un peu de développement très simple en javascript d&amp;rsquo;analyser des flux de données venant de sondes ou de services, de les transformer avant de les renvoyer vers d&amp;rsquo;autres sondes ou services.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://nodered.org/images/node-red-screenshot-sm.png&#34; alt=&#34;nodered&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Ainsi, j&amp;rsquo;ai pu créer des flux pour récupérer les données de la box domotique avant de les envoyer vers emoncms et d&amp;rsquo;en faire des graphiques et des premières analyses.&lt;/p&gt;
-
-&lt;h4 id=&#34;réalisations-actuelles-plutôt-orientées-mesures&#34;&gt;Réalisations actuelles - plutôt orientées mesures&lt;/h4&gt;
-
-&lt;p&gt;Ces derniers mois, je me suis attaché à mettre en œuvre les différents points de mesure, avec notamment:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Mesures de la température dans toutes les pièces de vie (Chambres, Salon) via des sondes &lt;a href=&#34;http://www.amazon.fr/Oregon-Scientific-THN-D%C3%A9tecteur-temp%C3%A9rature/dp/B000PEDJVI&#34;&gt;Oregon Scientific&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Récupération de la consommation électrique directement sur le compteur avec une pince ampérométrique de chez &lt;a href=&#34;http://www.amazon.fr/dp/B006R7E8MG/ref=pe_386181_37038081_TE_3p_dp_1&#34;&gt;OWL&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;J&amp;rsquo;ai par ailleurs commencé à installer des caméras intérieures pour la vidéosurveillance, avec &lt;a href=&#34;http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome&#34;&gt;motion&lt;/a&gt; et &lt;a href=&#34;https://github.com/ccrisan/motioneye&#34;&gt;motioneye&lt;/a&gt; pour gérer les détections et l&amp;rsquo;enregistrement des films. Ces films sont enregistrés à la fois en local et sur une DropBox dédiée en cas de coupure (ou disparition du disque dur&amp;hellip;)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://github.com/ccrisan/motioneye/wiki/images/desktop-view.png&#34; width=&#34;500&#34; height=&#34;276&#34; alt=&#34;motioneye&#34;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;réalisations-à-venir-ou-qui-reste-à-étudier&#34;&gt;Réalisations à venir ou qui reste à étudier&lt;/h4&gt;
-
-&lt;p&gt;Le champ des possibles de la domotique est impressionnant et j&amp;rsquo;imagine par exemple mettre en œuvre d&amp;rsquo;autres activités comme:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Contrôle automatique des lumières du jardin selon l&amp;rsquo;heure de la journée.&lt;/li&gt;
-&lt;li&gt;Mise en œuvre d&amp;rsquo;un contrôle vocal type &lt;a href=&#34;http://blog.encausse.net/s-a-r-a-h/&#34;&gt;S.A.R.A.H&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Extension de la vidéo surveillance à l&amp;rsquo;extérieure, avec déclenchement d&amp;rsquo;actions suite à des événements&lt;/li&gt;
-&lt;li&gt;Mesure de l&amp;rsquo;humidité dans la salle de douche pour allumer/éteindre la VMC&lt;/li&gt;
-&lt;li&gt;Contrôle des radiateurs via boutons électroniques&lt;/li&gt;
-&lt;li&gt;Détection des lumières laissées allumées par les enfants&lt;/li&gt;
-&lt;li&gt;Automatisation des fermetures de volets&lt;/li&gt;
-&lt;li&gt;envoi d&amp;rsquo;information via SMS&lt;/li&gt;
-&lt;li&gt;&amp;hellip;.
-Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>J&amp;rsquo;ai décidé l&amp;rsquo;année dernière de me lancer dans l&amp;rsquo;aventure de la domotique, avec pleins d&amp;rsquo;idées en tête sur la sécurité et la détection, les mesures de température, l&amp;rsquo;optimisation de la consommation de l&amp;rsquo;énergie, le contrôle des lampes et autres, et plus globalement l’automatisation.
+Étude préalable En m&amp;rsquo;intéressant à ce domaine, j&amp;rsquo;ai découvert d&amp;rsquo;une part sa richesse et d&amp;rsquo;autre part le nombre très important de protocoles, les différentes box domotiques plus ou moins compatibles, les prix (élevés) des différents composants.</description>
     </item>
     
     <item>
@@ -232,82 +52,8 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <pubDate>Thu, 16 Apr 2015 22:06:42 +0200</pubDate>
       
       <guid>http://www.zeneffy.fr/2015/04/mon-datacenter/</guid>
-      <description>
-
-&lt;h4 id=&#34;le-datacenter-à-la-maison-un-rêve-de-geek&#34;&gt;le datacenter à la maison : un rêve de geek&lt;/h4&gt;
-
-&lt;p&gt;Ayant acheté une maison l’année dernière avec beaucoup d’espace et surtout un grand garage, j’en ai profité pour réaliser un vieux fantasme de geek : Avoir un endroit dédié pour mon matériel informatique, bref mon propre mini datacenter.&lt;/p&gt;
-
-&lt;p&gt;Derrière ce fantasme, un besoin simple: créer un espace protégé, ventilé et &lt;a href=&#34;http://fr.wikipedia.org/wiki/Facteur_d%27acceptation_f%C3%A9minine&#34;&gt;présentable&lt;/a&gt; pour héberger un NAS Synology, un  mini-serveur NUC, un antenne RFXCom pour la domotique, un hub NetGear et un UPS APC - le tout avec des capacités d’évolution et en respectant certaines règles d’urbanisation. En bonus, un vieux PC avec hauts-parleurs est installé pour me permettre d’écouter de la musique en bricolant ou pour consulter rapidement des infos domotiques.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8708/16972064590_a4f1719aec_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;datacenter1&#34; align=&#34;middle&#34;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;de-la-récup-et-de-l-huile-de-coude&#34;&gt;De la « récup » et de l’huile de coude&lt;/h4&gt;
-
-&lt;p&gt;Après quelques recherches sur internet sur le sujet, j’ai trouvé de nombreux exemples de bricoleurs geek qui ont transformé (ou même créé) des meubles pour cette usage: j’ai donc décidé de me lancer moi aussi en partant d’un petit meuble existant.&lt;/p&gt;
-
-&lt;p&gt;Quatre étapes majeures ont composé la création de ce meuble datacenter:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Créer les aérations et prévoir les circulations d’air&lt;/li&gt;
-&lt;li&gt;Structurer le câblage des courants forts (électricité) et faibles (réseau)&lt;/li&gt;
-&lt;li&gt;Mettre en place le matériel&lt;/li&gt;
-&lt;li&gt;Installer le PC « domotique »&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;une-aération-intelligente&#34;&gt;Une aération intelligente&lt;/h4&gt;
-
-&lt;p&gt;Tout d’abord, j’ai percé des ouvertures sur la porte avant, sur l’arrière pour le passage des câbles.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8732/16539846743_53e48f0cb9_n.jpg&#34; width=&#34;320&#34; height=&#34;239&#34; alt=&#34;IMG_0786&#34;&gt;
-&lt;img src=&#34;https://farm8.staticflickr.com/7710/17159850705_0d20c08d1b_n.jpg&#34; width=&#34;239&#34; height=&#34;320&#34; alt=&#34;IMG_0812&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Puis j’ai rajouté une VMC de salle de bain pour assurer extraction d’air optimale, avec un allumage automatique via un &lt;a href=&#34;http://www.amazon.fr/Myfox-TA3010-62592-Module-1000/dp/B0033ZREXU/ref=pd_sim_hi_1?ie=UTF8&amp;amp;refRID=1R4NH6AP9KE53T4K6F7K&#34;&gt;micro-module Chacon&lt;/a&gt; commandé par la box domotique open-source &lt;a href=&#34;http://domoticz.com/&#34;&gt;Domoticz&lt;/a&gt; et basé sur un capteur de température &lt;a href=&#34;http://www.amazon.fr/Oregon-Scientific-THN-D%C3%A9tecteur-temp%C3%A9rature/dp/B000PEDJVI&#34;&gt;Oregon Scientific&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7637/16972282098_f363ed97bb_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;IMG_0818&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Grâce à ce montage, la VMC ne se déclenche que si la température à l’intérieur du DC dépasse les 30°C et s’éteint une fois la température revenue sous les 27°C, tout en m’envoyant des alertes.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8701/16539781163_9c69f57da3_c.jpg&#34; width=&#34;800&#34; height=&#34;221&#34; alt=&#34;Domoticz&#34;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;l-importance-d-optimiser-son-câblage&#34;&gt;L’importance d’optimiser son câblage&lt;/h4&gt;
-
-&lt;p&gt;Qui n’a jamais eu de problème de câble qui se mélangent, s’entortillent et se croisent (regardez donc les câbles entre votre télévision, votre box tv et votre lecteur de DVD par exemple)? Sur un environnement confiné avec à la fois des câbles électriques et des câbles réseau, cela peut devenir l’enfer en cas de modification ou de dépannage.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8765/17159460861_efc4b76ef2_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;IMG_0817&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Aussi j’ai utilisé des accroches de tuyaux de plomberie pour définir des chemins de câbles, en séparant courant faible et courant fort - ce qui m’a permis notamment de changer plusieurs fois des éléments dans le datacenter sans coup férir.&lt;/p&gt;
-
-&lt;h4 id=&#34;organisation-et-remplissage-du-datacenter&#34;&gt;Organisation et remplissage du datacenter&lt;/h4&gt;
-
-&lt;p&gt;Avant de remplir, j’ai rajouté des roulettes pour faciliter les manipulations.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7612/17160121785_315be2a776_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;IMG_0785&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Puis, J&amp;rsquo;ai positionné l&amp;rsquo;UPS en bas, le NUC au milieu avec le NAS et pour l&amp;rsquo;instant juste le switch réseau en haut: l&amp;rsquo;idée étant de garder de la place à côté du NUC et du switch pour des évolutions.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7703/16550162503_48d1435116_z.jpg&#34; width=&#34;478&#34; height=&#34;640&#34; alt=&#34;IMG_0001&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Vous noterez le capteur de température pour le déclenchement de la VMC juste au dessus du NUC.&lt;/p&gt;
-
-&lt;h4 id=&#34;un-pc-facile-d-accès&#34;&gt;Un PC facile d’accès&lt;/h4&gt;
-
-&lt;p&gt;Avoir un PC dans le garage/atelier peut être pratique pour accéder rapidement à un terminal, vérifier des points sur internet lors du bricolage ou simplement écouter de la musique.&lt;/p&gt;
-
-&lt;p&gt;Pour cela, un peu de récupération avec une planche pour le moniteur et une plaque de métal pour le clavier, le tout fixé au mur au dessus du datacenter pour avoir le réseau et le tour est joué !&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7701/16547925704_5a723568a9_z.jpg&#34; width=&#34;478&#34; height=&#34;640&#34; alt=&#34;IMG_0002&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Ce système permet aussi de positionner le boîtier radio RFXcom en dehors du meuble pour éviter les interférences.&lt;/p&gt;
-
-&lt;h4 id=&#34;résultats&#34;&gt;Résultats&lt;/h4&gt;
-
-&lt;p&gt;Les objectifs sont tous atteints, avec finalement peu de moyens engagés (moins de 80€ de matériel) et un résultat très correct.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7613/16984219739_fbf422e7f9_z.jpg&#34; width=&#34;478&#34; height=&#34;640&#34; alt=&#34;IMG_0003&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Je réfléchis maintenant à acheter un mini-PC pas cher pour remplacer le vieux Celeron 1Go qui peine même sous linux.&lt;/p&gt;
-</description>
+      <description>le datacenter à la maison : un rêve de geek Ayant acheté une maison l’année dernière avec beaucoup d’espace et surtout un grand garage, j’en ai profité pour réaliser un vieux fantasme de geek : Avoir un endroit dédié pour mon matériel informatique, bref mon propre mini datacenter.
+Derrière ce fantasme, un besoin simple: créer un espace protégé, ventilé et présentable pour héberger un NAS Synology, un mini-serveur NUC, un antenne RFXCom pour la domotique, un hub NetGear et un UPS APC - le tout avec des capacités d’évolution et en respectant certaines règles d’urbanisation.</description>
     </item>
     
     <item>
@@ -316,14 +62,8 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <pubDate>Mon, 27 Sep 2010 21:01:30 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/09/un-pont-pas-trop-loin/</guid>
-      <description>&lt;p&gt;Dans le cadre de ses nouvelles activités, ma femme a eu besoin que nous installions un bureau dans notre chambre. La partie ikea-choix-achat-montage s&amp;rsquo;étant passée presque sans accroc, j&amp;rsquo;ai changé le PC portable de place pour évidemment utiliser le bureau. Mauvaise surprise, le WiFi de la 9Box n&amp;rsquo;est pas accessible (trop de murs et trop de ferrite dans les murs).&lt;/p&gt;
-
-&lt;p&gt;Par chance, j&amp;rsquo;avais gardé un vieux routeur wifi &lt;a href=&#34;http://en.wikipedia.org/wiki/Linksys_WRT54G_series&#34;&gt;Linksys WRT54G&lt;/a&gt; - en cherchant un peu, j&amp;rsquo;ai trouvé d&amp;rsquo;une part qu&amp;rsquo;il existait des &lt;a href=&#34;http://www.dd-wrt.com/site/index&#34;&gt;firmwares opensource récents&lt;/a&gt; pour ce routeur et surtout qu&amp;rsquo;ils permettaient de faire un &amp;ldquo;Pont Répéteur WiFi&amp;rdquo; (Repeater Bridge pour les anglophones).&lt;/p&gt;
-
-&lt;p&gt;Un Pont Répéteur WiFi permet de lier un routeur secondaire au premier routeur (ici ma box) via WiFi: des clients peuvent alors se connecter au secondaire et profiter du DHCP, DNS et de la connexion internet du primaire - le WRT54G étant plus sensible au WiFi que mon PC il permet donc en d&amp;rsquo;autres termes de faire &lt;a href=&#34;http://www.dd-wrt.com/wiki/index.php/Image:Repeater_Bridge.jpg&#34;&gt;relais WiFi&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Après quelques manipulations détaillées sur la &lt;a href=&#34;http://www.dd-wrt.com/wiki/index.php/Repeater_Bridge&#34;&gt;page dédiée du wifi&lt;/a&gt;, j&amp;rsquo;ai pu faire fonctionner relativement facilement le linksys qui me permet maintenant d&amp;rsquo;écrire ce billet du bureau - la seule difficulté venant de la 9Box sur laquelle j&amp;rsquo;avais configuré des IP en DHCP et d&amp;rsquo;autres en statique, ces dernières posant problèmes pour accéder à internet (problème de route retour probablement).&lt;/p&gt;
-</description>
+      <description>Dans le cadre de ses nouvelles activités, ma femme a eu besoin que nous installions un bureau dans notre chambre. La partie ikea-choix-achat-montage s&amp;rsquo;étant passée presque sans accroc, j&amp;rsquo;ai changé le PC portable de place pour évidemment utiliser le bureau. Mauvaise surprise, le WiFi de la 9Box n&amp;rsquo;est pas accessible (trop de murs et trop de ferrite dans les murs).
+Par chance, j&amp;rsquo;avais gardé un vieux routeur wifi Linksys WRT54G - en cherchant un peu, j&amp;rsquo;ai trouvé d&amp;rsquo;une part qu&amp;rsquo;il existait des firmwares opensource récents pour ce routeur et surtout qu&amp;rsquo;ils permettaient de faire un &amp;ldquo;Pont Répéteur WiFi&amp;rdquo; (Repeater Bridge pour les anglophones).</description>
     </item>
     
     <item>
@@ -332,32 +72,9 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <pubDate>Tue, 26 Jan 2010 15:21:48 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/01/utiliser-le-mediacenter-de-la-9box-avec-lighttpd/</guid>
-      <description>&lt;p&gt;La neufbox de SFR permet de partager des contenus multimédias du PC vers le mediacenter -&lt;a href=&#34;http://tv.sfr.fr/mediacenter/installation.php&#34;&gt; l&amp;rsquo;application fournie par SFR&lt;/a&gt; pour cela est tout simplement un serveur apache reconfiguré.&lt;/p&gt;
-
-&lt;p&gt;Pour ma part, utilisant lighttpd sur mon serveur, j&amp;rsquo;ai utilisé la configuration suivante (sachant qu&amp;rsquo;il faut évidemment récupérer les fichiers php du &amp;ldquo;package apache SFR&amp;rdquo; par ailleurs):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$SERVER[&amp;quot;socket&amp;quot;] == &amp;quot;192.168.1.21:26180&amp;quot; {
-server.document-root = &amp;quot;/var/www/mediacenter/httpd/&amp;quot;
-server.errorlog      = &amp;quot;/var/log/lighttpd/mp9lhd.log&amp;quot;
-accesslog.filename   = &amp;quot;/var/log/lighttpd/mp9Access.log&amp;quot;
-#server.pid-file      = &amp;quot;/var/run/mp9lhd.pid&amp;quot;
-
-#server.port = 26180
-
-mimetype.assign = (
-&amp;quot;.html&amp;quot; =&amp;gt; &amp;quot;text/html&amp;quot;,
-&amp;quot;.txt&amp;quot; =&amp;gt; &amp;quot;text/plain&amp;quot;,
-&amp;quot;.jpg&amp;quot; =&amp;gt; &amp;quot;image/jpeg&amp;quot;,
-&amp;quot;.png&amp;quot; =&amp;gt; &amp;quot;image/png&amp;quot;,
-)
-
-index-file.names = ( &amp;quot;index.php&amp;quot;, &amp;quot;index.html&amp;quot;)
-
-#server.modules +=(&amp;quot;mod_alias&amp;quot;)
-
-alias.url = ( &amp;quot;/__mp9ctl_share_1/&amp;quot; =&amp;gt; &amp;quot;/var/mediaData/&amp;quot; )
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>La neufbox de SFR permet de partager des contenus multimédias du PC vers le mediacenter -l&amp;rsquo;application fournie par SFR pour cela est tout simplement un serveur apache reconfiguré.
+Pour ma part, utilisant lighttpd sur mon serveur, j&amp;rsquo;ai utilisé la configuration suivante (sachant qu&amp;rsquo;il faut évidemment récupérer les fichiers php du &amp;ldquo;package apache SFR&amp;rdquo; par ailleurs):
+$SERVER[&amp;quot;socket&amp;quot;] == &amp;quot;192.168.1.21:26180&amp;quot; { server.document-root = &amp;quot;/var/www/mediacenter/httpd/&amp;quot; server.errorlog = &amp;quot;/var/log/lighttpd/mp9lhd.log&amp;quot; accesslog.filename = &amp;quot;/var/log/lighttpd/mp9Access.log&amp;quot; #server.pid-file = &amp;quot;/var/run/mp9lhd.</description>
     </item>
     
     <item>
@@ -366,113 +83,10 @@ alias.url = ( &amp;quot;/__mp9ctl_share_1/&amp;quot; =&amp;gt; &amp;quot;/var/me
       <pubDate>Thu, 26 Mar 2009 10:41:00 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2009/03/gestion-durgence-de-lenergie/</guid>
-      <description>&lt;p&gt;J&amp;rsquo;utilise un portable comme serveur, notamment pour diminuer consommation et bruit, mais cela a un autre avantage: la batterie du portable qui peut servir &amp;ldquo;d&amp;rsquo;onduleur&amp;rdquo; en cas de perte de courant.&lt;/p&gt;
-
-&lt;p&gt;J&amp;rsquo;ai donc conçu un script simple pour gérer les pertes d&amp;rsquo;énergie, et prendre le temps de lancer un arrêt propre du serveur si l&amp;rsquo;alimentation n&amp;rsquo;est toujours pas rétablie.&lt;/p&gt;
-
-&lt;p&gt;Dans /etc/acpi/events on crée un fichier ac_dc contenant:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;event=ac_adapter.*
-action=/home/tifauve/scripts/acpi/battery/ac_dc.py %e
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;et voici le script ac_dc.py appelé par le démon ACPI&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-#
-# Gère l&#39;état de la batterie
-#
-
-__author__ = &#39;Julien Raigneau&#39;
-VERSION = &amp;quot;0.4&amp;quot;
-
-import sys,os,logging
-from time import strftime,sleep
-from subprocess import Popen
-
-lock_file = os.path.join(sys.path[0], &amp;quot;battery.lock&amp;quot;)
-fork_path = os.path.join(sys.path[0], &amp;quot;ac_dc.py&amp;quot;)
-
-def read_capacity():
-    #récupere stats battery
-    infos_batterie= open(&amp;quot;/proc/acpi/battery/BAT0/state&amp;quot;,&amp;quot;r&amp;quot;).readlines()
-    capacite = int(infos_batterie[4].replace(&amp;quot;remaining capacity:&amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot;\n&amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot; &amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot;mAh&amp;quot;,&amp;quot;&amp;quot;))
-    voltage = int(infos_batterie[5].replace(&amp;quot;present voltage:&amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot;\n&amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot; &amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot;mV&amp;quot;,&amp;quot;&amp;quot;))
-    logging.info(&amp;quot;read_capacity: %s,%s&amp;quot; % (capacite,voltage))
-    return capacite,voltage
-
-def send_mail(sujet,corps):
-    #envoi un mail
-    msg = &amp;quot;sendEmail -s smtp.cegetel.net -t julien@raigneau.net -q -u \&amp;quot;%s\&amp;quot; -m \&amp;quot;%s\&amp;quot; -f admin@tifauve.net&amp;quot; % (sujet,corps)
-    p = Popen(msg, shell=True)
-    logging.info(&amp;quot;send_mail: Mail envoyé avec sujet=(%s)&amp;quot; % sujet)
-
-def on_battery(capacite):
-    #actions si sur battery
-    while(os.path.isfile(lock_file)):
-        capacite_encours,voltage = read_capacity()
-        if capacite_encours &amp;lt;= capacite/2:
-            logging.info(&amp;quot;on_battery: Capacité actuelle %s inférieur à la référence %s&amp;quot; % (capacite_encours,capacite))
-            sujet = &amp;quot;[admin@champlain]Alerte critique: Extinction du serveur en cours&amp;quot;
-            corps = &amp;quot;Toujours pas de rétablissement du courant le %s.\n/!\Extinction du serveur.\n\nCapacité restante: %s mAh\nVoltage: %s mV&amp;quot; % (strftime(&amp;quot;%d/%m/%Y à %H:%M:%S&amp;quot;),capacite_encours,voltage)
-            send_mail(sujet,corps)
-            os.remove(lock_file)
-            logging.info(&amp;quot;on_battery: Extinction du serveur lancée&amp;quot;)
-            p = Popen(&amp;quot;shutdown -P now&amp;quot;, shell=True)
-        else:
-            logging.info(&amp;quot;on_battery: Capacité actuelle %s&amp;quot; % capacite_encours)
-            logging.info(&amp;quot;on_battery: En sommeil pendant 2min&amp;quot;)
-            sleep(120)
-    logging.info(&amp;quot;on_battery: plus de fichier de lock: sortie de la procédure&amp;quot;)
-
-def on_dc():
-    #actions si sur secteur
-    logging.info(&amp;quot;on_dc: Remise sur secteur&amp;quot;)
-    if os.path.isfile(lock_file):
-        logging.info(&amp;quot;on_dc: suppression du fichier de lock&amp;quot;)
-        os.remove(lock_file)
-
-
-if __name__ == &#39;__main__&#39;:
-
-    logFile = os.path.join(sys.path[0],&amp;quot;ac_dc.log&amp;quot;)
-    logging.basicConfig(level=logging.DEBUG,
-                    format=&#39;%(asctime)s %(levelname)s %(message)s&#39;,
-                    filename=logFile)
-
-    logging.info(&#39;main: == Démarrage des contrôles ac_dc ==&#39;)
-    logging.info(&amp;quot;main: Valeur des arguments d&#39;entrée %s&amp;quot; % sys.argv)
-    ac_dc_valeur = sys.argv[4]
-    logging.info(&amp;quot;main: Valeur de l&#39;argument d&#39;entrée %s&amp;quot; % ac_dc_valeur)
-    capacite,voltage = read_capacity()
-    logging.info(&amp;quot;main: Etat de la batterie: %s / %s&amp;quot; % (capacite,voltage))
-
-    if ac_dc_valeur == &amp;quot;00000000&amp;quot;:
-        #si le lock existe déjà c&#39;est qu&#39;on est en mode &amp;quot;forké&amp;quot; sinon il faut forker
-        if (os.path.isfile(lock_file)):
-            logging.info(&amp;quot;main: le fichier de lock existe déjà =&amp;gt; nous sommes dans le fork&amp;quot;)
-            corps = &amp;quot;Le courant a été coupé sur Champlain le %s.\nDébut de la procédure de sauvegarde.\n\nCapacité restante: %s mAh\nVoltage: %s mV&amp;quot; % (strftime(&amp;quot;%d/%m/%Y à %H:%M:%S&amp;quot;),capacite,voltage)
-            sujet = &amp;quot;[admin@champlain]Alerte: perte d&#39;énergie sur CHAMPLAIN&amp;quot;
-            send_mail(sujet,corps)
-            on_battery(capacite)
-        else:
-                logging.info(&amp;quot;main: Création du fichier de lock&amp;quot;)
-            file = open(lock_file,&amp;quot;w&amp;quot;)
-            file.write(&amp;quot;%s&amp;quot; % capacite)
-            file.close()
-            logging.info(&amp;quot;main: Fork du process pour rendre la main au démon ACPI&amp;quot;)
-            pid = Popen([fork_path, &amp;quot;00000000&amp;quot;, &amp;quot;00000000&amp;quot; ,&amp;quot;00000000&amp;quot;, &amp;quot;00000000&amp;quot;]).pid
-            logging.info(&amp;quot;main: Fork effectué dans %s - sortie&amp;quot; % pid)
-
-    else:
-        corps = &amp;quot;Le courant a été rétabli sur Champlain le %s.\nFin de la procédure de sauvegarde.\n\nCapacité restante: %s mAh\nVoltage: %s mV&amp;quot; % (strftime(&amp;quot;%d/%m/%Y à %H:%M:%S&amp;quot;),capacite,voltage)
-        sujet = &amp;quot;[admin@champlain]Fin d&#39;alerte: retour de l&#39;énergie sur CHAMPLAIN&amp;quot;
-        send_mail(sujet,corps)
-        on_dc()
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>J&amp;rsquo;utilise un portable comme serveur, notamment pour diminuer consommation et bruit, mais cela a un autre avantage: la batterie du portable qui peut servir &amp;ldquo;d&amp;rsquo;onduleur&amp;rdquo; en cas de perte de courant.
+J&amp;rsquo;ai donc conçu un script simple pour gérer les pertes d&amp;rsquo;énergie, et prendre le temps de lancer un arrêt propre du serveur si l&amp;rsquo;alimentation n&amp;rsquo;est toujours pas rétablie.
+Dans /etc/acpi/events on crée un fichier ac_dc contenant:
+event=ac_adapter.* action=/home/tifauve/scripts/acpi/battery/ac_dc.py %e  et voici le script ac_dc.</description>
     </item>
     
   </channel>

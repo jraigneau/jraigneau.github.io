@@ -6,8 +6,22 @@
     <description>Recent content on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Tue, 11 Oct 2016 07:48:54 +0200</lastBuildDate>
-    <atom:link href="http://www.zeneffy.fr/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&amp;#0169; 2008 - 2017, Julien Raigneau &amp;nbsp;&amp;nbsp;  | &amp;nbsp;&amp;nbsp;  Zeneffy &gt;&gt; Zen &amp;amp; Efficace</copyright>
+    <lastBuildDate>Mon, 10 Jul 2017 12:34:55 +0200</lastBuildDate>
+    
+	<atom:link href="http://www.zeneffy.fr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Dollhouse Challenge</title>
+      <link>http://www.zeneffy.fr/2017/07/the-dollhouse-challenge/</link>
+      <pubDate>Mon, 10 Jul 2017 12:34:55 +0200</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2017/07/the-dollhouse-challenge/</guid>
+      <description>Tout Papa (ou maman!) d&amp;rsquo;une petite princesse s&amp;rsquo;est un jour demandé s&amp;rsquo;il pouvait lui fabriquer un maison de poupée et les exemples ne manquent pas.
+Au début de l&amp;rsquo;année, ma princesse a reçu comme cadeau une toute petite maison Sylvanian Families, ainsi que beaucoup trop de meubles&amp;hellip;du coup je me suis demandé si je pouvais aussi me lancer dans l&amp;rsquo;aventure et fabriquer une modeste maison moi aussi.
+Planification, achats et premières découpes</description>
+    </item>
     
     <item>
       <title>A bot to rule them all</title>
@@ -15,99 +29,12 @@
       <pubDate>Tue, 11 Oct 2016 07:48:54 +0200</pubDate>
       
       <guid>http://www.zeneffy.fr/2016/10/go-bot-domotique/</guid>
-      <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;Un Anneau pour les gouverner tous&lt;/p&gt;
-
-&lt;p&gt;Un Anneau pour les trouver&lt;/p&gt;
-
-&lt;p&gt;Un Anneau pour les amener tous [&amp;hellip;]&lt;/p&gt;
-
-&lt;p&gt;&amp;ndash; J. R. R. Tolkien, Le seigneurs des anneaux&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Pour des raisons de sécurité, j&amp;rsquo;ai décidé de n&amp;rsquo;avoir aucun accès de l&amp;rsquo;extérieur vers mes éléments de domotique, avec toutefois un inconvénient majeur: aucun moyen de consulter les diverses données ou de lancer des actions.&lt;/p&gt;
-
-&lt;p&gt;Pour résoudre ce problème j&amp;rsquo;ai tenté plusieurs approches à base de tableaux de bord &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt; ou de solutions maison comme &lt;a href=&#34;https://github.com/jraigneau/proxana&#34;&gt;proxana&lt;/a&gt; mais qui ne m&amp;rsquo;ont jamais vraiment convaincues pour mon cas d&amp;rsquo;usage.&lt;/p&gt;
-
-&lt;h4 id=&#34;de-l-usage-d-un-bot-pour-la-domotique&#34;&gt;De l&amp;rsquo;usage d&amp;rsquo;un bot pour la domotique&lt;/h4&gt;
-
-&lt;p&gt;Et j&amp;rsquo;ai commencé à m&amp;rsquo;intéresser aux bots de type &lt;a href=&#34;https://hubot.github.com/&#34;&gt;Hubot&lt;/a&gt; et à leur utilité pour finalement créer mon propre bot nommé&lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt; est un service écrit en langage Go, basé sur mon système domotique déjà en place (&lt;a href=&#34;https://www.influxdata.com/&#34;&gt;InfluxDB&lt;/a&gt; et &lt;a href=&#34;http://nodered.org/&#34;&gt;NodeRed&lt;/a&gt;) et utilisant l&amp;rsquo;infrastructure de &lt;a href=&#34;https://telegram.org/&#34;&gt;Telegram&lt;/a&gt; pour me permettre de lancer des actions domotiques, du type &amp;ldquo;quelle est la température chez moi?&amp;rdquo;, sans risque sur la sécurité de mon système.&lt;/p&gt;
-
-&lt;p&gt;Une capture d&amp;rsquo;écran étant toujours plus simple que des mots, cela donne donc:
-   &lt;center&gt;&lt;img src=&#34;https://c3.staticflickr.com/9/8268/30137861482_00e066e485.jpg&#34; width=&#34;500&#34; height=&#34;363&#34; alt=&#34;graphana-elec&#34;&gt;&lt;/center&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;dans-les-coulisses-de-goule&#34;&gt;Dans les coulisses de Goule&lt;/h4&gt;
-
-&lt;p&gt;Pour développer &lt;a href=&#34;https://github.com/jraigneau/goule&#34;&gt;Goule&lt;/a&gt; en langage Go (décidemment j&amp;rsquo;aime beaucoup ce langage), je me suis appuyé de façon classique sur des librairies existantes notamment &lt;a href=&#34;https://gopkg.in/telegram-bot-api.v4&#34;&gt;telegram-bot-api&lt;/a&gt; pour se connecter à &lt;a href=&#34;https://telegram.org/&#34;&gt;Telegram&lt;/a&gt; ainsi que la &lt;a href=&#34;https://github.com/influxdata/influxdb/tree/master/client&#34;&gt;librairie native pour influxdb&lt;/a&gt;. La seule difficulté rencontrée a été le formatage des données renvoyées par influxdb, qui nécessite de fouiller un peu dans les &lt;a href=&#34;https://golang.org/pkg/encoding/json/#Number&#34;&gt;API&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;const (
-    username = &amp;quot;grafana&amp;quot;
-    password = &amp;quot;paint&amp;quot;
-    addr = &amp;quot;http://obelix:8086&amp;quot;
-)
-# Crée la requete et l&#39;envoie à InfluxDB, renvoie le résultat
-func queryDB(cmd string, MyDB string) (res []client.Result, err error) {
-
-    log.Printf(&amp;quot;Connection à influxDB&amp;quot;)
-    clnt, err := client.NewHTTPClient(client.HTTPConfig{
-        Addr: addr,
-        Username: username,
-        Password: password,
-    })
-    if err != nil {
-        log.Fatalln(&amp;quot;Error: &amp;quot;, err)
-    }
-    q := client.Query{
-        Command:  cmd,
-        Database: MyDB,
-    }
-    response, err := clnt.Query(q)
-    if err != nil {
-        log.Fatalln(&amp;quot;Error: &amp;quot;, err)
-    }
-    if response.Error() != nil {
-        log.Fatalln(&amp;quot;Error: &amp;quot;, response.Error())
-    }
-    res = response.Results
-    log.Println(response.Results)
-    return res, nil
-}
-# Récupère la consommation électrique dans influxDB
-func getConsoElectrique() string {
-    q := fmt.Sprintf(&amp;quot;SELECT * FROM energy ORDER BY time DESC LIMIT 1&amp;quot;)
-    res, err := queryDB(q,&amp;quot;electricity&amp;quot;)
-    if err != nil {
-        log.Fatal(&amp;quot;Error: &amp;quot;,err)
-    }
-    day_energy := res[0].Series[0].Values[0][1].(json.Number).String()
-    instant_energy := res[0].Series[0].Values[0][2].(json.Number).String()
-
-    return fmt.Sprintf(&amp;quot;Actuellement la consommation instantanée est de *%sW* et le cumul est de *%skW*.&amp;quot;,instant_energy,day_energy)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Le point d&amp;rsquo;attention étant sur la manipulation des résultats, avec des tableaux dans tous les sens, et des transformations JSON à faire comme pour récupérer la consommation quotidienne:  &lt;code&gt;day_energy := res[0].Series[0].Values[0][1].(json.Number).String()&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;containers-are-the-new-black&#34;&gt;Containers are the new black&lt;/h4&gt;
-
-&lt;p&gt;Finalement pour faire tourner tout cela simplement (et tenter quelque chose de différent), j&amp;rsquo;ai utilisé un container &lt;a href=&#34;https://www.docker.com/&#34;&gt;docker&lt;/a&gt; construit directement à partir du container &lt;a href=&#34;https://hub.docker.com/_/golang/&#34;&gt;Golang officiel&lt;/a&gt; et en m&amp;rsquo;appuyant sur &lt;a href=&#34;https://blog.docker.com/2016/09/docker-golang/&#34;&gt;l&amp;rsquo;article de Jérôme Petazzoni&lt;/a&gt;, avec les commandes suivantes:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# téléchargement de l&#39;image et des librairies + compilation de goule
-docker run golang go get -v github.com/jraigneau/goule
-# Transformation en image docker nommé goule
-docker commit $(docker ps -lq) goule
-# Lancement du programme goule dans l&#39;image goule en mode &amp;quot;daemon&amp;quot; à partir du containter goule
-docker run --restart=always --name goule -it -d goule goule
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Cela me permet d&amp;rsquo;avoir un &amp;ldquo;service&amp;rdquo; qui tourne sur ma VM principale dédiée aux containers, isolée des autres containers, avec une relance automatique en cas de problème (notamment coupure intempestive de ma ligne internet, ce qui est arrivé).&lt;/p&gt;
-
-&lt;p&gt;J&amp;rsquo;utilise ce système depuis un mois environ, et étant donné sa fiabilité je vais surement l&amp;rsquo;étendre à d&amp;rsquo;autres fonctions de ma domotique dans le futur.&lt;/p&gt;
-</description>
+      <description>Un Anneau pour les gouverner tous
+Un Anneau pour les trouver
+Un Anneau pour les amener tous [&amp;hellip;]
+&amp;ndash; J. R. R. Tolkien, Le seigneurs des anneaux
+ Pour des raisons de sécurité, j&amp;rsquo;ai décidé de n&amp;rsquo;avoir aucun accès de l&amp;rsquo;extérieur vers mes éléments de domotique, avec toutefois un inconvénient majeur: aucun moyen de consulter les diverses données ou de lancer des actions.
+Pour résoudre ce problème j&amp;rsquo;ai tenté plusieurs approches à base de tableaux de bord dashing ou de solutions maison comme proxana mais qui ne m&amp;rsquo;ont jamais vraiment convaincues pour mon cas d&amp;rsquo;usage.</description>
     </item>
     
     <item>
@@ -116,18 +43,8 @@ docker run --restart=always --name goule -it -d goule goule
       <pubDate>Sat, 02 Apr 2016 14:17:38 +0200</pubDate>
       
       <guid>http://www.zeneffy.fr/2016/04/godillot/</guid>
-      <description>&lt;p&gt;Suite à une coupure de courant le mois dernier, suffisamment longue pour vider la batterie de l&amp;rsquo;UPS, mes systèmes ont tous redémarrés automatiquement - ou du moins je le croyais jusqu&amp;rsquo;à ce que je me rende compte quelques jours plus tard que la base &lt;a href=&#34;http://influxdb.com/&#34;&gt;influxDB&lt;/a&gt; ne tournait plus, plantée suite à la coupure.&lt;/p&gt;
-
-&lt;p&gt;Après avoir réparé cette base de donnée (et avoir mis en oeuvre un vrai &lt;a href=&#34;https://docs.influxdata.com/influxdb/v0.11/administration/backup_and_restore/&#34;&gt;système de backup&lt;/a&gt; sur les data influxdb&amp;hellip;), j&amp;rsquo;ai décidé d&amp;rsquo;installer un système de monitoring simple des processus avec &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;. est un agent qui vérifie régulièrement les processus (Existence, Consommation, Code erreur), et envoie des alertes en cas de problèmes&amp;hellip;bref rien de plus que Nagios ou &lt;a href=&#34;http://newrelic.com&#34;&gt;New Relic&lt;/a&gt;, sauf que &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt;. peut aussi lancer des actions comme relancer les processus en cas de problèmes ou de dépassement de seuil. Dans le cas d&amp;rsquo;une infrastructure peu administrée/monitorée comme la mienne cela devient très intéressant pour automatiser et se faciliter la vie.&lt;/p&gt;
-
-&lt;p&gt;Toutefois, &lt;a href=&#34;https://mmonit.com/monit/&#34;&gt;Monit&lt;/a&gt; a un inconvénient majeur: pour avoir une vision globale de l&amp;rsquo;état de l&amp;rsquo;ensemble des serveurs il faut utiliser &lt;a href=&#34;https://mmonit.com/&#34;&gt;M/Monit&lt;/a&gt; qui est payant.&lt;/p&gt;
-
-&lt;p&gt;Aussi, j&amp;rsquo;ai développé en langage &lt;a href=&#34;http://golang.org&#34;&gt;Go&lt;/a&gt; une mini application appelée &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Godillot&lt;/a&gt; qui récupère les informations Monit de chaque serveur et les agrège dans un fichier html simple à lire comme vous pourrez le voir &lt;a href=&#34;http://godillot.zeneffy.fr&#34;&gt;en exemple&lt;/a&gt;. &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Godillot&lt;/a&gt; n&amp;rsquo;a pas vocation à remplacer M/Monit qui est très complet mais permet d&amp;rsquo;assurer un minimum de surveillance via u tableau de bord.&lt;/p&gt;
-
-&lt;p&gt;Godillot est bien entendu disponible en open-source (Licence Apache), directement sur &lt;a href=&#34;https://github.com/jraigneau/godillot&#34;&gt;Github&lt;/a&gt;, pour utilisation, modification (je ne suis pas fier du template html) et commentaires à votre convenance !&lt;/p&gt;
-</description>
+      <description>Suite à une coupure de courant le mois dernier, suffisamment longue pour vider la batterie de l&amp;rsquo;UPS, mes systèmes ont tous redémarrés automatiquement - ou du moins je le croyais jusqu&amp;rsquo;à ce que je me rende compte quelques jours plus tard que la base influxDB ne tournait plus, plantée suite à la coupure.
+Après avoir réparé cette base de donnée (et avoir mis en oeuvre un vrai système de backup sur les data influxdb&amp;hellip;), j&amp;rsquo;ai décidé d&amp;rsquo;installer un système de monitoring simple des processus avec Monit.</description>
     </item>
     
     <item>
@@ -136,26 +53,8 @@ docker run --restart=always --name goule -it -d goule goule
       <pubDate>Wed, 02 Dec 2015 07:39:21 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2015/12/remplacement-emoncms/</guid>
-      <description>&lt;p&gt;Utilisateur de &lt;a href=&#34;http://emoncms.org/&#34;&gt;emoncms&lt;/a&gt; comme solution de métrologie de mon installation domotique depuis quelques mois, j&amp;rsquo;ai décidé dernièrement de basculer sur une solution moins spécialisée et beaucoup plus ouverte, basée sur &lt;a href=&#34;https://influxdb.com/&#34;&gt;influxDB&lt;/a&gt; pour la partie stockage des données et sur le superbe &lt;a href=&#34;http://grafana.org/&#34;&gt;Grafana&lt;/a&gt; pour la partie affichage des indicateurs.&lt;/p&gt;
-
-&lt;p&gt;InfluxDB est une base de donnée permettant de stocker des données chronologiques (Time series en anglais), avec intégration de fonctions mathématiques simples (min/max, moyenne&amp;hellip;), et un langage de requêtage proche du SQL et simple à utiliser.&lt;/p&gt;
-
-&lt;p&gt;Grafana est, quant à lui, un visualiseur de données, pouvant se connecter à Graphite, influxDB, openTSDB&amp;hellip;afin de créer des tableaux de bord composés de graphiques ou de données brutes avec des possibilités avancées de corrélation.&lt;/p&gt;
-
-&lt;p&gt;L&amp;rsquo;installation de ces deux outils se fait très facilement (le classique `sudo apt-get sur ubuntu) et le paramétrage est aussi simple (du moins pour une installation comme la mienne) - aussi je ne n&amp;rsquo;épiloguerai pas dessus (en bref utilisation de &lt;a href=&#34;http://nodered.org/&#34;&gt;nodered&lt;/a&gt; ou de scripts bash pour récupérer les données puis envoi en POST via l&amp;rsquo;API influxDB, rien d&amp;rsquo;exotique).&lt;/p&gt;
-
-&lt;p&gt;Ainsi en quelques minutes, j&amp;rsquo;ai pu obtenir des tableaux de bord sur différents types de données, tant domotique qu&amp;rsquo;informatique, eg:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Consommation électrique&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm1.staticflickr.com/602/23106880869_9878c217b9.jpg&#34; width=&#34;500&#34; height=&#34;297&#34; alt=&#34;graphana-elec&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Traffic internet sur ma box&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm1.staticflickr.com/683/23366332332_caa0a653e9.jpg&#34; width=&#34;500&#34; height=&#34;297&#34; alt=&#34;grafana-traffic&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Pour conclure, ce qui me satisfait le plus dans cette solution c&amp;rsquo;est la possibilité de mettre n&amp;rsquo;importe quelle donnée en très peu de temps: utile parfois pour du troubleshooting.&lt;/p&gt;
-</description>
+      <description>Utilisateur de emoncms comme solution de métrologie de mon installation domotique depuis quelques mois, j&amp;rsquo;ai décidé dernièrement de basculer sur une solution moins spécialisée et beaucoup plus ouverte, basée sur influxDB pour la partie stockage des données et sur le superbe Grafana pour la partie affichage des indicateurs.
+InfluxDB est une base de donnée permettant de stocker des données chronologiques (Time series en anglais), avec intégration de fonctions mathématiques simples (min/max, moyenne&amp;hellip;), et un langage de requêtage proche du SQL et simple à utiliser.</description>
     </item>
     
     <item>
@@ -164,86 +63,8 @@ docker run --restart=always --name goule -it -d goule goule
       <pubDate>Sat, 20 Jun 2015 21:31:23 +0200</pubDate>
       
       <guid>http://www.zeneffy.fr/2015/06/premiers-pas-en-domotique/</guid>
-      <description>
-
-&lt;p&gt;J&amp;rsquo;ai décidé l&amp;rsquo;année dernière de me lancer dans l&amp;rsquo;aventure de la &lt;a href=&#34;http://www.zeneffy.fr/tags/domotique&#34;&gt;domotique&lt;/a&gt;, avec pleins d&amp;rsquo;idées en tête sur la sécurité et la détection, les mesures de température, l&amp;rsquo;optimisation de la consommation de l&amp;rsquo;énergie, le contrôle des lampes et autres, et plus globalement l’automatisation.&lt;/p&gt;
-
-&lt;h4 id=&#34;étude-préalable&#34;&gt;Étude préalable&lt;/h4&gt;
-
-&lt;p&gt;En m&amp;rsquo;intéressant à ce domaine, j&amp;rsquo;ai découvert d&amp;rsquo;une part sa richesse et d&amp;rsquo;autre part le nombre très important de protocoles, les différentes box domotiques plus ou moins compatibles, les prix (élevés) des différents composants.&lt;/p&gt;
-
-&lt;p&gt;Par ailleurs, ce domaine est à la fois très récent et assez ancien et nécessite des connaissances en électronique, électricité, informatique avec une notion forte d&amp;rsquo;intégration de composants et systèmes entre eux… ce qui rend le sujet d&amp;rsquo;autant plus intéressant.&lt;/p&gt;
-
-&lt;p&gt;J&amp;rsquo;en ai tiré plusieurs postulats et décisions sur la suite des événements.&lt;/p&gt;
-
-&lt;h4 id=&#34;postulats-choix&#34;&gt;Postulats / Choix&lt;/h4&gt;
-
-&lt;p&gt;Le matériel de contrôle de la bureautique pouvant être envahissant, j&amp;rsquo;ai décidé en premier lieu de me créer &lt;a href=&#34;http://www.zeneffy.fr/2015/04/mon-datacenter/&#34;&gt;mon propre espace&lt;/a&gt; pour le matériel.&lt;/p&gt;
-
-&lt;p&gt;Utilisateur heureux de l’open-source depuis plusieurs années, j&amp;rsquo;ai choisi de faire ma propre box domotique
-open-source en me basant sur l&amp;rsquo;application &lt;a href=&#34;http://domoticz.com/&#34;&gt;domoticz&lt;/a&gt; pour le cœur du système et en rajoutant au fur et à mesure des applications dédiées par fonction (Surveillance, Graph, Ordonnancement).&lt;/p&gt;
-
-&lt;p&gt;Toutes ces applications sont installées sur des machines virtuelles Ubuntu/Linux sur un ESX VMware.
-L&amp;rsquo;ESX est le seul élément non open-source, choisi par rapport à mes expériences professionnelles, mais j&amp;rsquo;aurai pu (dû?) choisir à la place &lt;a href=&#34;http://www.xenproject.org/&#34;&gt;XEN&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Le dernier choix important a été pour moi d&amp;rsquo;isoler complètement la maison: aucun des systèmes domestiques n&amp;rsquo;est accessible de l&amp;rsquo;extérieur afin d&amp;rsquo;éviter tout piratage qui pourrait être particulièrement grave.&lt;/p&gt;
-
-&lt;h4 id=&#34;mesurer-pour-contrôler&#34;&gt;Mesurer pour contrôler&lt;/h4&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;Measurement is the first step that leads to control and eventually to improvement. If you can’t measure something, you can’t understand it. If you can’t understand it, you can’t control it. If you can’t control it, you can’t improve it — Dr. H. James Harrington&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Un premier point important de la domotique est la mesure, selon l&amp;rsquo;adage &lt;em&gt;On ne contrôle que ce qu&amp;rsquo;on peut mesurer&lt;/em&gt;. Il faut donc prévoir les capteurs (avec par exemple les mesures de température via des Oregon Scientific THN 132) et surtout l&amp;rsquo;infrastructure de collecte des données.&lt;/p&gt;
-
-&lt;p&gt;Dans mon cas, j&amp;rsquo;ai choisi de mettre en œuvre &lt;a href=&#34;http://emoncms.org/&#34;&gt;emoncms&lt;/a&gt;, qui me permet d&amp;rsquo;agréger l&amp;rsquo;ensemble des données et d&amp;rsquo;en tirer des tableaux de bord très lisibles.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://c1.staticflickr.com/1/461/18397964043_7c43f8dea1.jpg&#34; width=&#34;500&#34; height=&#34;207&#34; alt=&#34;conso Electrique&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Évidemment, ces tableaux de bord ne sont pas accessibles de l&amp;rsquo;extérieur comme définit précédemment: j&amp;rsquo;ai donc mis en œuvre une copie des données temps réel vers l&amp;rsquo;extérieur, via un simple push vers un tableau de bord type &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt; hébergé chez &lt;a href=&#34;http://www.heroku.co&#34;&gt;Heroku&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://c1.staticflickr.com/1/537/18397961713_b644294b27.jpg&#34; width=&#34;500&#34; height=&#34;276&#34; alt=&#34;temperature&#34;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;intégration-des-systèmes&#34;&gt;Intégration des systèmes&lt;/h4&gt;
-
-&lt;p&gt;Pour bien gérer &amp;ldquo;l&amp;rsquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/Internet_of_Things&#34;&gt;internet of things&lt;/a&gt;&amp;rdquo; et mixer les services logiciels, les objets connectés, et les différents capteurs, j&amp;rsquo;ai par ailleurs installé &lt;a href=&#34;http://nodered.org/&#34;&gt;node-red&lt;/a&gt;, qui est développé par IBM.&lt;/p&gt;
-
-&lt;p&gt;Node-red permet de créer des workflows entre objet pour les faire interagir entre eux simple, le tout via une IHM web. Ces workflows permettent via un peu de développement très simple en javascript d&amp;rsquo;analyser des flux de données venant de sondes ou de services, de les transformer avant de les renvoyer vers d&amp;rsquo;autres sondes ou services.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://nodered.org/images/node-red-screenshot-sm.png&#34; alt=&#34;nodered&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Ainsi, j&amp;rsquo;ai pu créer des flux pour récupérer les données de la box domotique avant de les envoyer vers emoncms et d&amp;rsquo;en faire des graphiques et des premières analyses.&lt;/p&gt;
-
-&lt;h4 id=&#34;réalisations-actuelles-plutôt-orientées-mesures&#34;&gt;Réalisations actuelles - plutôt orientées mesures&lt;/h4&gt;
-
-&lt;p&gt;Ces derniers mois, je me suis attaché à mettre en œuvre les différents points de mesure, avec notamment:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Mesures de la température dans toutes les pièces de vie (Chambres, Salon) via des sondes &lt;a href=&#34;http://www.amazon.fr/Oregon-Scientific-THN-D%C3%A9tecteur-temp%C3%A9rature/dp/B000PEDJVI&#34;&gt;Oregon Scientific&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Récupération de la consommation électrique directement sur le compteur avec une pince ampérométrique de chez &lt;a href=&#34;http://www.amazon.fr/dp/B006R7E8MG/ref=pe_386181_37038081_TE_3p_dp_1&#34;&gt;OWL&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;J&amp;rsquo;ai par ailleurs commencé à installer des caméras intérieures pour la vidéosurveillance, avec &lt;a href=&#34;http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome&#34;&gt;motion&lt;/a&gt; et &lt;a href=&#34;https://github.com/ccrisan/motioneye&#34;&gt;motioneye&lt;/a&gt; pour gérer les détections et l&amp;rsquo;enregistrement des films. Ces films sont enregistrés à la fois en local et sur une DropBox dédiée en cas de coupure (ou disparition du disque dur&amp;hellip;)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://github.com/ccrisan/motioneye/wiki/images/desktop-view.png&#34; width=&#34;500&#34; height=&#34;276&#34; alt=&#34;motioneye&#34;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;réalisations-à-venir-ou-qui-reste-à-étudier&#34;&gt;Réalisations à venir ou qui reste à étudier&lt;/h4&gt;
-
-&lt;p&gt;Le champ des possibles de la domotique est impressionnant et j&amp;rsquo;imagine par exemple mettre en œuvre d&amp;rsquo;autres activités comme:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Contrôle automatique des lumières du jardin selon l&amp;rsquo;heure de la journée.&lt;/li&gt;
-&lt;li&gt;Mise en œuvre d&amp;rsquo;un contrôle vocal type &lt;a href=&#34;http://blog.encausse.net/s-a-r-a-h/&#34;&gt;S.A.R.A.H&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Extension de la vidéo surveillance à l&amp;rsquo;extérieure, avec déclenchement d&amp;rsquo;actions suite à des événements&lt;/li&gt;
-&lt;li&gt;Mesure de l&amp;rsquo;humidité dans la salle de douche pour allumer/éteindre la VMC&lt;/li&gt;
-&lt;li&gt;Contrôle des radiateurs via boutons électroniques&lt;/li&gt;
-&lt;li&gt;Détection des lumières laissées allumées par les enfants&lt;/li&gt;
-&lt;li&gt;Automatisation des fermetures de volets&lt;/li&gt;
-&lt;li&gt;envoi d&amp;rsquo;information via SMS&lt;/li&gt;
-&lt;li&gt;&amp;hellip;.
-Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>J&amp;rsquo;ai décidé l&amp;rsquo;année dernière de me lancer dans l&amp;rsquo;aventure de la domotique, avec pleins d&amp;rsquo;idées en tête sur la sécurité et la détection, les mesures de température, l&amp;rsquo;optimisation de la consommation de l&amp;rsquo;énergie, le contrôle des lampes et autres, et plus globalement l’automatisation.
+Étude préalable En m&amp;rsquo;intéressant à ce domaine, j&amp;rsquo;ai découvert d&amp;rsquo;une part sa richesse et d&amp;rsquo;autre part le nombre très important de protocoles, les différentes box domotiques plus ou moins compatibles, les prix (élevés) des différents composants.</description>
     </item>
     
     <item>
@@ -252,82 +73,8 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <pubDate>Thu, 16 Apr 2015 22:06:42 +0200</pubDate>
       
       <guid>http://www.zeneffy.fr/2015/04/mon-datacenter/</guid>
-      <description>
-
-&lt;h4 id=&#34;le-datacenter-à-la-maison-un-rêve-de-geek&#34;&gt;le datacenter à la maison : un rêve de geek&lt;/h4&gt;
-
-&lt;p&gt;Ayant acheté une maison l’année dernière avec beaucoup d’espace et surtout un grand garage, j’en ai profité pour réaliser un vieux fantasme de geek : Avoir un endroit dédié pour mon matériel informatique, bref mon propre mini datacenter.&lt;/p&gt;
-
-&lt;p&gt;Derrière ce fantasme, un besoin simple: créer un espace protégé, ventilé et &lt;a href=&#34;http://fr.wikipedia.org/wiki/Facteur_d%27acceptation_f%C3%A9minine&#34;&gt;présentable&lt;/a&gt; pour héberger un NAS Synology, un  mini-serveur NUC, un antenne RFXCom pour la domotique, un hub NetGear et un UPS APC - le tout avec des capacités d’évolution et en respectant certaines règles d’urbanisation. En bonus, un vieux PC avec hauts-parleurs est installé pour me permettre d’écouter de la musique en bricolant ou pour consulter rapidement des infos domotiques.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8708/16972064590_a4f1719aec_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;datacenter1&#34; align=&#34;middle&#34;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;de-la-récup-et-de-l-huile-de-coude&#34;&gt;De la « récup » et de l’huile de coude&lt;/h4&gt;
-
-&lt;p&gt;Après quelques recherches sur internet sur le sujet, j’ai trouvé de nombreux exemples de bricoleurs geek qui ont transformé (ou même créé) des meubles pour cette usage: j’ai donc décidé de me lancer moi aussi en partant d’un petit meuble existant.&lt;/p&gt;
-
-&lt;p&gt;Quatre étapes majeures ont composé la création de ce meuble datacenter:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Créer les aérations et prévoir les circulations d’air&lt;/li&gt;
-&lt;li&gt;Structurer le câblage des courants forts (électricité) et faibles (réseau)&lt;/li&gt;
-&lt;li&gt;Mettre en place le matériel&lt;/li&gt;
-&lt;li&gt;Installer le PC « domotique »&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;une-aération-intelligente&#34;&gt;Une aération intelligente&lt;/h4&gt;
-
-&lt;p&gt;Tout d’abord, j’ai percé des ouvertures sur la porte avant, sur l’arrière pour le passage des câbles.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8732/16539846743_53e48f0cb9_n.jpg&#34; width=&#34;320&#34; height=&#34;239&#34; alt=&#34;IMG_0786&#34;&gt;
-&lt;img src=&#34;https://farm8.staticflickr.com/7710/17159850705_0d20c08d1b_n.jpg&#34; width=&#34;239&#34; height=&#34;320&#34; alt=&#34;IMG_0812&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Puis j’ai rajouté une VMC de salle de bain pour assurer extraction d’air optimale, avec un allumage automatique via un &lt;a href=&#34;http://www.amazon.fr/Myfox-TA3010-62592-Module-1000/dp/B0033ZREXU/ref=pd_sim_hi_1?ie=UTF8&amp;amp;refRID=1R4NH6AP9KE53T4K6F7K&#34;&gt;micro-module Chacon&lt;/a&gt; commandé par la box domotique open-source &lt;a href=&#34;http://domoticz.com/&#34;&gt;Domoticz&lt;/a&gt; et basé sur un capteur de température &lt;a href=&#34;http://www.amazon.fr/Oregon-Scientific-THN-D%C3%A9tecteur-temp%C3%A9rature/dp/B000PEDJVI&#34;&gt;Oregon Scientific&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7637/16972282098_f363ed97bb_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;IMG_0818&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Grâce à ce montage, la VMC ne se déclenche que si la température à l’intérieur du DC dépasse les 30°C et s’éteint une fois la température revenue sous les 27°C, tout en m’envoyant des alertes.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8701/16539781163_9c69f57da3_c.jpg&#34; width=&#34;800&#34; height=&#34;221&#34; alt=&#34;Domoticz&#34;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;l-importance-d-optimiser-son-câblage&#34;&gt;L’importance d’optimiser son câblage&lt;/h4&gt;
-
-&lt;p&gt;Qui n’a jamais eu de problème de câble qui se mélangent, s’entortillent et se croisent (regardez donc les câbles entre votre télévision, votre box tv et votre lecteur de DVD par exemple)? Sur un environnement confiné avec à la fois des câbles électriques et des câbles réseau, cela peut devenir l’enfer en cas de modification ou de dépannage.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8765/17159460861_efc4b76ef2_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;IMG_0817&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Aussi j’ai utilisé des accroches de tuyaux de plomberie pour définir des chemins de câbles, en séparant courant faible et courant fort - ce qui m’a permis notamment de changer plusieurs fois des éléments dans le datacenter sans coup férir.&lt;/p&gt;
-
-&lt;h4 id=&#34;organisation-et-remplissage-du-datacenter&#34;&gt;Organisation et remplissage du datacenter&lt;/h4&gt;
-
-&lt;p&gt;Avant de remplir, j’ai rajouté des roulettes pour faciliter les manipulations.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7612/17160121785_315be2a776_z.jpg&#34; width=&#34;640&#34; height=&#34;478&#34; alt=&#34;IMG_0785&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Puis, J&amp;rsquo;ai positionné l&amp;rsquo;UPS en bas, le NUC au milieu avec le NAS et pour l&amp;rsquo;instant juste le switch réseau en haut: l&amp;rsquo;idée étant de garder de la place à côté du NUC et du switch pour des évolutions.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7703/16550162503_48d1435116_z.jpg&#34; width=&#34;478&#34; height=&#34;640&#34; alt=&#34;IMG_0001&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Vous noterez le capteur de température pour le déclenchement de la VMC juste au dessus du NUC.&lt;/p&gt;
-
-&lt;h4 id=&#34;un-pc-facile-d-accès&#34;&gt;Un PC facile d’accès&lt;/h4&gt;
-
-&lt;p&gt;Avoir un PC dans le garage/atelier peut être pratique pour accéder rapidement à un terminal, vérifier des points sur internet lors du bricolage ou simplement écouter de la musique.&lt;/p&gt;
-
-&lt;p&gt;Pour cela, un peu de récupération avec une planche pour le moniteur et une plaque de métal pour le clavier, le tout fixé au mur au dessus du datacenter pour avoir le réseau et le tour est joué !&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7701/16547925704_5a723568a9_z.jpg&#34; width=&#34;478&#34; height=&#34;640&#34; alt=&#34;IMG_0002&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Ce système permet aussi de positionner le boîtier radio RFXcom en dehors du meuble pour éviter les interférences.&lt;/p&gt;
-
-&lt;h4 id=&#34;résultats&#34;&gt;Résultats&lt;/h4&gt;
-
-&lt;p&gt;Les objectifs sont tous atteints, avec finalement peu de moyens engagés (moins de 80€ de matériel) et un résultat très correct.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7613/16984219739_fbf422e7f9_z.jpg&#34; width=&#34;478&#34; height=&#34;640&#34; alt=&#34;IMG_0003&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Je réfléchis maintenant à acheter un mini-PC pas cher pour remplacer le vieux Celeron 1Go qui peine même sous linux.&lt;/p&gt;
-</description>
+      <description>le datacenter à la maison : un rêve de geek Ayant acheté une maison l’année dernière avec beaucoup d’espace et surtout un grand garage, j’en ai profité pour réaliser un vieux fantasme de geek : Avoir un endroit dédié pour mon matériel informatique, bref mon propre mini datacenter.
+Derrière ce fantasme, un besoin simple: créer un espace protégé, ventilé et présentable pour héberger un NAS Synology, un mini-serveur NUC, un antenne RFXCom pour la domotique, un hub NetGear et un UPS APC - le tout avec des capacités d’évolution et en respectant certaines règles d’urbanisation.</description>
     </item>
     
     <item>
@@ -336,21 +83,9 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <pubDate>Sat, 04 Apr 2015 20:17:05 +0100</pubDate>
       
       <guid>http://www.zeneffy.fr/2015/04/obiran-vs-synology/</guid>
-      <description>&lt;p&gt;Depuis quelques mois, j’ai mis en oeuvre une nouvelle infrastructure chez moi de type &lt;a href=&#34;http://techhead.co/vmware-esxi-home-lab-why-what-and-how-considerations-when-building-your-own-home-lab/&#34;&gt;homelab&lt;/a&gt;, basée sur un petit serveur intel NUC, ESXi et Ubuntu.&lt;/p&gt;
-
-&lt;p&gt;Comme tout bon exploitant avec des tendances &lt;a href=&#34;http://www.zeneffy.fr/tags/devops&#34;&gt;devops&lt;/a&gt;, j’ai rajouté de la supervision avec &lt;a href=&#34;http://newrelic.com/server-monitoring&#34;&gt;NewRelic&lt;/a&gt;, divers scripts de contrôle, un dashboard basé sur &lt;a href=&#34;http://dashing.io/&#34;&gt;dashing&lt;/a&gt;, l’installation automatisée de VM via &lt;a href=&#34;http://www.ansible.com/home&#34;&gt;ansible&lt;/a&gt; et évidemment je me suis ensuite attaqué à la problématique des sauvegardes.&lt;/p&gt;
-
-&lt;p&gt;De nombreuses solutions opensource existent déjà (&lt;a href=&#34;http://www.amanda.org/&#34;&gt;amanda&lt;/a&gt;, &lt;a href=&#34;http://www.baculasystems.com/&#34;&gt;bacula&lt;/a&gt; …) permettant entre autre d’avoir une architecture de type client-serveur. Toutefois, la sauvegarde étant un sujet qui me tient à &lt;a href=&#34;http://www.zeneffy.fr/tags/backup/&#34;&gt;coeur&lt;/a&gt;, j’ai décidé de réutiliser un de mes scripts assez ancien « &lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;obiran&lt;/a&gt; » pour sauvegarder les fichiers importants directement sur mon NAS Synology.&lt;/p&gt;
-
-&lt;p&gt;Mais la mauvaise fée de l’informatique est intervenu d’un coup de baguette numérique rendant impossible de faire fonctionner &lt;code&gt;rsync&lt;/code&gt; entre mes VM et le NAS, avec un message d’erreur peu parlant du type &lt;code&gt;Permission denied, please try again.&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Après quelques recherches, la solution semble être d’expliciter le chemin du binaire &lt;code&gt;rsync&lt;/code&gt; côté synology, avec le paramètre &lt;code&gt;—rsync-path=/usr/syno/bin/rsync&lt;/code&gt;. La commande à lancer devient donc:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;rsync -azv —rsync-path=/usr/syno/bin/rsync REPERTOIRE_A_SAUVEGARDER -e « ssh -p PORT -i FICHIER-CLEF » USER@SYNOLOGY:REPERTOIRE_DESTINATION
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;J’ai donc mis à jour Obiran avec un nouveau paramètre pour prendre en compte cette spécificité: Obiran est donc passé en version 0.6, sept ans avec la version 0.5 !&lt;/p&gt;
-</description>
+      <description>Depuis quelques mois, j’ai mis en oeuvre une nouvelle infrastructure chez moi de type homelab, basée sur un petit serveur intel NUC, ESXi et Ubuntu.
+Comme tout bon exploitant avec des tendances devops, j’ai rajouté de la supervision avec NewRelic, divers scripts de contrôle, un dashboard basé sur dashing, l’installation automatisée de VM via ansible et évidemment je me suis ensuite attaqué à la problématique des sauvegardes.
+De nombreuses solutions opensource existent déjà (amanda, bacula …) permettant entre autre d’avoir une architecture de type client-serveur.</description>
     </item>
     
     <item>
@@ -363,8 +98,8 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
 
 &lt;p&gt;Finalement, j&amp;rsquo;ai simplifié à l&amp;rsquo;extrème en utilisant &lt;a href=&#34;http://pages.github.com/&#34;&gt;github pages&lt;/a&gt; avec un site complètement statique et se résumant à une page.&lt;/p&gt;
 
-&lt;p&gt;Comme quoi les CMS et les bases de données ne sont pas la solution à tous les problèmes !&lt;/p&gt;
-</description>
+&lt;p&gt;Comme quoi les CMS et les bases de données ne sont pas la solution à tous les problèmes !
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -373,35 +108,7 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <pubDate>Sun, 02 Sep 2012 12:56:19 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2012/09/le-motto-de-lexploitant/</guid>
-      <description>&lt;p&gt;En lisant le très bon article &lt;a href=&#34;http://agiletesting.blogspot.co.uk/2012/08/10-things-to-know-when-starting-out-as.html&#34;&gt;10 things to know when starting out as a sysadmin&lt;/a&gt;, j&amp;rsquo;ai retrouvé des points importants que tout exploitant doit connaître sur le bout des doigts à mon humble avis et d&amp;rsquo;après mes diverses (et parfois malheureuses) expériences:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Sauvegarder est important, tester la restauration l&amp;rsquo;est tout autant.&lt;/li&gt;
-&lt;li&gt;Tous les systèmes et applications en production doivent être supervisés, en adaptant le niveau de supervision à la criticité du système.&lt;/li&gt;
-&lt;li&gt;L&amp;rsquo;exploitant doit être techniquement très compétent, notamment sur les protocoles réseau (http, DNS, routages&amp;hellip;) qui sont à la base du troubleshooting.&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;L&amp;rsquo;exploitant est avant tout un expert de la gestion des problèmes qui sait analyser les anomalies en identifiant et éliminant les variables une à une jusqu&amp;rsquo;à trouver la rootcause.&lt;/li&gt;
-&lt;li&gt;Redondance et résilience sont les amies de l&amp;rsquo;exploitant, qui n&amp;rsquo;oublie pas de les tester régulièrement&amp;hellip;il est toujours dommage de se rendre compte en plein incident que le backup ne fonctionne pas alors que le master est tombé&lt;/li&gt;
-&lt;li&gt;Exploiter des machines, c&amp;rsquo;est maintenir la disponibilité &lt;strong&gt;et&lt;/strong&gt; la sécurité des applications: vos clients ne vous pardonneront jamais d&amp;rsquo;avoir égarer leurs données personnelles.&lt;/li&gt;
-&lt;li&gt;Les logs sont et resteront l&amp;rsquo;outil de diagnostic principal de l&amp;rsquo;exploitant: cela nécessite d&amp;rsquo;une part une infrastructure pour les gérer correctement mais aussi un travail en amont avec les développeurs pour savoir ce qui doit être dans des logs ou pas!&lt;/li&gt;
-&lt;li&gt;Savoir développer des outils est important pour industrialiser des actions de production ou pour trouver un &amp;ldquo;quick hack&amp;rdquo; afin de rétablir le service&amp;hellip;et ces outils sont presque toujours écrit en langage de script (python, ruby, bash, lua - choisissez votre préféré) que devra connaître voire masteriser l&amp;rsquo;exploitant.&lt;/li&gt;
-&lt;li&gt;La documentation sauve la journée de l&amp;rsquo;exploitant (et permet accessoirement de rétablir le service): manuels d&amp;rsquo;exploitation, guides de troubleshooting, schémas de flux&amp;hellip;sont à construire, collecter et surtout stocker dans des bases de connaissance efficientes - les wikis sont souvent de parfaits candidats pour cela en rajoutant une dimension collaborative entre exploitants et développeurs.&lt;/li&gt;
-&lt;li&gt;Bien que la réactivité soit la première qualité de l&amp;rsquo;exploitant, la proactivité est tout aussi importante, d&amp;rsquo;une part en amont des projets pour préparer l&amp;rsquo;exploitabilité des solutions avec architectes et développeurs et d&amp;rsquo;autre part en aval en analysant quotidiennement la performance des applications afin d&amp;rsquo;anticiper les dégradations.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Dernier point et non des moindres: l&amp;rsquo;opensource permet à l&amp;rsquo;exploitant d&amp;rsquo;avoir une boîte à outils efficace et à moindre frais:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Déploiement (Puppet/Chef/Vagrant)&lt;/li&gt;
-&lt;li&gt;Intégration et les tests (Selenium, Cucumber &amp;amp; Co)&lt;/li&gt;
-&lt;li&gt;Sauvegarde (Amanda/Bacula)&lt;/li&gt;
-&lt;li&gt;Supervision (Nagios, Centreon, Zabbix)&lt;/li&gt;
-&lt;li&gt;Analyse de la performance (Cacti, Smokeping)&lt;/li&gt;
-&lt;li&gt;Gestion des problèmes et des incidents (Bugzilla, Mantis, Trac)&lt;/li&gt;
-&lt;li&gt;Documentation (MoinMoinwiki, MediaWiki).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ainsi pour chaque usage plusieurs alternatives libres existent et sont par ailleurs largement utilisées dans le monde de la production pour faciliter la vie de l&amp;rsquo;exploitant.&lt;/p&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
@@ -412,16 +119,7 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
       <guid>http://www.zeneffy.fr/2012/07/dans-combien-de-jours/</guid>
       <description>&lt;p&gt;Mon fils compte très souvent les jours restants avant chaque événement (Mariages, entrée au CP, Vacances…) et chaque jour demande donc &lt;em&gt;&amp;ldquo;Dans combien de jours c&amp;rsquo;est xxx&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;Autant compter sur 2 à 3 semaines reste faisable, autant quand il s&amp;rsquo;agit de compter les jours avant un événement dans 6 mois les choses se compliquent.&lt;/p&gt;
-
-&lt;p&gt;Aussi en bon geek que je suis, j&amp;rsquo;ai rapidement prototypé une application sobrement intitulée &lt;a href=&#34;https://github.com/jraigneau/dcdj&#34;&gt;dcdj&lt;/a&gt; qui permet de rentrer un événement et d&amp;rsquo;avoir le nombre de jours restants.&lt;/p&gt;
-
-&lt;p&gt;L&amp;rsquo;objectif étant d&amp;rsquo;avoir toujours sous la main l&amp;rsquo;application, l&amp;rsquo;utilisation des technologies mobiles était une évidence. Une petite revue rapide d&amp;rsquo;objective-C (ainsi que le prix de la licence AppStore!) m&amp;rsquo;ayant convaincue que finalement les technologies web restaient les plus adaptées, j&amp;rsquo;ai développé &lt;a href=&#34;https://github.com/jraigneau/dcdj&#34;&gt;dcdj&lt;/a&gt; avec le classique &lt;a href=&#34;http://rubyonrails.org&#34;&gt;Ruby on Rails&lt;/a&gt; et surtout &lt;a href=&#34;http://jquerymobile.com&#34;&gt;jQuery Mobile&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Retrouver Rails après quelques mois de &lt;a href=&#34;http://nodejs.org&#34;&gt;node.js&lt;/a&gt; a été un vrai plaisir et j&amp;rsquo;ai surtout découvert que jQuery Mobile était une librairie très intéressante à utiliser pour créer rapidement des applications web lisibles sur des mobiles et tablettes.&lt;/p&gt;
-
-&lt;p&gt;Le résultat peut-être testé sur &lt;a href=&#34;http://dcdj-test.herokuapp.com/&#34;&gt;dcdj-test&lt;/a&gt; et le code source est bien évidemment libre et disponible sur &lt;a href=&#34;https://github.com/jraigneau/dcdj&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
-</description>
+&lt;p&gt;Autant compter sur 2 à 3 semaines reste faisable, autant quand il s&amp;rsquo;agit de compter les jours avant un événement dans 6 mois les choses se compliquent.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -435,45 +133,7 @@ Bref, de quoi s&amp;rsquo;occuper quelques temps !&lt;/li&gt;
 &lt;p&gt;Heureusement, il est possible très facilement de forcer la version - pour cela il suffit d&amp;rsquo;une part de rajouter un &amp;ldquo;buildpack&amp;rdquo; dans les variables d&amp;rsquo;environnement de votre application:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;heroku config:add BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-nodejs.git#versions
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;puis de modifier le fichier &lt;em&gt;packages.json&lt;/em&gt; pour rajouter une entrée &amp;ldquo;engines&amp;rdquo;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-    &amp;quot;name&amp;quot;: &amp;quot;monAppli&amp;quot;
-  , &amp;quot;version&amp;quot;: &amp;quot;0.1.0&amp;quot;
-  , &amp;quot;private&amp;quot;: true
-  , &amp;quot;dependencies&amp;quot;: {
-      &amp;quot;express&amp;quot;: &amp;quot;2.5.6&amp;quot;
-    , &amp;quot;jade&amp;quot;: &amp;quot;0.20.0&amp;quot;
-  },
-  &amp;quot;engines&amp;quot;: {
-    &amp;quot;node&amp;quot;: &amp;quot;0.6.x&amp;quot;,
-    &amp;quot;npm&amp;quot;: &amp;quot;1.0.x&amp;quot;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Puis les classiques&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git add .
-git commit -m &amp;quot;passage en en 0.6&amp;quot;
-git push heroku master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Normalement vous devriez voir les lignes:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;-----&amp;gt; Heroku receiving push
------&amp;gt; Fetching custom buildpack... done
------&amp;gt; Node.js app detected
------&amp;gt; Resolving engine versions
-       Using Node.js version: 0.6.8
-       Using npm version: 1.0.106
------&amp;gt; Fetching Node.js binaries
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Et voilà, votre application tourne en 0.6.&lt;/p&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -484,12 +144,9 @@ git push heroku master
       <guid>http://www.zeneffy.fr/2011/12/instant-de-bonheur-une-application-complete-node-js/</guid>
       <description>&lt;p&gt;M&amp;rsquo;intéressant depuis quelques temps à &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; (framework web basé sur le moteur javascript V8 de chrome), j&amp;rsquo;avais décidé de réaliser une petite application pour tester et me faire une opinion sur l&amp;rsquo;utilisation du javascript côté serveur - par un hasard extraordinaire j&amp;rsquo;ai eu l&amp;rsquo;occasion de trouver une idée et de la réaliser lors d&amp;rsquo;une formation, par ailleurs sans aucun rapport.&lt;/p&gt;
 
-&lt;p&gt;Cela donne l&amp;rsquo;application web &lt;a href=&#34;http://mon.instant-de-bonheur.fr&#34;&gt;mon.instant-de-bonheur.fr&lt;/a&gt; qui permet de partager les petits (et grands!) moments de bonheur (sans aucun lien avec l&amp;rsquo;&lt;a href=&#34;http://programmes.france2.fr/leurs-secrets-du-bonheur/index.php?page=article&amp;amp;numsite=7085&amp;amp;id_article=24314&amp;amp;id_rubrique=7088&#34;&gt;émission de France2&lt;/a&gt;, quoique&amp;hellip;) et qui a été mise en ligne depuis quelques jours.&lt;/p&gt;
-
-&lt;p&gt;Pour les geeks, j&amp;rsquo;ai pris soin (ou du moins essayé) de documenter mon code, évidemment publié en opensource (license Apache 2.0) afin que d&amp;rsquo;autres puissent peut-être en profiter pour monter en compétence sur les technologies javascript (node.js, jade, expressjs) et noSQL (à travers mongodb).&lt;/p&gt;
-
-&lt;p&gt;Le code complet est disponible sur github via &lt;a href=&#34;https://github.com/jraigneau/instant&#34;&gt;github.com/jraigneau/instant&lt;/a&gt;, et la version commentée et mise en forme peut-être revue sur le site même de l&amp;rsquo;application via &lt;a href=&#34;http://mon.instant-de-bonheur.fr/about&#34;&gt;mon.instant-de-bonheur.fr/about&lt;/a&gt;. Le code est améliorable, modifiable et ne respecte probablement pas les standards mais &amp;ldquo;It works !&amp;rdquo; -  au passage je suis convaincu par l&amp;rsquo;utilisation de node.js: rapide, fiable et surtout très facile à utiliser pour un développeur même moyen.&lt;/p&gt;
-</description>
+&lt;p&gt;Cela donne l&amp;rsquo;application web &lt;a href=&#34;http://mon.instant-de-bonheur.fr&#34;&gt;mon.instant-de-bonheur.fr&lt;/a&gt; qui permet de partager les petits (et grands!) moments de bonheur (sans aucun lien avec l&amp;rsquo;&lt;a href=&#34;http://programmes.france2.fr/leurs-secrets-du-bonheur/index.php?page=article&amp;amp;numsite=7085&amp;amp;id_article=24314&amp;amp;id_rubrique=7088&#34;&gt;émission de France2&lt;/a&gt;, quoique&amp;hellip;) et qui a été mise en ligne depuis quelques jours.
+&lt;br /&gt;
+Pour les geeks, j&amp;rsquo;ai pris soin (ou du moins essayé) de documenter mon code, évidemment publié en opensource (license Apache 2.0) afin que d&amp;rsquo;autres puissent peut-être en profiter pour monter en compétence sur les technologies javascript (node.js, jade, expressjs) et noSQL (à travers mongodb).&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -507,132 +164,7 @@ git push heroku master
 &lt;li&gt;Testez que tout s&amp;rsquo;est bien passé: &lt;code&gt;play run&lt;/code&gt; puis ouvrez votre navigateur sur &lt;code&gt;http//localhost:9000&lt;/code&gt;. Normalement vous devez avoir une belle fenêtre résumant le fonctionnement de Play!. Passons maintenant au choses sérieuses.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Modifiez les dépendances du projet pour ajouter &lt;a href=&#34;http://api.mongodb.org/scala/casbah/2.1.5.0/index.html&#34;&gt;Casbah&lt;/a&gt;, la librairie Scala permettant de manipuler &lt;a href=&#34;mongodb&#34;&gt;MongoDB&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Application dependencies
-require:
-    - play
-    - play -&amp;gt; scala 0.9.1
-    - com.mongodb.casbah -&amp;gt; casbah_2.8.1 2.1.5-1
-
-repositories:
-  - scalatools:
-     type: iBiblio
-     root: http://scala-tools.org/repo-releases/
-     contains:
-       - com.mongodb.casbah -&amp;gt; *
-       - org.scalaj -&amp;gt; *
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Attention de bien utiliser la version 2.8.1 qui est la seule compatible avec Play! 1.2.3 à l&amp;rsquo;heure actuelle.&lt;/p&gt;
-
-&lt;p&gt;Forcez Play! à charger toutes les dépendances (qui seront stockées dans le répertoire /lib):
-    play dependencies&lt;/p&gt;
-
-&lt;p&gt;Préparez l&amp;rsquo;application pour le déploiement sur heroku: pour des raisons de simplicité nous allons utiliser la base MongoDB de heroku directement (pas de base de développement&amp;hellip;c&amp;rsquo;est mal mais c&amp;rsquo;est une démo !).
-Avant toute chose, créez un fichier &lt;code&gt;.gitignore&lt;/code&gt; contenant:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;/modules
-/tmp
-/lib
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Puis la magie git habituelle&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git init
-git add .
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;et enfin la déclaration sous heroku (je ne donne pas de nom à l&amp;rsquo;application, Heroku m&amp;rsquo;en choisira un tout seul) et l&amp;rsquo;installation de l&amp;rsquo;addon mongodb (ici via mongolab mais mongoHQ ferait aussi l&amp;rsquo;affaire)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;heroku create --stack cedar
-heroku addons:add mongolab:starter
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Point important: la commande heroku config vous permettra de récupérer l&amp;rsquo;url et le port de la base mongoDB automatiquement créée. Exemple:
-    &lt;code&gt;MONGOLAB_URI =&amp;gt; mongodb://nombase:motdepasse@urlmongolab:portmongolab/nombase&lt;/code&gt;
-Ces données sont à intégrer dans la prochaine étape.&lt;/p&gt;
-
-&lt;p&gt;Créez un nouveau controleur dans /app/controllers/Messages.scala avec le code suivant:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;package controllers;
-
-import play.mvc._;
-import com.mongodb.casbah.Imports._
-import scala.collection.JavaConverters._
-
-object Messages extends Controller {
-
-//Création de la connexion et authentification
-  val _mongoConn = MongoConnection(&amp;quot;urlmongolab&amp;quot;, portmongolab)
-  _mongoConn(&amp;quot;nombase&amp;quot;).authenticate(&amp;quot;nombase&amp;quot;,&amp;quot;motdepasse&amp;quot;)
-
-
-  def index = {
-    val msgs = _mongoConn(&amp;quot;nombase&amp;quot;)(&amp;quot;test_data&amp;quot;).find( &amp;quot;msg&amp;quot; $exists true $ne &amp;quot;&amp;quot; )
-    val msgStrings = msgs.map( (obj: DBObject) =&amp;gt; obj.getOrElse(&amp;quot;msg&amp;quot;,&amp;quot;&amp;quot;) )
-    Template( &#39;msgStrings -&amp;gt; msgStrings.asJava )
-  }
-
-  def save(msg:String) = {
-    val doc = MongoDBObject(&amp;quot;msg&amp;quot; -&amp;gt; msg)
-    _mongoConn(&amp;quot;nombase&amp;quot;)(&amp;quot;test_data&amp;quot;).save( doc )
-    Redirect(&amp;quot;/&amp;quot;)
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Vous noterez les transformations des méthodes &amp;ldquo;.asJava&amp;rdquo; qui permettent à Groovy (le langage de scripting intégré dans Play) de gérer les listes typique de Scala.&lt;/p&gt;
-
-&lt;p&gt;Ajoutez une vue pour gérer le controleur avec un fichier dans /app/views/Messages/index.html&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;form action=&amp;quot;@{Messages.save()}&amp;quot; method=&amp;quot;POST&amp;quot;/&amp;gt;
-  &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;msg&amp;quot;/&amp;gt;
-  &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;Add message&amp;quot; /&amp;gt;
-&amp;lt;/form&amp;gt;
-
-&amp;lt;ul&amp;gt;
-  #{list items:msgStrings, as:&#39;mess&#39; }
-  &amp;lt;li&amp;gt;${ mess }&amp;lt;/li&amp;gt;
-  #{/list}
-&amp;lt;/ul&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Modifiez les routes dans /config/routes&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
-
-# Home page
-GET     /                                       Messages.index
-POST    /                                       Messages.save
-
-
-# Ignore favicon requests
-GET     /favicon.ico                            404
-
-# Map static resources from the /app/public folder to the /public path
-GET     /public/                                staticDir:public
-
-# Catch all
-*       /{controller}/{action}                  {controller}.{action}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Testez votre application en lançant la commande play run - normalement vous devriez être capable d&amp;rsquo;enregistrer des petites messages et de les voir apparaître à l&amp;rsquo;écran.&lt;/p&gt;
-
-&lt;p&gt;Déployez votre application sur heroku et admirez la !&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git add .
-git commit -m &amp;quot;Premier commit&amp;quot;
-git push heroku master
-heroku open
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ce petit tutoriel peut (doit) être complété avec le &lt;a href=&#34;http://scala.playframework.org/documentation/scala-0.9.1/home&#34;&gt;tutoriel officiel disponible sur le site de Play&lt;/a&gt;, en attendant vous pourrez jouer avec mon application sur &lt;a href=&#34;http://glowing-fog-2793.herokuapp.com/&#34;&gt;http://glowing-fog-2793.herokuapp.com/&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Tutoriel basé en partie sur &lt;a href=&#34;http://jaredrosoff.com/2011/05/getting-started-with-play-framework-scala-and-casbah/&#34;&gt;http://jaredrosoff.com/2011/05/getting-started-with-play-framework-scala-and-casbah/&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Modifiez les dépendances du projet pour ajouter &lt;a href=&#34;http://api.mongodb.org/scala/casbah/2.1.5.0/index.html&#34;&gt;Casbah&lt;/a&gt;, la librairie Scala permettant de manipuler &lt;a href=&#34;mongodb&#34;&gt;MongoDB&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -641,24 +173,9 @@ heroku open
       <pubDate>Sat, 15 Oct 2011 08:21:18 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/10/scala-sur-heroku/</guid>
-      <description>&lt;p&gt;En plein apprentissage de scala, j&amp;rsquo;ai décidé de m&amp;rsquo;intéresser au framework web &lt;a href=&#34;http://www.scalatra.org/&#34;&gt;Scalatra&lt;/a&gt; qui ressemble à &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;Sinatra&lt;/a&gt;, mon environnement favori en Ruby. Evidemment, je souhaite pouvoir partager rapidement mes &amp;lsquo;créations&amp;rsquo; en les hébergeant sur la plate-forme &lt;a href=&#34;http://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;, devenue &lt;a href=&#34;http://blog.heroku.com/archives/2011/8/3/polyglot_platform/&#34;&gt;polyglotte&lt;/a&gt; depuis quelques semaines en supportant d&amp;rsquo;autres langages que Ruby (notamment node.js, Java, Clojure, Scala et Python).&lt;/p&gt;
+      <description>&lt;p&gt;En plein apprentissage de scala, j&amp;rsquo;ai décidé de m&amp;rsquo;intéresser au framework web &lt;a href=&#34;http://www.scalatra.org/&#34;&gt;Scalatra&lt;/a&gt; qui ressemble à &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;Sinatra&lt;/a&gt;, mon environnement favori en Ruby. Evidemment, je souhaite pouvoir partager rapidement mes &amp;lsquo;créations&amp;rsquo; en les hébergeant sur la plate-forme &lt;a href=&#34;http://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;, devenue &lt;a href=&#34;http://blog.heroku.com/archives/2011/8/3/polyglot_platform/&#34;&gt;polyglotte&lt;/a&gt; depuis quelques semaines en supportant d&amp;rsquo;autres langages que Ruby (notamment node.js, Java, Clojure, Scala et Python).
 
-&lt;p&gt;Après quelques recherches sur internet, j&amp;rsquo;ai trouvé mon bonheur sur github &lt;a href=&#34;https://gist.github.com/1209277&#34;&gt;ici&lt;/a&gt; et &lt;a href=&#34;https://github.com/mikkelbd/scalatra-hello-heroku&#34;&gt;là&lt;/a&gt;. Pour gagner du temps dans mes futurs projets, j&amp;rsquo;ai alors transformé ces informations en un template &lt;a href=&#34;https://github.com/n8han/giter8&#34;&gt;giter8&lt;/a&gt;. Giter8 est un simple outil basé sur scala et &lt;a href=&#34;https://github.com/harrah/xsbt/wiki&#34;&gt;SBT&lt;/a&gt; qui installe des templates stockés sur Github.&lt;/p&gt;
-
-&lt;p&gt;Une fois &lt;a href=&#34;https://github.com/n8han/giter8&#34;&gt;g8&lt;/a&gt; et le &lt;a href=&#34;http://devcenter.heroku.com/articles/git&#34;&gt;gem heroku&lt;/a&gt; installés, mettre en ligne un projet scalatra devient alors très simple:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;g8 jraigneau/scalatra-sbt-heroku.g8
-cd monProjet
-git init
-git add . (conseil: pensez à mettre les répertoires de compilation (target) dans votre fichier .gitignore avant...)
-git commit -m &amp;quot;Premier commit&amp;quot;
-heroku create monProjet --stack cedar
-git push heroku master
-heroku open
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Et voilà, votre navigateur s&amp;rsquo;ouvre sur la nouvelle application !&lt;/p&gt;
-</description>
+Après quelques recherches sur internet, j&amp;rsquo;ai trouvé mon bonheur sur github &lt;a href=&#34;https://gist.github.com/1209277&#34;&gt;ici&lt;/a&gt; et &lt;a href=&#34;https://github.com/mikkelbd/scalatra-hello-heroku&#34;&gt;là&lt;/a&gt;. Pour gagner du temps dans mes futurs projets, j&amp;rsquo;ai alors transformé ces informations en un template &lt;a href=&#34;https://github.com/n8han/giter8&#34;&gt;giter8&lt;/a&gt;. Giter8 est un simple outil basé sur scala et &lt;a href=&#34;https://github.com/harrah/xsbt/wiki&#34;&gt;SBT&lt;/a&gt; qui installe des templates stockés sur Github.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -667,85 +184,9 @@ heroku open
       <pubDate>Sun, 02 Oct 2011 10:31:59 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/10/en-avant-pour-scala-avec-vim/</guid>
-      <description>&lt;p&gt;Après quelques années de développement avec mes deux langages favoris &lt;a href=&#34;http://blog.zeneffy.fr/tag/python/&#34;&gt;Python&lt;/a&gt; et de &lt;a href=&#34;http://blog.zeneffy.fr/tag/ruby/&#34;&gt;Ruby&lt;/a&gt;, j&amp;rsquo;ai décidé de me lancer dans un nouveau langage basé sur la &lt;a href=&#34;http://fr.wikipedia.org/wiki/JVM_(informatique)&#34;&gt;JVM&lt;/a&gt; (donc pas de Java pur, j&amp;rsquo;ai déjà donné!). Après avoir étudié &lt;a href=&#34;http://clojure.org/&#34;&gt;Clojure&lt;/a&gt; et &lt;a href=&#34;http://www.scala-lang.org/&#34;&gt;Scala&lt;/a&gt;, j&amp;rsquo;ai décidé de me concentrer sur Scala qui me semble plus naturel et qui mélange les paradigmes &amp;ldquo;Orienté-Objet&amp;rdquo; et &amp;ldquo;programmation fonctionnelle&amp;rdquo; - Clojure pour sa part est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Lisp&#34;&gt;lisp&lt;/a&gt; qui semble très puissant mais moins accessible pour un développeur moyen et dilettante comme moi.&lt;/p&gt;
+      <description>&lt;p&gt;Après quelques années de développement avec mes deux langages favoris &lt;a href=&#34;http://blog.zeneffy.fr/tag/python/&#34;&gt;Python&lt;/a&gt; et de &lt;a href=&#34;http://blog.zeneffy.fr/tag/ruby/&#34;&gt;Ruby&lt;/a&gt;, j&amp;rsquo;ai décidé de me lancer dans un nouveau langage basé sur la &lt;a href=&#34;http://fr.wikipedia.org/wiki/JVM_(informatique)&#34;&gt;JVM&lt;/a&gt; (donc pas de Java pur, j&amp;rsquo;ai déjà donné!). Après avoir étudié &lt;a href=&#34;http://clojure.org/&#34;&gt;Clojure&lt;/a&gt; et &lt;a href=&#34;http://www.scala-lang.org/&#34;&gt;Scala&lt;/a&gt;, j&amp;rsquo;ai décidé de me concentrer sur Scala qui me semble plus naturel et qui mélange les paradigmes &amp;ldquo;Orienté-Objet&amp;rdquo; et &amp;ldquo;programmation fonctionnelle&amp;rdquo; - Clojure pour sa part est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Lisp&#34;&gt;lisp&lt;/a&gt; qui semble très puissant mais moins accessible pour un développeur moyen et dilettante comme moi.
 
-&lt;p&gt;Mon premier réflexe a été bien évidemment de m&amp;rsquo;assurer que macVim me permettrait de facilement commencer quelques développement en Scala. En cherchant rapidement sur le web, j&amp;rsquo;ai pu trouvé quelques astuces pour la coloration, la navigation à travers les méthodes&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;En premier lieu, il faut installer le plugin Scala pour vim:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;svn export --force http://lampsvn.epfl.ch/svn-repos/scala/scala-tool-support/trunk/src/vim
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;puis copier les fichiers obtenus dans votre répertoire .vim&lt;/p&gt;
-
-&lt;p&gt;Deuxième étape, l&amp;rsquo;installation du plugin &lt;a href=&#34;http://www.vim.org/scripts/script.php?script_id=3465&#34;&gt;Tagbar&lt;/a&gt; (téléchargement du fichier .vba puis méthode d&amp;rsquo;installation normale vim)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;vim tagbar.vba
-  :so %
-  :q
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;TagBar ne prenant pas en compte Scala, il faut légèrement modifier certains fichiers
-Tout d&amp;rsquo;abord, création dans votre $HOME du fichier .ctags suivant&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;--langdef=Scala
---langmap=Scala:.scala
---regex-Scala=/^[ \t]*class[ \t]*([a-zA-Z0-9_]+)/\1/c,classes/
---regex-Scala=/^[ \t]*object[ \t]*([a-zA-Z0-9_]+)/\1/o,objects/
---regex-Scala=/^[ \t]*trait[ \t]*([a-zA-Z0-9_]+)/\1/t,traits/
---regex-Scala=/^[ \t]*case[ \t]*class[ \t]*([a-zA-Z0-9_]+)/\1/r,cclasses/
---regex-Scala=/^[ \t]*abstract[ \t]*class[ \t]*([a-zA-Z0-9_]+)/\1/a,aclasses/
---regex-Scala=/^[ \t]*def[ \t]*([a-zA-Z0-9_=]+)[ \t]*.*[:=]/\1/m,methods/
---regex-Scala=/[ \t]*val[ \t]*([a-zA-Z0-9_]+)[ \t]*[:=]/\1/V,values/
---regex-Scala=/[ \t]*var[ \t]*([a-zA-Z0-9_]+)[ \t]*[:=]/\1/v,variables/
---regex-Scala=/^[ \t]*type[ \t]*([a-zA-Z0-9_]+)[ \t]*[\[&amp;lt;&amp;gt;=]/\1/T,types/
---regex-Scala=/^[ \t]*import[ \t]*([a-zA-Z0-9_{}., \t=&amp;gt;]+$)/\1/i,includes/
---regex-Scala=/^[ \t]*package[ \t]*([a-zA-Z0-9_.]+$)/\1/p,packages/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Puis on va modifier le code du plugin TagBar (à priori dans &lt;code&gt;~/.vim/plugin/tagbar.vim&lt;/code&gt;), en rajoutant les lignes suivantes&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;quot; Scala {{{3
-let type_scala = {}
-let type_scala.ctagstype = &#39;Scala&#39;
-let type_scala.kinds     = [
-  \ {&#39;short&#39; : &#39;p&#39;, &#39;long&#39; : &#39;packages&#39;,  &#39;fold&#39; : 1 },
-  \ {&#39;short&#39; : &#39;V&#39;, &#39;long&#39; : &#39;values&#39;,    &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;v&#39;, &#39;long&#39; : &#39;variables&#39;, &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;T&#39;, &#39;long&#39; : &#39;types&#39;,     &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;t&#39;, &#39;long&#39; : &#39;traits&#39;,    &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;o&#39;, &#39;long&#39; : &#39;objects&#39;,   &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;a&#39;, &#39;long&#39; : &#39;aclasses&#39;,  &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;c&#39;, &#39;long&#39; : &#39;classes&#39;,   &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;r&#39;, &#39;long&#39; : &#39;cclasses&#39;,  &#39;fold&#39; : 0 },
-  \ {&#39;short&#39; : &#39;m&#39;, &#39;long&#39; : &#39;methods&#39;,   &#39;fold&#39; : 0 }
-\ ]
-let type_scala.sro        = &#39;.&#39;
-let type_scala.kind2scope = {
-  \ &#39;T&#39; : &#39;type&#39;,
-  \ &#39;t&#39; : &#39;trait&#39;,
-  \ &#39;o&#39; : &#39;object&#39;,
-  \ &#39;a&#39; : &#39;abstract class&#39;,
-  \ &#39;c&#39; : &#39;class&#39;,
-  \ &#39;r&#39; : &#39;case class&#39;
-\ }
-let type_scala.scope2kind = {
-  \ &#39;type&#39;           : &#39;T&#39;,
-  \ &#39;trait&#39;          : &#39;t&#39;,
-  \ &#39;object&#39;         : &#39;o&#39;,
-  \ &#39;abstract class&#39; : &#39;a&#39;,
-  \ &#39;class&#39;          : &#39;c&#39;,
-  \ &#39;case class&#39;     : &#39;r&#39;
-\ }
-let s:known_types.scala = type_scala
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Attention, ces lignes doivent être rajoutées dans la fonction &lt;code&gt;_function! s:InitTypes()_&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Et voilà - Vim est prêt pour Scala !&lt;/p&gt;
-
-&lt;p&gt;Tiré/traduit de &lt;a href=&#34;http://latestbuild.net/scala-ctags-and-vim-tagbar&#34;&gt;latestbuild.net/scala-ctags-and-vim-tagbar &lt;/a&gt;&lt;/p&gt;
-</description>
+Mon premier réflexe a été bien évidemment de m&amp;rsquo;assurer que macVim me permettrait de facilement commencer quelques développement en Scala. En cherchant rapidement sur le web, j&amp;rsquo;ai pu trouvé quelques astuces pour la coloration, la navigation à travers les méthodes&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -766,26 +207,729 @@ let s:known_types.scala = type_scala
 &lt;pre&gt;&lt;code&gt;heroku pgbackups:capture
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Une petite vérification s&amp;rsquo;impose:&lt;/p&gt;
+&lt;p&gt;Une petite vérification s&amp;rsquo;impose:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MacVim, Command-T et RVM</title>
+      <link>http://www.zeneffy.fr/2011/09/macvim-command-t-et-rvm/</link>
+      <pubDate>Sun, 04 Sep 2011 18:55:28 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/09/macvim-command-t-et-rvm/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/macvim/&#34;&gt;MacVim&lt;/a&gt; (une forme de l&amp;rsquo;éditeur VIM adaptée à MacOS) est mon éditeur de prédilection actuellement malgré de nombreux autres essais (entre autres: &lt;a href=&#34;http://macromates.com/&#34;&gt;Textmate&lt;/a&gt;, &lt;a href=&#34;http://kodapp.com/&#34;&gt;Kod&lt;/a&gt;, &lt;a href=&#34;http://www.sublimetext.com/&#34;&gt;Sublime Text&lt;/a&gt;).&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;heroku pgbackups
+&lt;p&gt;Il est très configurable et permet de rajouter de nombreuses fonctionnalités utiles: ici je vous parlerai du module &lt;a href=&#34;https://wincent.com/products/command-t&#34;&gt;Command-T&lt;/a&gt; qui permet de faire des recherches très fines et surtout pertinentes à travers les répertoires et fichiers d&amp;rsquo;un projet - un screencast est disponible &lt;a href=&#34;https://s3.amazonaws.com/s3.wincent.com/command-t/screencasts/command-t-demo.mov?width=640&amp;amp;height=480&#34;&gt;sur le site de l&amp;rsquo;auteur&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Haml on Rails</title>
+      <link>http://www.zeneffy.fr/2011/07/haml-on-rails/</link>
+      <pubDate>Tue, 12 Jul 2011 19:30:54 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/07/haml-on-rails/</guid>
+      <description>&lt;p&gt;Pour utiliser &lt;a href=&#34;http://haml-lang.com/&#34;&gt;haml&lt;/a&gt; avec &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails 3.x&lt;/a&gt;, il suffit d&amp;rsquo;ajouter dans le fichier &lt;code&gt;GemFile&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gem &#39;haml-rails&#39;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;qui renvoie normalement:&lt;/p&gt;
+&lt;p&gt;puis lancer la commande &lt;code&gt;bundle install&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;D   | Backup Time         | Size   | Database
------+---------------------+--------+----------------
-b001 | 2011/08/18 11:08.22 | 39.2KB | SHARED_DATABASE
-b002 | 2011/09/19 10:24.04 | 40.2KB | SHARED_DATABASE
+&lt;p&gt;et finalement ajouter&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;config.generators do |g|
+  g.template_engine :haml
+end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Et finalement pour restaurer (avec b001 la base):&lt;/p&gt;
+&lt;p&gt;dans le fichier &lt;code&gt;config/application.rb&lt;/code&gt; (dans la classe &lt;code&gt;Application &amp;lt; Rails::Application&lt;/code&gt;) - chaque scaffold sera automatiquement en Haml
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Node.js/Express sur heroku</title>
+      <link>http://www.zeneffy.fr/2011/06/node-jsexpress-sur-heroku/</link>
+      <pubDate>Mon, 27 Jun 2011 20:30:26 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/06/node-jsexpress-sur-heroku/</guid>
+      <description>&lt;p&gt;Je suis en train de tester &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; ces derniers jours, et notamment le &lt;a href=&#34;http://expressjs.com/&#34;&gt;framework web Express&lt;/a&gt; - Fan de l&amp;rsquo;hébergeur &lt;a href=&#34;http://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;, d&amp;rsquo;autant plus depuis qu&amp;rsquo;il est possible d&amp;rsquo;avoir des applications &lt;a href=&#34;http://blog.heroku.com/archives/2011/5/31/celadon_cedar/&#34;&gt;node.js&lt;/a&gt; (entre autres), j&amp;rsquo;ai souhaité installer une application de test en suivant &lt;a href=&#34;http://pcoding.blogspot.com/2011/06/hebergement-nodejs-avec-heroku-celadon.html&#34;&gt;ce tutorial&lt;/a&gt; - et tout n&amp;rsquo;a pas fonctionné du premier coup :(&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;heroku pgbackups:restore DATABASE b001
+&lt;p&gt;En effet, pour créer mon squelette d&amp;rsquo;application &amp;ldquo;zen-hw&amp;rdquo;, j&amp;rsquo;ai utilisé la commande&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[julien.newton: zen-hw]$ express
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>npm, le gestionnaire de package de node.js</title>
+      <link>http://www.zeneffy.fr/2011/06/npm-le-gestionnaire-de-package-de-node-js/</link>
+      <pubDate>Sun, 19 Jun 2011 06:54:20 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/06/npm-le-gestionnaire-de-package-de-node-js/</guid>
+      <description>&lt;p&gt;Je suis en train de me documenter et de tester &lt;a href=&#34;http://nodejs.org&#34;&gt;node.js&lt;/a&gt;, un framework pour construire des applications réseaux (type serveur web, chat&amp;hellip;), basé d&amp;rsquo;une part sur le moteur &lt;a href=&#34;http://code.google.com/p/v8/&#34;&gt;javascript V8&lt;/a&gt; et conçu d&amp;rsquo;autre part pour être complètement asynchrone afin de gérer au mieux la concurrence.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Pow &amp; Radiant</title>
+      <link>http://www.zeneffy.fr/2011/06/pow-radiant/</link>
+      <pubDate>Tue, 14 Jun 2011 20:51:30 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/06/pow-radiant/</guid>
+      <description>&lt;p&gt;J&amp;rsquo;ai découvert dernièrement le serveur de développement &lt;a href=&#34;http://pow.cx/&#34;&gt;Pow&lt;/a&gt; qui permet très simplement de mettre en place un serveur Rack (pour les applications Ruby comme &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; ou &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Rails&lt;/a&gt;) sur un Mac sans aucune configuration.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Nouvelle application ZenRunnin&#39;</title>
+      <link>http://www.zeneffy.fr/2011/06/nouvelle-application-zenrunnin/</link>
+      <pubDate>Sat, 11 Jun 2011 12:40:09 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/06/nouvelle-application-zenrunnin/</guid>
+      <description>&lt;p&gt;Coureur amateur, je me suis acheté à Noël une montre Polar pour mesurer mes performances (temps, distance&amp;hellip;) - j&amp;rsquo;ai commencé à utiliser le logiciel fourni (polarpersonaltrainer), sans être convaincu par son ergonomie ou ses fonctionnalités.&lt;/p&gt;
+
+&lt;p&gt;Bricoleur numérique dans l&amp;rsquo;âme , j&amp;rsquo;ai donc développé le site &lt;a href=&#34;http://zenrunn.in&#34;&gt;Zenrunnin’&lt;/a&gt;, une application simple de suivi de vos courses, utilisant les comptes facebook pour partager ses performances avec ses amis et connaître les leurs.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://zenrunn.in&#34;&gt;Zenrunnin’&lt;/a&gt; m&amp;rsquo;a permis de me familiariser avec les différentes &lt;a href=&#34;http://developers.facebook.com/&#34;&gt;API Facebook&lt;/a&gt; et m&amp;rsquo;a fait découvrir &lt;a href=&#34;http://oauth.net/&#34;&gt;OAuth&lt;/a&gt; qui permet d&amp;rsquo;interagir et de publier facilement des données sécurisées à travers un système simple et unifié d&amp;rsquo;autorisation.
+
+Pour en savoir plus:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Règles du bricolage numérique</title>
+      <link>http://www.zeneffy.fr/2011/05/regles-du-bricolage-numerique/</link>
+      <pubDate>Sat, 28 May 2011 18:48:56 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/05/regles-du-bricolage-numerique/</guid>
+      <description>&lt;p&gt;Le développement n&amp;rsquo;étant pas mon métier mais plutôt un hobby, les petits projets de &amp;ldquo;bricolage numérique&amp;rdquo; que je mène partagent certaines règles simples pour s&amp;rsquo;assurer de l&amp;rsquo;efficience du travail:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Toujours se lancer sur des projets qui ont une utilité immédiate pour mes proches ou moi (&lt;a href=&#34;https://github.com/jraigneau/INmemoria&#34;&gt;inmemoria&lt;/a&gt;, &lt;a href=&#34;https://github.com/jraigneau/veilleur&#34;&gt;veilleur&lt;/a&gt; &amp;hellip;)&lt;/li&gt;
+&lt;li&gt;Profiter de chaque projet pour tester des nouvelles technologies (dernière en date: les &lt;a href=&#34;https://github.com/jraigneau/zen-running&#34;&gt;API facebook&lt;/a&gt;, prochaine: les technos javascript &lt;a href=&#34;http://documentcloud.github.com/backbone/&#34;&gt;avancées&lt;/a&gt; comme &lt;a href=&#34;http://nodejs.org/&#34;&gt;node.js&lt;/a&gt; et le développement sous iOS)&lt;/li&gt;
+&lt;li&gt;Utiliser les mêmes outils de base pour développer (Github, MacVim par exemple)&lt;/li&gt;
+&lt;li&gt;Pour les applications web, utiliser un socle de feuilles de style css et de morceaux de code ou librairies javascript réutilisables&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Ces quatre règles me permettent en ce moment de sortir une application tous les deux mois.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Les joies de datamapper</title>
+      <link>http://www.zeneffy.fr/2011/04/les-joies-de-datamapper/</link>
+      <pubDate>Sun, 24 Apr 2011 18:55:40 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/04/les-joies-de-datamapper/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://datamapper.org/&#34;&gt;Datamapper&lt;/a&gt; est un ORM (&lt;a href=&#34;http://en.wikipedia.org/wiki/Object-relational_mapping&#34;&gt;Object Relational Mapper&lt;/a&gt;) écrit en ruby et permettant de lier facilement Ruby à n&amp;rsquo;importe quelle base de données (mysql, postgresql&amp;hellip;).&lt;/p&gt;
+
+&lt;p&gt;Grand fan de du framework web &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;Sinatra&lt;/a&gt;, j&amp;rsquo;utilise souvent datamapper&amp;hellip;et je tombe souvent dans ses pièges:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Etre vigilant sur les relations 1-n ou n-n et sur l&amp;rsquo;utilisation des objets pour éviter de charger en mémoire des centaines de données inutiles (cela m&amp;rsquo;est arrivé sur Veilleur, voir le &lt;a href=&#34;http://www.zeneffy.fr/2011/03/rtfm&#34;&gt;post correspondant&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Vérifier systématiquement que les données sont bien sauvegardées: par défaut (c&amp;rsquo;est à dire sans l&amp;rsquo;option &lt;code&gt;#DataMapper::Model.raise_on_save_failure = true&lt;/code&gt;), aucun message ne prévient de l&amp;rsquo;erreur&lt;/li&gt;
+&lt;li&gt;Mettre en place un système de pour récupérer les erreurs envoyées par Datamapper via notamment: &lt;code&gt;xx.errors.inspect&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Ces quelques points simples permettent de gagner beaucoup de temps!
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Environnements de préproduction sous Heroku</title>
+      <link>http://www.zeneffy.fr/2011/04/environnements-de-preproduction-sous-heroku/</link>
+      <pubDate>Sun, 17 Apr 2011 20:58:06 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/04/environnements-de-preproduction-sous-heroku/</guid>
+      <description>&lt;p&gt;Il est assez simple de créer des environnement de préproduction sans recopier tout le code:&lt;/p&gt;
+
+&lt;p&gt;Création de l&amp;rsquo;application de préproduction&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku create myapp-preprod --remote preprod
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Rappelez vous que la sauvegarde reste l&amp;rsquo;un des meilleurs moyens de sécuriser vos données.&lt;/p&gt;
-</description>
+&lt;p&gt;si l&amp;rsquo;environnement de préproduction est différent de l&amp;rsquo;environnement de production - sinon &lt;strong&gt;ne pas jouer ces commandes&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku config:add RACK_ENV=preprod --app myapp-preprod
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis on déploie l&amp;rsquo;application:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git push preprod master
+heroku rake db:migrate --app myapp-preprod
+heroku db:push --app myapp-preprod
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Extensions Radiant sur Heroku via les sous-modules Git</title>
+      <link>http://www.zeneffy.fr/2011/04/extensions-radiant-sur-heroku-via-les-sous-modules-git/</link>
+      <pubDate>Thu, 14 Apr 2011 14:34:01 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/04/extensions-radiant-sur-heroku-via-les-sous-modules-git/</guid>
+      <description>&lt;p&gt;Heroku ne supportant pas les sous-modules git, il convient d&amp;rsquo;être vigilant en utilisant les extensions radiant : en effet tout fonctionnera en local mais les données des extensions dans /vendor ne seront pas poussées sur heroku - d&amp;rsquo;où des erreurs.&lt;/p&gt;
+
+&lt;p&gt;Tout d&amp;rsquo;abord pour vérifier l&amp;rsquo;existence de sous module:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;find . -mindepth 2 -name .git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Si il y a une réponse, il faut modifier cela:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd myapp
+$ rm -rf `find . -mindepth 2 -name .git`
+$ git rm --cache `git submodule | cut -f2 -d&#39; &#39;`
+$ git rm .gitmodules
+$ git add .
+$ git config -l | grep &#39;^submodule&#39; | cut -d&#39;=&#39; -f1 | xargs -n1 git config --unset-all
+$ git commit -m &amp;quot;récupération des sousmodules git&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;source: &lt;a href=&#34;http://stackoverflow.com/questions/894647/radiant-extensions-on-heroku&#34;&gt;http://stackoverflow.com/questions/894647/radiant-extensions-on-heroku&lt;/a&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Installer Radiant CMS sous heroku</title>
+      <link>http://www.zeneffy.fr/2011/04/installer-radiant-cms-sous-heroku/</link>
+      <pubDate>Wed, 13 Apr 2011 11:09:20 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/04/installer-radiant-cms-sous-heroku/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://radiantcms.org/&#34;&gt;RadiantCMS&lt;/a&gt; est un gestionnaire de contenus simple basé sur le framework &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;RubyOnRails&lt;/a&gt;, permettant de mettre en place facilement des sites relativement complexes, notamment grâce à son langage de tags (Radius).&lt;/p&gt;
+
+&lt;p&gt;RadiantCMS fonctionne très bien avec l&amp;rsquo;hébergement Heroku, avec quelques petits changements à effectuer - décrit ci-dessous.&lt;/p&gt;
+
+&lt;p&gt;Installation des gems nécessaires en local&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gem install radiant sqlite3 heroku taps
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Création de l&amp;rsquo;application &amp;ldquo;myapp&amp;rdquo;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir myapp
+cd myapp
+radiant --database=sqlite3  .
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Extensions de base sous heroku</title>
+      <link>http://www.zeneffy.fr/2011/04/extensions-de-base-sous-heroku/</link>
+      <pubDate>Mon, 11 Apr 2011 11:03:33 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/04/extensions-de-base-sous-heroku/</guid>
+      <description>&lt;p&gt;Voici quelques extensions que j&amp;rsquo;installe systématiquement sous Heroku:&lt;/p&gt;
+
+&lt;p&gt;Gestion des noms de domaine personalisés&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add custom_domains:basic
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gestion d&amp;rsquo;un cache via memcached&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add memcache:5mb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Visualisation de Meilleures logs&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;heroku addons:add logging:expanded
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Scripter MacOS</title>
+      <link>http://www.zeneffy.fr/2011/03/scripter-macos/</link>
+      <pubDate>Fri, 11 Mar 2011 17:10:17 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/03/scripter-macos/</guid>
+      <description>&lt;p&gt;Dans ma très récente période Ubuntu/Linux, j&amp;rsquo;avais rédigé un petit script en python qui vérifiait régulièrement la présence de nouveaux fichiers dans un répertoire FTP - ce script étant basé sur GTK, il était nécessaire de le changer pour notamment utiliser &lt;a href=&#34;http://growl.info/&#34;&gt;Growl&lt;/a&gt;, le système de notification disponible dans MacOS.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>RTFM !!!</title>
+      <link>http://www.zeneffy.fr/2011/03/rtfm/</link>
+      <pubDate>Sun, 06 Mar 2011 21:09:06 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/03/rtfm/</guid>
+      <description>&lt;p&gt;Dans un &lt;a href=&#34;http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/&#34;&gt;billet précédent&lt;/a&gt;, je me plaignais de l&amp;rsquo;infrastructure google et en creusant un peu, j&amp;rsquo;ai découvert que mon problème venait de requête d&amp;rsquo;écriture à la base de donnée, qui à la première écriture de chaque session prenait jusqu&amp;rsquo;à 15 secondes.&lt;/p&gt;
+
+&lt;p&gt;En regardant de près la documentation de &lt;a href=&#34;http://datamapper.org/&#34;&gt;datamapper&lt;/a&gt;, l&amp;rsquo;ORM utilisé pour &lt;a href=&#34;https://github.com/jraigneau/veilleur&#34;&gt;Veilleur&lt;/a&gt;, je me suis rendu que je n&amp;rsquo;utilisais pas correctement les requêtes avec les associations 1-n. En simplifiant, l&amp;rsquo;application récupérait la liste de toutes les valeurs des tests dans la base (1 toute les 10 minutes depuis 15 jours, faites le calcul&amp;hellip;) avant d&amp;rsquo;écrire la nouvelle valeur - ce qui était inutile et surtout gourmant (15secondes !)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Morale&lt;/strong&gt;: il faut bien lire les manuels et la documentation des frameworks, librairies&amp;hellip;utilisés dans son code.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Environnement de développement Mac</title>
+      <link>http://www.zeneffy.fr/2011/03/dev-mac/</link>
+      <pubDate>Fri, 04 Mar 2011 10:25:03 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/03/dev-mac/</guid>
+      <description>&lt;p&gt;Je suis l&amp;rsquo;heureux possesseur d&amp;rsquo;un MacBook Air 13&amp;rdquo; depuis quelques jours, et j&amp;rsquo;ai commencé à installer mon environnement de développement habituel.&lt;/p&gt;
+
+&lt;p&gt;Gestionnaire de package pour mac: &lt;a href=&#34;https://github.com/mxcl/homebrew&#34;&gt;https://github.com/mxcl/homebrew&lt;/a&gt; (après avoir téléchargé Xcode), installation de Git, MacVim, sqlite via brew&lt;/p&gt;
+
+&lt;p&gt;puis installation de rvm: &lt;a href=&#34;http://www.blog.bridgeutopiaweb.com/post/how-to-install-rvm-and-rails-3-on-snow-leopard/&#34;&gt;http://www.blog.bridgeutopiaweb.com/post/how-to-install-rvm-and-rails-3-on-snow-leopard/&lt;/a&gt;
+
+Pour avoir un éditeur de texte (gratuit donc pas textmate pour l&amp;rsquo;instant !): &lt;code&gt;brew macvim&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Google App Engine: une demie déception</title>
+      <link>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</link>
+      <pubDate>Fri, 25 Feb 2011 22:47:37 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/02/google-app-engine-une-emi-deception/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Veilleur: une application de surveillance des sites web</title>
+      <link>http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/</link>
+      <pubDate>Sun, 13 Feb 2011 19:20:45 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/02/veilleur-une-application-de-surveillance-des-sites-web/</guid>
+      <description>&lt;p&gt;Abonné depuis plusieurs mois à plusieurs services de monitoring de sites web (notamment &lt;a href=&#34;http://www.pingdom.com&#34;&gt;pingdom&lt;/a&gt;), j&amp;rsquo;ai décidé de me faire mon propre service en profitant de l&amp;rsquo;architecture de &lt;a href=&#34;http://code.google.com/intl/fr-FR/appengine/&#34;&gt;Google App Engine&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Créer une nouvelle application sous heroku</title>
+      <link>http://www.zeneffy.fr/2011/02/creer-une-nouvelle-application-sous-heroku/</link>
+      <pubDate>Sat, 05 Feb 2011 13:31:25 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/02/creer-une-nouvelle-application-sous-heroku/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Aide-Mémoire&lt;/strong&gt;: Pour créer rapidement une nouvelle application sur heroku&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+git add .
+git commit -m &amp;quot;nouvelle application&amp;quot;
+heroku create nomapplication
+git push heroku master
+heroku addons:add newrelic:bronze
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Application Sinatra pour Heroku</title>
+      <link>http://www.zeneffy.fr/2011/02/application-sinatra-pour-heroku/</link>
+      <pubDate>Sat, 05 Feb 2011 07:50:50 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/02/application-sinatra-pour-heroku/</guid>
+      <description>&lt;p&gt;Dernièrement je m&amp;rsquo;intéresse au framework de développement  &lt;a href=&#34;http://www.sinatrarb.com/&#34;&gt;sinatra&lt;/a&gt; qui est basé sur le langage Ruby (comme Ruby on Rails donc). Sinatra est un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Domain-specific_programming_language&#34;&gt;DSL&lt;/a&gt; permettant de développer rapidement et simplement des applications web (un peu comme &lt;a href=&#34;http://webpy.org/&#34;&gt;webpy&lt;/a&gt; que j&amp;rsquo;avais utilisé sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Harpagon&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Pour déployer des applications sinatra, j&amp;rsquo;ai décidé de continuer à m&amp;rsquo;appuyer sur la plate-forme d&amp;rsquo;hébergement &lt;a href=&#34;http://heroku.com/&#34;&gt;Heroku&lt;/a&gt; - voila les quelques fichiers à mettre en oeuvre pour une application minimale - en activant la supervision &lt;a href=&#34;http://newrelic.com/&#34;&gt;newrelic_rpm&lt;/a&gt;:
+
+&lt;em&gt;heroku-sinatra-app.rb&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Convertir en masse des vidéos</title>
+      <link>http://www.zeneffy.fr/2011/02/convertir-en-masse-des-videos/</link>
+      <pubDate>Sat, 05 Feb 2011 07:33:43 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2011/02/convertir-en-masse-des-videos/</guid>
+      <description>&lt;p&gt;Pour rendre disponible des films sur ma télévision &lt;a href=&#34;http://www.erenumerique.fr/televiseur_sony_kdl40w5500_la_qualite_au_meilleur_prix-art-2302-1.html&#34;&gt;Sony&lt;/a&gt; via mon &lt;a href=&#34;http://www.synology.com/enu/products/DS211j/index.php&#34;&gt;NAS Synology&lt;/a&gt;, j&amp;rsquo;ai été obligé de transformer mes vidéos du format AVI au format MPG pour être lisible via &lt;a href=&#34;http://fr.wikipedia.org/wiki/Digital_Living_Network_Alliance&#34;&gt;DLNA&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;J&amp;rsquo;ai utilisé la ligne de commande suivante:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/usr/bin/ffmpeg -i &amp;quot;film.avi&amp;quot; -f dvd -vcodec mpeg2video -r 25.00 -s 352x576 -aspect 16:9 -b 4000kb -mbd rd -trellis -mv0 -cmp 2 -subcmp 2 -acodec mp2 -ab 192kb -ar 48000 -ac 2 &amp;quot;film.mpg&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Il suffit ensuite de créer un script bash contenant les commandes&amp;hellip;et d&amp;rsquo;attendre la fin de convertion!
+A noter que l&amp;rsquo;application &lt;a href=&#34;http://winff.org/html_new/&#34;&gt;WinFF&lt;/a&gt; permet entre autres de créer ces lignes de commandes.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu: Installation &#34;mineffy&#34;</title>
+      <link>http://www.zeneffy.fr/2010/12/ubuntu-installation-mineffy/</link>
+      <pubDate>Sun, 19 Dec 2010 10:26:48 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/12/ubuntu-installation-mineffy/</guid>
+      <description>Un petit pense-bête sur le minimum à réinstaller avant d&amp;rsquo;être efficace avec une nouvelle version d&amp;rsquo;ubuntu
+Installer Chromium, le navigateur web:
+ sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg chromium-codecs-ffmpeg-nonfree  et installer extensions: Gmail et Delici.ous
+Installer le nécessaire pour Ruby et Ruby On Rails via RVM
+ sudo apt-get install curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev sudo bash &amp;lt; &amp;lt;( curl -L http://bit.ly/rvm-install-system-wide ) sudo adduser julien rvm sudo rvm install 1.</description>
+    </item>
+    
+    <item>
+      <title>Cloner une machine virtuelle Ubuntu/Debian dans VirtualBox</title>
+      <link>http://www.zeneffy.fr/2010/10/cloner-une-machine-virtuelle-ubuntudebian-dans-virtualbox/</link>
+      <pubDate>Fri, 29 Oct 2010 17:11:35 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/10/cloner-une-machine-virtuelle-ubuntudebian-dans-virtualbox/</guid>
+      <description>Pour cloner une machine virtuelle dans VirtualBox, il suffit d&amp;rsquo;utiliser les outils d&amp;rsquo;administration (en mode ligne de commande)
+VBoxManage clonevdi &amp;quot;chemin absolu vers source.vdi&amp;quot; &amp;quot;chemin absolu vers cible.vdi&amp;quot;  Attention de bien respecter les chemins absolu pour ne pas avoir une erreur ERROR: Cannot register the hard disk
+Toutefois il y a une petite subtilité pour un clone Ubuntu et Debian en général. En effet par défaut les MAC adresses (qui changent pour chaque VM) sont enregistrées dans /etc/udev/rules.</description>
+    </item>
+    
+    <item>
+      <title>homebank - la compta facile</title>
+      <link>http://www.zeneffy.fr/2010/10/homebank-la-compta-facile/</link>
+      <pubDate>Fri, 29 Oct 2010 13:21:57 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/10/homebank-la-compta-facile/</guid>
+      <description>J&amp;rsquo;utilisais jusqu&amp;rsquo;à quelques mois ma propre application web de comptabilité Harpagon pour gérer mon budget personnel. Ayant décidé de me débarrasser du serveur qui l&amp;rsquo;hébergeait, j&amp;rsquo;ai donc cherché un remplaçant avec des spécifications bien particulières:
+ Possibilité d&amp;rsquo;assigner automatiquement des catégories via des règles (type expression régulière) Notion de budget (prévision/consommé) Statistiques en mode desktop (et non plus web) Simplicité  je suis tombé sur HomeBank trouvé via Framasoft, application opensource existant depuis fort longtemps (déjà sur l&amp;rsquo;amiga!</description>
+    </item>
+    
+    <item>
+      <title>Google Analytics dans une application Ruby On Rails</title>
+      <link>http://www.zeneffy.fr/2010/10/google-analytics-dans-une-application-ruby-on-rails/</link>
+      <pubDate>Thu, 21 Oct 2010 13:48:55 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/10/google-analytics-dans-une-application-ruby-on-rails/</guid>
+      <description>Dans le cadre de l&amp;rsquo;application vauban développée via le framework RubyOnRails, j&amp;rsquo;ai été amené à intégrer Google Analytics en 3 étapes très simples:
+Créer le compte dans Google Analytics pour obtenir un code javascript du type
+ &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; var _gaq = _gaq || []; _gaq.push([&#39;_setAccount&#39;, &#39;UA-12194039-4&#39;]); _gaq.push([&#39;_trackPageview&#39;]); (function() { var ga = document.createElement(&#39;script&#39;); ga.type = &#39;text/javascript&#39;; ga.async = true; ga.src = (&#39;https:&#39; == document.location.protocol ? &#39;https://ssl&#39; : &#39;http://www&#39;) + &#39;.</description>
+    </item>
+    
+    <item>
+      <title>Un pont (pas) trop loin</title>
+      <link>http://www.zeneffy.fr/2010/09/un-pont-pas-trop-loin/</link>
+      <pubDate>Mon, 27 Sep 2010 21:01:30 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/09/un-pont-pas-trop-loin/</guid>
+      <description>Dans le cadre de ses nouvelles activités, ma femme a eu besoin que nous installions un bureau dans notre chambre. La partie ikea-choix-achat-montage s&amp;rsquo;étant passée presque sans accroc, j&amp;rsquo;ai changé le PC portable de place pour évidemment utiliser le bureau. Mauvaise surprise, le WiFi de la 9Box n&amp;rsquo;est pas accessible (trop de murs et trop de ferrite dans les murs).
+Par chance, j&amp;rsquo;avais gardé un vieux routeur wifi Linksys WRT54G - en cherchant un peu, j&amp;rsquo;ai trouvé d&amp;rsquo;une part qu&amp;rsquo;il existait des firmwares opensource récents pour ce routeur et surtout qu&amp;rsquo;ils permettaient de faire un &amp;ldquo;Pont Répéteur WiFi&amp;rdquo; (Repeater Bridge pour les anglophones).</description>
+    </item>
+    
+    <item>
+      <title>Cartes heuristiques &amp; Mindmapping</title>
+      <link>http://www.zeneffy.fr/2010/08/cartes-heuristiques-mindmapping/</link>
+      <pubDate>Sun, 15 Aug 2010 16:55:00 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/08/cartes-heuristiques-mindmapping/</guid>
+      <description>J&amp;rsquo;ai découvert les cartes heuristiques il y a quelques années et je continue de les utiliser régulièrement pour fixer et organiser mes idées et/où faire des comptes-rendus de réunion et RDV. Pour reprendre la description de wikipedia:
+ Une carte heuristique (mind map en anglais) est un diagramme avec arborescence représentant les connexions sémantiques entre différentes idées et/ou les liens hiérarchiques entre différents concepts intellectuels.
+ Vous trouverez facilement plus d&amp;rsquo;information sur le principal site francophone: petillant.</description>
+    </item>
+    
+    <item>
+      <title>Adieu darwin...version Geek!</title>
+      <link>http://www.zeneffy.fr/2010/07/adieu-darwin/</link>
+      <pubDate>Thu, 15 Jul 2010 18:31:06 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/07/adieu-darwin/</guid>
+      <description>N&amp;rsquo;étant pas particulièrement fan de certaines applications intégrées dans Ubuntu par défaut, j&amp;rsquo;ai tendance à vite les enlever post-installation.
+Ici des applications mono pas très utile:
+apt-get purge f-spot gbrainy tomboy  et surtout le gros gourmand evolution:
+sudo apt-get purge evolution evolution-common evolution-couchdb evolution-exchange evolution-indicator evolution-plugins evolution-webcal libegroupwise1.2-13 libexchange-storage1.2-3  </description>
+    </item>
+    
+    <item>
+      <title>Alerte sur la banquise</title>
+      <link>http://www.zeneffy.fr/2010/06/alerte-sur-la-banquise/</link>
+      <pubDate>Sun, 13 Jun 2010 07:39:21 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/06/alerte-sur-la-banquise/</guid>
+      <description>Suite à diverses réorganisations majeures, je me suis intéressé aux théories de la conduite du changement, et notamment à celles de John Kotter, cité souvent comme le grand &amp;ldquo;gourou&amp;rdquo;. Ainsi j&amp;rsquo;ai acheté et lu avec intérêt sa fable Alerte sur la banquise basée sur sa théorie des 8 étapes de la conduite du changement:
+ Créer un sentiment d&amp;rsquo;urgence: aider les autres à comprendre d&amp;rsquo;une part la nécessité d&amp;rsquo;un changement et d&amp;rsquo;autre part l&amp;rsquo;obligation d&amp;rsquo;agir tout de suite.</description>
+    </item>
+    
+    <item>
+      <title>Optimisation des OS avec un disque SSD</title>
+      <link>http://www.zeneffy.fr/2010/06/optimisation-des-os-avec-un-disque-ssd/</link>
+      <pubDate>Sun, 06 Jun 2010 06:28:49 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/06/optimisation-des-os-avec-un-disque-ssd/</guid>
+      <description>Ayant acheté dernièrement un disque dur SSD pour mon portable, il a fallu chercher quelques informations complémentaires pour m&amp;rsquo;assurer de la meilleur optimisation possible:
+Sous Windows Vista www.ocztechnologyforum.com/forum/showthread.php?47212-Vista-32-64-SSD-Windows-Registry-tweaks
+En bref:
+ Désactiver superfetch &amp;amp; prefetch Activer clearPageFilesAtShutdown et LargeSystemCache Amélioration du cache disque NTFS Suppression indexation automatique + hibernation (pour gagner de l&amp;rsquo;espace)  Optimisations sous Linux: itezer.com/blog/ubuntu-linux/125-Four-Tweaks-for-Using-Linux-with-SSD.html www.zdnet.com/blog/perlow/geek-sheet-a-tweakers-guide-to-solid-state-drives-ssds-and-linux/9190
+En synthèse:
+ S&amp;rsquo;assurer d&amp;rsquo;être en noatime Utiliser la mémoire vive comme /tmp Changer le scheduler disque (prendre noop)  Résultat:</description>
+    </item>
+    
+    <item>
+      <title>Lier Github &amp; Lighthouse</title>
+      <link>http://www.zeneffy.fr/2010/06/lier-github-lighthouse/</link>
+      <pubDate>Tue, 01 Jun 2010 16:51:26 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/06/lier-github-lighthouse/</guid>
+      <description>Utilisant Github (comme dépôt de code) et lighthouse (comme gestionnaire d&amp;rsquo;anomalies et évolutions), je viens de découvrir qu&amp;rsquo;il était très simple de lier les deux. Cela permet de faire apparaître directement dans lighthouse les changements de code et les nouvelles versions et donc de les lier facilement aux anomalies.
+Côté lighthouse:
+sur votre page de profil, il faut créer un &amp;ldquo;API token&amp;rdquo; correspondant au projet que vous souhaitez (on obtient un code du type 432f1b2c1a[&amp;hellip;]35bb1ba1d)</description>
+    </item>
+    
+    <item>
+      <title>Résolutions et VirtualBox</title>
+      <link>http://www.zeneffy.fr/2010/05/resolutions-et-virtualbox/</link>
+      <pubDate>Wed, 19 May 2010 09:51:21 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/05/resolutions-et-virtualbox/</guid>
+      <description>Suite à l&amp;rsquo;installation de Ubuntu 10.04 sous VirtualBox, je me suis un peu battu pour avoir une résolution correcte en mode plein écran (aka 1280x800 sur mon portable).
+Voici ce que j&amp;rsquo;ai trouvé: tout d&amp;rsquo;abord il faut rajouter la résolution nécessaire:
+VBoxManage setextradata &amp;quot;Ubuntu104&amp;quot; &amp;quot;CustomVideoMode1&amp;quot; &amp;quot;1280x800x24&amp;quot;  Puis suite à des problèmes de curseur de souris bloqué par des bords invisibles:
+VBoxManage controlvm &amp;quot;Ubuntu104&amp;quot; setvideomodehint 1280 800 24  Par contre je suis obligé de lancer la dernière commande à chaque fois - pas de solution miracle pour l&amp;rsquo;instant.</description>
+    </item>
+    
+    <item>
+      <title>Personnaliser l&#39;installation de Ubuntu 10.04</title>
+      <link>http://www.zeneffy.fr/2010/05/personnaliser-linstallation-de-ubuntu-10-04/</link>
+      <pubDate>Sun, 16 May 2010 12:04:00 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/05/personnaliser-linstallation-de-ubuntu-10-04/</guid>
+      <description>Suite à la sortie de Ubuntu 10.04, je me suis décidé à l&amp;rsquo;installer en machine virtuelle (VirtualBox) sur mon portable pro, tout s&amp;rsquo;est très bien passé et voici quelques tuning complémentaires:
+En premier lieu, on effectue une petite mise à jour post-installation
+sudo apt-get update sudo apt-get upgrade  Puis j&amp;rsquo;installe mon logiciel de versionnage favori (à l&amp;rsquo;heure actuelle), i.e. Git
+sudo apt-get install git-core  Ensuite on installe l&amp;rsquo;éditeur Vim avec ma configuration (stockée sur GitHub)</description>
+    </item>
+    
+    <item>
+      <title>Notes de lecture - &#34;Ma vie de patron&#34;</title>
+      <link>http://www.zeneffy.fr/2010/05/notes-de-lecture-ma-vie-de-patron/</link>
+      <pubDate>Mon, 03 May 2010 19:01:33 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/05/notes-de-lecture-ma-vie-de-patron/</guid>
+      <description>La lecture de &amp;ldquo;Ma Vie de patron&amp;rdquo; - la biographie du célèbre ex-PDG de General Electrics Jack Welch m&amp;rsquo;a interpellée tout en me confirmant quelques points de management:
+Différentiation
+ Il ne faut pas hésiter à récompenser fortement les meilleurs et éliminer les médiocres pour hisser la barre toujours plus haut. En traitant différemment, non seulement cela ne nuira pas au moral mais cela renforcera même les équipes.
+il est possible de classer simplement en 20% Potentiels - 70% A garder - 10% moins bons, bien que l&amp;rsquo;exercice peut devenir difficile - cela permet année après année d&amp;rsquo;améliorer globalement le niveau des équipes</description>
+    </item>
+    
+    <item>
+      <title>Migration de Zeneffy Labs</title>
+      <link>http://www.zeneffy.fr/2010/04/migration-de-zeneffy-labs/</link>
+      <pubDate>Sat, 24 Apr 2010 13:36:29 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/04/migration-de-zeneffy-labs/</guid>
+      <description>Hier, j&amp;rsquo;ai migré Zeneffy Labs de Redmine vers le coupleRadiant CMS / GitHub. En effet Redmine était un peu trop conséquent pour mes besoins et prenait trop de ressources sur mon serveur. Mon choix s&amp;rsquo;est alors porté d&amp;rsquo;une part sur Radiant CMS pour servir de mini wiki et d&amp;rsquo;autre part sur GitHub pour les dépôts de code.
+L&amp;rsquo;inscription et l&amp;rsquo;utilisation de GitHut sont rapides et faciles (car liées aussi intrinsèquement à la simplicité de Git - gestion de configuration décentralisée) et il m&amp;rsquo;a suffit de pousser les anciens dépôts de code vers le nouveau système.</description>
+    </item>
+    
+    <item>
+      <title>Redécouverte de Ruby On Rails</title>
+      <link>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</link>
+      <pubDate>Wed, 14 Apr 2010 14:00:33 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</guid>
+      <description>Suite à des recherches sur les frameworks web du moment (python: Django, Turbogears, web.py, scala: lift, java: play!), je me suis réintéressé à l&amp;rsquo;un des premiers frameworks que j&amp;rsquo;avais utilisé (2003 / 2004 &amp;hellip;): Ruby on Rails.
+J&amp;rsquo;ai redécouvert l&amp;rsquo;élégance et la simplicité de Ruby et la puissance de Rails.
+Du coup, je me suis lancé un nouveau défi: créer une application de gestion des identités web - afin de ne plus oublier identifiant/mots de passe des sites où je suis inscrit (et il y en a!</description>
+    </item>
+    
+    <item>
+      <title>Installer Redmine sur lighttpd</title>
+      <link>http://www.zeneffy.fr/2010/03/installer-redmine-sur-lighttpd/</link>
+      <pubDate>Fri, 26 Mar 2010 15:19:22 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/03/installer-redmine-sur-lighttpd/</guid>
+      <description>J&amp;rsquo;utilise actuellement le serveur web lighttpd sur mon serveur personnel, ce qui nécessite un peu de paramétrage différent de Apache. Ainsi pour faire fonctionner Redmine (Application Ruby on Rails de gestion de projet), j&amp;rsquo;ai utilisé cette configuration:
+#Virtual host server.modules += ( &amp;quot;mod_fastcgi&amp;quot;, &amp;quot;mod_rewrite&amp;quot;) $HTTP[&amp;quot;host&amp;quot;] =~ &amp;quot;labs.zeneffy.fr&amp;quot; { # nom du vhos server.errorlog = &amp;quot;/var/log/lighttpd/zeneffy/labs/error.log&amp;quot; accesslog.filename = &amp;quot;/var/log/lighttpd/zeneffy/labs/access.log&amp;quot; server.document-root = &amp;quot;/var/www/zeneffy/labs/public&amp;quot; server.indexfiles = ( &amp;quot;dispatch.fcgi&amp;quot; ) server.error-handler-404 = &amp;quot;/dispatch.fcgi&amp;quot; url.rewrite-once = ( &amp;quot;^/(.</description>
+    </item>
+    
+    <item>
+      <title>Ma configuration de Vim</title>
+      <link>http://www.zeneffy.fr/2010/03/ma-configuration-de-vim/</link>
+      <pubDate>Sun, 21 Mar 2010 18:11:55 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/03/ma-configuration-de-vim/</guid>
+      <description>Quelques liens utiles
+ python-and-vim-make-your-own-ide code-navigation-completion-snippets-in-vim light-at-the-end-of-the-carpal-tunnel-snippets-in-vim-with-snipmate rails-on-vim-in-english vim.runpaint.org/toc FuzzyFinder (utiliser 2.16!!)  Quelques raccourcis à connaître:
+python_fn.vim &amp;quot; ]t -- Jump to beginning of block &amp;quot; ]e -- Jump to end of block &amp;quot; ]v -- Select (Visual Line Mode) block &amp;quot; ]&amp;lt; -- Shift block to left &amp;quot; ]&amp;gt; -- Shift block to right &amp;quot; ]# -- Comment selection &amp;quot; ]u -- Uncomment selection &amp;quot; ]c -- Select current/previous class &amp;quot; ]d -- Select current/previous function &amp;quot; ]&amp;lt;up&amp;gt; -- Jump to previous line with the same/lower indentation &amp;quot; ]&amp;lt;down&amp;gt; -- Jump to next line with the same/lower indentation python.</description>
+    </item>
+    
+    <item>
+      <title>Harpagon: la version 1.1 &#34;Pingre&#34; est enfin sortie</title>
+      <link>http://www.zeneffy.fr/2010/03/harpagon-la-version-1-1-pingre-est-enfin-sortie/</link>
+      <pubDate>Sun, 07 Mar 2010 15:19:56 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/03/harpagon-la-version-1-1-pingre-est-enfin-sortie/</guid>
+      <description>Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework web.py et sur Google Chart API.
+Nouveautés
+ Contrôle des fichiers avant validation et traitement Mise en avant ce qui a été déjà dépensé par rapport à la moyenne mensuelle Simulation de ce qu&amp;rsquo;il reste à payer dans le mois au prorata des jours écoulés Meilleure gestion des chèques, notamment en mettant les numéros Constance du tri sur la liste de transaction lors des modifications de transaction Spinner sur le chargement de nouvelles données Listes déroulantes de catégorie trié alphabétiquement Couleurs des camenberts pour les catégories Tri sur listes Spinner lors du rejoue des règles Confirmation des suppressions de catégorie et règles  Où trouver Harpagon ?</description>
+    </item>
+    
+    <item>
+      <title>Supprimer tous les albums d&#39;un compte picasa web</title>
+      <link>http://www.zeneffy.fr/2010/03/supprimer-tous-les-albums-dun-compte-picasa-web/</link>
+      <pubDate>Mon, 01 Mar 2010 14:18:22 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/03/supprimer-tous-les-albums-dun-compte-picasa-web/</guid>
+      <description>Un petit script pour supprimer en une seule opération tous les albums d&amp;rsquo;un compte picasa web - à utiliser avec modération !
+il faut penser à installer l&amp;rsquo;API Google Picasa Web pour que cela fonctionne.
+#!/usr/bin/python2.5 # -*- coding: utf-8 -*- import gdata.photos.service import gdata.media import gdata.geo #http://code.google.com/intl/fr/apis/picasaweb/developers_guide_protocol.html def get_albums(): email = &amp;quot;xx@gmail.com&amp;quot; pwd = &amp;quot;xxpwd&amp;quot; gd_client = gdata.photos.service.PhotosService() gd_client.email = email # Set your Picasaweb e-mail address... gd_client.password = pwd # .</description>
+    </item>
+    
+    <item>
+      <title>Ma petite histoire du web</title>
+      <link>http://www.zeneffy.fr/2010/03/ma-petite-histoire-du-web/</link>
+      <pubDate>Mon, 01 Mar 2010 13:43:15 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/03/ma-petite-histoire-du-web/</guid>
+      <description>10 ans de web déjà - avec presque autant de sites web, de concept et de technologie !
+ 1999-2001: Pages statiques et javascript hébergées en école d&amp;rsquo;ingénieur  
+ 2001-2002: La troisième version, hébergée chez free: une interface avec des CSS et encore du javascript (la V2 semble avoir disparu!) sur l&amp;rsquo;url julien.ht.st   2002-2003: Première version dynamique, mélangeant XML et PHP   2003-2005: Première version de blog, basée sur mon propre moteur &amp;ldquo;tiwelo&amp;rdquo; avec l&amp;rsquo;url tifauve.</description>
+    </item>
+    
+    <item>
+      <title>Utiliser le mediacenter de la 9Box avec lighttpd</title>
+      <link>http://www.zeneffy.fr/2010/01/utiliser-le-mediacenter-de-la-9box-avec-lighttpd/</link>
+      <pubDate>Tue, 26 Jan 2010 15:21:48 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/01/utiliser-le-mediacenter-de-la-9box-avec-lighttpd/</guid>
+      <description>La neufbox de SFR permet de partager des contenus multimédias du PC vers le mediacenter -l&amp;rsquo;application fournie par SFR pour cela est tout simplement un serveur apache reconfiguré.
+Pour ma part, utilisant lighttpd sur mon serveur, j&amp;rsquo;ai utilisé la configuration suivante (sachant qu&amp;rsquo;il faut évidemment récupérer les fichiers php du &amp;ldquo;package apache SFR&amp;rdquo; par ailleurs):
+$SERVER[&amp;quot;socket&amp;quot;] == &amp;quot;192.168.1.21:26180&amp;quot; { server.document-root = &amp;quot;/var/www/mediacenter/httpd/&amp;quot; server.errorlog = &amp;quot;/var/log/lighttpd/mp9lhd.log&amp;quot; accesslog.filename = &amp;quot;/var/log/lighttpd/mp9Access.log&amp;quot; #server.pid-file = &amp;quot;/var/run/mp9lhd.</description>
+    </item>
+    
+    <item>
+      <title>Harpagon V1.0</title>
+      <link>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</link>
+      <pubDate>Sun, 17 Jan 2010 22:44:21 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</guid>
+      <description>Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework web.py et sur Google Chart API.
+Fonctionnalités de la 1.0
+ Import de données de la BRED Tableau de bord fonctionnel avec stats sur 30j/3mois/Toutes dates Gestion des catégories et des règles de catégorisation Rejoue des règles possibles à tout moment Gestion des transactions  Captures d&amp;rsquo;écran
+ 
+Où trouver Harpagon ?</description>
+    </item>
+    
+    <item>
+      <title>SaveMyPrecious - Sauvegardes de fichier</title>
+      <link>http://www.zeneffy.fr/2009/07/savemyprecious-sauvegardes-de-fichier/</link>
+      <pubDate>Sat, 04 Jul 2009 14:45:05 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2009/07/savemyprecious-sauvegardes-de-fichier/</guid>
+      <description>SaveMyPrecious remplace Saise et permet donc une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, le premier script de sauvegarde que j&amp;rsquo;ai écrit.
+A l&amp;rsquo;inverse de Saise, SaveMyPrecious ne crypte pas les données, mais subit une nette amélioration de l&amp;rsquo;interface graphique.
+Dépendances
+Pour faire fonctionner SaveMyPrecious, il vous faut:</description>
+    </item>
+    
+    <item>
+      <title>iPieuvre - Aggrégateur de contenus multimédia</title>
+      <link>http://www.zeneffy.fr/2009/06/ipieuvre-aggregateur-de-contenus-multimedia/</link>
+      <pubDate>Tue, 09 Jun 2009 09:40:36 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2009/06/ipieuvre-aggregateur-de-contenus-multimedia/</guid>
+      <description>iPieuvre permet d&amp;rsquo;aggréger des contenus personnels hébergés sur PicasaWeb et sur YouTube (prochainement) via l&amp;rsquo;API Google Data.
+iPieuvre se connecte sur tous les comptes fournis et récupère les url des images/vidéos via les flux ATOM pour créer ensuite des pages statiques html en utilisant le moteur de template Cheetah. Ce système permet de s&amp;rsquo;arranger de la limitation à 1Go de photos sur PicasaWeb.
+iPieuvre fait actuellement tourner mon propre site de photo/multimédia:Instants de Vie (accès restreint).</description>
+    </item>
+    
+    <item>
+      <title>Routage IP sur un équipement cisco</title>
+      <link>http://www.zeneffy.fr/2009/05/routage-ip-sur-un-equipement-cisco/</link>
+      <pubDate>Thu, 07 May 2009 13:31:00 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2009/05/routage-ip-sur-un-equipement-cisco/</guid>
+      <description>Commandes diverses de configuration passage en mode root: enable
+effacer conf: erase startup
+rentrer mode configuration: conf t
+info sur interface en mode configuration: do show ip interface brief
+rentrer en config d&amp;rsquo;interface FastEthernet0: interface fa0
+config IP + submask: ip address 10.0.0.1 255.255.255.0
+no shut du port fa0: no shutdown
+ARP show arp
+sous windows: arp -a
+information sur interfaces: show interface
+table de mac: show mac-address-table
+configuration routeur cisco sauvegarde configuration: copy run start</description>
+    </item>
+    
+    <item>
+      <title>Gestion d&#39;urgence de l&#39;énergie</title>
+      <link>http://www.zeneffy.fr/2009/03/gestion-durgence-de-lenergie/</link>
+      <pubDate>Thu, 26 Mar 2009 10:41:00 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2009/03/gestion-durgence-de-lenergie/</guid>
+      <description>J&amp;rsquo;utilise un portable comme serveur, notamment pour diminuer consommation et bruit, mais cela a un autre avantage: la batterie du portable qui peut servir &amp;ldquo;d&amp;rsquo;onduleur&amp;rdquo; en cas de perte de courant.
+J&amp;rsquo;ai donc conçu un script simple pour gérer les pertes d&amp;rsquo;énergie, et prendre le temps de lancer un arrêt propre du serveur si l&amp;rsquo;alimentation n&amp;rsquo;est toujours pas rétablie.
+Dans /etc/acpi/events on crée un fichier ac_dc contenant:
+event=ac_adapter.* action=/home/tifauve/scripts/acpi/battery/ac_dc.py %e  et voici le script ac_dc.</description>
+    </item>
+    
+    <item>
+      <title>Catanyste</title>
+      <link>http://www.zeneffy.fr/2009/02/catanyste/</link>
+      <pubDate>Sun, 01 Feb 2009 09:33:18 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2009/02/catanyste/</guid>
+      <description>Stratégies, Optimisations et IA pour le jeu de plateau les Colons de Catane
+Le jeu de plateau les Colons de Catane a une dimension tactique et stratégique intéressante, l&amp;rsquo;optimisation d&amp;rsquo;acquisition des ressources étant primordiale pour contrebalancer les hasards des jets de dés.
+L&amp;rsquo;objectif de Catanyste est de s&amp;rsquo;intéresser à la dimension statistique du jeu et finalement de créer une IA capable d&amp;rsquo;aider les joueurs, voire de les battre.
+Le site du projet: http://code.</description>
+    </item>
+    
+    <item>
+      <title>SAISE - Sauvegarde Incrémentale Sécurisée</title>
+      <link>http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/</link>
+      <pubDate>Sat, 27 Sep 2008 09:23:21 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/</guid>
+      <description>SAISE est le digne successeur d&amp;rsquo;Obiran dont il reprend toutes les fonctionnalités, soit une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, lui-même disponible sur https://github.com/jraigneau/obiran.
+SAISE apporte toutefois des différences importantes:
+ SAISE est écrit en Python (contrairement à Obiran, en Ruby) SAISE utilise la librairie libnotify pour faire apparaître des notifications graphiques lors des backups (en option) SAISE a un système de log plus abouti Last but not least - SAISE permet de sécuriser les sauvegardes en cryptant à la volée les fichiers (à la demande de l&amp;rsquo;utilisateur)  Le système cryptage de SAISE</description>
+    </item>
+    
+    <item>
+      <title>Photo2Web</title>
+      <link>http://www.zeneffy.fr/2008/05/photo2web/</link>
+      <pubDate>Mon, 26 May 2008 20:19:39 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/photo2web/</guid>
+      <description>Ce script écrit Python permet d&amp;rsquo;envoyer des photos extraites via Picasa sur un site FTP, le tout avec une interface graphique GTK2.
+C&amp;rsquo;est mon premier développement &amp;ldquo;important&amp;rdquo; en Python - il m&amp;rsquo;a permis notamment de voir:
+ Interface graphique et GTK2 et utilisation de Glade. Utilisation de la librairie ftplib. Mécanique des threads dans une IHM.  Il reste fortement améliorable, notamment en ce qui concerne la gestion des exceptions (try&amp;hellip;except).</description>
+    </item>
+    
+    <item>
+      <title>CheckMyFTP</title>
+      <link>http://www.zeneffy.fr/2008/05/checkmyftp/</link>
+      <pubDate>Mon, 19 May 2008 19:41:51 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/checkmyftp/</guid>
+      <description>Ce script simple vérifie s&amp;rsquo;il y a du contenu sur un site FTP et dans ce cas affiche une image. Ce script est le préambule à Photo2Web avec GUI et utilisation de ftplib.
+#!/usr/bin/python # -*- coding: utf8 -*- &amp;quot;&amp;quot;&amp;quot; Vérifie si du nouveau contenu a été rajouté sur le FTP &amp;quot;&amp;quot;&amp;quot; import ftplib import pygtk,gtk pygtk.require(&#39;2.0&#39;) import os,sys try: session = ftplib.FTP(&#39;XXX&#39;,&#39;XXX&#39;,&#39;XXX&#39;) # On se connecte au serveur fileList = [] # La liste des fichiers sera dedans session.</description>
+    </item>
+    
+    <item>
+      <title>Obiran - Outil de backup incrémental en Ruby</title>
+      <link>http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/</link>
+      <pubDate>Mon, 12 May 2008 09:19:09 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/</guid>
+      <description>A propos
+Sauvegarder régulièrement les données est un réflexe à avoir car le monde numérique peut être impitoyable: imaginez toutes vos photos depuis 5 ans disparaissant suite à un disque dur cassé !
+Le mieux est d&amp;rsquo;automatiser cette tâche, aussi j&amp;rsquo;ai développé OBIRAN - Outil de Backup Incrémental en Ruby (&amp;lsquo;Obiran Kenobi, vous êtes notre seul espoir&amp;rsquo; (Princesse Leila, Starwars IV) ).
+Ce script en langage Ruby permet d&amp;rsquo;effectuer des sauvegardes incrémentales en utilisant rsync, ssh et cp.</description>
+    </item>
+    
+    <item>
+      <title>Pessac</title>
+      <link>http://www.zeneffy.fr/2008/05/pessac/</link>
+      <pubDate>Mon, 12 May 2008 08:22:40 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/pessac/</guid>
+      <description>Pessac est une application écrite en C# (compilable/utilisable via le framework Open Source mono) permet de sortir un reporting &amp;ldquo;projet&amp;rdquo; à partir de l&amp;rsquo;analyse de répertoires du système de fichier.
+Ce reporting est basé non sur l&amp;rsquo;avancement planning du projet mais sur la présence des livrables/Jalons d&amp;rsquo;un projet.
+Il permet par ailleurs de suivre de manière centralisé l&amp;rsquo;avancement de plusieurs projets et gère le concept d&amp;rsquo;archivage.
+Ce projet est entièrement géré via Google Code</description>
+    </item>
+    
+    <item>
+      <title>Qu&#39;est ce que Zeneffy?</title>
+      <link>http://www.zeneffy.fr/2008/05/quest-ce-que-zeneffy/</link>
+      <pubDate>Sun, 04 May 2008 12:56:57 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/2008/05/quest-ce-que-zeneffy/</guid>
+      <description>Zeneffy.fr est un petit aggrégat de sites web pour exposer quelques projets, servir d&amp;rsquo;incubateur à idées et garder dans un coin des &amp;ldquo;Trucs&amp;amp;Machins&amp;rdquo; intéressants liés aux nouvelles technologies pour plus tard. Vous y trouverez aussi quelques snippets de code divers et variés.
+A noter que contrairement à un blog &amp;ldquo;journal intime&amp;rdquo;, blog.zeneffy.fr n&amp;rsquo;a pas vocation à exposer ma vie ou à être mis à jour régulièrement.
+Il remplace10 ans de blogs et wikis dont les versions sont encore consultables (pour la postérité!</description>
+    </item>
+    
+    <item>
+      <title>Pourquoi un journal de bord ?</title>
+      <link>http://www.zeneffy.fr/about/</link>
+      <pubDate>Sat, 26 Feb 2000 19:34:13 +0100</pubDate>
+      
+      <guid>http://www.zeneffy.fr/about/</guid>
+      <description>Pourquoi un journal de bord ? Mes pérégrinations technologiques m&amp;rsquo;ont amenées au fur et à mesure à chercher, concevoir, tester, valider (ou abandonner) et utiliser des langages, des frameworks, des technologies&amp;hellip; depuis plusieurs années.
+J&amp;rsquo;ai donc décidé il y a plus de 15 ans de garder trace à travers un journal de bord pour partager ces expériences plus ou moins réussies, que cela concerne par exemple node.js, ruby on rails ou encore les outils.</description>
     </item>
     
   </channel>

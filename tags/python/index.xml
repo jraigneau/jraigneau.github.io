@@ -6,8 +6,11 @@
     <description>Recent content in Python on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
+    <copyright>&amp;#0169; 2008 - 2017, Julien Raigneau &amp;nbsp;&amp;nbsp;  | &amp;nbsp;&amp;nbsp;  Zeneffy &gt;&gt; Zen &amp;amp; Efficace</copyright>
     <lastBuildDate>Fri, 11 Mar 2011 17:10:17 +0000</lastBuildDate>
-    <atom:link href="http://www.zeneffy.fr/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.zeneffy.fr/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Scripter MacOS</title>
@@ -15,76 +18,7 @@
       <pubDate>Fri, 11 Mar 2011 17:10:17 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2011/03/scripter-macos/</guid>
-      <description>&lt;p&gt;Dans ma très récente période Ubuntu/Linux, j&amp;rsquo;avais rédigé un petit script en python qui vérifiait régulièrement la présence de nouveaux fichiers dans un répertoire FTP - ce script étant basé sur GTK, il était nécessaire de le changer pour notamment utiliser &lt;a href=&#34;http://growl.info/&#34;&gt;Growl&lt;/a&gt;, le système de notification disponible dans MacOS.&lt;/p&gt;
-
-&lt;p&gt;Ainsi le code en python donne&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
-# -*- coding: utf8 -*-
-&amp;quot;&amp;quot;&amp;quot;
-Vérifie si du nouveau contenu a été rajouté sur le FTP
-&amp;quot;&amp;quot;&amp;quot;
-import ftplib
-import os,sys
-import Growl
-
-try:
-    session = ftplib.FTP(&#39;xxServeur&#39;,&#39;xxLogin&#39;,&#39;xxMdP&#39;) # On se connecte au serveur
-    fileList = [] # La liste des fichiers sera dedans
-    session.retrlines(&#39;LIST&#39;,fileList.append)
-    session.quit() #On se déconnecte
-    for txt in fileList:
-        if txt.find(&amp;quot;.DS_Store&amp;quot;) &amp;gt; -1: #macOS a parfois de drole de spécificité
-            fileList.remove(txt)
-    if len(fileList) == 0:
-        print &amp;quot;Vide&amp;quot;
-    else: 
-        gn = Growl.GrowlNotifier( &amp;quot;CheckMyFTP&amp;quot;, [&amp;quot;Nouveau contenu&amp;quot;] )
-        gn.register()
-        image = Growl.Image.imageFromPath(os.path.join(os.path.dirname(__file__), &amp;quot;kfind.png&amp;quot;))
-        gn.notify( &amp;quot;Nouveau contenu&amp;quot;, &amp;quot;Nouveau contenu disponible&amp;quot;, &amp;quot;Un nouveau contenu a été ajouté sur le FTP de papa&amp;quot;,icon=image )
-except:
-    print &amp;quot;Impossible de se connecter&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Puis, il s&amp;rsquo;agit de faire jouer ce script régulièrement (toutes les heures par exemple). Dans le cas de MacOS 10.5+, il faut utiliser launchd à la place de crontab: dans le répertoire ``&lt;code&gt;$HOME/Library/LaunchAgents&lt;/code&gt;, il suffit alors de créer un fichier fr.zeneffy.checkftp.plist qui contiendra:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
-&amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot; &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt;
-&amp;lt;plist version=&amp;quot;1.0&amp;quot;&amp;gt;
-&amp;lt;dict&amp;gt;
-        &amp;lt;key&amp;gt;label&amp;lt;/key&amp;gt;
-        &amp;lt;string&amp;gt;fr.zeneffy.checkftp.plist&amp;lt;/string&amp;gt;
-
-        &amp;lt;key&amp;gt;ProgramArguments&amp;lt;/key&amp;gt;
-        &amp;lt;array&amp;gt;
-                &amp;lt;string&amp;gt;/Users/julien/Code/scripts/CheckMyFTP/CheckMyFTP.py&amp;lt;/string&amp;gt;
-        &amp;lt;/array&amp;gt;
-
-        &amp;lt;key&amp;gt;Nice&amp;lt;/key&amp;gt;
-        &amp;lt;integer&amp;gt;1&amp;lt;/integer&amp;gt;
-
-        &amp;lt;key&amp;gt;StartInterval&amp;lt;/key&amp;gt;
-        &amp;lt;integer&amp;gt;3600&amp;lt;/integer&amp;gt;
-
-        &amp;lt;key&amp;gt;StandardErrorPath&amp;lt;/key&amp;gt;
-        &amp;lt;string&amp;gt;/tmp/checkftp.err&amp;lt;/string&amp;gt;
-
-        &amp;lt;key&amp;gt;StandardOutPath&amp;lt;/key&amp;gt;
-        &amp;lt;string&amp;gt;/tmp/checkftp.out&amp;lt;/string&amp;gt;
-&amp;lt;/dict&amp;gt;
-&amp;lt;/plist&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;puis de charger ce fichier de configuration&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;launchctl load fr.zeneffy.checkftp.plist
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;et voilà, toutes les heures CheckMyFTP.py sera lancé et il m&amp;rsquo;affichera une notification en cas de nouveaux fichiers disponibles sur le répertoire FTP.&lt;/p&gt;
-
-&lt;p&gt;Ressources: &lt;a href=&#34;http://www.devdaily.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs&#34;&gt;http://www.devdaily.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;Dans ma très récente période Ubuntu/Linux, j&amp;rsquo;avais rédigé un petit script en python qui vérifiait régulièrement la présence de nouveaux fichiers dans un répertoire FTP - ce script étant basé sur GTK, il était nécessaire de le changer pour notamment utiliser &lt;a href=&#34;http://growl.info/&#34;&gt;Growl&lt;/a&gt;, le système de notification disponible dans MacOS.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -93,12 +27,9 @@ except:
       <pubDate>Wed, 14 Apr 2010 14:00:33 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/04/redecouverte-de-ruby-on-rails/</guid>
-      <description>&lt;p&gt;Suite à des recherches sur les frameworks web du moment (python: &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt;, &lt;a href=&#34;http://turbogears.org/&#34;&gt;Turbogears&lt;/a&gt;, &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt;, scala: &lt;a href=&#34;http://liftweb.net/&#34;&gt;lift&lt;/a&gt;, java: &lt;a href=&#34;http://www.playframework.org/&#34;&gt;play!&lt;/a&gt;), je me suis réintéressé à l&amp;rsquo;un des premiers frameworks que j&amp;rsquo;avais utilisé (2003 / 2004 &amp;hellip;): &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;J&amp;rsquo;ai redécouvert l&amp;rsquo;élégance et la simplicité de &lt;a href=&#34;http://www.ruby-lang.org/fr/&#34;&gt;Ruby&lt;/a&gt; et la puissance de Rails.&lt;/p&gt;
-
-&lt;p&gt;Du coup, je me suis lancé un nouveau défi: créer une application de gestion des identités web - afin de ne plus oublier identifiant/mots de passe des sites où je suis inscrit (et il y en a!) - avec Ruby on Rails évidemment: &lt;a href=&#34;https://github.com/jraigneau/vauban/&#34;&gt;Vauban&lt;/a&gt; est donc en cours de développement. La suite prochainement&amp;hellip;&lt;/p&gt;
-</description>
+      <description>Suite à des recherches sur les frameworks web du moment (python: Django, Turbogears, web.py, scala: lift, java: play!), je me suis réintéressé à l&amp;rsquo;un des premiers frameworks que j&amp;rsquo;avais utilisé (2003 / 2004 &amp;hellip;): Ruby on Rails.
+J&amp;rsquo;ai redécouvert l&amp;rsquo;élégance et la simplicité de Ruby et la puissance de Rails.
+Du coup, je me suis lancé un nouveau défi: créer une application de gestion des identités web - afin de ne plus oublier identifiant/mots de passe des sites où je suis inscrit (et il y en a!</description>
     </item>
     
     <item>
@@ -107,30 +38,9 @@ except:
       <pubDate>Sun, 07 Mar 2010 15:19:56 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/03/harpagon-la-version-1-1-pingre-est-enfin-sortie/</guid>
-      <description>&lt;p&gt;Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt; et sur &lt;a href=&#34;http://code.google.com/intl/fr/apis/chart/&#34;&gt;Google Chart API&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Nouveautés&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Contrôle des fichiers avant validation et traitement&lt;/li&gt;
-&lt;li&gt;Mise en avant ce qui a été déjà dépensé par rapport à la moyenne mensuelle&lt;/li&gt;
-&lt;li&gt;Simulation de ce qu&amp;rsquo;il reste à payer dans le mois au prorata des jours écoulés&lt;/li&gt;
-&lt;li&gt;Meilleure gestion des chèques, notamment en mettant les numéros&lt;/li&gt;
-&lt;li&gt;Constance du tri sur la liste de transaction lors des modifications de transaction&lt;/li&gt;
-&lt;li&gt;Spinner sur le chargement de nouvelles données&lt;/li&gt;
-&lt;li&gt;Listes déroulantes de catégorie trié alphabétiquement&lt;/li&gt;
-&lt;li&gt;Couleurs des camenberts pour les catégories&lt;/li&gt;
-&lt;li&gt;Tri sur listes&lt;/li&gt;
-&lt;li&gt;Spinner lors du rejoue des règles&lt;/li&gt;
-&lt;li&gt;Confirmation des suppressions de catégorie et règles&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Où trouver Harpagon ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Le code est disponible en open source sous &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
-</description>
+      <description>Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework web.py et sur Google Chart API.
+Nouveautés
+ Contrôle des fichiers avant validation et traitement Mise en avant ce qui a été déjà dépensé par rapport à la moyenne mensuelle Simulation de ce qu&amp;rsquo;il reste à payer dans le mois au prorata des jours écoulés Meilleure gestion des chèques, notamment en mettant les numéros Constance du tri sur la liste de transaction lors des modifications de transaction Spinner sur le chargement de nouvelles données Listes déroulantes de catégorie trié alphabétiquement Couleurs des camenberts pour les catégories Tri sur listes Spinner lors du rejoue des règles Confirmation des suppressions de catégorie et règles  Où trouver Harpagon ?</description>
     </item>
     
     <item>
@@ -139,38 +49,9 @@ except:
       <pubDate>Mon, 01 Mar 2010 14:18:22 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/03/supprimer-tous-les-albums-dun-compte-picasa-web/</guid>
-      <description>&lt;p&gt;Un petit script pour supprimer en une seule opération tous les albums d&amp;rsquo;un compte picasa web - à utiliser avec modération !&lt;/p&gt;
-
-&lt;p&gt;il faut penser à installer l&amp;rsquo;&lt;a href=&#34;http://code.google.com/intl/fr/apis/picasaweb/overview.html&#34;&gt;API Google Picasa Web&lt;/a&gt; pour que cela fonctionne.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/python2.5
-# -*- coding: utf-8 -*-
-
-import gdata.photos.service
-import gdata.media
-import gdata.geo
-
-#http://code.google.com/intl/fr/apis/picasaweb/developers_guide_protocol.html
-
-def get_albums():
-      email = &amp;quot;xx@gmail.com&amp;quot;
-      pwd = &amp;quot;xxpwd&amp;quot;
-      gd_client = gdata.photos.service.PhotosService()
-      gd_client.email = email   # Set your Picasaweb e-mail address...
-      gd_client.password = pwd  # ... and password
-      gd_client.source = &#39;api-sample-google-com&#39;
-      gd_client.ProgrammaticLogin()
-
-      albums = gd_client.GetUserFeed()
-      for album in albums.entry: #on parse les albums dispo sur le compte
-        print &amp;quot;suppression de &amp;quot; + album.title.text
-        gd_client.Delete(album)
-
-##Début script
-if __name__ == &#39;__main__&#39;:
-    get_albums()
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Un petit script pour supprimer en une seule opération tous les albums d&amp;rsquo;un compte picasa web - à utiliser avec modération !
+il faut penser à installer l&amp;rsquo;API Google Picasa Web pour que cela fonctionne.
+#!/usr/bin/python2.5 # -*- coding: utf-8 -*- import gdata.photos.service import gdata.media import gdata.geo #http://code.google.com/intl/fr/apis/picasaweb/developers_guide_protocol.html def get_albums(): email = &amp;quot;xx@gmail.com&amp;quot; pwd = &amp;quot;xxpwd&amp;quot; gd_client = gdata.photos.service.PhotosService() gd_client.email = email # Set your Picasaweb e-mail address... gd_client.password = pwd # .</description>
     </item>
     
     <item>
@@ -179,29 +60,11 @@ if __name__ == &#39;__main__&#39;:
       <pubDate>Sun, 17 Jan 2010 22:44:21 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/01/harpagon-v1-0/</guid>
-      <description>&lt;p&gt;Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework &lt;a href=&#34;http://webpy.org/&#34;&gt;web.py&lt;/a&gt; et sur &lt;a href=&#34;http://code.google.com/intl/fr/apis/chart/&#34;&gt;Google Chart API&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Fonctionnalités de la 1.0&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Import de données de la BRED&lt;/li&gt;
-&lt;li&gt;Tableau de bord fonctionnel avec stats sur 30j/3mois/Toutes dates&lt;/li&gt;
-&lt;li&gt;Gestion des catégories et des règles de catégorisation&lt;/li&gt;
-&lt;li&gt;Rejoue des règles possibles à tout moment&lt;/li&gt;
-&lt;li&gt;Gestion des transactions&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Captures d&amp;rsquo;écran&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://lh5.ggpht.com/_RTJjPWCgPV8/S4xEfX9PBeI/AAAAAAAAGTo/-bLQndZOZTY/s800/harpagon1.png&#34;&gt;&lt;img src=&#34;http://lh5.ggpht.com/_RTJjPWCgPV8/S4xEfX9PBeI/AAAAAAAAGTo/-bLQndZOZTY/s400/harpagon1.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;http://lh3.ggpht.com/_RTJjPWCgPV8/S4xEfthQ4vI/AAAAAAAAGTs/w1tgq61g684/s800/harpagon2.png&#34;&gt;&lt;img src=&#34;http://lh3.ggpht.com/_RTJjPWCgPV8/S4xEfthQ4vI/AAAAAAAAGTs/w1tgq61g684/s400/harpagon2.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Où trouver Harpagon ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Le code est disponible en open source &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;sous license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/Harpagon&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
-</description>
+      <description>Harpagon est une petite application web permettant d&amp;rsquo;organiser et visualiser graphiquement ses dépenses - elle est basée sur le framework web.py et sur Google Chart API.
+Fonctionnalités de la 1.0
+ Import de données de la BRED Tableau de bord fonctionnel avec stats sur 30j/3mois/Toutes dates Gestion des catégories et des règles de catégorisation Rejoue des règles possibles à tout moment Gestion des transactions  Captures d&amp;rsquo;écran
+ 
+Où trouver Harpagon ?</description>
     </item>
     
     <item>
@@ -210,27 +73,10 @@ if __name__ == &#39;__main__&#39;:
       <pubDate>Sat, 04 Jul 2009 14:45:05 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2009/07/savemyprecious-sauvegardes-de-fichier/</guid>
-      <description>&lt;p&gt;SaveMyPrecious remplace &lt;a href=&#34;http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/&#34;&gt;Saise&lt;/a&gt; et permet donc une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;Obiran&lt;/a&gt;, le premier script de sauvegarde que j&amp;rsquo;ai écrit.&lt;/p&gt;
-
-&lt;p&gt;A l&amp;rsquo;inverse de Saise, SaveMyPrecious ne crypte pas les données, mais subit une nette amélioration de l&amp;rsquo;interface graphique.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Dépendances&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Pour faire fonctionner SaveMyPrecious, il vous faut:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;SaveMyPrecious&lt;/li&gt;
-&lt;li&gt;rsync&lt;/li&gt;
-&lt;li&gt;ssh&lt;/li&gt;
-&lt;li&gt;libraires python: &lt;a href=&#34;http://roscidus.com/desktop/node/336&#34;&gt;pynotify&lt;/a&gt; et pygtk&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Où trouver SaveMyPrecious ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Le code est disponible en open source &lt;a href=&#34;http://fr.wikipedia.org/wiki/Licence_Apache&#34;&gt;sous license Apache&lt;/a&gt; sur &lt;a href=&#34;https://github.com/jraigneau/SaveMyPrecious&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
-</description>
+      <description>SaveMyPrecious remplace Saise et permet donc une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, le premier script de sauvegarde que j&amp;rsquo;ai écrit.
+A l&amp;rsquo;inverse de Saise, SaveMyPrecious ne crypte pas les données, mais subit une nette amélioration de l&amp;rsquo;interface graphique.
+Dépendances
+Pour faire fonctionner SaveMyPrecious, il vous faut:</description>
     </item>
     
     <item>
@@ -239,24 +85,9 @@ if __name__ == &#39;__main__&#39;:
       <pubDate>Tue, 09 Jun 2009 09:40:36 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2009/06/ipieuvre-aggregateur-de-contenus-multimedia/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;iPieuvre&lt;/strong&gt; permet d&amp;rsquo;aggréger des contenus personnels hébergés sur PicasaWeb et sur YouTube (prochainement) via l&amp;rsquo;&lt;a href=&#34;http://code.google.com/intl/fr/apis/gdata/overview.html&#34;&gt;API Google Data&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;iPieuvre se connecte sur tous les comptes fournis et récupère les url des images/vidéos via les flux ATOM pour créer ensuite des pages statiques html en utilisant le moteur de template &lt;a href=&#34;http://www.cheetahtemplate.org/&#34;&gt;Cheetah&lt;/a&gt;. Ce système permet de s&amp;rsquo;arranger de la limitation à 1Go de photos sur PicasaWeb.&lt;/p&gt;
-
-&lt;p&gt;iPieuvre fait actuellement tourner mon propre site de photo/multimédia:&lt;a href=&#34;http://instants.raigneau.net/&#34;&gt; Instants de Vie&lt;/a&gt; (accès restreint).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Code&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Le code est disponible en open source sous license Apache sur&lt;a href=&#34;https://github.com/jraigneau/iPieuvre&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Le code est sans garantie et sans support.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;webographie&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Utilisation de thickbox:&lt;a href=&#34;http://jquery.com/demo/thickbox/&#34;&gt; http://jquery.com/demo/thickbox/&lt;/a&gt; avec modifications&lt;/p&gt;
-
-&lt;p&gt;Impossibilité d&amp;rsquo;avoir les images en grande taille: &lt;a href=&#34;http://groups.google.com/group/Google-Picasa-Data-API/browse_thread/thread/44992a1493458975&#34;&gt;http://groups.google.com/group/Google-Picasa-Data-API/browse_thread/thread/44992a1493458975&lt;/a&gt; et &lt;a href=&#34;http://groups.google.com/group/Google-Picasa-Data-API/browse_thread/thread/476293b036568833?pli=1&#34;&gt;http://groups.google.com/group/Google-Picasa-Data-API/browse_thread/thread/476293b036568833?pli=1&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>iPieuvre permet d&amp;rsquo;aggréger des contenus personnels hébergés sur PicasaWeb et sur YouTube (prochainement) via l&amp;rsquo;API Google Data.
+iPieuvre se connecte sur tous les comptes fournis et récupère les url des images/vidéos via les flux ATOM pour créer ensuite des pages statiques html en utilisant le moteur de template Cheetah. Ce système permet de s&amp;rsquo;arranger de la limitation à 1Go de photos sur PicasaWeb.
+iPieuvre fait actuellement tourner mon propre site de photo/multimédia:Instants de Vie (accès restreint).</description>
     </item>
     
     <item>
@@ -265,113 +96,10 @@ if __name__ == &#39;__main__&#39;:
       <pubDate>Thu, 26 Mar 2009 10:41:00 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2009/03/gestion-durgence-de-lenergie/</guid>
-      <description>&lt;p&gt;J&amp;rsquo;utilise un portable comme serveur, notamment pour diminuer consommation et bruit, mais cela a un autre avantage: la batterie du portable qui peut servir &amp;ldquo;d&amp;rsquo;onduleur&amp;rdquo; en cas de perte de courant.&lt;/p&gt;
-
-&lt;p&gt;J&amp;rsquo;ai donc conçu un script simple pour gérer les pertes d&amp;rsquo;énergie, et prendre le temps de lancer un arrêt propre du serveur si l&amp;rsquo;alimentation n&amp;rsquo;est toujours pas rétablie.&lt;/p&gt;
-
-&lt;p&gt;Dans /etc/acpi/events on crée un fichier ac_dc contenant:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;event=ac_adapter.*
-action=/home/tifauve/scripts/acpi/battery/ac_dc.py %e
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;et voici le script ac_dc.py appelé par le démon ACPI&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-#
-# Gère l&#39;état de la batterie
-#
-
-__author__ = &#39;Julien Raigneau&#39;
-VERSION = &amp;quot;0.4&amp;quot;
-
-import sys,os,logging
-from time import strftime,sleep
-from subprocess import Popen
-
-lock_file = os.path.join(sys.path[0], &amp;quot;battery.lock&amp;quot;)
-fork_path = os.path.join(sys.path[0], &amp;quot;ac_dc.py&amp;quot;)
-
-def read_capacity():
-    #récupere stats battery
-    infos_batterie= open(&amp;quot;/proc/acpi/battery/BAT0/state&amp;quot;,&amp;quot;r&amp;quot;).readlines()
-    capacite = int(infos_batterie[4].replace(&amp;quot;remaining capacity:&amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot;\n&amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot; &amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot;mAh&amp;quot;,&amp;quot;&amp;quot;))
-    voltage = int(infos_batterie[5].replace(&amp;quot;present voltage:&amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot;\n&amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot; &amp;quot;,&amp;quot;&amp;quot;).replace(&amp;quot;mV&amp;quot;,&amp;quot;&amp;quot;))
-    logging.info(&amp;quot;read_capacity: %s,%s&amp;quot; % (capacite,voltage))
-    return capacite,voltage
-
-def send_mail(sujet,corps):
-    #envoi un mail
-    msg = &amp;quot;sendEmail -s smtp.cegetel.net -t julien@raigneau.net -q -u \&amp;quot;%s\&amp;quot; -m \&amp;quot;%s\&amp;quot; -f admin@tifauve.net&amp;quot; % (sujet,corps)
-    p = Popen(msg, shell=True)
-    logging.info(&amp;quot;send_mail: Mail envoyé avec sujet=(%s)&amp;quot; % sujet)
-
-def on_battery(capacite):
-    #actions si sur battery
-    while(os.path.isfile(lock_file)):
-        capacite_encours,voltage = read_capacity()
-        if capacite_encours &amp;lt;= capacite/2:
-            logging.info(&amp;quot;on_battery: Capacité actuelle %s inférieur à la référence %s&amp;quot; % (capacite_encours,capacite))
-            sujet = &amp;quot;[admin@champlain]Alerte critique: Extinction du serveur en cours&amp;quot;
-            corps = &amp;quot;Toujours pas de rétablissement du courant le %s.\n/!\Extinction du serveur.\n\nCapacité restante: %s mAh\nVoltage: %s mV&amp;quot; % (strftime(&amp;quot;%d/%m/%Y à %H:%M:%S&amp;quot;),capacite_encours,voltage)
-            send_mail(sujet,corps)
-            os.remove(lock_file)
-            logging.info(&amp;quot;on_battery: Extinction du serveur lancée&amp;quot;)
-            p = Popen(&amp;quot;shutdown -P now&amp;quot;, shell=True)
-        else:
-            logging.info(&amp;quot;on_battery: Capacité actuelle %s&amp;quot; % capacite_encours)
-            logging.info(&amp;quot;on_battery: En sommeil pendant 2min&amp;quot;)
-            sleep(120)
-    logging.info(&amp;quot;on_battery: plus de fichier de lock: sortie de la procédure&amp;quot;)
-
-def on_dc():
-    #actions si sur secteur
-    logging.info(&amp;quot;on_dc: Remise sur secteur&amp;quot;)
-    if os.path.isfile(lock_file):
-        logging.info(&amp;quot;on_dc: suppression du fichier de lock&amp;quot;)
-        os.remove(lock_file)
-
-
-if __name__ == &#39;__main__&#39;:
-
-    logFile = os.path.join(sys.path[0],&amp;quot;ac_dc.log&amp;quot;)
-    logging.basicConfig(level=logging.DEBUG,
-                    format=&#39;%(asctime)s %(levelname)s %(message)s&#39;,
-                    filename=logFile)
-
-    logging.info(&#39;main: == Démarrage des contrôles ac_dc ==&#39;)
-    logging.info(&amp;quot;main: Valeur des arguments d&#39;entrée %s&amp;quot; % sys.argv)
-    ac_dc_valeur = sys.argv[4]
-    logging.info(&amp;quot;main: Valeur de l&#39;argument d&#39;entrée %s&amp;quot; % ac_dc_valeur)
-    capacite,voltage = read_capacity()
-    logging.info(&amp;quot;main: Etat de la batterie: %s / %s&amp;quot; % (capacite,voltage))
-
-    if ac_dc_valeur == &amp;quot;00000000&amp;quot;:
-        #si le lock existe déjà c&#39;est qu&#39;on est en mode &amp;quot;forké&amp;quot; sinon il faut forker
-        if (os.path.isfile(lock_file)):
-            logging.info(&amp;quot;main: le fichier de lock existe déjà =&amp;gt; nous sommes dans le fork&amp;quot;)
-            corps = &amp;quot;Le courant a été coupé sur Champlain le %s.\nDébut de la procédure de sauvegarde.\n\nCapacité restante: %s mAh\nVoltage: %s mV&amp;quot; % (strftime(&amp;quot;%d/%m/%Y à %H:%M:%S&amp;quot;),capacite,voltage)
-            sujet = &amp;quot;[admin@champlain]Alerte: perte d&#39;énergie sur CHAMPLAIN&amp;quot;
-            send_mail(sujet,corps)
-            on_battery(capacite)
-        else:
-                logging.info(&amp;quot;main: Création du fichier de lock&amp;quot;)
-            file = open(lock_file,&amp;quot;w&amp;quot;)
-            file.write(&amp;quot;%s&amp;quot; % capacite)
-            file.close()
-            logging.info(&amp;quot;main: Fork du process pour rendre la main au démon ACPI&amp;quot;)
-            pid = Popen([fork_path, &amp;quot;00000000&amp;quot;, &amp;quot;00000000&amp;quot; ,&amp;quot;00000000&amp;quot;, &amp;quot;00000000&amp;quot;]).pid
-            logging.info(&amp;quot;main: Fork effectué dans %s - sortie&amp;quot; % pid)
-
-    else:
-        corps = &amp;quot;Le courant a été rétabli sur Champlain le %s.\nFin de la procédure de sauvegarde.\n\nCapacité restante: %s mAh\nVoltage: %s mV&amp;quot; % (strftime(&amp;quot;%d/%m/%Y à %H:%M:%S&amp;quot;),capacite,voltage)
-        sujet = &amp;quot;[admin@champlain]Fin d&#39;alerte: retour de l&#39;énergie sur CHAMPLAIN&amp;quot;
-        send_mail(sujet,corps)
-        on_dc()
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>J&amp;rsquo;utilise un portable comme serveur, notamment pour diminuer consommation et bruit, mais cela a un autre avantage: la batterie du portable qui peut servir &amp;ldquo;d&amp;rsquo;onduleur&amp;rdquo; en cas de perte de courant.
+J&amp;rsquo;ai donc conçu un script simple pour gérer les pertes d&amp;rsquo;énergie, et prendre le temps de lancer un arrêt propre du serveur si l&amp;rsquo;alimentation n&amp;rsquo;est toujours pas rétablie.
+Dans /etc/acpi/events on crée un fichier ac_dc contenant:
+event=ac_adapter.* action=/home/tifauve/scripts/acpi/battery/ac_dc.py %e  et voici le script ac_dc.</description>
     </item>
     
     <item>
@@ -380,16 +108,10 @@ if __name__ == &#39;__main__&#39;:
       <pubDate>Sun, 01 Feb 2009 09:33:18 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2009/02/catanyste/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Stratégies, Optimisations et IA pour le jeu de plateau les Colons de Catane&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Le jeu de plateau &lt;a href=&#34;http://fr.wikipedia.org/wiki/Les_Colons_de_Catane&#34;&gt;les Colons de Catane&lt;/a&gt; a une dimension tactique et stratégique intéressante, l&amp;rsquo;optimisation d&amp;rsquo;acquisition des ressources étant primordiale pour contrebalancer les hasards des jets de dés.&lt;/p&gt;
-
-&lt;p&gt;L&amp;rsquo;objectif de &lt;strong&gt;Catanyste&lt;/strong&gt; est de s&amp;rsquo;intéresser à la dimension statistique du jeu et finalement de créer une IA capable d&amp;rsquo;aider les joueurs, voire de les battre.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://catanyste.googlecode.com/files/20090220--v0-0-13.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Le site du projet: &lt;a href=&#34;http://code.google.com/p/catanyste/&#34;&gt;http://code.google.com/p/catanyste/&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Stratégies, Optimisations et IA pour le jeu de plateau les Colons de Catane
+Le jeu de plateau les Colons de Catane a une dimension tactique et stratégique intéressante, l&amp;rsquo;optimisation d&amp;rsquo;acquisition des ressources étant primordiale pour contrebalancer les hasards des jets de dés.
+L&amp;rsquo;objectif de Catanyste est de s&amp;rsquo;intéresser à la dimension statistique du jeu et finalement de créer une IA capable d&amp;rsquo;aider les joueurs, voire de les battre.
+Le site du projet: http://code.</description>
     </item>
     
     <item>
@@ -398,72 +120,9 @@ if __name__ == &#39;__main__&#39;:
       <pubDate>Sat, 27 Sep 2008 09:23:21 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2008/09/saise-sauvegarde-incrementale-securisee/</guid>
-      <description>&lt;p&gt;SAISE est le digne successeur d&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2008/05/obiran-outil-de-backup-incremental-en-ruby/&#34;&gt;Obiran&lt;/a&gt; dont il reprend toutes les fonctionnalités, soit une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, lui-même disponible sur &lt;a href=&#34;https://github.com/jraigneau/obiran&#34;&gt;https://github.com/jraigneau/obiran&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;SAISE apporte toutefois des différences importantes:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;SAISE est écrit en &lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; (contrairement à Obiran, en Ruby)&lt;/li&gt;
-&lt;li&gt;SAISE utilise la librairie &lt;a href=&#34;http://www.galago-project.org/downloads.php&#34;&gt;libnotify&lt;/a&gt; pour faire apparaître des notifications graphiques lors des backups (en option)&lt;/li&gt;
-&lt;li&gt;SAISE a un système de log plus abouti&lt;/li&gt;
-&lt;li&gt;Last but not least - SAISE permet de sécuriser les sauvegardes en cryptant à la volée les fichiers (à la demande de l&amp;rsquo;utilisateur)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Le système cryptage de SAISE&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Pourquoi du cryptage ?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Il est intéressant de sauvegarder ses données personnelles sur un serveur distant, pour des raisons évidentes de résilience. Toutefois, il peut être dangereux de laisser des données en clair (fichiers de configuration avec mots de passe, correspondance administrative ou financière, photos personnelles&amp;hellip;) sur un serveur dont on ne contrôle pas la sécurité.&lt;/p&gt;
-
-&lt;p&gt;Aussi il m&amp;rsquo;a semblé important de réécrire Obiran en y intégrant une composante &amp;ldquo;sécurité des données&amp;rdquo;. Par conséquent, SAISE utilise la libraire python &lt;a href=&#34;http://www.freenet.org.nz/ezPyCrypto/&#34;&gt;ezPyCrypto&lt;/a&gt;, basée elle-même sur &lt;a href=&#34;http://www.amk.ca/python/code/crypto.html&#34;&gt;pyCrypto&lt;/a&gt;, qui permet de crypter/décrypter des fichiers facilement via des clés de grande taille et la plupart des algorithmes connus.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Comment cela fonctionne ?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Via le fichier de configuration, l&amp;rsquo;utilisateur choisit les fichiers/répertoires à crypter et lors de la sauvegarde ces fichiers seront copiés sur le serveur distant cryptés et avec l&amp;rsquo;extension .crypted. Les fichiers en clair restent sur le disque dur de l&amp;rsquo;utilisateur et ne sont donc pas lisibles sur le serveur distant (des clés des 1024 bits ou 2048 bits seront très difficiles à casser&amp;hellip;).&lt;/p&gt;
-
-&lt;p&gt;L&amp;rsquo;algorithme de cryptage est donc très simple:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Vérification de la présence d&amp;rsquo;une version non cryptée du fichier sur le répertoire distante =&amp;gt; suppression dans ce cas&lt;/li&gt;
-&lt;li&gt;Vérification de la date de création du fichier crypté distant et comparaison avec la date du fichier en local =&amp;gt; Pas de traitement si le local n&amp;rsquo;est pas plus récent&lt;/li&gt;
-&lt;li&gt;Cryptage du fichier et copie via scp sur le serveur distant.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;A noter: Ce cryptage alourdit légèrement le traitement mais n&amp;rsquo;augmente pas trop la taille des fichiers.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Versionnage&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;SAISE v0.7: Suppression de la dépendance à paramiko&lt;/li&gt;
-&lt;li&gt;SAISE v0.6.2: Consolidation de la gestion de configuration pour gérer les valeurs &amp;ldquo;n&amp;rsquo;importe quoi&amp;rdquo; + ajout d&amp;rsquo;un compteur d&amp;rsquo;erreur.&lt;/li&gt;
-&lt;li&gt;SAISE v0.6.1: améliorations de la gestion des notifications (cas d&amp;rsquo;erreur) et de la gestion des fichiers externes (conf, log)&lt;/li&gt;
-&lt;li&gt;SAISE v0.6: Ajout de notifications graphiques d&amp;rsquo;événements via libnotify (pynotify)&lt;/li&gt;
-&lt;li&gt;SAISE v0.5: 1ere version fonctionnelle&lt;/li&gt;
-&lt;li&gt;SAISE v0.4: cryptage en bonne voie / les fichiers unitaires fonctionnent, reste à finir la partie &amp;ldquo;gestion des répertoires cryptés&amp;rdquo;&lt;/li&gt;
-&lt;li&gt;SAISE v0.3: début du travail sur la synchronisation des fichiers cryptés.&lt;/li&gt;
-&lt;li&gt;SAISE v0.2: le rsync fonctionne (isofonctionnalités avec obiran)&lt;/li&gt;
-&lt;li&gt;SAISE Premier commit / connexion en ssh possible&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;Dépendances&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Pour faire fonctionner SAISE, il vous faut:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;SAISE&lt;/li&gt;
-&lt;li&gt;rsync&lt;/li&gt;
-&lt;li&gt;ssh&lt;/li&gt;
-&lt;li&gt;libraires python: &lt;a href=&#34;http://roscidus.com/desktop/node/336&#34;&gt;pynotify&lt;/a&gt; &lt;a href=&#34;http://www.freenet.org.nz/ezPyCrypto/&#34;&gt;ezPyCrypto&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;License&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;SAISE est sous &lt;a href=&#34;http://www.apache.org/licenses/LICENSE-2.0&#34;&gt;license apache v2.0&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Où trouver SAISE ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Ce projet est actuellement disponible sur &lt;a href=&#34;https://github.com/jraigneau/saise&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>SAISE est le digne successeur d&amp;rsquo;Obiran dont il reprend toutes les fonctionnalités, soit une sauvegarde incrémentale totale (chaque sauvegarde se suffit à elle même) distante via l&amp;rsquo;utilisation de la commande cp -al et de rsync. Les principes de base sont expliqués sur la page de présentation d&amp;rsquo;Obiran, lui-même disponible sur https://github.com/jraigneau/obiran.
+SAISE apporte toutefois des différences importantes:
+ SAISE est écrit en Python (contrairement à Obiran, en Ruby) SAISE utilise la librairie libnotify pour faire apparaître des notifications graphiques lors des backups (en option) SAISE a un système de log plus abouti Last but not least - SAISE permet de sécuriser les sauvegardes en cryptant à la volée les fichiers (à la demande de l&amp;rsquo;utilisateur)  Le système cryptage de SAISE</description>
     </item>
     
     <item>
@@ -472,295 +131,9 @@ if __name__ == &#39;__main__&#39;:
       <pubDate>Mon, 26 May 2008 20:19:39 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2008/05/photo2web/</guid>
-      <description>&lt;p&gt;Ce script écrit Python permet d&amp;rsquo;envoyer des photos extraites via &lt;a href=&#34;http://picasa.google.fr/&#34;&gt;Picasa&lt;/a&gt; sur un site FTP, le tout avec une interface graphique GTK2.&lt;/p&gt;
-
-&lt;p&gt;C&amp;rsquo;est mon premier développement &amp;ldquo;important&amp;rdquo; en Python - il m&amp;rsquo;a permis notamment de voir:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Interface graphique et GTK2 et utilisation de &lt;a href=&#34;http://daniel.coquette.free.fr/dotclear/index.php/post/2006/12/11/Creer-des-interfaces-graphique-avec-PyGTK-et-Glade&#34;&gt;Glade&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Utilisation de la librairie &lt;a href=&#34;http://docs.python.org/lib/module-ftplib.html&#34;&gt;ftplib&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://faq.pygtk.org/index.py?req=show&amp;amp;file=faq20.006.htp&#34;&gt;Mécanique des threads&lt;/a&gt; dans une IHM.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Il reste fortement améliorable, notamment en ce qui concerne la gestion des exceptions (try&amp;hellip;except).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Code&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
-# -*- coding: utf8 -*-
-&amp;quot;&amp;quot;&amp;quot;
-Envoie les photos de picasa vers photo.raigneau.net
-v1.0: Release Initiale
-V1.1: modification picasa,os.F_OK pour gestion fichier picasa.ini
-&amp;quot;&amp;quot;&amp;quot;
-
-import os,sys,ftplib
-import pygtk
-pygtk.require(&amp;quot;2.0&amp;quot;)
-import gtk
-import gtk.glade
-import threading
-import time
-import gobject
-
-gobject.threads_init()
-
-class MyThread(threading.Thread):
-    &amp;quot;&amp;quot;&amp;quot;
-    Does the stuff
-    &amp;quot;&amp;quot;&amp;quot;
-    def __init__(self, progressBar,console):
-        super(MyThread, self).__init__()
-        self.progressBar = progressBar
-        self.console = console
-        self.quit = False
-
-    def update_progressBar(self):
-        self.progressBar.pulse()
-        return False
-
-    def run(self):
-        try:
-            self.writeInConsole(&amp;quot;Ouverture de la session&amp;quot;)
-            session = ftplib.FTP(&#39;XXX&#39;,&#39;XXX&#39;,&#39;XXX&#39;) # On se connecte au serveur
-            #Création des repertoires sur lesquelles travailler
-            gobject.idle_add(self.update_progressBar)
-            directories = os.environ.get(&amp;quot;NAUTILUS_SCRIPT_SELECTED_FILE_PATHS&amp;quot;).splitlines(False)
-            #directories = [&amp;quot;/home/tifauve/Documents/Code/Python/CheckMyFTP&amp;quot;,&amp;quot;/home/tifauve/Documents/Code/Python/gtk&amp;quot;]
-            #self.writeInConsole(&amp;quot;Répertoires à télécharger:&amp;quot;+directories)
-            for dir in directories:
-                #suppression .picasa
-                picasa = os.path.join(dir, &#39;Picasa.ini&#39;)
-                if(os.access(picasa,os.F_OK)):
-                    self.writeInConsole(&amp;quot;Suppression du fichier Picasa.ini dans &amp;quot;+dir)
-                    os.remove(picasa)
-                gobject.idle_add(self.update_progressBar)
-                self.uploadDir(session,dir)
-            self.writeInConsole(&amp;quot;Fin des téléchargements&amp;quot;)
-            self.progressBar.set_fraction(1.0)
-            self.writeInConsole(&amp;quot;Vous pouvez fermer l&#39;application&amp;quot;)
-            session.quit() # On se déconnecte
-
-        except:
-            self.writeInConsole(&amp;quot;Impossible de se connecter&amp;quot;)
-            print &amp;quot;Impossible de se connecter&amp;quot;
-
-    def upload(self, ftp, dir, file):
-        &amp;quot;&amp;quot;&amp;quot;
-        Fonction pour uploader un fichier
-        &amp;quot;&amp;quot;&amp;quot;
-        try:
-            ftp.storbinary(&amp;quot;STOR &amp;quot; + file, open(os.path.join(dir,file)), 1024)
-        except:
-            self.writeInConsole(&amp;quot;Impossible d&#39;uploader le fichier&amp;quot;+file)
-            print &amp;quot;Impossible d&#39;uploader le fichier&amp;quot;+file
-
-    def uploadDir(self, session, dir):
-        &amp;quot;&amp;quot;&amp;quot;
-        Fonction pour uploader un repertoire
-        &amp;quot;&amp;quot;&amp;quot;
-        try:
-            self.writeInConsole(&amp;quot;Téléchargement du répertoire: &amp;quot;+dir)
-            serverDir = os.path.split(dir)[1]
-            session.mkd(serverDir)
-            session.cwd(serverDir)
-            for file in os.listdir(dir):
-                self.writeInConsole(&amp;quot;\t&amp;quot;+file)
-                gobject.idle_add(self.update_progressBar)
-                self.upload(session, dir, file)
-            session.cwd(&#39;..&#39;)
-        except:
-            self.writeInConsole(&amp;quot;Impossible de traiter le répertoire &amp;quot;+serverDir)
-            print &amp;quot;Impossible de traiter le répertoire &amp;quot;+serverDir
-
-    def writeInConsole(self , text):
-        &amp;quot;&amp;quot;&amp;quot;
-        Ecrit dans la console
-        &amp;quot;&amp;quot;&amp;quot;
-        # Récupération du buffer
-        text_buffer = self.console.get_buffer()
-        end_iter = text_buffer.get_end_iter()
-        text_buffer.insert(end_iter, &amp;quot;\n&amp;quot;+text)
-        self.console.scroll_to_iter(text_buffer.get_end_iter(),0.0)
-
-class Photo2Web:
-    &amp;quot;&amp;quot;&amp;quot;
-    Classe principale (initialise GUI)
-    &amp;quot;&amp;quot;&amp;quot;
-    def __init__(self):
-        &amp;quot;&amp;quot;&amp;quot;
-        Initialisation
-        &amp;quot;&amp;quot;&amp;quot;
-        gladefile=os.path.join(sys.path[0],&amp;quot;photo2web.glade&amp;quot;)
-        windowname=&amp;quot;window&amp;quot;
-        self.widgets=gtk.glade.XML (gladefile,windowname)
-        self.autoConnect()
-
-    def __getitem__(self, key):
-        &amp;quot;&amp;quot;&amp;quot;
-        Permet d&#39;accéder plus vite à un widget: self[&#39;label1&#39;].set_text(&#39;Vous avez cliqué !&#39;)
-        &amp;quot;&amp;quot;&amp;quot;
-        return self.widgets.get_widget(key)
-
-    def autoConnect(self):
-        &amp;quot;&amp;quot;&amp;quot;
-        Auto-connection automatique des handlers gtk_handler dans python &amp;lt;=&amp;gt; handler dans glade
-        &amp;quot;&amp;quot;&amp;quot;
-        eventHandlers = {}
-        for (itemName,value) in self.__class__.__dict__.items():
-            if callable(value) and itemName.startswith(&#39;gtk_&#39;):
-                eventHandlers[itemName[4:]] = getattr(self,itemName)
-        self.widgets.signal_autoconnect(eventHandlers)
-
-    def gtk_destroy(self, source=None, event=None):
-        gtk.main_quit()
-
-    def main(self):
-        t = MyThread(self[&#39;progression&#39;],self[&#39;console&#39;])
-        t.start()
-        gtk.main()
-        t.quit = True
-        return 0
-
-# we start the app like this...
-if __name__ == &#39;__main__&#39;:
-    app = Photo2Web()
-    app.main()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;et le fichier glade correspondant&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt;
-&amp;lt;!DOCTYPE glade-interface SYSTEM &amp;quot;glade-2.0.dtd&amp;quot;&amp;gt;
-&amp;lt;!--*- mode: xml -*--&amp;gt;
-&amp;lt;glade-interface&amp;gt;
-  &amp;lt;widget class=&amp;quot;GtkWindow&amp;quot; id=&amp;quot;window&amp;quot;&amp;gt;
-    &amp;lt;property name=&amp;quot;width_request&amp;quot;&amp;gt;350&amp;lt;/property&amp;gt;
-    &amp;lt;property name=&amp;quot;height_request&amp;quot;&amp;gt;210&amp;lt;/property&amp;gt;
-    &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-    &amp;lt;property name=&amp;quot;title&amp;quot; translatable=&amp;quot;yes&amp;quot;&amp;gt;Photo2Web&amp;lt;/property&amp;gt;
-    &amp;lt;property name=&amp;quot;resizable&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
-    &amp;lt;property name=&amp;quot;window_position&amp;quot;&amp;gt;GTK_WIN_POS_CENTER&amp;lt;/property&amp;gt;
-    &amp;lt;property name=&amp;quot;icon_name&amp;quot;&amp;gt;gtk-network&amp;lt;/property&amp;gt;
-    &amp;lt;signal name=&amp;quot;delete_event&amp;quot; handler=&amp;quot;destroy&amp;quot;/&amp;gt;
-    &amp;lt;child&amp;gt;
-      &amp;lt;widget class=&amp;quot;GtkVBox&amp;quot; id=&amp;quot;vbox1&amp;quot;&amp;gt;
-        &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-        &amp;lt;child&amp;gt;
-          &amp;lt;widget class=&amp;quot;GtkImage&amp;quot; id=&amp;quot;image1&amp;quot;&amp;gt;
-            &amp;lt;property name=&amp;quot;height_request&amp;quot;&amp;gt;20&amp;lt;/property&amp;gt;
-            &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-            &amp;lt;property name=&amp;quot;pixbuf&amp;quot;&amp;gt;logoPhoto2Web.png&amp;lt;/property&amp;gt;
-          &amp;lt;/widget&amp;gt;
-        &amp;lt;/child&amp;gt;
-        &amp;lt;child&amp;gt;
-          &amp;lt;widget class=&amp;quot;GtkToolbar&amp;quot; id=&amp;quot;toolbar1&amp;quot;&amp;gt;
-            &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-            &amp;lt;property name=&amp;quot;border_width&amp;quot;&amp;gt;3&amp;lt;/property&amp;gt;
-            &amp;lt;property name=&amp;quot;toolbar_style&amp;quot;&amp;gt;GTK_TOOLBAR_BOTH&amp;lt;/property&amp;gt;
-            &amp;lt;child&amp;gt;
-              &amp;lt;widget class=&amp;quot;GtkToolItem&amp;quot; id=&amp;quot;toolitem2&amp;quot;&amp;gt;
-                &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-                &amp;lt;child&amp;gt;
-                  &amp;lt;widget class=&amp;quot;GtkLabel&amp;quot; id=&amp;quot;label1&amp;quot;&amp;gt;
-                    &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-                    &amp;lt;property name=&amp;quot;label&amp;quot; translatable=&amp;quot;yes&amp;quot;&amp;gt;Avancement: &amp;lt;/property&amp;gt;
-                  &amp;lt;/widget&amp;gt;
-                &amp;lt;/child&amp;gt;
-              &amp;lt;/widget&amp;gt;
-              &amp;lt;packing&amp;gt;
-                &amp;lt;property name=&amp;quot;expand&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
-                &amp;lt;property name=&amp;quot;homogeneous&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
-              &amp;lt;/packing&amp;gt;
-            &amp;lt;/child&amp;gt;
-            &amp;lt;child&amp;gt;
-              &amp;lt;widget class=&amp;quot;GtkToolItem&amp;quot; id=&amp;quot;toolitem3&amp;quot;&amp;gt;
-                &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-                &amp;lt;child&amp;gt;
-                  &amp;lt;widget class=&amp;quot;GtkProgressBar&amp;quot; id=&amp;quot;progression&amp;quot;&amp;gt;
-                    &amp;lt;property name=&amp;quot;width_request&amp;quot;&amp;gt;260&amp;lt;/property&amp;gt;
-                    &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-                    &amp;lt;property name=&amp;quot;activity_mode&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-                    &amp;lt;property name=&amp;quot;pulse_step&amp;quot;&amp;gt;0.10000000149&amp;lt;/property&amp;gt;
-                  &amp;lt;/widget&amp;gt;
-                &amp;lt;/child&amp;gt;
-              &amp;lt;/widget&amp;gt;
-              &amp;lt;packing&amp;gt;
-                &amp;lt;property name=&amp;quot;expand&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
-                &amp;lt;property name=&amp;quot;homogeneous&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
-              &amp;lt;/packing&amp;gt;
-            &amp;lt;/child&amp;gt;
-            &amp;lt;child&amp;gt;
-              &amp;lt;widget class=&amp;quot;GtkToolItem&amp;quot; id=&amp;quot;toolitem4&amp;quot;&amp;gt;
-                &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-                &amp;lt;child&amp;gt;
-                  &amp;lt;widget class=&amp;quot;GtkProgressBar&amp;quot; id=&amp;quot;progressbar1&amp;quot;&amp;gt;
-                    &amp;lt;property name=&amp;quot;width_request&amp;quot;&amp;gt;257&amp;lt;/property&amp;gt;
-                    &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-                    &amp;lt;property name=&amp;quot;pulse_step&amp;quot;&amp;gt;0.10000000149&amp;lt;/property&amp;gt;
-                  &amp;lt;/widget&amp;gt;
-                &amp;lt;/child&amp;gt;
-              &amp;lt;/widget&amp;gt;
-              &amp;lt;packing&amp;gt;
-                &amp;lt;property name=&amp;quot;expand&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
-                &amp;lt;property name=&amp;quot;homogeneous&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
-              &amp;lt;/packing&amp;gt;
-            &amp;lt;/child&amp;gt;
-          &amp;lt;/widget&amp;gt;
-          &amp;lt;packing&amp;gt;
-            &amp;lt;property name=&amp;quot;expand&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
-            &amp;lt;property name=&amp;quot;fill&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
-            &amp;lt;property name=&amp;quot;position&amp;quot;&amp;gt;1&amp;lt;/property&amp;gt;
-          &amp;lt;/packing&amp;gt;
-        &amp;lt;/child&amp;gt;
-        &amp;lt;child&amp;gt;
-          &amp;lt;widget class=&amp;quot;GtkScrolledWindow&amp;quot; id=&amp;quot;scrolledwindow1&amp;quot;&amp;gt;
-            &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-            &amp;lt;property name=&amp;quot;can_focus&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-            &amp;lt;property name=&amp;quot;shadow_type&amp;quot;&amp;gt;GTK_SHADOW_IN&amp;lt;/property&amp;gt;
-            &amp;lt;child&amp;gt;
-              &amp;lt;widget class=&amp;quot;GtkTextView&amp;quot; id=&amp;quot;console&amp;quot;&amp;gt;
-                &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-                &amp;lt;property name=&amp;quot;can_focus&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-                &amp;lt;property name=&amp;quot;border_width&amp;quot;&amp;gt;3&amp;lt;/property&amp;gt;
-                &amp;lt;property name=&amp;quot;editable&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
-                &amp;lt;property name=&amp;quot;cursor_visible&amp;quot;&amp;gt;False&amp;lt;/property&amp;gt;
-                &amp;lt;property name=&amp;quot;text&amp;quot; translatable=&amp;quot;yes&amp;quot;&amp;gt;Photo2Web transmet vos photos avec classe!
-&amp;lt;/property&amp;gt;
-              &amp;lt;/widget&amp;gt;
-            &amp;lt;/child&amp;gt;
-          &amp;lt;/widget&amp;gt;
-          &amp;lt;packing&amp;gt;
-            &amp;lt;property name=&amp;quot;position&amp;quot;&amp;gt;2&amp;lt;/property&amp;gt;
-          &amp;lt;/packing&amp;gt;
-        &amp;lt;/child&amp;gt;
-        &amp;lt;child&amp;gt;
-          &amp;lt;widget class=&amp;quot;GtkLabel&amp;quot; id=&amp;quot;label2&amp;quot;&amp;gt;
-            &amp;lt;property name=&amp;quot;height_request&amp;quot;&amp;gt;1&amp;lt;/property&amp;gt;
-            &amp;lt;property name=&amp;quot;visible&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-            &amp;lt;property name=&amp;quot;label&amp;quot; translatable=&amp;quot;yes&amp;quot;&amp;gt;Photo2Web - Copyright (C) Julien Raigneau&amp;lt;/property&amp;gt;
-            &amp;lt;property name=&amp;quot;justify&amp;quot;&amp;gt;GTK_JUSTIFY_CENTER&amp;lt;/property&amp;gt;
-            &amp;lt;property name=&amp;quot;width_chars&amp;quot;&amp;gt;0&amp;lt;/property&amp;gt;
-            &amp;lt;property name=&amp;quot;single_line_mode&amp;quot;&amp;gt;True&amp;lt;/property&amp;gt;
-          &amp;lt;/widget&amp;gt;
-          &amp;lt;packing&amp;gt;
-            &amp;lt;property name=&amp;quot;position&amp;quot;&amp;gt;3&amp;lt;/property&amp;gt;
-          &amp;lt;/packing&amp;gt;
-        &amp;lt;/child&amp;gt;
-      &amp;lt;/widget&amp;gt;
-    &amp;lt;/child&amp;gt;
-  &amp;lt;/widget&amp;gt;
-&amp;lt;/glade-interface&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Ressources&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://nedbatchelder.com/code/modules/FtpUpload.py&#34;&gt;http://nedbatchelder.com/code/modules/FtpUpload.py&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://effbot.org/librarybook/ftplib.htm&#34;&gt;http://effbot.org/librarybook/ftplib.htm&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://mail.python.org/pipermail/python-list/2003-September/224679.html&#34;&gt;http://mail.python.org/pipermail/python-list/2003-September/224679.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Ce script écrit Python permet d&amp;rsquo;envoyer des photos extraites via Picasa sur un site FTP, le tout avec une interface graphique GTK2.
+C&amp;rsquo;est mon premier développement &amp;ldquo;important&amp;rdquo; en Python - il m&amp;rsquo;a permis notamment de voir:
+ Interface graphique et GTK2 et utilisation de Glade. Utilisation de la librairie ftplib. Mécanique des threads dans une IHM.  Il reste fortement améliorable, notamment en ce qui concerne la gestion des exceptions (try&amp;hellip;except).</description>
     </item>
     
     <item>
@@ -769,39 +142,8 @@ if __name__ == &#39;__main__&#39;:
       <pubDate>Mon, 19 May 2008 19:41:51 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2008/05/checkmyftp/</guid>
-      <description>&lt;p&gt;Ce script simple vérifie s&amp;rsquo;il y a du contenu sur un site FTP et dans ce cas affiche une image. Ce script est le préambule à &lt;a href=&#34;http://blog.zeneffy.fr/2008/05/photo2web/&#34;&gt;Photo2Web&lt;/a&gt; avec GUI et utilisation de ftplib.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
-# -*- coding: utf8 -*-
-&amp;quot;&amp;quot;&amp;quot;
-Vérifie si du nouveau contenu a été rajouté sur le FTP
-&amp;quot;&amp;quot;&amp;quot;
-import ftplib
-import pygtk,gtk
-pygtk.require(&#39;2.0&#39;)
-import os,sys
-
-try:
-    session = ftplib.FTP(&#39;XXX&#39;,&#39;XXX&#39;,&#39;XXX&#39;) # On se connecte au serveur
-    fileList = [] # La liste des fichiers sera dedans
-    session.retrlines(&#39;LIST&#39;,fileList.append)
-    session.quit() # On se déconnecte
-    if fileList == []:
-        print &amp;quot;Vide&amp;quot;
-    else:
-        window = gtk.Window()
-        window.set_title(&#39;CheckMyFTP&#39;)
-        image = gtk.Image()
-        image.set_from_file(os.path.join(sys.path[0], &#39;contenu.jpg&#39;))
-        window.connect(&#39;delete-event&#39;, gtk.main_quit)
-        window.add(image)
-        window.set_position(gtk.WIN_POS_CENTER)
-        window.show_all()
-        gtk.main()
-except:
-    print &amp;quot;Impossible de se connecter&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Ce script simple vérifie s&amp;rsquo;il y a du contenu sur un site FTP et dans ce cas affiche une image. Ce script est le préambule à Photo2Web avec GUI et utilisation de ftplib.
+#!/usr/bin/python # -*- coding: utf8 -*- &amp;quot;&amp;quot;&amp;quot; Vérifie si du nouveau contenu a été rajouté sur le FTP &amp;quot;&amp;quot;&amp;quot; import ftplib import pygtk,gtk pygtk.require(&#39;2.0&#39;) import os,sys try: session = ftplib.FTP(&#39;XXX&#39;,&#39;XXX&#39;,&#39;XXX&#39;) # On se connecte au serveur fileList = [] # La liste des fichiers sera dedans session.</description>
     </item>
     
   </channel>

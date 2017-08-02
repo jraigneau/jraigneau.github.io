@@ -6,8 +6,11 @@
     <description>Recent content in Ubuntu on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
+    <copyright>&amp;#0169; 2008 - 2017, Julien Raigneau &amp;nbsp;&amp;nbsp;  | &amp;nbsp;&amp;nbsp;  Zeneffy &gt;&gt; Zen &amp;amp; Efficace</copyright>
     <lastBuildDate>Sun, 19 Dec 2010 10:26:48 +0000</lastBuildDate>
-    <atom:link href="http://www.zeneffy.fr/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.zeneffy.fr/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Ubuntu: Installation &#34;mineffy&#34;</title>
@@ -15,69 +18,11 @@
       <pubDate>Sun, 19 Dec 2010 10:26:48 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/12/ubuntu-installation-mineffy/</guid>
-      <description>&lt;p&gt;Un petit pense-bête sur le &lt;strong&gt;min&lt;/strong&gt;imum à réinstaller avant d&amp;rsquo;être &lt;strong&gt;eff&lt;/strong&gt;icace avec une nouvelle version d&amp;rsquo;ubuntu&lt;/p&gt;
-
-&lt;p&gt;Installer &lt;a href=&#34;http://doc.ubuntu-fr.org/chromium-browser&#34;&gt;Chromium&lt;/a&gt;, le navigateur web:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg chromium-codecs-ffmpeg-nonfree
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;et installer extensions: &lt;a href=&#34;https://chrome.google.com/extensions/detail/lnejbeiilmbliffhdepeobjemekgdnok&#34;&gt;Gmail&lt;/a&gt; et &lt;a href=&#34;https://chrome.google.com/extensions/detail/lnejbeiilmbliffhdepeobjemekgdnok&#34;&gt;Delici.ous&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Installer le nécessaire pour &lt;a href=&#34;http://doc.ubuntu-fr.org/rubyonrails#installation_complete_de_ruby_192_et_rails_30_via_rvm_maverick_meerkat&#34;&gt;Ruby et Ruby On Rails via RVM&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    sudo apt-get install curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev
-    sudo bash &amp;lt; &amp;lt;( curl -L http://bit.ly/rvm-install-system-wide )
-    sudo adduser julien rvm
-    sudo rvm install 1.9.2
-    sudo rvm --default ruby-1.9.2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;puis modifier &lt;code&gt;.bashrc&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  commenter [ -z &amp;quot;$PS1&amp;quot; ] &amp;amp;&amp;amp; return
-  ajouter if [[ -n &amp;quot;$PS1&amp;quot; ]]; then
-  indenter toutes les lignes jusqu&#39;à la fin
-  ajouter fi
-  ajouter [[ -s &amp;quot;/usr/local/lib/rvm&amp;quot; ]] &amp;amp;&amp;amp; . &amp;quot;/usr/local/lib/rvm&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Installer Rails et autres gem utiles:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo rvm gem install rails
-sudo rvm gem install redcar heroku vagrant cheat
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Utilitaires à ajouter ou à enlever&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    sudo apt-get install gnome-do gimp terminator
-    sudo apt-get install vim ctags vim-doc vim-scripts
-    sudo apt-get install desktopnova
-    sudo apt-get purge f-spot gbrainy tomboy evolution evolution-common evolution-couchdb evolution-exchange evolution-indicator evolution-plugins evolution-webcal libegroupwise1.2-13
-    sudo add-apt-repository ppa:tiheum/equinox
-    sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install faenza-icon-theme
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;l&amp;rsquo;obligatoire &lt;a href=&#34;http://www.dropbox.com/downloading?os=lnx&#34;&gt;DropBox&lt;/a&gt; pour synchroniser mes fichiers entre PC&lt;/p&gt;
-
-&lt;p&gt;Les clés ssh&lt;/p&gt;
-
-&lt;p&gt;Ajout des montages NFS&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    installer autofs: sudo apt-get install autofs
-
-dans /etc/auto.master
-
-    /media/partages /etc/auto.types --ghost,--timeout=30
-
-dans /etc/auto.types
-
-    Documents -fstype=nfs,rw 192.168.1.21:/volume1/documents
-    Musique -fstype=nfs,rw 192.168.1.21:/volume1/music
-    Photos -fstype=nfs,rw 192.168.1.21:/volume1/photo
-    Videos -fstype=nfs,rw 192.168.1.21:/volume1/video
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Un petit pense-bête sur le minimum à réinstaller avant d&amp;rsquo;être efficace avec une nouvelle version d&amp;rsquo;ubuntu
+Installer Chromium, le navigateur web:
+ sudo apt-get install chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg chromium-codecs-ffmpeg-nonfree  et installer extensions: Gmail et Delici.ous
+Installer le nécessaire pour Ruby et Ruby On Rails via RVM
+ sudo apt-get install curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev sudo bash &amp;lt; &amp;lt;( curl -L http://bit.ly/rvm-install-system-wide ) sudo adduser julien rvm sudo rvm install 1.</description>
     </item>
     
     <item>
@@ -86,31 +31,9 @@ dans /etc/auto.types
       <pubDate>Fri, 29 Oct 2010 17:11:35 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/10/cloner-une-machine-virtuelle-ubuntudebian-dans-virtualbox/</guid>
-      <description>&lt;p&gt;Pour cloner une machine virtuelle dans &lt;a href=&#34;http://www.virtualbox.org/&#34;&gt;VirtualBox&lt;/a&gt;, il suffit d&amp;rsquo;utiliser les outils d&amp;rsquo;administration (en mode ligne de commande)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;VBoxManage clonevdi &amp;quot;chemin absolu vers source.vdi&amp;quot; &amp;quot;chemin absolu vers cible.vdi&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Attention de bien respecter les chemins absolu pour ne pas avoir une erreur &lt;code&gt;ERROR: Cannot register the hard disk&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Toutefois il y a une petite subtilité pour un clone Ubuntu et Debian en général. En effet par défaut les MAC adresses (qui changent pour chaque VM) sont enregistrées dans &lt;code&gt;/etc/udev/rules.d/70-persistent-net.rules&lt;/code&gt; avec le formalisme suivant:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&amp;quot;?*&amp;quot;, ATTR{address}==&amp;quot;08:00:27:12:34:46&amp;quot;, ATTR{type}==&amp;quot;1&amp;quot;, KERNEL==&amp;quot;eth*&amp;quot;, NAME=&amp;quot;eth0&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Or en clonant la VM, une nouvelle adresse MAC est créée et ajoutée à &lt;code&gt;70-persistent-net.rules&lt;/code&gt; lors du lancement de la nouvelle VM - on obtient alors&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&amp;quot;?*&amp;quot;, ATTR{address}==&amp;quot;08:00:27:12:34:46&amp;quot;, ATTR{type}==&amp;quot;1&amp;quot;, KERNEL==&amp;quot;eth*&amp;quot;, NAME=&amp;quot;eth0&amp;quot;
-SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&amp;quot;?*&amp;quot;, ATTR{address}==&amp;quot;08:00:28:24:47:67&amp;quot;, ATTR{type}==&amp;quot;1&amp;quot;, KERNEL==&amp;quot;eth*&amp;quot;, NAME=&amp;quot;eth1&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Le démon &lt;code&gt;udev&lt;/code&gt; ne sait alors plus quelle carte réseau utilisé et donc aucune connexion n&amp;rsquo;est plus possible. Pour corriger, il suffit d&amp;rsquo;enlever la première ligne et de modifier la seconde en mettant &lt;code&gt;eth0&lt;/code&gt; à la place de &lt;code&gt;eth1&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&amp;quot;?*&amp;quot;, ATTR{address}==&amp;quot;08:00:28:24:47:67&amp;quot;, ATTR{type}==&amp;quot;1&amp;quot;, KERNEL==&amp;quot;eth*&amp;quot;, NAME=&amp;quot;eth0&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;et voilà !&lt;/p&gt;
-</description>
+      <description>Pour cloner une machine virtuelle dans VirtualBox, il suffit d&amp;rsquo;utiliser les outils d&amp;rsquo;administration (en mode ligne de commande)
+VBoxManage clonevdi &amp;quot;chemin absolu vers source.vdi&amp;quot; &amp;quot;chemin absolu vers cible.vdi&amp;quot;  Attention de bien respecter les chemins absolu pour ne pas avoir une erreur ERROR: Cannot register the hard disk
+Toutefois il y a une petite subtilité pour un clone Ubuntu et Debian en général. En effet par défaut les MAC adresses (qui changent pour chaque VM) sont enregistrées dans /etc/udev/rules.</description>
     </item>
     
     <item>
@@ -119,18 +42,10 @@ SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&a
       <pubDate>Thu, 15 Jul 2010 18:31:06 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/07/adieu-darwin/</guid>
-      <description>&lt;p&gt;N&amp;rsquo;étant pas particulièrement fan de certaines applications intégrées dans Ubuntu par défaut, j&amp;rsquo;ai tendance à vite les enlever post-installation.&lt;/p&gt;
-
-&lt;p&gt;Ici des applications mono pas très utile:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;apt-get purge f-spot gbrainy tomboy
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;et surtout le gros gourmand evolution:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get purge evolution evolution-common evolution-couchdb evolution-exchange evolution-indicator evolution-plugins evolution-webcal libegroupwise1.2-13 libexchange-storage1.2-3
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>N&amp;rsquo;étant pas particulièrement fan de certaines applications intégrées dans Ubuntu par défaut, j&amp;rsquo;ai tendance à vite les enlever post-installation.
+Ici des applications mono pas très utile:
+apt-get purge f-spot gbrainy tomboy  et surtout le gros gourmand evolution:
+sudo apt-get purge evolution evolution-common evolution-couchdb evolution-exchange evolution-indicator evolution-plugins evolution-webcal libegroupwise1.2-13 libexchange-storage1.2-3  </description>
     </item>
     
     <item>
@@ -139,39 +54,12 @@ SUBSYSTEM==&amp;quot;net&amp;quot;, ACTION==&amp;quot;add&amp;quot;, DRIVERS==&a
       <pubDate>Sun, 06 Jun 2010 06:28:49 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/06/optimisation-des-os-avec-un-disque-ssd/</guid>
-      <description>&lt;p&gt;Ayant acheté dernièrement un disque dur SSD pour mon portable, il a fallu chercher quelques informations complémentaires pour m&amp;rsquo;assurer de la meilleur optimisation possible:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Sous Windows Vista&lt;/strong&gt;
-&lt;a href=&#34;http://www.ocztechnologyforum.com/forum/showthread.php?47212-Vista-32-64-SSD-Windows-Registry-tweaks&#34;&gt;www.ocztechnologyforum.com/forum/showthread.php?47212-Vista-32-64-SSD-Windows-Registry-tweaks&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;En bref:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Désactiver superfetch &amp;amp; prefetch&lt;/li&gt;
-&lt;li&gt;Activer &lt;code&gt;clearPageFilesAtShutdown&lt;/code&gt; et &lt;code&gt;LargeSystemCache&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Amélioration du cache disque NTFS&lt;/li&gt;
-&lt;li&gt;Suppression indexation automatique + hibernation (pour gagner de l&amp;rsquo;espace)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Optimisations sous Linux:&lt;/strong&gt;
-&lt;a href=&#34;http://itezer.com/blog/ubuntu-linux/125-Four-Tweaks-for-Using-Linux-with-SSD.html&#34;&gt;itezer.com/blog/ubuntu-linux/125-Four-Tweaks-for-Using-Linux-with-SSD.html&lt;/a&gt;
-&lt;a href=&#34;http://www.zdnet.com/blog/perlow/geek-sheet-a-tweakers-guide-to-solid-state-drives-ssds-and-linux/9190&#34;&gt;www.zdnet.com/blog/perlow/geek-sheet-a-tweakers-guide-to-solid-state-drives-ssds-and-linux/9190&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;En synthèse:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;S&amp;rsquo;assurer d&amp;rsquo;être en noatime&lt;/li&gt;
-&lt;li&gt;Utiliser la mémoire vive comme /tmp&lt;/li&gt;
-&lt;li&gt;Changer le scheduler disque (prendre noop)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Résultat:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;julien@einstein:~$ sudo hdparm -t /dev/sda
-/dev/sda:
-Timing buffered disk reads:  454 MB in  3.01 seconds = 150.66 MB/sec
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Ayant acheté dernièrement un disque dur SSD pour mon portable, il a fallu chercher quelques informations complémentaires pour m&amp;rsquo;assurer de la meilleur optimisation possible:
+Sous Windows Vista www.ocztechnologyforum.com/forum/showthread.php?47212-Vista-32-64-SSD-Windows-Registry-tweaks
+En bref:
+ Désactiver superfetch &amp;amp; prefetch Activer clearPageFilesAtShutdown et LargeSystemCache Amélioration du cache disque NTFS Suppression indexation automatique + hibernation (pour gagner de l&amp;rsquo;espace)  Optimisations sous Linux: itezer.com/blog/ubuntu-linux/125-Four-Tweaks-for-Using-Linux-with-SSD.html www.zdnet.com/blog/perlow/geek-sheet-a-tweakers-guide-to-solid-state-drives-ssds-and-linux/9190
+En synthèse:
+ S&amp;rsquo;assurer d&amp;rsquo;être en noatime Utiliser la mémoire vive comme /tmp Changer le scheduler disque (prendre noop)  Résultat:</description>
     </item>
     
     <item>
@@ -180,20 +68,10 @@ Timing buffered disk reads:  454 MB in  3.01 seconds = 150.66 MB/sec
       <pubDate>Wed, 19 May 2010 09:51:21 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/05/resolutions-et-virtualbox/</guid>
-      <description>&lt;p&gt;Suite à l&amp;rsquo;&lt;a href=&#34;http://www.zeneffy.fr/2010/05/16/personnaliser-linstallation-de-ubuntu-10-04/&#34;&gt;installation de Ubuntu 10.04 sous VirtualBox&lt;/a&gt;, je me suis un peu battu pour avoir une résolution correcte en mode plein écran (aka 1280x800 sur mon portable).&lt;/p&gt;
-
-&lt;p&gt;Voici ce que j&amp;rsquo;ai trouvé: tout d&amp;rsquo;abord il faut rajouter la résolution nécessaire:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;VBoxManage setextradata &amp;quot;Ubuntu104&amp;quot; &amp;quot;CustomVideoMode1&amp;quot; &amp;quot;1280x800x24&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Puis suite à des problèmes de curseur de souris bloqué par des bords invisibles:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;VBoxManage controlvm &amp;quot;Ubuntu104&amp;quot; setvideomodehint 1280 800 24
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Par contre je suis obligé de lancer la dernière commande à chaque fois - pas de solution miracle pour l&amp;rsquo;instant.&lt;/p&gt;
-</description>
+      <description>Suite à l&amp;rsquo;installation de Ubuntu 10.04 sous VirtualBox, je me suis un peu battu pour avoir une résolution correcte en mode plein écran (aka 1280x800 sur mon portable).
+Voici ce que j&amp;rsquo;ai trouvé: tout d&amp;rsquo;abord il faut rajouter la résolution nécessaire:
+VBoxManage setextradata &amp;quot;Ubuntu104&amp;quot; &amp;quot;CustomVideoMode1&amp;quot; &amp;quot;1280x800x24&amp;quot;  Puis suite à des problèmes de curseur de souris bloqué par des bords invisibles:
+VBoxManage controlvm &amp;quot;Ubuntu104&amp;quot; setvideomodehint 1280 800 24  Par contre je suis obligé de lancer la dernière commande à chaque fois - pas de solution miracle pour l&amp;rsquo;instant.</description>
     </item>
     
     <item>
@@ -202,84 +80,10 @@ Timing buffered disk reads:  454 MB in  3.01 seconds = 150.66 MB/sec
       <pubDate>Sun, 16 May 2010 12:04:00 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/05/personnaliser-linstallation-de-ubuntu-10-04/</guid>
-      <description>&lt;p&gt;Suite à la sortie de Ubuntu 10.04, je me suis décidé à l&amp;rsquo;installer en machine virtuelle (&lt;a href=&#34;http://www.virtualbox.org/&#34;&gt;VirtualBox&lt;/a&gt;) sur mon portable pro, tout s&amp;rsquo;est très bien passé et voici quelques tuning complémentaires:&lt;/p&gt;
-
-&lt;p&gt;En premier lieu, on effectue une petite mise à jour post-installation&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get update
-sudo apt-get upgrade
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Puis j&amp;rsquo;installe mon logiciel de versionnage favori (à l&amp;rsquo;heure actuelle), i.e. &lt;a href=&#34;http://git-scm.com/&#34;&gt;Git&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install git-core
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ensuite on installe l&amp;rsquo;éditeur Vim avec ma configuration (stockée sur &lt;a href=&#34;http://github.com/jraigneau&#34;&gt;GitHub&lt;/a&gt;)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install vim gvim
-sudo apt-get install ctags
-cd ~
-git clone http://github.com/jraigneau/vim-conf.git
-mv vim-conf .vim
-ln -s .vim/.vimrc
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ne pas oublier d&amp;rsquo;installer &lt;code&gt;fuzzy_file_finder&lt;/code&gt; via &lt;code&gt;sudo gem install fuzzy_file_finder&lt;/code&gt;, une fois gem installé!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Un peu de multimédia et d&amp;rsquo;utilitaires&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Installation du Navigateur Chromium (version open source de Chrome)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    sudo add-apt-repository ppa:chromium-daily/dev
-    sudo apt-get update
-    sudo apt-get install chromium-browser chromium-browser-l10n
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Quelques Indispensables du Dessin, de la Vidéo, et de la Musique + &lt;a href=&#34;http://do.davebsd.com/&#34;&gt;Gnome-Do&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    sudo apt-get install gimp vlc exaile gnome-do flashplugin-nonfree
-    sudo apt-get install sun-java6-jdk
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Installation de Ruby On rails (Framework de développement web)&lt;/strong&gt;
-Tout d&amp;rsquo;abord on installe ruby et de la documentation&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    sudo apt-get install irb libopenssl-ruby libreadline-ruby rdoc ri ruby ruby-dev
-    sudo apt-get install rubybook
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Puis on installe RubyGems à partir des sources pour ne pas avoir d&amp;rsquo;incompatibilités de mises à jour entre apt-get et RubyGems (problème fréquent sur Ubuntu)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    cd /usr/local/src
-    sudo wget http://production.cf.rubygems.org/rubygems/rubygems-1.3.6.tgz
-    sudo tar xzvf rubygems-1.3.6.tgz
-    cd rubygems-1.3.6
-    sudo ruby setup.rb
-    sudo update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.8 1
-    sudo gem update --system
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;dans un fichier &lt;code&gt;~/.gemrc&lt;/code&gt;, on rajoute la ligne suivante afin de ne pas avoir de compilation de rdoc à chaque installation (trop lent!)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;gem: --no-ri --no-rdoc
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Enfin on peut installer rails et sqlite (je n&amp;rsquo;utilise pas mysql ni postgresql sur ma machine de dév)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo gem install rails
-sudo apt-get install libsqlite3-dev sqlite3 sqlite3-doc
-sudo gem install sqlite3-ruby
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;En bonus, quelques gems intéressants&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Cheatsheet automatiques: &lt;code&gt;sudo gem install cheat&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Changement facile des hosts de la machine: &lt;code&gt;sudo gem install ghost&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Partage de snippets de code: &lt;code&gt;sudo gem install gist&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Suite à la sortie de Ubuntu 10.04, je me suis décidé à l&amp;rsquo;installer en machine virtuelle (VirtualBox) sur mon portable pro, tout s&amp;rsquo;est très bien passé et voici quelques tuning complémentaires:
+En premier lieu, on effectue une petite mise à jour post-installation
+sudo apt-get update sudo apt-get upgrade  Puis j&amp;rsquo;installe mon logiciel de versionnage favori (à l&amp;rsquo;heure actuelle), i.e. Git
+sudo apt-get install git-core  Ensuite on installe l&amp;rsquo;éditeur Vim avec ma configuration (stockée sur GitHub)</description>
     </item>
     
     <item>
@@ -288,39 +92,8 @@ sudo gem install sqlite3-ruby
       <pubDate>Fri, 26 Mar 2010 15:19:22 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/03/installer-redmine-sur-lighttpd/</guid>
-      <description>&lt;p&gt;J&amp;rsquo;utilise actuellement le serveur web &lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;lighttpd&lt;/a&gt; sur mon serveur personnel, ce qui nécessite un peu de paramétrage différent de Apache. Ainsi pour faire fonctionner &lt;a href=&#34;http://www.redmine.org/&#34;&gt;Redmine&lt;/a&gt; (Application Ruby on Rails de gestion de projet), j&amp;rsquo;ai utilisé cette configuration:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#Virtual host
-server.modules += ( &amp;quot;mod_fastcgi&amp;quot;, &amp;quot;mod_rewrite&amp;quot;)
-
-$HTTP[&amp;quot;host&amp;quot;]  =~ &amp;quot;labs.zeneffy.fr&amp;quot; { # nom du vhos
-    server.errorlog = &amp;quot;/var/log/lighttpd/zeneffy/labs/error.log&amp;quot;
-    accesslog.filename = &amp;quot;/var/log/lighttpd/zeneffy/labs/access.log&amp;quot;
-    server.document-root = &amp;quot;/var/www/zeneffy/labs/public&amp;quot;
-    server.indexfiles = ( &amp;quot;dispatch.fcgi&amp;quot; )
-    server.error-handler-404 = &amp;quot;/dispatch.fcgi&amp;quot;
-    url.rewrite-once = (
-        &amp;quot;^/(.*\..+(?!html))$&amp;quot; =&amp;gt; &amp;quot;$0&amp;quot;,
-        &amp;quot;^/(.*)\.(.*)&amp;quot;        =&amp;gt; &amp;quot;$0&amp;quot;,
-    )
-
-    fastcgi.server =  (
-        &amp;quot;.fcgi&amp;quot; =&amp;gt; (
-        &amp;quot;labs.tifauve.net&amp;quot; =&amp;gt; (
-            &amp;quot;bin-path&amp;quot; =&amp;gt; &amp;quot;/var/www/zeneffy/labs/public/dispatch.fcgi&amp;quot;,
-            &amp;quot;socket&amp;quot; =&amp;gt; &amp;quot;/tmp/redmine.socket&amp;quot;,
-            &amp;quot;min-procs&amp;quot; =&amp;gt; 1,
-            &amp;quot;max-procs&amp;quot; =&amp;gt; 2,
-            &amp;quot;idle-timeout&amp;quot; =&amp;gt; 20,
-            &amp;quot;check-local&amp;quot; =&amp;gt; &amp;quot;disable&amp;quot;,
-            &amp;quot;bin-environment&amp;quot; =&amp;gt; ( &amp;quot;RAILS_ENV&amp;quot; =&amp;gt; &amp;quot;production&amp;quot;, &amp;quot;RAILS_ROOT&amp;quot; =&amp;gt; &amp;quot;/var/www/zeneffy/labs&amp;quot; )
-            )
-        )
-    )
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>J&amp;rsquo;utilise actuellement le serveur web lighttpd sur mon serveur personnel, ce qui nécessite un peu de paramétrage différent de Apache. Ainsi pour faire fonctionner Redmine (Application Ruby on Rails de gestion de projet), j&amp;rsquo;ai utilisé cette configuration:
+#Virtual host server.modules += ( &amp;quot;mod_fastcgi&amp;quot;, &amp;quot;mod_rewrite&amp;quot;) $HTTP[&amp;quot;host&amp;quot;] =~ &amp;quot;labs.zeneffy.fr&amp;quot; { # nom du vhos server.errorlog = &amp;quot;/var/log/lighttpd/zeneffy/labs/error.log&amp;quot; accesslog.filename = &amp;quot;/var/log/lighttpd/zeneffy/labs/access.log&amp;quot; server.document-root = &amp;quot;/var/www/zeneffy/labs/public&amp;quot; server.indexfiles = ( &amp;quot;dispatch.fcgi&amp;quot; ) server.error-handler-404 = &amp;quot;/dispatch.fcgi&amp;quot; url.rewrite-once = ( &amp;quot;^/(.</description>
     </item>
     
   </channel>

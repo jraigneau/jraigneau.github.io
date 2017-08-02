@@ -45,18 +45,18 @@
 		<div class="twelve columns"  align="justify">
 			<p>Dans ma très récente période Ubuntu/Linux, j&rsquo;avais rédigé un petit script en python qui vérifiait régulièrement la présence de nouveaux fichiers dans un répertoire FTP - ce script étant basé sur GTK, il était nécessaire de le changer pour notamment utiliser <a href="http://growl.info/">Growl</a>, le système de notification disponible dans MacOS.</p>
 
-<p>Ainsi le code en python donne</p>
+<p>Ainsi le code en python donne
+<br />
+    #!/usr/bin/python
+    # -<em>- coding: utf8 -</em>-
+    &ldquo;&rdquo;&rdquo;
+    Vérifie si du nouveau contenu a été rajouté sur le FTP
+    &ldquo;&rdquo;&rdquo;
+    import ftplib
+    import os,sys
+    import Growl</p>
 
-<pre><code>#!/usr/bin/python
-# -*- coding: utf8 -*-
-&quot;&quot;&quot;
-Vérifie si du nouveau contenu a été rajouté sur le FTP
-&quot;&quot;&quot;
-import ftplib
-import os,sys
-import Growl
-
-try:
+<pre><code>try:
     session = ftplib.FTP('xxServeur','xxLogin','xxMdP') # On se connecte au serveur
     fileList = [] # La liste des fichiers sera dedans
     session.retrlines('LIST',fileList.append)
@@ -112,7 +112,6 @@ except:
 <p>et voilà, toutes les heures CheckMyFTP.py sera lancé et il m&rsquo;affichera une notification en cas de nouveaux fichiers disponibles sur le répertoire FTP.</p>
 
 <p>Ressources: <a href="http://www.devdaily.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs">http://www.devdaily.com/mac-os-x/mac-osx-startup-crontab-launchd-jobs</a></p>
-
 		</div>
 	</div>
 	
@@ -161,7 +160,7 @@ except:
   			<div class="row">
 		    	<div class="twelve columns"  style="border-top: 5px solid #eee;">
 					<center>
-						<span style="font-family: 'Roboto Slab', serif;" >&#0169; 2008 - 2016, Julien Raigneau &nbsp;&nbsp;  | &nbsp;&nbsp;  Zeneffy >> Zen &amp; Efficace</pan>
+						<span style="font-family: 'Roboto Slab', serif;" >&#0169; 2008 - 2017, Julien Raigneau &nbsp;&nbsp;  | &nbsp;&nbsp;  Zeneffy >> Zen &amp; Efficace</pan>
 					</center>
 				</div>
 				<div style="line-height: 1;">
@@ -180,6 +179,8 @@ except:
 			  	  	    <a href="/tags/domotique" class="tags-link-footer">#domotique</a>
 			  	  	  	  
 			  	  	    <a href="/tags/formation" class="tags-link-footer">#formation</a>
+			  	  	  	  
+			  	  	    <a href="/tags/fun" class="tags-link-footer">#fun</a>
 			  	  	  	  
 			  	  	    <a href="/tags/go" class="tags-link-footer">#go</a>
 			  	  	  	  

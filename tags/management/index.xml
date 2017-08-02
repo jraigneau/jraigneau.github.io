@@ -6,8 +6,11 @@
     <description>Recent content in Management on Zeneffy : journal de bord</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
+    <copyright>&amp;#0169; 2008 - 2017, Julien Raigneau &amp;nbsp;&amp;nbsp;  | &amp;nbsp;&amp;nbsp;  Zeneffy &gt;&gt; Zen &amp;amp; Efficace</copyright>
     <lastBuildDate>Sun, 02 Sep 2012 12:56:19 +0000</lastBuildDate>
-    <atom:link href="http://www.zeneffy.fr/tags/management/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://www.zeneffy.fr/tags/management/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Le motto de l&#39;exploitant</title>
@@ -15,35 +18,7 @@
       <pubDate>Sun, 02 Sep 2012 12:56:19 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2012/09/le-motto-de-lexploitant/</guid>
-      <description>&lt;p&gt;En lisant le très bon article &lt;a href=&#34;http://agiletesting.blogspot.co.uk/2012/08/10-things-to-know-when-starting-out-as.html&#34;&gt;10 things to know when starting out as a sysadmin&lt;/a&gt;, j&amp;rsquo;ai retrouvé des points importants que tout exploitant doit connaître sur le bout des doigts à mon humble avis et d&amp;rsquo;après mes diverses (et parfois malheureuses) expériences:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Sauvegarder est important, tester la restauration l&amp;rsquo;est tout autant.&lt;/li&gt;
-&lt;li&gt;Tous les systèmes et applications en production doivent être supervisés, en adaptant le niveau de supervision à la criticité du système.&lt;/li&gt;
-&lt;li&gt;L&amp;rsquo;exploitant doit être techniquement très compétent, notamment sur les protocoles réseau (http, DNS, routages&amp;hellip;) qui sont à la base du troubleshooting.&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;L&amp;rsquo;exploitant est avant tout un expert de la gestion des problèmes qui sait analyser les anomalies en identifiant et éliminant les variables une à une jusqu&amp;rsquo;à trouver la rootcause.&lt;/li&gt;
-&lt;li&gt;Redondance et résilience sont les amies de l&amp;rsquo;exploitant, qui n&amp;rsquo;oublie pas de les tester régulièrement&amp;hellip;il est toujours dommage de se rendre compte en plein incident que le backup ne fonctionne pas alors que le master est tombé&lt;/li&gt;
-&lt;li&gt;Exploiter des machines, c&amp;rsquo;est maintenir la disponibilité &lt;strong&gt;et&lt;/strong&gt; la sécurité des applications: vos clients ne vous pardonneront jamais d&amp;rsquo;avoir égarer leurs données personnelles.&lt;/li&gt;
-&lt;li&gt;Les logs sont et resteront l&amp;rsquo;outil de diagnostic principal de l&amp;rsquo;exploitant: cela nécessite d&amp;rsquo;une part une infrastructure pour les gérer correctement mais aussi un travail en amont avec les développeurs pour savoir ce qui doit être dans des logs ou pas!&lt;/li&gt;
-&lt;li&gt;Savoir développer des outils est important pour industrialiser des actions de production ou pour trouver un &amp;ldquo;quick hack&amp;rdquo; afin de rétablir le service&amp;hellip;et ces outils sont presque toujours écrit en langage de script (python, ruby, bash, lua - choisissez votre préféré) que devra connaître voire masteriser l&amp;rsquo;exploitant.&lt;/li&gt;
-&lt;li&gt;La documentation sauve la journée de l&amp;rsquo;exploitant (et permet accessoirement de rétablir le service): manuels d&amp;rsquo;exploitation, guides de troubleshooting, schémas de flux&amp;hellip;sont à construire, collecter et surtout stocker dans des bases de connaissance efficientes - les wikis sont souvent de parfaits candidats pour cela en rajoutant une dimension collaborative entre exploitants et développeurs.&lt;/li&gt;
-&lt;li&gt;Bien que la réactivité soit la première qualité de l&amp;rsquo;exploitant, la proactivité est tout aussi importante, d&amp;rsquo;une part en amont des projets pour préparer l&amp;rsquo;exploitabilité des solutions avec architectes et développeurs et d&amp;rsquo;autre part en aval en analysant quotidiennement la performance des applications afin d&amp;rsquo;anticiper les dégradations.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Dernier point et non des moindres: l&amp;rsquo;opensource permet à l&amp;rsquo;exploitant d&amp;rsquo;avoir une boîte à outils efficace et à moindre frais:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Déploiement (Puppet/Chef/Vagrant)&lt;/li&gt;
-&lt;li&gt;Intégration et les tests (Selenium, Cucumber &amp;amp; Co)&lt;/li&gt;
-&lt;li&gt;Sauvegarde (Amanda/Bacula)&lt;/li&gt;
-&lt;li&gt;Supervision (Nagios, Centreon, Zabbix)&lt;/li&gt;
-&lt;li&gt;Analyse de la performance (Cacti, Smokeping)&lt;/li&gt;
-&lt;li&gt;Gestion des problèmes et des incidents (Bugzilla, Mantis, Trac)&lt;/li&gt;
-&lt;li&gt;Documentation (MoinMoinwiki, MediaWiki).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ainsi pour chaque usage plusieurs alternatives libres existent et sont par ailleurs largement utilisées dans le monde de la production pour faciliter la vie de l&amp;rsquo;exploitant.&lt;/p&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
@@ -52,21 +27,8 @@
       <pubDate>Sun, 13 Jun 2010 07:39:21 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/06/alerte-sur-la-banquise/</guid>
-      <description>&lt;p&gt;Suite à diverses réorganisations majeures, je me suis intéressé aux théories de la conduite du changement, et notamment à celles de John Kotter, cité souvent comme le grand &amp;ldquo;gourou&amp;rdquo;. Ainsi j&amp;rsquo;ai acheté et lu avec intérêt sa fable &lt;a href=&#34;http://www.amazon.fr/Alerte-sur-banquise-changement-conditions/dp/2744063487/ref=sr_1_1?ie=UTF8&amp;amp;s=books&amp;amp;qid=1276413468&amp;amp;sr=8-1&#34;&gt;Alerte sur la banquise&lt;/a&gt; basée sur sa théorie des 8 étapes de la conduite du changement:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Créer un sentiment d&amp;rsquo;urgence&lt;/strong&gt;: aider les autres à comprendre d&amp;rsquo;une part la nécessité d&amp;rsquo;un changement et d&amp;rsquo;autre part l&amp;rsquo;obligation d&amp;rsquo;agir tout de suite.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Réunir l&amp;rsquo;équipe de pilotage&lt;/strong&gt;: Choisir avec soin les responsables du pilotage du changement: complémentaires, le groupe doit être uni autour du sentiment d&amp;rsquo;urgence.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Développer la vision et la stratégie du changement&lt;/strong&gt;: expliquer et décrire les différences entre &amp;ldquo;hier&amp;rdquo; et &amp;ldquo;demain&amp;rdquo; et comment faire de l&amp;rsquo;avenir une réalité&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Communiquer pour faire comprendre et adhérer&lt;/strong&gt;: S&amp;rsquo;appliquer à faire comprendre et accepter la vision de la stratégie au plus grand nombre de personne possible.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Donner aux autres le pouvoir d&amp;rsquo;agir&lt;/strong&gt;: faciliter l&amp;rsquo;action de ceux qui veulent transformer la vision en réalité.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Produire des victoires à court terme&lt;/strong&gt;: Créer et communiquer sur des succès visibles dès que possible.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Persévérer&lt;/strong&gt;: avec les premières victoires, renforcer et accélérer encore plus le changement et travailler sans relâche jusqu&amp;rsquo;à ce que la vision soit devenue réalité.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Créer une nouvelle culture&lt;/strong&gt;: Soutenir les nouveaux comportements jusqu&amp;rsquo;à ce qu&amp;rsquo;ils remplacent les traditions d&amp;rsquo;hier.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Kotter donne par ailleurs le conseil d&amp;rsquo;apprendre à ressentir pour faire changer les comportements encore plus et  donc avec de meilleurs résultats que seulement penser différemment.&lt;/p&gt;
-</description>
+      <description>Suite à diverses réorganisations majeures, je me suis intéressé aux théories de la conduite du changement, et notamment à celles de John Kotter, cité souvent comme le grand &amp;ldquo;gourou&amp;rdquo;. Ainsi j&amp;rsquo;ai acheté et lu avec intérêt sa fable Alerte sur la banquise basée sur sa théorie des 8 étapes de la conduite du changement:
+ Créer un sentiment d&amp;rsquo;urgence: aider les autres à comprendre d&amp;rsquo;une part la nécessité d&amp;rsquo;un changement et d&amp;rsquo;autre part l&amp;rsquo;obligation d&amp;rsquo;agir tout de suite.</description>
     </item>
     
     <item>
@@ -75,66 +37,10 @@
       <pubDate>Mon, 03 May 2010 19:01:33 +0000</pubDate>
       
       <guid>http://www.zeneffy.fr/2010/05/notes-de-lecture-ma-vie-de-patron/</guid>
-      <description>&lt;p&gt;La lecture de  &lt;a href=&#34;http://www.amazon.fr/Ma-vie-patron-industriel-am%C3%A9ricain/dp/2842111559&#34;&gt;&amp;ldquo;Ma Vie de patron&amp;rdquo;&lt;/a&gt; - la biographie du célèbre ex-PDG de General Electrics Jack Welch m&amp;rsquo;a interpellée tout en me confirmant quelques points de management:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Différentiation&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Il ne faut pas hésiter à récompenser fortement les meilleurs et éliminer les médiocres pour hisser la barre toujours plus haut. En traitant différemment, non seulement cela ne nuira pas au moral mais cela renforcera même les équipes.&lt;/p&gt;
-
-&lt;p&gt;il est possible de classer simplement en 20% Potentiels - 70% A garder - 10% moins bons, bien que l&amp;rsquo;exercice peut devenir difficile  - cela permet année après année d&amp;rsquo;améliorer globalement le niveau des équipes&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Prise de risque&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Valoriser la prise de risque permet d&amp;rsquo;encourager les individus qui tentent &amp;ldquo;un grand coup&amp;rdquo; - il ne faut d&amp;rsquo;ailleurs pas les punir en cas d&amp;rsquo;échec.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Fêter les réussites&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Il est primordial de mettre en avant les réussites, tout simplement en les fêtant d&amp;rsquo;une manière ou d&amp;rsquo;une autre.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Votre réussite dépend de vos collaborateurs&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Il est essentiel de recruter des collaborateurs de talent et de leur confier des postes pour lesquels ils sont fait.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Regarder la vérité en face&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;En permanence, ne pas se raconter d&amp;rsquo;histoire et regarder telle ou telle situation comme elle est et non comme elle était ou comme on espère qu&amp;rsquo;elle va devenir&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Etre #1 ou #2 sinon restructurer, vendre ou fermer!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;le credo célèbre de GE, qui peut s&amp;rsquo;utiliser sur toute forme d&amp;rsquo;activité: Avoir l&amp;rsquo;équipe la mieux qualifiée pour faire une tâche/mission/activité sinon repenser le process, transférer l&amp;rsquo;activité ou l&amp;rsquo;arrêter.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Encourager et promouvoir la libre circulation des idées&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;S&amp;rsquo;ouvrir aux bonnes pratiques et aux meilleurs idées des autres équipes/directions et même autres entreprises (combattre le &amp;ldquo;Not Invented Here&amp;rdquo;) et les mettre en pratique en permanence &amp;ldquo;Finding a better way every day&amp;rdquo; !&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Exemplarité&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Le manager sert de modèle et donne le ton: il faut donc être exemplaire dans les actes et les paroles&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Cultiver la vélocité&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Ne pas hésiter à agir de manière résolue et rapide sur les sujets/projets/gens - Do it Now !&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Pour conclure, le livre est intéressant pour voir l&amp;rsquo;évolution de la vie professionelle de J.Welch, mais je suis resté sur ma faim sur les parties &amp;ldquo;conseils en management&amp;rdquo; - trop biographique à mon goût !&lt;/p&gt;
-</description>
+      <description>La lecture de &amp;ldquo;Ma Vie de patron&amp;rdquo; - la biographie du célèbre ex-PDG de General Electrics Jack Welch m&amp;rsquo;a interpellée tout en me confirmant quelques points de management:
+Différentiation
+ Il ne faut pas hésiter à récompenser fortement les meilleurs et éliminer les médiocres pour hisser la barre toujours plus haut. En traitant différemment, non seulement cela ne nuira pas au moral mais cela renforcera même les équipes.
+il est possible de classer simplement en 20% Potentiels - 70% A garder - 10% moins bons, bien que l&amp;rsquo;exercice peut devenir difficile - cela permet année après année d&amp;rsquo;améliorer globalement le niveau des équipes</description>
     </item>
     
   </channel>

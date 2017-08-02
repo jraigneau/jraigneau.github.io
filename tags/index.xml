@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Zeneffy : journal de bord</title>
+    <link>http://www.zeneffy.fr/tags/</link>
+    <description>Recent content in Tags on Zeneffy : journal de bord</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <copyright>&amp;#0169; 2008 - 2017, Julien Raigneau &amp;nbsp;&amp;nbsp;  | &amp;nbsp;&amp;nbsp;  Zeneffy &gt;&gt; Zen &amp;amp; Efficace</copyright>
+    <lastBuildDate>Sat, 04 Apr 2015 20:17:05 +0100</lastBuildDate>
+    
+	<atom:link href="http://www.zeneffy.fr/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Backup</title>
+      <link>http://www.zeneffy.fr/tags/backup/</link>
+      <pubDate>Sat, 04 Apr 2015 20:17:05 +0100</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/backup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bash</title>
+      <link>http://www.zeneffy.fr/tags/bash/</link>
+      <pubDate>Thu, 14 Apr 2011 14:34:01 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bdd</title>
+      <link>http://www.zeneffy.fr/tags/bdd/</link>
+      <pubDate>Tue, 27 Dec 2011 12:08:26 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/bdd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Clojure</title>
+      <link>http://www.zeneffy.fr/tags/clojure/</link>
+      <pubDate>Sun, 02 Oct 2011 10:31:59 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/clojure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Devops</title>
+      <link>http://www.zeneffy.fr/tags/devops/</link>
+      <pubDate>Sat, 04 Apr 2015 20:17:05 +0100</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Domotique</title>
+      <link>http://www.zeneffy.fr/tags/domotique/</link>
+      <pubDate>Tue, 11 Oct 2016 07:48:54 +0200</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/domotique/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Formation</title>
+      <link>http://www.zeneffy.fr/tags/formation/</link>
+      <pubDate>Thu, 07 May 2009 13:31:00 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/formation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fun</title>
+      <link>http://www.zeneffy.fr/tags/fun/</link>
+      <pubDate>Mon, 10 Jul 2017 12:34:55 +0200</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/fun/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>http://www.zeneffy.fr/tags/go/</link>
+      <pubDate>Tue, 11 Oct 2016 07:48:54 +0200</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google</title>
+      <link>http://www.zeneffy.fr/tags/google/</link>
+      <pubDate>Sun, 06 Mar 2011 21:09:06 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/google/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hardware</title>
+      <link>http://www.zeneffy.fr/tags/hardware/</link>
+      <pubDate>Mon, 10 Jul 2017 12:34:55 +0200</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/hardware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>http://www.zeneffy.fr/tags/java/</link>
+      <pubDate>Sun, 13 Feb 2011 19:20:45 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lecture</title>
+      <link>http://www.zeneffy.fr/tags/lecture/</link>
+      <pubDate>Sun, 13 Jun 2010 07:39:21 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/lecture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Macos</title>
+      <link>http://www.zeneffy.fr/tags/macos/</link>
+      <pubDate>Sun, 04 Sep 2011 18:55:28 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/macos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Management</title>
+      <link>http://www.zeneffy.fr/tags/management/</link>
+      <pubDate>Sun, 02 Sep 2012 12:56:19 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/management/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mono</title>
+      <link>http://www.zeneffy.fr/tags/mono/</link>
+      <pubDate>Thu, 15 Jul 2010 18:31:06 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/mono/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Node.Js</title>
+      <link>http://www.zeneffy.fr/tags/node.js/</link>
+      <pubDate>Sun, 22 Jan 2012 15:41:38 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/node.js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Outils</title>
+      <link>http://www.zeneffy.fr/tags/outils/</link>
+      <pubDate>Tue, 11 Oct 2016 07:48:54 +0200</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/outils/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Productivité</title>
+      <link>http://www.zeneffy.fr/tags/productivit%C3%A9/</link>
+      <pubDate>Sun, 15 Aug 2010 16:55:00 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/productivit%C3%A9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Projets</title>
+      <link>http://www.zeneffy.fr/tags/projets/</link>
+      <pubDate>Tue, 11 Oct 2016 07:48:54 +0200</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/projets/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>http://www.zeneffy.fr/tags/python/</link>
+      <pubDate>Fri, 11 Mar 2011 17:10:17 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ruby</title>
+      <link>http://www.zeneffy.fr/tags/ruby/</link>
+      <pubDate>Sat, 11 Jun 2011 12:40:09 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/ruby/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rubyonrails</title>
+      <link>http://www.zeneffy.fr/tags/rubyonrails/</link>
+      <pubDate>Tue, 03 Jul 2012 13:07:41 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/rubyonrails/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Réseau</title>
+      <link>http://www.zeneffy.fr/tags/r%C3%A9seau/</link>
+      <pubDate>Mon, 27 Sep 2010 21:01:30 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/r%C3%A9seau/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scala</title>
+      <link>http://www.zeneffy.fr/tags/scala/</link>
+      <pubDate>Sun, 30 Oct 2011 09:37:51 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/scala/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sinatra</title>
+      <link>http://www.zeneffy.fr/tags/sinatra/</link>
+      <pubDate>Sat, 15 Oct 2011 08:21:18 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/sinatra/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Snippets</title>
+      <link>http://www.zeneffy.fr/tags/snippets/</link>
+      <pubDate>Sat, 05 Feb 2011 13:31:25 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/snippets/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>http://www.zeneffy.fr/tags/ubuntu/</link>
+      <pubDate>Sun, 19 Dec 2010 10:26:48 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>http://www.zeneffy.fr/tags/vim/</link>
+      <pubDate>Sun, 02 Oct 2011 10:31:59 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virtualisation</title>
+      <link>http://www.zeneffy.fr/tags/virtualisation/</link>
+      <pubDate>Fri, 29 Oct 2010 17:11:35 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/virtualisation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web.Py</title>
+      <link>http://www.zeneffy.fr/tags/web.py/</link>
+      <pubDate>Wed, 14 Apr 2010 14:00:33 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/web.py/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>http://www.zeneffy.fr/tags/windows/</link>
+      <pubDate>Sun, 06 Jun 2010 06:28:49 +0000</pubDate>
+      
+      <guid>http://www.zeneffy.fr/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
